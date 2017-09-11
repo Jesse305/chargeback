@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/menu', function () {
+    return view('menu');
+});
+
+//rotas sistema
+Route::get('/sistema', 'SistemaController@sistema');
