@@ -28,28 +28,35 @@
 		      <div class="modal-header">
 		        <button type="button" class="close" data-dismiss="modal">&times;</button>
 		        <h4 class="modal-title">Cadastro de Sistemas</h4>
+
 		      </div>
 		      <div class="modal-body">
+		      	<div class="alerta_cad" id="alerta_cad"></div>
 		      	<form class="form_cad" id="form_cad" method="POST" action="">
 
 		      		<div class="input-group" style="margin-top: 5px;">
 		      			<span class="input-group-addon">Nome:</span>
-		      			<input class="form-control" type="text" name="nome" id="nome" required maxlength="200">
+		      			<input class="form-control" type="text" name="nome" id="nome" required maxlength="200"
+		      			placeholder="nome do sistema">
 		      		</div>
 
 		      		<div class="input-group" style="margin-top: 5px;">
 		      			<span class="input-group-addon">Sigla:</span>
-		      			<input class="form-control" type="text" name="sigla" id="sigla" maxlength="20">
+		      			<input class="form-control" type="text" name="sigla" id="sigla"  maxlength="20"
+		      			placeholder="sigla do sistema">
 		      		</div>
 
 		      		<div class="input-group" style="margin-top: 5px;">
 		      			<span class="input-group-addon">Órgão:</span>
 		      			<select class="form-control" name="slc_orgao" id="slc_orgao" title="Órgão solicitante">
 		      				<option value="">--Selecione--</option>
+		      				@foreach($listaOrgaos as $orgaos)
+		      				<option value="{{ $orgaos->id }}">{{ $orgaos->no_sigla }} - {{ $orgaos->no_orgao }}</option>
+		      				@endforeach	      				
 		      			</select>
 		      		</div>
 
-		      		<div class="input-group" style="margin-top: 5px;">
+		      		<div class="input-group" id="div_unidade" style="margin-top: 5px;">
 		      			<span class="input-group-addon">Unidade:</span>
 		      			<select class="form-control" name="slc_unidade" id="slc_unidade" title="Unidade solicitante">
 		      				<option value="">--Selecione--</option>
@@ -67,9 +74,30 @@
 		      			</select>
 		      		</div>
 
+		      		<div class="input-group" style="margin-top: 5px;">
+		      			<span class="input-group-addon">Acesso:</span>
+		      			<select class="form-control" name="slc_acesso" id="slc_acesso" title="Tipo de acesso">
+		      				<option value="">--Selecione--</option>
+		      				<option value="Externo">Externo</option>
+		      				<option value="Interno">Interno</option>
+		      			</select>
+		      		</div>
+
+		      		<div class="input-group" style="margin-top: 5px;">
+		      			<span class="input-group-addon">Status:</span>
+		      			<select class="form-control" name="slc_status" id="slc_status" title="">
+		      				<option value="">--Selecione--</option>
+		      				<option value="Desenvolvimento">Desenvolvimento</option>
+		      				<option value="Homologação">Homologação</option>
+		      				<option value="Treinamento">Treinamento</option>
+		      				<option value="Produção">Produção</option>
+		      				<option value="Desuso">Desuso</option>
+		      			</select>
+		      		</div>
+
 		      		<div class="form-group" style="margin-top: 5px;">
 		      			<label for="frames">Frameworks:</label>
-		      			<textarea placeholder="framework 1, framework 2, ..." class="form-control" id="frames" name="frames"></textarea>
+		      			<textarea placeholder="framework 1, framework 2 ..." class="form-control" id="frames" name="frames"></textarea>
 		      		</div>
 		      		
 		      	</form>
@@ -85,4 +113,6 @@
 		<!-- /modal -->
     </div>
     <!-- /primeiro container -->
+    <script type="text/javascript" src={{ asset('js/jquery.js') }}></script>
+    <script type="text/javascript" src={{ asset('js/sistema.js') }}></script>
 @endsection

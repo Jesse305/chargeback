@@ -20,4 +20,11 @@ Route::get('/menu', function () {
 });
 
 //rotas sistema
-Route::get('/sistema', 'SistemaController@sistema');
+Route::get('/sistema',['as'=>'sistema', 'uses'=>'SistemaController@index']);
+
+//rotas orgaos
+Route::get('/orgaos', ['as'=>'orgaos', 'uses'=>'OrgaoController@listar']);
+Route::get('/orgaos/json', ['as'=>'orgaos.json', 'uses'=>'OrgaoController@listarJson']);
+
+//rotas unidades
+Route::get('/unidade/json/{id_orgao}', ['as'=>'unidade.json', 'uses'=>'UnidadeController@unidadeByIdJson']);

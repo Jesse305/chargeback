@@ -26,7 +26,7 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">WEB
                         <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                          <li><a href={{ action('SistemaController@sistema') }} >Sistemas</a></li>
+                          <li><a href={{ route('sistema') }} >Sistemas</a></li>
                           <li><a href="#">Sites</a></li>
                         </ul>
                     </li>
