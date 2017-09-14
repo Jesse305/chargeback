@@ -31,5 +31,7 @@ Route::get('/unidade/json/{id_orgao}', ['as'=>'unidade.json', 'uses'=>'UnidadeCo
 
 //rotas banco
 Route::get('/banco/bancos', ['as'=>'bancos', 'uses'=>'BancoController@listar']);
-Route::get('/banco/apagar/{id?}', ['as'=>'banco.apagar', 'uses'=>'BancoController@apagar']);
+Route::post('/banco/inserir', ['as'=>'banco.inserir', 'uses'=>'BancoController@inserir']);
+Route::get('/banco/detalha/{id}', ['as'=>'banco.detalhar', 'uses'=>'BancoController@detalhar']);
+Route::get('/banco/apagar/{id}', ['as'=>'banco.apagar', 'uses'=>'BancoController@apagar']);
 
