@@ -20,7 +20,7 @@ Route::get('/menu', function () {
 });
 
 //rotas sistema
-Route::get('/sistema',['as'=>'sistema', 'uses'=>'SistemaController@index']);
+Route::get('/sistemas',['as'=>'sistemas', 'uses'=>'SistemaController@listar']);
 
 //rotas orgaos
 Route::get('/orgaos', ['as'=>'orgaos', 'uses'=>'OrgaoController@listar']);
@@ -28,3 +28,8 @@ Route::get('/orgaos/json', ['as'=>'orgaos.json', 'uses'=>'OrgaoController@listar
 
 //rotas unidades
 Route::get('/unidade/json/{id_orgao}', ['as'=>'unidade.json', 'uses'=>'UnidadeController@unidadeByIdJson']);
+
+//rotas banco
+Route::get('/banco/bancos', ['as'=>'bancos', 'uses'=>'BancoController@listar']);
+Route::get('/banco/apagar/{id?}', ['as'=>'banco.apagar', 'uses'=>'BancoController@apagar']);
+

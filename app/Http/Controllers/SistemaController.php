@@ -7,8 +7,8 @@ use App\Orgao;
 
 class SistemaController extends Controller
 {
-    public function index(){
+    public function listar(){
     	$listaOrgaos = Orgao::orderBy('no_orgao')->get();	
-    	return view('sistema/sistema', compact('listaOrgaos'));
+    	return view('sistema/sistemas', compact('listaOrgaos'));
     }
 }

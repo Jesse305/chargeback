@@ -300,6 +300,7 @@ class ComposerStaticInit9c104e2d5baa4acf71ee916fd589be37
     );
 
     public static $classMap = array (
+        'App\\Banco' => __DIR__ . '/../..' . '/app/Banco.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -309,6 +310,7 @@ class ComposerStaticInit9c104e2d5baa4acf71ee916fd589be37
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\OrgaoController' => __DIR__ . '/../..' . '/app/Http/Controllers/OrgaoController.php',
         'App\\Http\\Controllers\\SistemaController' => __DIR__ . '/../..' . '/app/Http/Controllers/SistemaController.php',
+        'App\\Http\\Controllers\\UnidadeController' => __DIR__ . '/../..' . '/app/Http/Controllers/UnidadeController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',

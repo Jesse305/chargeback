@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href={{ asset('css/bootstrap.min.css') }} >
         <link rel="stylesheet" type="text/css" href={{ asset('css/style.css') }} >
+        <link rel="stylesheet" type="text/css" href={{ asset('data_table/css/dataTables.bootstrap.min.css') }} >
 
     </head>
     <body>
@@ -26,10 +27,24 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">WEB
                         <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                          <li><a href={{ route('sistema') }} >Sistemas</a></li>
+                          <li><a href={{ route('sistemas') }} >Sistemas</a></li>
                           <li><a href="#">Sites</a></li>
                         </ul>
                     </li>
+                    <!-- fim dropdown web -->
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" title="pré cadastro para sistemas">Pré Cadastro
+                        <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="#">Ambiente</a></li>
+                          <li><a href={{ route('bancos') }}>Banco de Dados</a></li>
+                          <li><a href="#">Desenvolvedores</a></li>
+                          <li><a href="#">Frameworks</a></li>
+                        </ul>
+                    </li>
+
+
                   </ul>
                   <ul class="nav navbar-nav navbar-right">
                     <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -64,5 +79,7 @@
 
         <script type="text/javascript" src={{ asset('js/jquery.js') }} ></script>
         <script type="text/javascript" src={{ asset('js/bootstrap.min.js') }} ></script>
+        <script type="text/javascript" src={{ asset('data_table/js/jquery.dataTables.min.js') }} ></script>
+        <script type="text/javascript" src={{ asset('data_table/js/dataTables.bootstrap.min.js') }} ></script>
     </body>
 </html>
