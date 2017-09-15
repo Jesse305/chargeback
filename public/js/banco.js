@@ -90,10 +90,4 @@ $(document).ready(function(){
       $("#senha").attr("type", "password");
     });
 
-    // votar paginas
-
-    $("#btn_voltar").click(function(){
-        window.history.back();
-    });
-
 });

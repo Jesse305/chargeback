@@ -39,7 +39,7 @@
                         <ul class="dropdown-menu">
                           <li><a href="#">Ambiente</a></li>
                           <li><a href={{ route('bancos') }}>Banco de Dados</a></li>
-                          <li><a href="#">Desenvolvedores</a></li>
+                          <li><a href={{ route('desenvolvedores') }}>Desenvolvedores</a></li>
                           <li><a href="#">Frameworks</a></li>
                         </ul>
                     </li>

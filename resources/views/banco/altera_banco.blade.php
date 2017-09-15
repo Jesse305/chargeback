@@ -97,7 +97,7 @@
 			@endforeach
 
 			<div class="text-right" style="margin-top: 10px;">
-				<button type="reset" class="btn btn-warning btn-sm" id="btn_voltar">Cancelar</button>
+				<a href="javascript:history.back()" class="btn btn-warning btn-sm">Cancelar</a>
 				<button type="submit" class="btn btn-success btn-sm" id="btn_salvar">Alterar</button>
 			</div>
 

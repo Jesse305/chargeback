@@ -3,7 +3,7 @@
 
 @section('content')
 
-<div class="container" style="margin-top: 60px;">
+<div class="container" style="margin-top: 60px; margin-bottom: 30px;">
 	<!-- div painel -->
 	<div class="row">
 		<div class="col-xs-12">
@@ -40,6 +40,15 @@
 				@endforeach
 			</ul>	        			
 		</div>
+	@endif
+
+	@if(session()->has('delete'))
+
+	<div class="alert alert-success alert-dismissable">
+		<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+		<li>Registro Deletado com sucesso!</li>
+	</div>
+
 	@endif
 
 	<!-- Modal -->
@@ -106,7 +115,7 @@
         	<!-- fim do form -->
 	        </div>
 	        <div class="modal-footer">
-	          <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Fechar</button>
+	          <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancelar</button>
 	          <button type="submit" class="btn btn-success btn-sm" form="form_banco" id="btn_salvar">Salvar</button>
 	        </div>
 	      </div>
@@ -179,11 +188,11 @@
 <script type="text/javascript" src={{asset('js/jquery.js')}}></script>
 <script type="text/javascript" src={{asset('js/banco.js')}}></script>
 <script type="text/javascript">
-            function confirmaDeleta(url){
-                if(window.confirm('Deseja realmente apagar o registro?')){
-                    window.location = url;
-                }
-            }
-    </script>
+    function confirmaDeleta(url){
+        if(window.confirm('Deseja realmente apagar o registro?')){
+            window.location = url;
+        }
+    }
+</script>
 
 @endsection

@@ -51,7 +51,7 @@
 	</table>
 
 	<div class="pull-right">
-		<button class="btn btn-success btn-sm" title="voltar" id="btn_voltar"><span class="glyphicon glyphicon-arrow-left"></span> voltar</button>
+		<a href="javascript:history.back()" class="btn btn-success" title="voltar"><span class="glyphicon glyphicon-arrow-left"></span></a>
 	</div>
 
 	<!-- fim segunda row -->

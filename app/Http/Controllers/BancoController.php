@@ -40,6 +40,6 @@ class BancoController extends Controller
 
     public function apagar($id){
     	Banco::find($id)->delete();
-    	return redirect()->route('bancos');    	
+    	return redirect()->back()->with('delete', ['deletado']);    	
     }
 }

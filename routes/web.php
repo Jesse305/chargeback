@@ -37,3 +37,9 @@ Route::get('/banco/altera/{id}', ['as'=>'banco.altera', 'uses'=>'BancoController
 Route::post('/banco/atualizar/{id}', ['as'=>'banco.atualizar', 'uses'=>'BancoController@atualizar']);
 Route::get('/banco/apagar/{id}', ['as'=>'banco.apagar', 'uses'=>'BancoController@apagar']);
 
+//rotas desenvolvedor
+Route::get('/dev/desenvolvedores', ['as'=>'desenvolvedores', 'uses'=>'DesenvolvedorController@listar']);
+Route::post('/dev/inserir', ['as'=>'desenvolvedor.inserir', 'uses'=>'DesenvolvedorController@inserir']);
+Route::get('/dev/apagar/{id}', ['as'=>'desenvolvedor.apagar', 'uses'=>'DesenvolvedorController@apagar']);
+
+
