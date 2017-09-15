@@ -22,13 +22,20 @@ class BancoController extends Controller
 
     }
 
-    public function detalhar(){
-
-        return view('banco/banco');
+    public function detalhar($id){
+        $banco = Banco::where('id_banco', $id)->get();
+        return view('banco/banco', compact('banco'));
     }
 
-    public function alterar($id){
+    public function altera($id){
+        $banco = Banco::where('id_banco', $id)->get();
+        return view('banco/altera_banco', compact('banco'));
+    }
 
+    public function atualizar(Request $request, $id){
+        $dados = $request->except(['_token', '_update']);
+        Banco::where('id_banco', '=', $id)->update($dados);
+        return redirect()->route('bancos')->withInput();
     }
 
     public function apagar($id){

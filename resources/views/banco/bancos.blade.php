@@ -1,5 +1,5 @@
 @extends('menu')
-@section('title', 'Bancos')
+@section('title', 'Bancos de Dados')
 
 @section('content')
 
@@ -8,7 +8,7 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="panel panel-default">
-			  <div class="panel-heading"><h4>Bancos</h4></div>
+			  <div class="panel-heading"><h4>Bancos de Dados</h4></div>
 			  <div class="panel-body text-right">
 			  	<button class="btn btn-success btn-sm btn_cad" id="btn_cad" title="novo banco de dados"
 			  	data-toggle="modal" data-target="#modal_cad">Novo Banco Dados</button>
@@ -22,6 +22,13 @@
 		<div class="alert alert-success alert-dismissable">
 			<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
 			<li>Registro cadastrado com sucesso!</li>
+		</div>
+	@endif
+
+	@if(old('_update'))
+		<div class="alert alert-success alert-dismissable">
+			<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+			<li>Registro Alterado com sucesso!</li>
 		</div>
 	@endif
 
@@ -46,7 +53,7 @@
 	          <h4 class="modal-title">Cadastro de Banco
 	        </div>
 	        <div class="modal-body">
-	        	<div class="alerta_modal"></div>
+	        	<div class="alerta"></div>
 	        	<form id="form_banco" method="POST" action="{{route('banco.inserir')}}">
 	        		{{ csrf_field() }}
 	        		<input type="hidden" name="_insert" value="insert">
@@ -137,7 +144,7 @@
 	  						</a>
 	  					</td>
 	  					<td align="center">
-	  						<a href="#" class="btn btn-warning btn-sm" title="editar">
+	  						<a href="{{ route('banco.altera', $bancos->id_banco) }}" class="btn btn-warning btn-sm" title="editar">
 	  							<i class="glyphicon glyphicon-edit"></i>
 	  						</a>
 	  					</td>

@@ -33,5 +33,7 @@ Route::get('/unidade/json/{id_orgao}', ['as'=>'unidade.json', 'uses'=>'UnidadeCo
 Route::get('/banco/bancos', ['as'=>'bancos', 'uses'=>'BancoController@listar']);
 Route::post('/banco/inserir', ['as'=>'banco.inserir', 'uses'=>'BancoController@inserir']);
 Route::get('/banco/detalha/{id}', ['as'=>'banco.detalhar', 'uses'=>'BancoController@detalhar']);
+Route::get('/banco/altera/{id}', ['as'=>'banco.altera', 'uses'=>'BancoController@altera']);
+Route::post('/banco/atualizar/{id}', ['as'=>'banco.atualizar', 'uses'=>'BancoController@atualizar']);
 Route::get('/banco/apagar/{id}', ['as'=>'banco.apagar', 'uses'=>'BancoController@apagar']);
 

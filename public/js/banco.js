@@ -3,7 +3,7 @@ $(document).ready(function(){
     //limpa formulario
     function limpaForm(form){
         $(form)[0].reset();
-        limpaAlerta('.alerta_modal');
+        limpaAlerta('.alerta');
     }
 
     //click do botão chama modal
@@ -49,16 +49,16 @@ $(document).ready(function(){
         var v = false;
 
         if(document.getElementById('slc_ambiente').selectedIndex == 0){
-            crialerta('.alerta_modal', 'warning', 'Selecione o Ambiente do Banco!');
+            crialerta('.alerta', 'warning', 'Selecione o Ambiente do Banco!');
             $('#slc_ambiente').focus();
         }
         else if(document.getElementById('slc_tecnologia').selectedIndex == 0){
-            crialerta('.alerta_modal', 'warning', 'Selecione a Tecnologia do Banco!');
+            crialerta('.alerta', 'warning', 'Selecione a Tecnologia do Banco!');
             $('#slc_tecnologia').focus();
         }
 
         else{
-            limpaAlerta('alerta_modal');
+            limpaAlerta('alerta');
             v = true;
         }
 
@@ -88,6 +88,12 @@ $(document).ready(function(){
 
     $( "#revela_senha" ).mouseup(function() {
       $("#senha").attr("type", "password");
+    });
+
+    // votar paginas
+
+    $("#btn_voltar").click(function(){
+        window.history.back();
     });
 
 });
