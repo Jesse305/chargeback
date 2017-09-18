@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sistema extends Model
 {
-    protected $table = 'tab_sistemas';
+    protected $table = 'sistemas';
+    protected $primaryKey = 'id_sis';
+    public $timestamps = false;
 }

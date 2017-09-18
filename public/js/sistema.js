@@ -22,13 +22,40 @@ $(document).ready(function(){
 		);
 	}
 
+	function validaCBDevs(){
+		var cbs = document.getElementsByName('devs[]');
+		var marcado = false;
+
+		for(var i = 0; i < cbs.length; i++){
+			if(cbs[i].checked == true){
+				marcado = true;
+			}
+		}
+		return marcado;
+	}
+
 	//função de validação
 	function valida(){
 		var retorno = false;
-
-		if(document.getElementById('slc_orgao').selectedIndex != 0 && document.getElementById('slc_unidade').selectedIndex == 0){
+		if(validaCBDevs() == false){
+			criaAlerta($('#alerta_cad'), 'warning', 'Selecione ao menos um Desenvolvedor');
+			$('#dd_devs').focus();
+		}
+		else if(document.getElementById('slc_orgao').selectedIndex == 0){
+			criaAlerta($('#alerta_cad'), 'warning', 'Selecione o Orgão Solictante');
+			$('#slc_orgao').focus();
+		}
+		else if(document.getElementById('slc_unidade').selectedIndex == 0){
 			criaAlerta($('#alerta_cad'), 'warning', 'Selecione a Unidade do Orgão');
 			$('#slc_unidade').focus();
+		}
+		else if(document.getElementById('slc_banco').selectedIndex == 0){
+			criaAlerta($('#alerta_cad'), 'warning', 'Selecione um Banco de Dados');
+			$('#slc_banco').focus();
+		}
+		else if(document.getElementById('slc_ambSis').selectedIndex == 0){
+			criaAlerta($('#alerta_cad'), 'warning', 'Selecione o Ambiente do sistema');
+			$('#slc_ambSis').focus();
 		}
 		else if(document.getElementById('slc_amb').selectedIndex == 0){
 			criaAlerta($('#alerta_cad'), 'warning', 'Selecione o ambiente do sistema');
@@ -65,7 +92,7 @@ $(document).ready(function(){
 			type: 'GET',
 			dataType: 'json',
 			data: '',
-			url: 'unidade/json/'+id_orgao,
+			url: '../unidade/json/'+id_orgao,
 			beforeSend: function(){
 
 			},
@@ -95,10 +122,6 @@ $(document).ready(function(){
 	// submit form_cad
 	$('#form_cad').on('submit', function(){		
 		if(valida()){
-			criaAlerta($('#alerta_cad'), 'success', 'Salvo com sucesso');
-			$('#btn_salvar').attr('disabled', 'disabled');
-			recarregaPagina();
-		}
 		return false;
 	});
 

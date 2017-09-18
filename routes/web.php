@@ -20,7 +20,8 @@ Route::get('/menu', function () {
 });
 
 //rotas sistema
-Route::get('/sistemas',['as'=>'sistemas', 'uses'=>'SistemaController@listar']);
+Route::get('/sistema/sistemas',['as'=>'sistemas', 'uses'=>'SistemaController@listar']);
+Route::get('/sistema/inserir',['as'=>'sistema.inserir', 'uses'=>'SistemaController@inserir']);
 
 //rotas orgaos
 Route::get('/orgaos', ['as'=>'orgaos', 'uses'=>'OrgaoController@listar']);

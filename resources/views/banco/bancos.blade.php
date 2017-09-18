@@ -84,7 +84,7 @@
 
 					<div class="input-group" style="margin-top: 5px;">
 					    <span class="input-group-addon">Schema:</span>
-					    <input id="schema" type="text" class="form-control" name="schema_banco" placeholder="nome do banco de dados" maxlength="100">
+					    <input id="schema" type="text" class="form-control" name="schema_banco" placeholder="nome do banco de dados" maxlength="100" required>
 					</div>
 
 	        	</form>
@@ -135,7 +135,7 @@
 	  					</td>
 	  					<td align="center">
 	  						<a href="#" class="btn btn-danger btn-sm" title="excluir"
-	  						onclick="confirmaDeleta('{{route('banco.apagar', $bancos->id_banco)}}');">
+	  						onclick="confirmaDeleta('{{route('banco.apagar', $bancos->id_banco)}}');" disabled>
 	  							<i class="glyphicon glyphicon-remove"></i>
 	  						</a>
 	  					</td>
@@ -163,12 +163,12 @@
 </div>
 <script type="text/javascript" src={{asset('js/jquery.js')}}></script>
 <script type="text/javascript" src={{asset('js/banco.js')}}></script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     function confirmaDeleta(url){
         if(window.confirm('Deseja realmente apagar o registro?')){
             window.location = url;
         }
     }
-</script>
+</script> -->
 
 @endsection

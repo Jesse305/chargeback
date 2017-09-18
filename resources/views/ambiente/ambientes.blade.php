@@ -159,7 +159,7 @@
             </td>
             <td align="center">
               <a href="#" class="btn btn-danger btn-sm" title="cuidado! apaga definitivamente o registro."
-              onclick="confirmaDeleta('{{route('ambiente.apagar', $ambientes->id)}}')">
+              onclick="confirmaDeleta('{{route('ambiente.apagar', $ambientes->id)}}')" disabled >
                 <i class="glyphicon glyphicon-remove"></i>
               </a>
             </td>
@@ -186,10 +186,10 @@
 <script type="text/javascript" src={{asset('js/jquery.js')}}></script>
 <script type="text/javascript" src={{asset('js/ambiente.js')}}></script>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	function confirmaDeleta(url){
 		if(window.confirm('Deseja realmente apagar o registro?')){
 			window.location = url;
 		}
 	}
-</script>
+</script> -->

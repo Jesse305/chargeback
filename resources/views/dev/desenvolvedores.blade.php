@@ -129,10 +129,10 @@
 
 <script type="text/javascript" src={{asset('js/jquery.js')}}></script>
 <script type="text/javascript" src={{asset('js/desenvolvedor.js')}}></script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     function confirmaDeleta(url){
         if(window.confirm('Deseja realmente apagar o registro?')){
             window.location = url;
         }
     }
-</script>
+</script> -->
