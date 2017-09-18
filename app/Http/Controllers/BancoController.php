@@ -13,13 +13,10 @@ class BancoController extends Controller
     }
 
     public function inserir(Request $request){
-
         $dados = $request->except(['_token', '_insert']);
-
-        Banco::insert($dados);        
-
-        return redirect()->route('bancos')->withInput();
-
+        Banco::insert($dados);
+        \Session::flash('retorno',['tipo'=>'success', 'msg'=>'Registro inserido com sucesso!']);
+        return redirect()->route('bancos');
     }
 
     public function detalhar($id){
@@ -35,11 +32,13 @@ class BancoController extends Controller
     public function atualizar(Request $request, $id){
         $dados = $request->except(['_token', '_update']);
         Banco::where('id_banco', '=', $id)->update($dados);
-        return redirect()->route('bancos')->withInput();
+        \Session::flash('retorno',['tipo'=>'success', 'msg'=>'Registro alterado com sucesso!']);
+        return redirect()->route('bancos');
     }
 
     public function apagar($id){
     	Banco::find($id)->delete();
-    	return redirect()->back()->with('delete', ['deletado']);    	
+      \Session::flash('retorno',['tipo'=>'success', 'msg'=>'Registro apagado com sucesso!']);
+    	return redirect()->back()->with('delete', ['deletado']);
     }
 }

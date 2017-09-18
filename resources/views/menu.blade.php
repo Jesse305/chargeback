@@ -1,7 +1,7 @@
 <html lang="pt-br">
     <head>
         <title>CeTIC - @yield('title')</title>
-        <meta charset="utf-8">        
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href={{ asset('css/bootstrap.min.css') }} >
         <link rel="stylesheet" type="text/css" href={{ asset('css/style.css') }} >
@@ -37,10 +37,10 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#" title="pré cadastro para sistemas">Pré Cadastro
                         <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                          <li><a href="#">Ambiente</a></li>
+                          <li><a href={{route('ambientes')}}>Ambiente</a></li>
                           <li><a href={{ route('bancos') }}>Banco de Dados</a></li>
                           <li><a href={{ route('desenvolvedores') }}>Desenvolvedores</a></li>
-                          <li><a href="#">Frameworks</a></li>
+                          <li><a href={{ route('frameworks') }}>Frameworks</a></li>
                         </ul>
                     </li>
 
@@ -60,6 +60,20 @@
         </div>
 
         <!-- navbar rodape -->
+
+         <nav class="navbar navbar-inverse navbar-fixed-bottom">
+         <div class="container-fluid">
+           <div class="navbar-header">
+             <a class="navbar-brand" href="#">CeTIC</a>
+           </div>
+           <ul class="nav navbar-nav">
+             <li class="active"><a href="#">Home</a></li>
+             <li><a href="#">Page 1</a></li>
+             <li><a href="#">Page 2</a></li>
+             <li><a href="#">Page 3</a></li>
+           </ul>
+         </div>
+        </nav>
 
         <!-- /navbar rodape -->
 

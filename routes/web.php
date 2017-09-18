@@ -40,6 +40,22 @@ Route::get('/banco/apagar/{id}', ['as'=>'banco.apagar', 'uses'=>'BancoController
 //rotas desenvolvedor
 Route::get('/dev/desenvolvedores', ['as'=>'desenvolvedores', 'uses'=>'DesenvolvedorController@listar']);
 Route::post('/dev/inserir', ['as'=>'desenvolvedor.inserir', 'uses'=>'DesenvolvedorController@inserir']);
+Route::get('/dev/altera/{id}', ['as'=>'desenvolvedor.altera', 'uses'=>'DesenvolvedorController@altera']);
+Route::post('/dev/atualizar/{id}', ['as'=>'desenvolvedor.atualizar', 'uses'=>'DesenvolvedorController@atualizar']);
 Route::get('/dev/apagar/{id}', ['as'=>'desenvolvedor.apagar', 'uses'=>'DesenvolvedorController@apagar']);
 
 
+//rotas framework
+Route::get('/framework/frameworks', ['as'=>'frameworks', 'uses'=>'FrameworkController@listar']);
+Route::post('/framework/inserir', ['as'=>'framework.inserir', 'uses'=>'FrameworkController@inserir']);
+Route::get('/framework/altera/{id}', ['as'=>'framework.altera', 'uses'=>'FrameworkController@altera']);
+Route::post('/framework/atualizar/{id}', ['as'=>'framework.atualizar', 'uses'=>'FrameworkController@atualizar']);
+Route::get('/framework/apagar/{id}', ['as'=>'framework.apagar', 'uses'=>'FrameworkController@apagar']);
+
+//rotas ambiente
+Route::get('/ambiente/ambientes', ['as'=>'ambientes', 'uses'=>'AmbienteController@listar']);
+Route::post('/ambiente/inserir', ['as'=>'ambiente.inserir', 'uses'=>'AmbienteController@inserir']);
+Route::get('/ambiente/detalha/{id}', ['as'=>'ambiente.detalhar', 'uses'=>'AmbienteController@detalhar']);
+Route::get('/ambiente/altera/{id}', ['as'=>'ambiente.altera', 'uses'=>'AmbienteController@altera']);
+Route::post('/ambiente/atualizar/{id}', ['as'=>'ambiente.atualizar', 'uses'=>'AmbienteController@atualizar']);
+Route::get('/ambiente/apagar/{id}', ['as'=>'ambiente.apagar', 'uses'=>'AmbienteController@apagar']);

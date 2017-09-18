@@ -19,15 +19,31 @@ class DesenvolvedorController extends Controller
     	$count = Desenvolvedor::where('no_dev','=', $request->no_dev)->count();
     	if($count == 0){
     		Desenvolvedor::insert($dados);
-    		return redirect()->back()->with('inserido', ['inserido']);
+        \Session::flash('retorno',['tipo'=>'success', 'msg'=>'Registro inserido com sucesso!']);
+    		return redirect()->back();
     	}else{
-    		return redirect()->back()->with('duplicado', ['duplicado']);
+        \Session::flash('retorno',['tipo'=>'warning', 'msg'=>'Desenvolvedor já possui cadastro!']);
+    		return redirect()->back();
     	}
-    	
+
+    }
+
+    public function altera($id){
+        $dev = Desenvolvedor::where('id', $id)->get();
+        return view('dev/altera_desenvolvedor', compact('dev'));
+    }
+
+    public function atualizar(Request $request, $id){
+
+        $dados = $request->except(['_token', '_update']);
+        Desenvolvedor::where('id', '=', $id)->update($dados);
+        \Session::flash('retorno',['tipo'=>'success', 'msg'=>'Registro alterado com sucesso!']);
+        return redirect()->route('desenvolvedores')->withInput();
     }
 
     public function apagar($id){
     	Desenvolvedor::find($id)->delete();
+      \Session::flash('retorno',['tipo'=>'success', 'msg'=>'Registro apagado com sucesso!']);
     	return redirect()->back()->with('delete', ['deletado']);
     }
 

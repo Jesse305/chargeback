@@ -6,10 +6,12 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Ambiente' => $baseDir . '/app/Ambiente.php',
     'App\\Banco' => $baseDir . '/app/Banco.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Desenvolvedor' => $baseDir . '/app/Desenvolvedor.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Framework' => $baseDir . '/app/Framework.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
     'App\\Http\\Controllers\\Auth\\LoginController' => $baseDir . '/app/Http/Controllers/Auth/LoginController.php',
     'App\\Http\\Controllers\\Auth\\RegisterController' => $baseDir . '/app/Http/Controllers/Auth/RegisterController.php',
@@ -17,6 +19,7 @@ return array(
     'App\\Http\\Controllers\\BancoController' => $baseDir . '/app/Http/Controllers/BancoController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\DesenvolvedorController' => $baseDir . '/app/Http/Controllers/DesenvolvedorController.php',
+    'App\\Http\\Controllers\\FrameworkController' => $baseDir . '/app/Http/Controllers/FrameworkController.php',
     'App\\Http\\Controllers\\OrgaoController' => $baseDir . '/app/Http/Controllers/OrgaoController.php',
     'App\\Http\\Controllers\\SistemaController' => $baseDir . '/app/Http/Controllers/SistemaController.php',
     'App\\Http\\Controllers\\UnidadeController' => $baseDir . '/app/Http/Controllers/UnidadeController.php',

@@ -300,10 +300,12 @@ class ComposerStaticInit9c104e2d5baa4acf71ee916fd589be37
     );
 
     public static $classMap = array (
+        'App\\Ambiente' => __DIR__ . '/../..' . '/app/Ambiente.php',
         'App\\Banco' => __DIR__ . '/../..' . '/app/Banco.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Desenvolvedor' => __DIR__ . '/../..' . '/app/Desenvolvedor.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Framework' => __DIR__ . '/../..' . '/app/Framework.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
@@ -311,6 +313,7 @@ class ComposerStaticInit9c104e2d5baa4acf71ee916fd589be37
         'App\\Http\\Controllers\\BancoController' => __DIR__ . '/../..' . '/app/Http/Controllers/BancoController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\DesenvolvedorController' => __DIR__ . '/../..' . '/app/Http/Controllers/DesenvolvedorController.php',
+        'App\\Http\\Controllers\\FrameworkController' => __DIR__ . '/../..' . '/app/Http/Controllers/FrameworkController.php',
         'App\\Http\\Controllers\\OrgaoController' => __DIR__ . '/../..' . '/app/Http/Controllers/OrgaoController.php',
         'App\\Http\\Controllers\\SistemaController' => __DIR__ . '/../..' . '/app/Http/Controllers/SistemaController.php',
         'App\\Http\\Controllers\\UnidadeController' => __DIR__ . '/../..' . '/app/Http/Controllers/UnidadeController.php',

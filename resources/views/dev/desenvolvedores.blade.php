@@ -9,7 +9,7 @@
 
 @section('content')
 
-<div class="container" style="margin-top: 60px; margin-bottom: 30px;">
+<div class="container" style="margin-top: 60px; margin-bottom: 60px;">
 	<!-- div painel -->
 	<div class="row">
 		<div class="col-xs-12">
@@ -51,8 +51,8 @@
 				</div>
 	      	</form>
 	      </div>
-	      <div class="modal-footer">	      	
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-warning btn-sm" data-dismiss="modal">Cancelar</button>
 	        <button type="submit" class="btn btn-success btn-sm" form="form_dev" id="btn_salvar">Salvar</button>
 	      </div>
 	    </div>
@@ -61,32 +61,14 @@
 	</div>
 	<!-- fim da modal cadastro -->
 
-	@if(session()->has('delete'))
-
-	<div class="alert alert-success alert-dismissable">
-		<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-		<li>Registro Deletado com sucesso!</li>
+	<!-- alerts -->
+	@if(Session::has('retorno'))
+	<div class="alert alert-{{Session::get('retorno')['tipo']}} alert-dismissable">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		<li>{{Session::get('retorno')['msg']}}</li>
 	</div>
-
 	@endif
-
-	@if(session()->has('inserido'))
-
-	<div class="alert alert-success alert-dismissable">
-		<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-		<li>Registro Inserido com sucesso!</li>
-	</div>
-
-	@endif
-
-	@if(session()->has('duplicado'))
-
-	<div class="alert alert-warning alert-dismissable">
-		<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-		<li>Desenvolvedor já possui cadastro!</li>
-	</div>
-
-	@endif
+	<!-- fim alerts -->
 
 	<!-- table -->
 
@@ -100,7 +82,7 @@
 						<td><b>IP:</b></td>
 						<td><b>Editar</b></td>
 						<td><b>Excluir</b></td>
-					</tr>					
+					</tr>
 				</thead>
 
 				<tbody>
@@ -110,13 +92,13 @@
 						<td>{{$devs->no_dev}}</td>
 						<td>{{$devs->ip_dev}}</td>
 						<td align="center">
-							<a href="#" class="btn btn-warning btn-sm" title="editar">
+							<a href={{route('desenvolvedor.altera', $devs->id)}} class="btn btn-warning btn-sm" title="editar">
 	  							<i class="glyphicon glyphicon-edit"></i>
 	  						</a>
 						</td>
 						<td align="center">
 							<a href="#" class="btn btn-danger btn-sm" title="excluir" disabled
-	  						onclick="confirmaDeleta('{{route('desenvolvedor.apagar', $devs->id)}}');"> 
+	  						onclick="confirmaDeleta('{{route('desenvolvedor.apagar', $devs->id)}}');">
 	  							<i class="glyphicon glyphicon-remove"></i>
 	  						</a>
 						</td>
@@ -131,9 +113,9 @@
 						<td><b>IP:</b></td>
 						<td><b>Editar</b></td>
 						<td><b>Excluir</b></td>
-					</tr>					
+					</tr>
 				</tfoot>
-				
+
 			</table>
 		</div>
 	</div>

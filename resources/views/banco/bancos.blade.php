@@ -3,7 +3,7 @@
 
 @section('content')
 
-<div class="container" style="margin-top: 60px; margin-bottom: 30px;">
+<div class="container" style="margin-top: 60px; margin-bottom: 60px;">
 	<!-- div painel -->
 	<div class="row">
 		<div class="col-xs-12">
@@ -18,43 +18,19 @@
 	</div>
 	<!-- fim div painel -->
 
-	@if(old('_insert'))
-		<div class="alert alert-success alert-dismissable">
-			<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-			<li>Registro cadastrado com sucesso!</li>
-		</div>
-	@endif
-
-	@if(old('_update'))
-		<div class="alert alert-success alert-dismissable">
-			<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-			<li>Registro Alterado com sucesso!</li>
-		</div>
-	@endif
-
-	@if($errors->any())
-		<div class="alert alert-danger">
-			<ul>
-				@foreach($errors->all() as $error)
-					<li>{{ $error }}</li>
-				@endforeach
-			</ul>	        			
-		</div>
-	@endif
-
-	@if(session()->has('delete'))
-
-	<div class="alert alert-success alert-dismissable">
-		<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-		<li>Registro Deletado com sucesso!</li>
+	<!-- alerts -->
+	@if(Session::has('retorno'))
+	<div class="alert alert-{{Session::get('retorno')['tipo']}} alert-dismissable">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		<li>{{Session::get('retorno')['msg']}}</li>
 	</div>
-
 	@endif
+	<!-- fim alerts -->
 
 	<!-- Modal -->
 	  <div class="modal fade" id="modal_cad" role="dialog">
 	    <div class="modal-dialog modal-md">
-	    
+
 	      <!-- Modal content-->
 	      <div class="modal-content">
 	        <div class="modal-header">
@@ -72,7 +48,7 @@
 					    	<option value="">--SELECIONE--</option>
 					    	<option value="Homologação">Homologação</option>
 					    	<option value="Treinamento">Treinamento</option>
-					    	<option value="Produção">Produção</option>					    	
+					    	<option value="Produção">Produção</option>
 					    </select>
 					</div>
 
@@ -84,7 +60,7 @@
 					    	<option value="Sql Server">SQL Server</option>
 					    	<option value="Postgre SQL">Postgre SQL</option>
 					    	<option value="DB2">DB2</option>
-					    	<option value="MySQL">MySQL</option>					    	
+					    	<option value="MySQL">MySQL</option>
 					    </select>
 					</div>
 
@@ -115,11 +91,11 @@
         	<!-- fim do form -->
 	        </div>
 	        <div class="modal-footer">
-	          <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancelar</button>
+	          <button type="button" class="btn btn-warning btn-sm" data-dismiss="modal">Cancelar</button>
 	          <button type="submit" class="btn btn-success btn-sm" form="form_banco" id="btn_salvar">Salvar</button>
 	        </div>
 	      </div>
-	      
+
 	    </div>
 	  </div>
 	<!-- fim da modal -->
@@ -137,7 +113,7 @@
 	  					<th>Visualizar</th>
 	  					<th>Editar</th>
 	  					<th>Excluir</th>
-	  				</tr>		  				
+	  				</tr>
 	  			</thead>
 
 	  			<tbody>
@@ -176,9 +152,9 @@
 	  					<th>Visualizar</th>
 	  					<th>Editar</th>
 	  					<th>Excluir</th>
-	  				</tr>		  				
+	  				</tr>
 	  			</tfoot>
-				
+
 			</table>
 		</div>
 	</div>

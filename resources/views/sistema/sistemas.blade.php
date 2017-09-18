@@ -13,7 +13,7 @@
 				  	<button class="btn btn-success btn-sm btn_cad" id="btn_cad" title="Cadastrar novo sistema"
 				  	data-toggle="modal" data-target="#modal_cad">Novo Sistema</button>
 				  </div>
-				</div>   			
+				</div>
     		</div>
     		<!-- /painel -->
     	</div>
@@ -52,7 +52,7 @@
 		      				<option value="">--Selecione--</option>
 		      				@foreach($listaOrgaos as $orgaos)
 		      				<option value="{{ $orgaos->id }}">{{ $orgaos->no_sigla }} - {{ $orgaos->no_orgao }}</option>
-		      				@endforeach	      				
+		      				@endforeach
 		      			</select>
 		      		</div>
 
@@ -99,11 +99,11 @@
 		      			<label for="frames">Frameworks:</label>
 		      			<textarea placeholder="framework 1, framework 2 ..." class="form-control" id="frames" name="frames"></textarea>
 		      		</div>
-		      		
+
 		      	</form>
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancelar</button>
+		        <button type="button" class="btn btn-warning btn-sm" data-dismiss="modal">Cancelar</button>
 		        <button type="submit" class="btn btn-success btn-sm btn_salvar" form="form_cad" id="btn_salvar">Salvar</button>
 		      </div>
 		    </div>

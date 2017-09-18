@@ -6,7 +6,7 @@
 <div class="container" style="margin-top: 60px;">
 	<div class="row">
 		<div class="panel panel-default">
-			<div class="panel-heading"><h4>Banco de Dados</h4></div>
+			<div class="panel-heading"><h4>Altera Banco de Dados</h4></div>
 		</div>		
 	</div>
 	<!-- fim painel -->
@@ -73,17 +73,17 @@
 
 			<div class="input-group" style="margin-top: 5px;">
 			    <span class="input-group-addon">IP:</span>
-			    <input id="ip" type="text" class="form-control" name="ip_banco" placeholder="IP do banco de dados" maxlength="100" value={{$b->ip_banco}}>
+			    <input id="ip" type="text" class="form-control" name="ip_banco" placeholder="IP do banco de dados" maxlength="100" value="{{$b->ip_banco}}">
 			</div>
 
 			<div class="input-group" style="margin-top: 5px;">
 			    <span class="input-group-addon">Usuário:</span>
-			    <input id="usuario" type="text" class="form-control" name="usuario_banco" placeholder="usuário para acesso do banco" maxlength="100" value={{$b->usuario_banco}}>
+			    <input id="usuario" type="text" class="form-control" name="usuario_banco" placeholder="usuário para acesso do banco" maxlength="100" value="{{$b->usuario_banco}}">
 			</div>
 
 			<div class="input-group" style="margin-top: 5px;">
 			    <span class="input-group-addon">Senha:</span>
-			    <input id="senha" type="password" class="form-control" name="senha_banco" placeholder="senha para acesso do banco" maxlength="100" value={{$b->senha_banco}}>
+			    <input id="senha" type="password" class="form-control" name="senha_banco" placeholder="senha para acesso do banco" maxlength="100" value="{{$b->senha_banco}}">
 			    <span class="input-group-addon">
 			    	<a href="#" id="revela_senha"><i class="glyphicon glyphicon-eye-open"></i></a>
 			    </span>
@@ -91,7 +91,7 @@
 
 			<div class="input-group" style="margin-top: 5px;">
 			    <span class="input-group-addon">Schema:</span>
-			    <input id="schema" type="text" class="form-control" name="schema_banco" placeholder="nome do banco de dados" maxlength="100" value={{$b->schema_banco}}>
+			    <input id="schema" type="text" class="form-control" name="schema_banco" placeholder="nome do banco de dados" maxlength="100" value="{{$b->schema_banco}}">
 			</div>
 
 			@endforeach
