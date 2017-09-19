@@ -1,4 +1,25 @@
 $(document).ready(function(){
+
+	//altera idioma labels da tabela
+    $('#tab_resumo').DataTable( {
+        "language": {
+            "lengthMenu": "Mostrar _MENU_ resultados por página",
+            "zeroRecords": "Nenhum resultado!",
+            "info": "Página _PAGE_ de _PAGES_",
+            "infoEmpty": "Não há resultado",
+            "search" : "Pesquisar",
+            "paginate": {
+            "first":      "Primeira",
+            "last":       "Última",
+            "next":       "Próxima",
+            "previous":   "Anterior"
+            }
+        }
+    } );
+
+    //função data table jquery
+    $('#tab_resumo').dataTable();
+
 	//click botao novo sistema
 	$('#btn_cad').click(function(){
 		$('#form_cad')[0].reset();
@@ -118,33 +139,15 @@ $(document).ready(function(){
 
 	});
 
-
 	// submit form_cad
-	$('#form_cad').on('submit', function(){		
+	$('#form_cad').on('submit', function(){	
+
 		if(valida()){
-			var retorno = false;
-			var nome_sis = $('#nome').val();
-			$.ajax({				
-
-				type: 'GET',
-				dataType: 'json',
-				url: 'count/json/'+nome_sis,
-
-				success: function(ret){
-
-					if(ret[0].retorno == 'true'){
-						criaAlerta($('#alerta_cad'), 'warning', 'Já existe um sistema com mesmo nome cadastrado!');
-					}else{
-						retorno = true;
-					}
-
-				}
-
-			});
-
-			return retorno;
+			return true;
+		}else{
+			return false;
 		}
-		return false;
+
 	});
 
 });

@@ -22,7 +22,7 @@ Route::get('/menu', function () {
 //rotas sistema
 Route::get('/sistema/sistemas',['as'=>'sistemas', 'uses'=>'SistemaController@listar']);
 Route::post('/sistema/inserir',['as'=>'sistema.inserir', 'uses'=>'SistemaController@inserir']);
-Route::get('/sistema/count/json/{nome?}',['as'=>'sistema.conta.json', 'uses'=>'SistemaController@contaSistemaJson']);
+Route::get('/sistema/apagar/{id}', ['as'=>'sistema.apagar', 'uses'=>'SistemaController@apagar']);
 
 //rotas orgaos
 Route::get('/orgaos', ['as'=>'orgaos', 'uses'=>'OrgaoController@listar']);

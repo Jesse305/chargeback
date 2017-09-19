@@ -161,6 +161,57 @@
 		  </div>
 		</div>
 		<!-- /modal -->
+
+		<!-- tabela -->
+
+		<div class="row">
+			<div class="col-xs-12">
+
+				<table class="table table-striped table-bordered table-hover" id="tab_resumo" style="font-size: 12px;">
+					<thead>
+						<tr>
+							<td>Sigla:</td>
+							<td>Nome:</td>
+							<td>Status:</td>
+							<td align="center">Ações</td>
+						</tr>
+					</thead>
+
+					<tbody>
+
+						@foreach($listaSistemas as $sistemas)
+						<tr>
+							<td>{{$sistemas->no_sigla}}</td>
+							<td>{{$sistemas->no_sistema}}</td>
+							<td>{{$sistemas->status}}</td>
+							<td align="center">
+
+								<button class="btn btn-info btn-sm" title="visualizar"><i class="glyphicon glyphicon-eye-open"></i></button>&nbsp;
+
+								<button class="btn btn-warning btn-sm" title="editar"><i class="glyphicon glyphicon-edit"></i></button>&nbsp;
+								
+								<button class="btn btn-danger btn-sm" title="cuidado! excluí permanentemente o registro." disabled><i class="glyphicon glyphicon-remove"></i></button>
+								
+							</td>
+						</tr>
+						@endforeach
+						
+					</tbody>
+
+					<tfoot>
+						<tr>
+							<td>Sigla:</td>
+							<td>Nome:</td>
+							<td>Status:</td>
+							<td align="center">Ações</td>
+						</tr>						
+					</tfoot>
+				</table>				
+			</div>
+		</div>
+
+		<!-- fim tabela -->
+
     </div>
     <!-- /primeiro container -->
     <script type="text/javascript" src={{ asset('js/jquery.js') }}></script>
