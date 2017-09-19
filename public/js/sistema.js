@@ -122,6 +122,28 @@ $(document).ready(function(){
 	// submit form_cad
 	$('#form_cad').on('submit', function(){		
 		if(valida()){
+			var retorno = false;
+			var nome_sis = $('#nome').val();
+			$.ajax({				
+
+				type: 'GET',
+				dataType: 'json',
+				url: 'count/json/'+nome_sis,
+
+				success: function(ret){
+
+					if(ret[0].retorno == 'true'){
+						criaAlerta($('#alerta_cad'), 'warning', 'Já existe um sistema com mesmo nome cadastrado!');
+					}else{
+						retorno = true;
+					}
+
+				}
+
+			});
+
+			return retorno;
+		}
 		return false;
 	});
 

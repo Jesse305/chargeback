@@ -21,7 +21,8 @@ Route::get('/menu', function () {
 
 //rotas sistema
 Route::get('/sistema/sistemas',['as'=>'sistemas', 'uses'=>'SistemaController@listar']);
-Route::get('/sistema/inserir',['as'=>'sistema.inserir', 'uses'=>'SistemaController@inserir']);
+Route::post('/sistema/inserir',['as'=>'sistema.inserir', 'uses'=>'SistemaController@inserir']);
+Route::get('/sistema/count/json/{nome?}',['as'=>'sistema.conta.json', 'uses'=>'SistemaController@contaSistemaJson']);
 
 //rotas orgaos
 Route::get('/orgaos', ['as'=>'orgaos', 'uses'=>'OrgaoController@listar']);

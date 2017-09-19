@@ -8,6 +8,7 @@ use App\Banco;
 use App\Ambiente;
 use App\Desenvolvedor;
 use App\Framework;
+use App\Sistema;
 
 class SistemaController extends Controller
 {
@@ -20,8 +21,16 @@ class SistemaController extends Controller
     	return view('sistema/sistemas', compact('listaOrgaos', 'listaBancos', 'listaAmbientes', 'listaDevs', 'listaFrames'));
     }
 
-    public function inserir(Request $request){
-    	$dados = $request->all();
-    	dd($dados);
+    public function contaSistemaJson($nome){
+        $count = Sistema::where('no_sistema', $nome)->count();
+        if($count > 0){
+            echo json_encode(
+                array(['retorno'=>'true'])
+            );
+        }else{
+            echo json_encode(
+                array(['retorno'=>'false'])
+            );
+        }
     }
 }

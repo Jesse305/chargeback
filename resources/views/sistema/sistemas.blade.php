@@ -25,6 +25,15 @@
     	</div>
     	<!-- /primeira row -->
 
+	    <!-- alerts -->
+		@if(Session::has('retorno'))
+		<div class="alert alert-{{Session::get('retorno')['tipo']}} alert-dismissable">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			<li>{{Session::get('retorno')['msg']}}</li>
+		</div>
+		@endif
+		<!-- fim alerts -->
+
     	<!-- Modal -->
 		<div id="modal_cad" class="modal fade" role="dialog">
 		  <div class="modal-dialog">
@@ -38,7 +47,7 @@
 		      </div>
 		      <div class="modal-body">
 		      	<div class="alerta_cad" id="alerta_cad"></div>
-		      	<form class="form_cad" id="form_cad" method="POST" action="">
+		      	<form class="form_cad" id="form_cad" method="POST" action={{route('sistema.inserir')}}>
 		      		{{csrf_field()}}
 		      		<div class="input-group">
 		      			<span class="input-group-addon">Nome:</span>
@@ -74,7 +83,7 @@
 
 		      		<div class="input-group">
 		      			<span class="input-group-addon">Órgão:</span>
-		      			<select class="form-control" name="slc_orgao" id="slc_orgao" title="Órgão solicitante">
+		      			<select class="form-control" name="id_orgao" id="slc_orgao" title="Órgão solicitante">
 		      				<option value="">--Selecione--</option>
 		      				@foreach($listaOrgaos as $orgaos)
 		      				<option value="{{ $orgaos->id }}">{{ $orgaos->no_sigla }} - {{ $orgaos->no_orgao }}</option>
@@ -84,14 +93,14 @@
 
 		      		<div class="input-group" id="div_unidade">
 		      			<span class="input-group-addon">Unidade:</span>
-		      			<select class="form-control" name="slc_unidade" id="slc_unidade" title="Unidade solicitante">
+		      			<select class="form-control" name="id_unidade" id="slc_unidade" title="Unidade solicitante">
 		      				<option value="">--Selecione--</option>
 		      			</select>
 		      		</div>
 
 		      		<div class="input-group">
 		      			<span class="input-group-addon">Banco Dados:</span>
-		      			<select class="form-control" name="slc_banco" id="slc_banco" title="Banco de Dados utilizado" >
+		      			<select class="form-control" name="id_banco" id="slc_banco" title="Banco de Dados utilizado" >
 		      				<option value="">--Selecione--</option>
 		      				@foreach($listaBancos as $bancos)
 		      				<option value={{$bancos->id_banco}}>SCHEMA: {{$bancos->schema_banco}} / AMBIENTE: {{$bancos->ambiente_banco}}</option>
@@ -100,7 +109,7 @@
 		      		</div>
 		      		<div class="input-group">
 		      			<span class="input-group-addon">Ambientes do Sistema:</span>
-		      			<select class="form-control" name="slc_ambSis" id="slc_ambSis" title="Ambientes do sistema">
+		      			<select class="form-control" name="id_amb" id="slc_ambSis" title="Ambientes do sistema">
 		      				<option value="">--Selecione--</option>
 		      				@foreach($listaAmbientes as $ambientes)
 		      				<option value={{$ambientes->id}}>{{$ambientes->desc_amb}}</option>
