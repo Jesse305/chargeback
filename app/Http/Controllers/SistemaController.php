@@ -45,10 +45,14 @@ class SistemaController extends Controller
                     );
                 }
 
-                foreach($request->frames as $frames){
-                    DB::table('sistemas_frameworks')->insert(
-                        ['id_sistema' => $sis[0]->id, 'id_framework' => $frames]
-                    );
+                if($request->frames){
+
+                    foreach($request->frames as $frames){
+                        DB::table('sistemas_frameworks')->insert(
+                            ['id_sistema' => $sis[0]->id, 'id_framework' => $frames]
+                        );
+                    }
+
                 }
 
                 
@@ -68,6 +72,8 @@ class SistemaController extends Controller
         $apaga = Sistema::find($id)->delete();
 
         if($apaga){
+            DB::table('sistemas_devs')->where('id_sistema', $id)->delete();
+            DB::table('sistemas_frameworks')->where('id_sistema', $id)->delete();
             \Session::flash('retorno',['tipo'=>'success', 'msg'=>'Registro apagado com sucesso!']);
             return redirect()->back();
 

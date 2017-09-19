@@ -52,13 +52,13 @@
 		      		<div class="input-group">
 		      			<span class="input-group-addon">Nome:</span>
 		      			<input class="form-control" type="text" name="no_sistema" id="nome" required maxlength="200"
-		      			placeholder="nome do sistema">
+		      			placeholder="nome do sistema" onkeyup="maiuscula(this);">
 		      		</div>
 
 		      		<div class="input-group">
 		      			<span class="input-group-addon">Sigla:</span>
 		      			<input class="form-control" type="text" name="no_sigla" id="sigla"  maxlength="20"
-		      			placeholder="sigla do sistema">
+		      			placeholder="sigla do sistema" onkeyup="maiuscula(this);">
 		      		</div>
 
 		      		<div class="dropdown" style="margin-bottom: 5px;">
@@ -190,7 +190,8 @@
 
 								<button class="btn btn-warning btn-sm" title="editar"><i class="glyphicon glyphicon-edit"></i></button>&nbsp;
 								
-								<button class="btn btn-danger btn-sm" title="cuidado! excluí permanentemente o registro." disabled><i class="glyphicon glyphicon-remove"></i></button>
+								<button class="btn btn-danger btn-sm" title="cuidado! apaga permanentemente o registro." disabled
+								onclick="confirmaDeleta('{{route('sistema.apagar', $sistemas->id)}}');"><i class="glyphicon glyphicon-remove"></i></button>
 								
 							</td>
 						</tr>
@@ -214,6 +215,10 @@
 
     </div>
     <!-- /primeiro container -->
+
+@endsection
+
     <script type="text/javascript" src={{ asset('js/jquery.js') }}></script>
     <script type="text/javascript" src={{ asset('js/sistema.js') }}></script>
-@endsection
+
+

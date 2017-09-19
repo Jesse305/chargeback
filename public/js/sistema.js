@@ -151,3 +151,16 @@ $(document).ready(function(){
 	});
 
 });
+
+// função mascara maiuscula
+function maiuscula(ma){
+	mi = ma.value.toUpperCase();
+	ma.value = mi;
+}
+
+function confirmaDeleta(url){
+	if(window.confirm('Deseja realmente apagar o registro?')){
+		window.location = url;
+	}
+}
+
