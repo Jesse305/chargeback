@@ -7,10 +7,12 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Orgao;
 use App\Banco;
+use App\Unidade;
 use App\Ambiente;
 use App\Desenvolvedor;
 use App\Framework;
 use App\Sistema;
+use App\Responsavel;
 
 class SistemaController extends Controller
 {
@@ -67,6 +69,16 @@ class SistemaController extends Controller
         }
     }
     // fim inserir
+
+    public function detalhar($id){
+        $sistema = Sistema::where('id', $id)->get();
+        $orgao = Orgao::where('id', $sistema[0]->id_orgao)->get();
+        $unidade = Unidade::where('id', $sistema[0]->id_unidade)->get();
+        $responsaveis = Responsavel::where('orgao_id', $orgao[0]->id)->where('unidade_id', $unidade[0]->id)->get();
+        $banco = Banco::where('id_banco', $sistema[0]->id_banco)->get();
+        $ambientes = Ambiente::where('id', $sistema[0]->id_amb)->get();
+        return view('sistema/sistema', compact('sistema', 'orgao', 'unidade', 'responsaveis', 'banco', 'ambientes'));
+    }
 
     public function apagar($id){
         $apaga = Sistema::find($id)->delete();

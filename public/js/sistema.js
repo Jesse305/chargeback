@@ -143,12 +143,22 @@ $(document).ready(function(){
 	$('#form_cad').on('submit', function(){	
 
 		if(valida()){
+			$('#btn_salvar').attr('disable', 'disable');
 			return true;
 		}else{
 			return false;
 		}
 
 	});
+
+	//função revela/esconde senha
+    $( ".revela_senha" ).mousedown(function() {
+      $(".senha").attr("type", "text");
+    });
+
+    $( ".revela_senha" ).mouseup(function() {
+      $(".senha").attr("type", "password");
+    });
 
 });
 

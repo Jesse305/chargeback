@@ -186,11 +186,11 @@
 							<td>{{$sistemas->status}}</td>
 							<td align="center">
 
-								<button class="btn btn-info btn-sm" title="visualizar"><i class="glyphicon glyphicon-eye-open"></i></button>&nbsp;
+								<a href={{route('sistema.detalhar', $sistemas->id)}} class="btn btn-info btn-sm" title="visualizar"><i class="glyphicon glyphicon-eye-open"></i></a>&nbsp;
 
 								<button class="btn btn-warning btn-sm" title="editar"><i class="glyphicon glyphicon-edit"></i></button>&nbsp;
 								
-								<button class="btn btn-danger btn-sm" title="cuidado! apaga permanentemente o registro." disabled
+								<button class="btn btn-danger btn-sm" title="cuidado! apaga permanentemente o registro."
 								onclick="confirmaDeleta('{{route('sistema.apagar', $sistemas->id)}}');"><i class="glyphicon glyphicon-remove"></i></button>
 								
 							</td>
