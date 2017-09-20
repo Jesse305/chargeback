@@ -77,8 +77,16 @@ class SistemaController extends Controller
         $responsaveis = Responsavel::where('orgao_id', $orgao[0]->id)->where('unidade_id', $unidade[0]->id)->get();
         $banco = Banco::where('id_banco', $sistema[0]->id_banco)->get();
         $ambientes = Ambiente::where('id', $sistema[0]->id_amb)->get();
-        return view('sistema/sistema', compact('sistema', 'orgao', 'unidade', 'responsaveis', 'banco', 'ambientes'));
+        $devs = DB::table('dev')->join('sistemas_devs', 'dev.id', '=', 'sistemas_devs.id_dev')->
+        where('sistemas_devs.id_sistema', $sistema[0]->id)->get();
+
+        $frames = DB::table('frameworks')->join('sistemas_frameworks', 'frameworks.id', '=', 'sistemas_frameworks.id_framework')->
+        where('sistemas_frameworks.id_sistema', $sistema[0]->id)->get();
+
+        return view('sistema/sistema',
+         compact('sistema', 'orgao', 'unidade', 'responsaveis', 'banco', 'ambientes', 'devs', 'frames'));
     }
+    // fim detalhar
 
     public function apagar($id){
         $apaga = Sistema::find($id)->delete();

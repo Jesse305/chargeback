@@ -70,27 +70,18 @@
 	<table class="table table-striped table-bordered table-hover" style="font-size: 13px;">
 		@foreach($banco as $b)
 		<tr>
-			<td><b>Schema:</b>  {{$b->schema_banco}} </td>
+			<td colspan="2"><b>Schema:</b>  {{$b->schema_banco}} </td>
 			<td><b>IP:</b>  {{$b->ip_banco}} </td>
 		</tr>
 		<tr>
 			<td><b>Ambiente:</b>  {{$b->ambiente_banco}} </td>
 			<td><b>Tecnologia:</b>  {{$b->tecnologia_banco}} </td>
-		</tr>
-		<tr>
-			<td><b>Usuário:</b> {{$b->usuario_banco}} </td>
-			<td>
-				<div class="input-group">
-					<span class="input-group-addon">Senha:</span>
-					<input type="password" name="senha_banco" class=" form-control senha"
-					value="{{$b->senha_banco}}" readonly />
-					<span class="input-group-addon">
-						<button class="btn btn-xs revela_senha">
-							<i class="glyphicon glyphicon-eye-open"></i>
-						</button>
-					</span>
+			<td class="col-xs-2"><b>Detalhes:</b>
+				<div class="pull-right">
+					<a href={{route('banco.detalhar', $b->id_banco)}} class="btn btn-info btn-sm" title="visualizar detalhes">
+						<i class="glyphicon glyphicon-eye-open"></i>
+					</a>
 				</div>
-				
 			</td>
 		</tr>
 		@endforeach
@@ -100,7 +91,6 @@
 	<h5><b>Ambientes</b></h5>
 	<table class="table table-striped table-bordered table-hover" style="font-size: 13px;">
 		@foreach($ambientes as $amb)
-
 		<tr>
 			<td><b>Link:</b> <a href="{{$amb->link_prod}}">{{$amb->link_prod}}</a></td>
 			<td class="col-xs-2"><b>Detalhes:</b>
@@ -111,14 +101,62 @@
 				</div>
 			</td>
 		</tr>
-
 		@endforeach
 	</table>
+	<!-- fim ambiente -->
+
+	<h5><b>Desenvolvedores</b></h5>
+	<table class="table table-striped table-bordered table-hover" style="font-size: 13px;">
+		<thead>
+			<tr>
+				<td>Nome:</td>
+				<td>IP:</td>
+			</tr>			
+		</thead>
+		<tbody>
+			@foreach($devs as $d)
+			<tr>
+				<td>{{$d->no_dev}} </td>
+				<td>{{$d->ip_dev}} </td>
+			</tr>
+			@endforeach
+		</tbody>
+		
+	</table>
+	<!-- fim desenvolvedores -->
+
+	<h5><b>Frameworks</b></h5>
+	@if(count($frames) < 1)
+	<h5><font color="red">Sistema não faz uso de framework.</font></h5>
+	@else
+	<table class="table table-striped table-bordered table-hover" style="font-size: 13px;">
+		
+		<tr>
+			<thead>
+				<tr>
+					<td><center><b>Nome(s):</b></center></td>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach($frames as $f)
+				<tr>
+					<td>{{$f->no_framework}}</td>
+				</tr>
+				@endforeach				
+			</tbody>
+		</tr>
+		
+	</table>
+	@endif
+	<!-- fim frameworks -->
+
+	<div class="text-right">
+		<button class="btn btn-success" onclick="javascript: history.back();">
+			<span class="glyphicon glyphicon-arrow-left"></span>
+		</button>
+	</div>
 	
 </div>
 <!-- fim container -->
 
 @endsection
-
-<script type="text/javascript" src={{asset('js/jquery.js')}}></script>
-<script type="text/javascript" src={{asset('js/sistema.js')}}></script>

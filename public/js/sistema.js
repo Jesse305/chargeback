@@ -24,7 +24,6 @@ $(document).ready(function(){
 	$('#btn_cad').click(function(){
 		$('#form_cad')[0].reset();
 		limpaAlerta($('#alerta_cad'));
-		$('#div_unidade').hide();
 
 	});
 
@@ -118,7 +117,6 @@ $(document).ready(function(){
 
 			},
 			success: function(unidades){
-				$('#div_unidade').show();
 				var options = "<option value=''>--Selecione--</option>";
 				if(unidades.length > 0){
 
