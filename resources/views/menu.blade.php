@@ -59,18 +59,6 @@
             @yield('content')
         </div>
 
-        <!-- navbar rodape -->
-
-         <nav class="navbar navbar-inverse navbar-fixed-bottom">
-         <div class="container-fluid">
-           <div class="navbar-header">
-             <a class="navbar-brand" href="#">CeTIC</a>
-           </div>
-         </div>
-        </nav>
-
-        <!-- /navbar rodape -->
-
         <script type="text/javascript" src={{ asset('js/jquery.js') }} ></script>
         <script type="text/javascript" src={{ asset('js/bootstrap.min.js') }} ></script>
         <script type="text/javascript" src={{ asset('data_table/js/jquery.dataTables.min.js') }} ></script>

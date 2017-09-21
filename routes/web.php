@@ -24,6 +24,7 @@ Route::get('/sistema/sistemas',['as'=>'sistemas', 'uses'=>'SistemaController@lis
 Route::post('/sistema/inserir',['as'=>'sistema.inserir', 'uses'=>'SistemaController@inserir']);
 Route::get('/sistema/detalha/{id}', ['as'=>'sistema.detalhar', 'uses'=>'SistemaController@detalhar']);
 Route::get('/sistema/altera/{id}', ['as'=>'sistema.altera', 'uses'=>'SistemaController@altera']);
+Route::post('/sistema/atualizar/{id}', ['as'=>'sistema.atualizar', 'uses'=>'SistemaController@atualizar']);
 Route::get('/sistema/apagar/{id}', ['as'=>'sistema.apagar', 'uses'=>'SistemaController@apagar']);
 
 //rotas orgaos

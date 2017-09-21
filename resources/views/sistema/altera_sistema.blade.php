@@ -15,12 +15,12 @@
 		  <div class="panel-heading"><h4>Alterar Sistema</h4></div>
 		</div>
 	</div>
-	<!-- fim painel -->	
-
+	<!-- fim painel -->
 	<div class="row">
 		<div class="col-xs-12">
+			<div class="alerta" id="alerta"></div>
 			@foreach($sistema as $sis)
-			<form id="form_sis" method="POST" action="">
+			<form id="form_sis" method="POST" action={{route('sistema.atualizar', $sis->id)}}>
 				{{csrf_field()}}
 				<div class="row">
 					<div class="col-xs-12 col-md-4">
@@ -162,7 +162,7 @@
 			      				@if($b->id_banco == $sis->id_banco)
 			      				selected
 			      				@endif
-			      				>SCHEMA : {{$b->schema_banco}} AMB.: {{$b->ambiente_banco}}</option>
+			      				>SCHEMA : {{$b->schema_banco}} / AMB.: {{$b->ambiente_banco}}</option>
 			      			@endforeach
 			      			</select>
 			      		</div>
@@ -195,7 +195,13 @@
 						  <span class="caret"></span></button>
 						  <ul class="dropdown-menu">
 						  	@foreach($devs as $dev)
-						  	<li>&nbsp; <input type="checkbox" name="devs[]" value={{$dev->id}}> {{$dev->no_dev}}</li>
+						  	<li>&nbsp; <input type="checkbox" name="devs[]" value={{$dev->id}}
+						  		@foreach($slcDevs as $sd)
+						  			@if($sd->id_dev == $dev->id)
+						  				checked
+						  			@endif
+						  		@endforeach
+						  	> {{$dev->no_dev}}</li>
 						  	@endforeach
 						  </ul>
 						</div>
@@ -205,6 +211,15 @@
 						  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" style="width: 100%;">Frameworks
 						  <span class="caret"></span></button>
 						  <ul class="dropdown-menu">
+						  @foreach($frames as $f)
+						  <li>&nbsp; <input type="checkbox" name="frames[]" value={{$f->id}}
+						  @foreach($slcFrames as $sf)
+						  	@if($sf->id_framework == $f->id)
+						  		checked
+						  	@endif
+						  @endforeach
+						  > {{$f->no_framework}} </li>
+						  @endforeach
 						  </ul>
 						</div>						
 					</div>

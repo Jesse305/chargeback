@@ -125,7 +125,7 @@ $(document).ready(function(){
                		}
 
 				}else{
-					options += "<option value=''> Sem registros </option>";
+					options += "<option value='0'> Sem registros </option>";
 				}
                 $('#slc_unidade').html(options).show();
 			},

@@ -77,6 +77,7 @@ class SistemaController extends Controller
         $responsaveis = Responsavel::where('orgao_id', $orgao[0]->id)->where('unidade_id', $unidade[0]->id)->get();
         $banco = Banco::where('id_banco', $sistema[0]->id_banco)->get();
         $ambientes = Ambiente::where('id', $sistema[0]->id_amb)->get();
+
         $devs = DB::table('dev')->join('sistemas_devs', 'dev.id', '=', 'sistemas_devs.id_dev')->
         where('sistemas_devs.id_sistema', $sistema[0]->id)->get();
 
@@ -95,7 +96,27 @@ class SistemaController extends Controller
         $bancos = Banco::orderBy('schema_banco')->get();
         $ambientes = Ambiente::orderBy('desc_amb')->get();
         $devs = Desenvolvedor::orderBy('no_dev')->get();
-        return view('sistema/altera_sistema', compact('sistema', 'orgaos', 'unidade', 'bancos', 'ambientes', 'devs'));
+        $frames = Framework::orderBy('no_framework')->get();
+        $slcDevs = DB::table('sistemas_devs')->where('sistemas_devs.id_sistema', $sistema[0]->id)->get();
+        $slcFrames = DB::table('sistemas_frameworks')->where('sistemas_frameworks.id_sistema', $sistema[0]->id)->get();
+        return view('sistema/altera_sistema', compact('sistema', 'orgaos', 'unidade', 'bancos', 'ambientes', 'devs', 'frames', 'slcDevs', 'slcFrames'));
+    }
+
+    // fim altera
+
+    public function atualizar(Request $request, $id){
+        $dados = $request->except(['_token', 'devs', 'frames']);
+        $update = Sistema::where('id', $id)->update($dados);
+
+        if($update){
+
+            \Session::flash('retorno',['tipo'=>'success', 'msg'=>'Cadastro alterado com sucesso!' ]);
+            return redirect()->route('sistemas');
+        }else{
+
+            \Session::flash('retorno',['tipo'=>'warning', 'msg'=>'Não foi possível alterar cadastro!' ]);
+            return redirect()->route('sistemas');
+        }
     }
 
     public function apagar($id){
