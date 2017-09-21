@@ -48,7 +48,7 @@
 		      <div class="modal-body">
 		      	<div class="alerta_cad" id="alerta_cad"></div>
 		      	<form class="form_cad" id="form_cad" method="POST" action={{route('sistema.inserir')}}>
-		      		{{csrf_field()}}
+		      		{{csrf_field()}}		      			
 		      		<div class="input-group">
 		      			<span class="input-group-addon">Nome:</span>
 		      			<input class="form-control" type="text" name="no_sistema" id="nome" required maxlength="200"
@@ -188,7 +188,7 @@
 
 								<a href={{route('sistema.detalhar', $sistemas->id)}} class="btn btn-info btn-sm" title="visualizar"><i class="glyphicon glyphicon-eye-open"></i></a>&nbsp;
 
-								<button class="btn btn-warning btn-sm" title="editar"><i class="glyphicon glyphicon-edit"></i></button>&nbsp;
+								<a href={{route('sistema.altera', $sistemas->id)}} class="btn btn-warning btn-sm" title="editar"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
 								
 								<button class="btn btn-danger btn-sm" title="cuidado! apaga permanentemente o registro."
 								onclick="confirmaDeleta('{{route('sistema.apagar', $sistemas->id)}}');" disabled><i class="glyphicon glyphicon-remove"></i></button>

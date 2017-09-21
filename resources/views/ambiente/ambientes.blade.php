@@ -168,11 +168,11 @@
         </tbody>
 
         <tfoot>
-          <td>Ambiente:</td>
-          <td>link:</td>
-          <td>Alterar</td>
-          <td>Detalhes</td>
-          <td>Excluir</td>
+	        <td>Ambiente:</td>
+	        <td>link:</td>
+	        <td>Detalhes</td>
+	        <td>Alterar</td>
+	        <td>Excluir</td>
         </tfoot>
       </table>
     </div>

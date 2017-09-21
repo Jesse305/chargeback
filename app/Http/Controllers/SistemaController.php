@@ -88,6 +88,16 @@ class SistemaController extends Controller
     }
     // fim detalhar
 
+    public function altera($id){
+        $sistema = Sistema::where('id', $id)->get();
+        $orgaos = Orgao::orderBy('no_orgao')->get();
+        $unidade = Unidade::where('id', $sistema[0]->id_unidade)->get();
+        $bancos = Banco::orderBy('schema_banco')->get();
+        $ambientes = Ambiente::orderBy('desc_amb')->get();
+        $devs = Desenvolvedor::orderBy('no_dev')->get();
+        return view('sistema/altera_sistema', compact('sistema', 'orgaos', 'unidade', 'bancos', 'ambientes', 'devs'));
+    }
+
     public function apagar($id){
         $apaga = Sistema::find($id)->delete();
 
