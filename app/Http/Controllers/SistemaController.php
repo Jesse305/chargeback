@@ -106,15 +106,33 @@ class SistemaController extends Controller
 
     public function atualizar(Request $request, $id){
         $dados = $request->except(['_token', 'devs', 'frames']);
-        $update = Sistema::where('id', $id)->update($dados);
+        $updateSis = Sistema::where('id', $id)->update($dados);
 
-        if($update){
+        $updateDev = DB::table('sistemas_devs')->where('id_sistema', $id)->delete();
+        foreach($request->devs as $devs){
+            DB::table('sistemas_devs')->insert(
+                ['id_sistema'=>$id, 'id_dev'=>$devs]
+            );
+        }
+
+        if($request->frames){
+            DB::table('sistemas_frameworks')->where('id_sistema', $id)->delete();
+            foreach($request->frames as $frames){
+                DB::table('sistemas_frameworks')->insert(
+                    ['id_sistema' => $id, 'id_framework' => $frames]
+                );
+            }
+        }else{
+            DB::table('sistemas_frameworks')->where('id_sistema', $id)->delete();
+        }
+
+        if($updateSis || $updateDev){
 
             \Session::flash('retorno',['tipo'=>'success', 'msg'=>'Cadastro alterado com sucesso!' ]);
             return redirect()->route('sistemas');
         }else{
 
-            \Session::flash('retorno',['tipo'=>'warning', 'msg'=>'Não foi possível alterar cadastro!' ]);
+            \Session::flash('retorno',['tipo'=>'warning', 'msg'=>'Cadastro não alterado!' ]);
             return redirect()->route('sistemas');
         }
     }

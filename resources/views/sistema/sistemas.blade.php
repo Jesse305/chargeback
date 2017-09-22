@@ -191,7 +191,7 @@
 								<a href={{route('sistema.altera', $sistemas->id)}} class="btn btn-warning btn-sm" title="editar"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
 								
 								<button class="btn btn-danger btn-sm" title="cuidado! apaga permanentemente o registro."
-								onclick="confirmaDeleta('{{route('sistema.apagar', $sistemas->id)}}');" disabled><i class="glyphicon glyphicon-remove"></i></button>
+								onclick="confirmaDeleta('{{route('sistema.apagar', $sistemas->id)}}');"><i class="glyphicon glyphicon-remove"></i></button>
 								
 							</td>
 						</tr>

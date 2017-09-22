@@ -115,7 +115,7 @@
 				</div>
 
 				<div class="text-right">
-					<a href="#" id="revela_senha" title="revela senhas" class="btn btn-sm"><i class="glyphicon glyphicon-eye-open"></i> mostrar senhas</a>
+					<a href="#" id="revela_senha" title="revela senhas" class="btn btn-sm revela_senha"><i class="glyphicon glyphicon-eye-open"></i> mostrar senhas</a>
 				</div>
 			</form>
         </div>
