@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('sistemas');
 });
 
 Route::get('/menu', function () {
@@ -64,3 +64,6 @@ Route::get('/ambiente/detalha/{id}', ['as'=>'ambiente.detalhar', 'uses'=>'Ambien
 Route::get('/ambiente/altera/{id}', ['as'=>'ambiente.altera', 'uses'=>'AmbienteController@altera']);
 Route::post('/ambiente/atualizar/{id}', ['as'=>'ambiente.atualizar', 'uses'=>'AmbienteController@atualizar']);
 Route::get('/ambiente/apagar/{id}', ['as'=>'ambiente.apagar', 'uses'=>'AmbienteController@apagar']);
+
+// rotas site
+Route::get('site/sites', ['as' => 'sites', 'uses' => 'SiteController@listar']);
