@@ -1,0 +1,46 @@
+@extends('menu')
+@section('title', 'Título')
+
+@section('content')
+
+<div class="container" style="margin-top: 60px; margin-bottom: 60px;">
+	<div class="row">
+		<div class="panel panel-default">
+		  <div class="panel-heading"><h4></h4></div>
+		  <div class="panel-body text-right">
+		  	<button class="btn btn-success btn-sm" id="btn_cad" title="Cadastrar novo Órgão" 
+		  	data-toggle="modal" data-target="#modal_cad"></button>
+		  </div>
+		</div>
+	</div>
+	<!-- fim painel -->
+
+	<!-- modal -->
+
+	<div id="modal_cad" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h4 class="modal-title">Modal Header</h4>
+	      </div>
+	      <div class="modal-body">
+
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-warning btn-sm" data-dismiss="modal">Cancelar</button>
+	        <button type="submit" class="btn btn-success btn-sm" form="" id="btn_salvar">Salvar</button>
+	      </div>
+	    </div>
+
+	  </div>
+	</div>
+
+	<!-- fim modal -->
+	
+</div>
+<!-- fim container -->
+
+@endsection

@@ -43,7 +43,7 @@
       			<select class="form-control" name="no_site">
       				<option value="">--Selecione--</option>
       				@foreach($listaOrgaos as $orgaos)
-      				<option value="{{$orgaos->no_orgao}}">{{$orgaos->no_sigla}} - {{$orgaos->no_orgao}}</option>
+      				<option value="{{$orgaos->id}}">{{$orgaos->no_sigla}} - {{$orgaos->no_orgao}}</option>
       				@endforeach
       			</select>
       		</div>

@@ -28,7 +28,7 @@
                         <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                           <li><a href={{ route('sistemas') }} >Sistemas</a></li>
-                          <li><a href={{ route('sites')}} >Sites</a></li>
+                          <li><a href="#" >Sites</a></li>
                         </ul>
                     </li>
                     <!-- fim dropdown web -->
@@ -43,12 +43,24 @@
                           <li><a href={{ route('frameworks') }}>Frameworks</a></li>
                         </ul>
                     </li>
+                    <!-- fim dropdown pré cadastro -->
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Administração
+                        <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                          <li><a href= {{route('orgaos')}}>Órgãos</a></li>
+                          <li><a href= {{route('unidades')}}>Unidades</a></li>
+                          <li><a href="#">Responsáveis</a></li>
+                          <li><a href="#">Itens Configuração</a></li>
+                        </ul>
+                    </li>
 
 
                   </ul>
                   <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Cadastre-se </a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Entrar</a></li>
                   </ul>
                 </div>
               </div>

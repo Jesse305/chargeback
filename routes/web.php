@@ -28,11 +28,22 @@ Route::post('/sistema/atualizar/{id}', ['as'=>'sistema.atualizar', 'uses'=>'Sist
 Route::get('/sistema/apagar/{id}', ['as'=>'sistema.apagar', 'uses'=>'SistemaController@apagar']);
 
 //rotas orgaos
-Route::get('/orgaos', ['as'=>'orgaos', 'uses'=>'OrgaoController@listar']);
+Route::get('/orgao/orgaos', ['as'=>'orgaos', 'uses'=>'OrgaoController@listar']);
 Route::get('/orgaos/json', ['as'=>'orgaos.json', 'uses'=>'OrgaoController@listarJson']);
+Route::post('/orgao/inserir', ['as' => 'orgao.inserir', 'uses' => 'OrgaoController@inserir']);
+Route::get('/orgao/detalha/{id}', ['as' => 'orgao.detalhar', 'uses' => 'OrgaoController@detalhar']);
+Route::get('/orgao/altera/{id}', ['as' => 'orgao.altera', 'uses' => 'OrgaoController@altera']);
+route::post('/orgao/atualizar/{id}', ['as' => 'orgao.atualizar', 'uses' => 'OrgaoController@atualizar']);
+Route::get('/orgao/apagar/{id}', ['as' => 'orgao.apagar', 'uses' => 'OrgaoController@apagar']);
 
 //rotas unidades
 Route::get('/unidade/json/{id_orgao}', ['as'=>'unidade.json', 'uses'=>'UnidadeController@unidadeByIdJson']);
+Route::get('/unidade/unidades', ['as' => 'unidades', 'uses' => 'UnidadeController@listar']);
+Route::get('/unidade/detalha/{id}', ['as' => 'unidade.detalhar', 'uses' => 'UnidadeController@detalhar']);
+Route::post('/unidade/inserir', ['as' => 'unidade.inserir', 'uses' => 'UnidadeController@inserir']);
+Route::get('/unidade/altera/{id}', ['as'=>'unidade.altera', 'uses'=>'UnidadeController@altera']);
+Route::post('/unidade/atualizar/{id}', ['as'=>'unidade.atualizar', 'uses'=>'UnidadeController@atualizar']);
+Route::get('/unidade/apagar/{id}', ['as'=>'unidade.apagar', 'uses'=>'UnidadeController@apagar']);
 
 //rotas banco
 Route::get('/banco/bancos', ['as'=>'bancos', 'uses'=>'BancoController@listar']);
