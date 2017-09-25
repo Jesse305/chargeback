@@ -2,6 +2,7 @@ $(document).ready(function(){
 
 	$('#btn_cad').click(function(){
 		$('#form_resp')[0].reset();
+		$('#btn_salvar').attr('disabled', false);
 	});
 
 	// tabela resumo
@@ -53,7 +54,7 @@ $(document).ready(function(){
 	//funções de alerta
 	function limpaAlerta(div_alerta){
 		div_alerta.empty();
-	}	
+	}
 
 	function criaAlerta(div_alerta, tipo_alerta, msg){
 		limpaAlerta(div_alerta);
@@ -103,3 +104,9 @@ $(document).ready(function(){
 	});
 
 });
+
+function confirmaDeleta(url){
+	if(window.confirm('Deseja realmente excluir o registro?')){
+		window.location = url;
+	}
+}

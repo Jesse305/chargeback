@@ -14,12 +14,21 @@
 		<div class="panel panel-default">
 		  <div class="panel-heading"><h4>Responsáveis</h4></div>
 		  <div class="panel-body text-right">
-		  	<button class="btn btn-success btn-sm" id="btn_cad" title="Cadastrar novo Responsável" 
+		  	<button class="btn btn-success btn-sm" id="btn_cad" title="Cadastrar novo Responsável"
 		  	data-toggle="modal" data-target="#modal_cad">Novo Responsável</button>
 		  </div>
 		</div>
 	</div>
 	<!-- fim painel -->
+
+	<!-- alerts -->
+@if(Session::has('retorno'))
+<div class="alert alert-{{Session::get('retorno')['tipo']}} alert-dismissable">
+	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	<li>{{Session::get('retorno')['msg']}}</li>
+</div>
+@endif
+<!-- fim alerts -->
 
 	<!-- modal -->
 
@@ -34,7 +43,7 @@
 	      </div>
 	      <div class="modal-body">
 	      	<div id="alert_modal"></div>
-	      	<form id="form_resp" method="POST" action={{route('responsavel.inserir')}}>	      		
+	      	<form id="form_resp" method="POST" action={{route('responsavel.inserir')}}>
 	      		{{csrf_field()}}
 	      		<div class="input-group">
 	      			<span class="input-group-addon">Órgão</span>
@@ -73,10 +82,10 @@
 	      		<label class="radio-inline"><input type="radio" name="status" value="0"> Inativo</label>
 
 	      		 <div class="form-group">
-				  <label for="ds_observacao">Observações:</label>
-				  <textarea class="form-control" rows="5" id="ds_observacao" name="ds_observacao"></textarea>
-				</div> 
-
+						  <label for="ds_observacao">Observações:</label>
+						  <textarea class="form-control" rows="5" id="ds_observacao" name="ds_observacao"></textarea>
+						</div>
+						<input type="hidden" name="dt_cadastro" value="{{date('Y-m-d H:i:s')}}">
 	      	</form>
 
 	      </div>
@@ -98,7 +107,7 @@
 			<tr>
 				<td width="250">Órgão:</td>
 				<td>Nome:</td>
-				<td>Tel. Fixo:</td>				
+				<td>Tel. Fixo:</td>
 				<td align="center">ações</td>
 			</tr>
 		</thead>
@@ -115,27 +124,28 @@
 				<td>{{$resp->no_responsavel}}</td>
 				<td>{{$resp->nu_telefone}}</td>
 				<td align="center">
-					<a href="#" class="btn btn-info btn-sm" title="visualizar"><i class="glyphicon glyphicon-eye-open"></i></a>&nbsp;
-					<a href="#" class="btn btn-warning btn-sm" title="editar"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
-					<button class="btn btn-danger btn-sm" title="cuidado! apaga definitivamente o registro">
+					<a href={{route('responsavel.detalha', $resp->id)}} class="btn btn-info btn-sm" title="visualizar"><i class="glyphicon glyphicon-eye-open"></i></a>&nbsp;
+					<a href={{route('responsavel.altera', $resp->id)}} class="btn btn-warning btn-sm" title="editar"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+					<button class="btn btn-danger btn-sm" title="cuidado! apaga definitivamente o registro"
+					onclick="confirmaDeleta('{{route('responsavel.apagar', $resp->id)}}');" disabled>
 						<i class="glyphicon glyphicon-remove"></i>
 					</button>
 				</td>
 			</tr>
-			@endforeach			
+			@endforeach
 		</tbody>
 		<tfoot>
 			<tr>
 				<td>Órgão:</td>
 				<td>Nome:</td>
-				<td>Tel. Fixo:</td>				
+				<td>Tel. Fixo:</td>
 				<td align="center">ações</td>
 			</tr>
 		</tfoot>
 	</table>
 
 	<!-- fim tabela -->
-	
+
 </div>
 <!-- fim container -->
 

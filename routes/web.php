@@ -48,6 +48,9 @@ Route::get('/unidade/apagar/{id}', ['as'=>'unidade.apagar', 'uses'=>'UnidadeCont
 //rotas responsáveis
 Route::get('/responsavel/responsaveis', ['as'=>'responsaveis', 'uses'=>'ResponsavelController@listar']);
 Route::post('/responsavel/inserir', ['as'=>'responsavel.inserir', 'uses'=>'ResponsavelController@inserir']);
+Route::get('/responsavel/detalha/{id}', ['as'=>'responsavel.detalha', 'uses'=>'ResponsavelController@detalha']);
+Route::get('/responsavel/altera/{id}', ['as'=>'responsavel.altera', 'uses'=>'ResponsavelController@altera']);
+Route::get('/responsavel/apagar/{id}', ['as'=>'responsavel.apagar', 'uses'=>'ResponsavelController@apagar']);
 
 //rotas banco
 Route::get('/banco/bancos', ['as'=>'bancos', 'uses'=>'BancoController@listar']);
