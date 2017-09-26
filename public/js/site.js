@@ -1,5 +1,25 @@
 $(document).ready(function(){
 
+	//altera idioma labels da tabela
+		$('#tab_resumo').DataTable( {
+				"language": {
+						"lengthMenu": "Mostrar _MENU_ resultados por página",
+						"zeroRecords": "Nenhum resultado!",
+						"info": "Página _PAGE_ de _PAGES_",
+						"infoEmpty": "Não há resultado",
+						"search" : "Pesquisar",
+						"paginate": {
+						"first":      "Primeira",
+						"last":       "Última",
+						"next":       "Próxima",
+						"previous":   "Anterior"
+						}
+				}
+		} );
+
+		//função data table jquery
+		$('#tab_resumo').dataTable();
+
 	$('#btn_cad').click(function(){
 		$('#form_cad')[0].reset();
 		$('#alert_modal').empty();
@@ -36,7 +56,7 @@ $(document).ready(function(){
 	//funções de alerta
 	function limpaAlerta(div_alerta){
 		div_alerta.empty();
-	}	
+	}
 
 	function criaAlerta(div_alerta, tipo_alerta, msg){
 		limpaAlerta(div_alerta);
@@ -101,3 +121,9 @@ $(document).ready(function(){
     });
 
 });
+
+function confirmaDeleta(url){
+	if(window.confirm('Deseja realmente apagar o Registro?')){
+		window.location.href = url;
+	}
+}

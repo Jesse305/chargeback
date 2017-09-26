@@ -36,7 +36,7 @@
       </div>
       <div class="modal-body">
         <div id="alert_modal"></div>
-      	<form id="form_cad" method="POST" action="">
+      	<form id="form_cad" method="POST" action={{route('site.inserir')}} >
       		{{csrf_field()}}
       		<div class="input-group">
       			<span class="input-group-addon">Orgão:</span>
@@ -76,7 +76,7 @@
           <label for="">Necessita Token de Acesso?</label>
           <label class="radio-inline"><input type="radio" name="st_token" id="token_sim" value="SIM" checked="checked">SIM</label>
           <label class="radio-inline"><input type="radio" name="st_token" id="token_nao" value="NÃO">NÃO</label>
-          
+
           <h5><b>Dados Google Analytics</b></h5>
           <div class="input-group">
             <span class="input-group-addon">Conta:</span>
@@ -121,9 +121,8 @@
             <span class="input-group-addon">Prefixo Tabela:</span>
             <input class="form-control" type="text" name="prefixo_tabela" id="prefixo_tabela" maxlength="45">
           </div>
-
+					<input type="hidden" name="dt_cadastro" value="{{date('Y-m-d H:i:s')}}">
       	</form>
-
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-warning btn-sm" data-dismiss="modal">Cancelar</button>
@@ -135,6 +134,56 @@
 </div>
 
 <!-- fim modal -->
+
+<!-- alerts -->
+@if(Session::has('retorno'))
+<div class="alert alert-{{Session::get('retorno')['tipo']}} alert-dismissable">
+<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+<li>{{Session::get('retorno')['msg']}}</li>
+</div>
+@endif
+<!-- fim alerts -->
+
+<!-- tabela -->
+<div class="row">
+	<div class="col-xs-12">
+		<table class="table table-striped table-bordered table-hover" id="tab_resumo" style="font-size: 12px">
+			<thead>
+				<tr>
+					<td>Nome:</td>
+					<td>Publicador:</td>
+					<td>Site:</td>
+					<td align="center" width="100">Ações</td>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach($listaSites as $sites)
+				<tr>
+					<td>{{$sites->no_site}}</td>
+					<td><a href="http://{{$sites->no_dns}}">{{$sites->no_dns}}</a></td>
+					<td><a href="http://{{$sites->ds_website}}">{{$sites->ds_website}}</a></td>
+					<td align="center">
+						<a href="#" class="btn btn-info btn-sm" title="visualizar"><i class="glyphicon glyphicon-eye-open"></i></a>&nbsp;
+						<a href="#" class="btn btn-warning btn-sm" title="editar"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+						<button class="btn btn-danger btn-sm" onclick="confirmaDeleta();" title="cuidado! apaga o registro definitivamente.">
+							<i class="glyphicon glyphicon-remove"></i>
+						</button>
+					</td>
+				</tr>
+				@endforeach
+			</tbody>
+			<tfoot>
+				<tr>
+					<td>Nome:</td>
+					<td>Publicador:</td>
+					<td>Site:</td>
+					<td align="center">Ações</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+</div>
+<!-- fim tabela -->
 
 </div>
 <!-- fim container -->
