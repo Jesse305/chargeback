@@ -50,6 +50,7 @@ Route::get('/responsavel/responsaveis', ['as'=>'responsaveis', 'uses'=>'Responsa
 Route::post('/responsavel/inserir', ['as'=>'responsavel.inserir', 'uses'=>'ResponsavelController@inserir']);
 Route::get('/responsavel/detalha/{id}', ['as'=>'responsavel.detalha', 'uses'=>'ResponsavelController@detalha']);
 Route::get('/responsavel/altera/{id}', ['as'=>'responsavel.altera', 'uses'=>'ResponsavelController@altera']);
+Route::post('/responsavel/atualizar/{id}', ['as'=>'responsavel.atualizar', 'uses'=>'ResponsavelController@atualizar']);
 Route::get('/responsavel/apagar/{id}', ['as'=>'responsavel.apagar', 'uses'=>'ResponsavelController@apagar']);
 
 //rotas banco

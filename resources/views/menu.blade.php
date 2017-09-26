@@ -28,7 +28,7 @@
                         <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                           <li><a href={{ route('sistemas') }} >Sistemas</a></li>
-                          <li><a href="#" >Sites</a></li>
+                          <li><a href={{ route('sites') }} >Sites</a></li>
                         </ul>
                     </li>
                     <!-- fim dropdown web -->

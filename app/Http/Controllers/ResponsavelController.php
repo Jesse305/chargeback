@@ -51,6 +51,18 @@ class ResponsavelController extends Controller
       return view('responsavel/altera_responsavel', compact('responsavel', 'orgao', 'unidade'));
     }
 
+    public function atualizar(Request $request, $id){
+      $dados = $request->except('_token');
+      $altera = Responsavel::where('id', $id)->update($dados);
+      if($altera){
+        \Session::flash('retorno', ['tipo'=>'success', 'msg'=>'Cadastro alterado com sucesso.']);
+        return redirect()->route('responsaveis');
+      }else{
+        \Session::flash('retorno', ['tipo'=>'warning', 'msg'=>'Cadastro não alterado']);
+        return redirect()->route('responaveis');
+      }
+    }
+
     public function apagar($id){
       $delete = Responsavel::where('id', $id)->delete();
       if($delete){
