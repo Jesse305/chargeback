@@ -89,3 +89,5 @@ Route::get('site/sites', ['as' => 'sites', 'uses' => 'SiteController@listar']);
 Route::post('/site/inserir', ['as'=>'site.inserir', 'uses'=>'SiteController@inserir']);
 Route::get('/site/detalha/{id}', ['as'=>'site.detalhar', 'uses'=>'SiteController@detalhar']);
 Route::get('/site/altera/{id}', ['as'=>'site.altera', 'uses'=>'SiteController@altera']);
+Route::post('/site/atualizar/{id}', ['as'=>'site.atualizar', 'uses'=>'SiteController@atualizar']);
+Route::get('/site/apagar/{id}', ['as'=>'site.apagar', 'uses'=>'SiteController@apagar']);

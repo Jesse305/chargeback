@@ -55,4 +55,29 @@ class SiteController extends Controller
       $unidade = Unidade::where('id', $site[0]->unidade_id)->get();
       return view('site/altera_site', compact('site', 'listaOrgaos', 'unidade'));
     }
+
+    public function atualizar($id, Request $request){
+      $dados = $request->except('_token');
+      $update = Site::where('id', $id)->update($dados);
+      if($update){
+        \Session::flash('retorno', ['tipo'=>'success', 'msg'=>'Cadastro alterado com sucesso.']);
+        return redirect()->route('sites');
+      }
+      else{
+        \Session::flash('retorno', ['tipo'=>'warning', 'msg'=>'Cadastro não foi alterado.']);
+        return redirect()->route('sites');
+      }
+    }
+
+    public function apagar($id){
+      $delete = Site::where('id', $id)->delete();
+      if($delete){
+        \Session::flash('retorno', ['tipo'=>'success', 'msg'=>'Cadastro excluído com sucesso.']);
+        return redirect()->back();
+      }
+      else{
+        \Session::flash('retorno', ['tipo'=>'warning', 'msg'=>'Cadastro não excluído.']);
+        return redirect()->back();
+      }
+    }
 }

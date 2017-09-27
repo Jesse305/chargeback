@@ -23,7 +23,7 @@
 	<!-- form -->
 	<div class="row">
 		<div class="col-xs-12">
-			<form id="form_cad" method="post" action="">
+			<form id="form_cad" method="post" action={{route('site.atualizar', $site[0]->id)}}>
 				{{csrf_field()}}
 				<div class="row">
 					<div class="col-xs-12">
@@ -182,6 +182,40 @@
 					</div>
 				</div>
 				<!-- fim row 9 -->
+
+				<div class="row">
+					<div class="col-xs-12 col-md-6">
+						<div class="input-group">
+				            <span class="input-group-addon">Usuário:</span>
+				            <input class="form-control" type="text" name="usuario_banco" id="usuario_banco" maxlength="45"
+				            value="{{$site[0]->usuario_banco}}" required>
+				        </div>
+					</div>
+					<div class="col-xs-12 col-md-6">
+						<div class="input-group">
+				            <span class="input-group-addon">Senha:</span>
+				            <input class="form-control senha" type="password" name="pwd_banco" id="pwd_banco" maxlength="45"
+				            value="{{$site[0]->pwd_banco}}" required>
+				            <span class="input-group-addon">
+				              <button class="btn btn-xs revela_senha" onclick="return false;">
+				                <i class="glyphicon glyphicon-eye-open"></i>
+				              </button>
+				            </span>
+				        </div>
+					</div>
+				</div>
+				<!-- fim row 10 -->
+				<div class="row">
+					<div class="col-xs-12 col-md-6">
+						<div class="input-group">
+				            <span class="input-group-addon">Prefixo Tabela:</span>
+				            <input class="form-control" type="text" name="prefixo_tabela" id="prefixo_tabela" maxlength="45"
+				            value="{{$site[0]->prefixo_tabela}}" required>
+				        </div>
+					</div>
+				</div>
+				<input type="hidden" name="dt_atualizacao" value="{{date('Y-m-d H:i:s')}}">
+
 				<div class="text-right" style="margin-top: 20px;">
 					<a href="javascript:history.back();" class="btn btn-warning btn-sm">Cancelar</a>
 					<button type="submit" class="btn btn-success btn-sm" id="btn-alterar">Alterar</button>

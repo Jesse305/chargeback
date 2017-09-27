@@ -37,11 +37,17 @@
     <tr>
       <td colspan="2"><h5><font color="#000080">Responsavel(eis)</font></h5></td>
     </tr>
-    @if(isset($responsaveis))
+    @if(isset($responsaveis) && sizeof($responsaveis) > 0)
       @foreach($responsaveis as $resps)
       <tr>
         <td><b>Nome:</b> {{$resps->no_responsavel}}</td>
-        <td><b>Telefone:</b> {{$resps->nu_telefone}}</td>
+        <td><b>Telefone:</b> {{$resps->nu_telefone}}
+          <div class="pull-right">
+            <a href="{{route('responsavel.detalha', $resps->id)}}" class="btn btn-info btn-sm" title="visualizar cadastro" >
+              <i class="glyphicon glyphicon-eye-open"></i>
+            </a>
+          </div>
+        </td>
       </tr>
       @endforeach
     @else
