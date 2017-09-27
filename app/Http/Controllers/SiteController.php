@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Orgao;
+use App\Unidade;
+use App\Responsavel;
 use App\Site;
 
 class SiteController extends Controller
@@ -33,5 +35,13 @@ class SiteController extends Controller
         \Session::flash('retorno', ['tipo'=>'warning', 'msg'=>'Já existe um site de mesmo nome.']);
         return redirect()->back();
       }
+    }
+    // fim inserir
+
+    public function detalhar($id){
+      $site = Site::where('id', $id)->get();
+      $orgao = Orgao::where('id', $site[0]->orgao_id)->get();
+      $unidade = Unidade::where('id', $site[0]->unidade_id)->get();
+      return view('site/site', compact('site', 'orgao', 'unidade'));
     }
 }

@@ -66,8 +66,8 @@
             <input class="form-control" type="text" name="ip_html" id="ip_html" maxlength="50">
           </div>
           <label for="tp_portal">Tipo de Site:</label>
-          <label class="radio-inline"> <input type="radio" name="tp_portal" id="tp_portal" value="PI" checked> Portal Institucional </label>
-          <label class="radio-inline"> <input type="radio" name="tp_portal" id="tp_hotsite" value="HS"> HotSite </label>
+          <label class="radio-inline"> <input type="radio" name="tp_portal" id="tp_portal" value="RA" checked> Região Admistrativa </label>
+          <label class="radio-inline"> <input type="radio" name="tp_portal" id="tp_hotsite" value="Secretaria"> Secretaria </label>
           <label class="radio-inline"> <input type="radio" name="tp_portal" id="tp_outros" value="Outros"> Outros </label>
           <div class="input-group">
             <span class="input-group-addon">End. do Publicador:</span>
@@ -163,7 +163,7 @@
 					<td><a href="http://{{$sites->no_dns}}">{{$sites->no_dns}}</a></td>
 					<td><a href="http://{{$sites->ds_website}}">{{$sites->ds_website}}</a></td>
 					<td align="center">
-						<a href="#" class="btn btn-info btn-sm" title="visualizar"><i class="glyphicon glyphicon-eye-open"></i></a>&nbsp;
+						<a href={{route('site.detalhar', $sites->id)}} class="btn btn-info btn-sm" title="visualizar"><i class="glyphicon glyphicon-eye-open"></i></a>&nbsp;
 						<a href="#" class="btn btn-warning btn-sm" title="editar"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
 						<button class="btn btn-danger btn-sm" onclick="confirmaDeleta();" title="cuidado! apaga o registro definitivamente.">
 							<i class="glyphicon glyphicon-remove"></i>
