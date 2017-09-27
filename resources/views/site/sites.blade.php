@@ -164,7 +164,7 @@
 					<td><a href="http://{{$sites->ds_website}}">{{$sites->ds_website}}</a></td>
 					<td align="center">
 						<a href={{route('site.detalhar', $sites->id)}} class="btn btn-info btn-sm" title="visualizar"><i class="glyphicon glyphicon-eye-open"></i></a>&nbsp;
-						<a href="#" class="btn btn-warning btn-sm" title="editar"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+						<a href={{route('site.altera', $sites->id)}} class="btn btn-warning btn-sm" title="editar"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
 						<button class="btn btn-danger btn-sm" onclick="confirmaDeleta();" title="cuidado! apaga o registro definitivamente.">
 							<i class="glyphicon glyphicon-remove"></i>
 						</button>

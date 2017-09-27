@@ -88,3 +88,4 @@ Route::get('/ambiente/apagar/{id}', ['as'=>'ambiente.apagar', 'uses'=>'AmbienteC
 Route::get('site/sites', ['as' => 'sites', 'uses' => 'SiteController@listar']);
 Route::post('/site/inserir', ['as'=>'site.inserir', 'uses'=>'SiteController@inserir']);
 Route::get('/site/detalha/{id}', ['as'=>'site.detalhar', 'uses'=>'SiteController@detalhar']);
+Route::get('/site/altera/{id}', ['as'=>'site.altera', 'uses'=>'SiteController@altera']);

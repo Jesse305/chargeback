@@ -42,6 +42,17 @@ class SiteController extends Controller
       $site = Site::where('id', $id)->get();
       $orgao = Orgao::where('id', $site[0]->orgao_id)->get();
       $unidade = Unidade::where('id', $site[0]->unidade_id)->get();
-      return view('site/site', compact('site', 'orgao', 'unidade'));
+      if(sizeof($unidade) > 0){
+        $responsaveis = Responsavel::where('unidade_id', $unidade[0]->id)->get();        
+      }      
+      return view('site/site', compact('site', 'orgao', 'unidade', 'responsaveis'));
+    }
+    // fim detalhar
+
+    public function altera($id){
+      $site = Site::where('id', $id)->get();
+      $listaOrgaos = Orgao::orderBy('no_orgao')->get();
+      $unidade = Unidade::where('id', $site[0]->unidade_id)->get();
+      return view('site/altera_site', compact('site', 'listaOrgaos', 'unidade'));
     }
 }

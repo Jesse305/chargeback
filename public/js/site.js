@@ -78,7 +78,7 @@ $(document).ready(function(){
 		}
 		else if(document.getElementById('unidade_id').selectedIndex == 0){
 			criaAlerta(alerta, tipo, 'Selecione a Unidade.');
-			$('#unidade_id');
+			$('#unidade_id').focus();
 		}
 		else if($('#no_site').val() == ''){
 			criaAlerta(alerta, tipo, 'Informe o nome do Site.');
@@ -92,6 +92,42 @@ $(document).ready(function(){
 			criaAlerta(alerta, tipo, 'Informe o caminho do Servidor.');
 			$('#ip_html').focus();
 		}
+		else if($('#no_dns').val() == ''){
+			criaAlerta(alerta, tipo, 'Informe o endereço do Publicador');
+			$('#no_dns').focus();
+		}
+		else if($('#usuario_analytics').val() == ''){
+			criaAlerta(alerta, tipo, 'Informe o usuário da conta Google Analytics');
+			$('#usuario_analytics').focus();
+		}
+		else if($('#senha_analytics').val() == ''){
+			criaAlerta(alerta, tipo, 'Informe a senha da conta Google Analytics');
+			$('#senha_analytics').focus();
+		}
+		else if($('#codigo_analytics').val() == ''){
+			criaAlerta(alerta, tipo, 'Informe o código da conta Google Analytics');
+			$('#codigo_analytics').focus();
+		}
+		else if($('#ip_banco').val() == ''){
+			criaAlerta(alerta, tipo, 'Informe o IP do Banco de Dados');
+			$('#ip_banco').focus();
+		}
+		else if($('#usuario_banco').val() == ''){
+			criaAlerta(alerta, tipo, 'Informe o usuário do Banco de Dados');
+			$('#usuario_banco').focus();
+		}
+		else if($('#pwd_banco').val() == ''){
+			criaAlerta(alerta, tipo, 'Informe a senha do Banco de Dados');
+			$('#pwd_banco').focus();
+		}
+		else if($('#esquema_banco').val() == ''){
+			criaAlerta(alerta, tipo, 'Informe o Schema do Banco de Dados');
+			$('#esquema_banco').focus();
+		}
+		else if($('#prefixo_tabela').val() == ''){
+			criaAlerta(alerta, tipo, 'Informe o prefixo da Tabela');
+			$('#prefixo_tabela').focus();
+		}
 
 		else{
 			retorno = true;
@@ -102,7 +138,7 @@ $(document).ready(function(){
 
 	$('#form_cad').on('submit', function(){
 		if(valida()){
-			//$('#btn_salvar').attr('disabled', true); descomentar depois
+			$('#btn_salvar').attr('disabled', true);
 			return true;
 		}
 		else
