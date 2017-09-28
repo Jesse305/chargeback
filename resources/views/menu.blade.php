@@ -52,7 +52,7 @@
                           <li><a href= {{route('orgaos')}}>Órgãos</a></li>
                           <li><a href= {{route('unidades')}}>Unidades</a></li>
                           <li><a href={{route('responsaveis')}}>Responsáveis</a></li>
-                          <li><a href="#">Itens Configuração</a></li>
+                          <li><a href={{route('itens_config')}}>Itens Configuração</a></li>
                         </ul>
                     </li>
 

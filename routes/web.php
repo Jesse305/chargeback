@@ -91,3 +91,9 @@ Route::get('/site/detalha/{id}', ['as'=>'site.detalhar', 'uses'=>'SiteController
 Route::get('/site/altera/{id}', ['as'=>'site.altera', 'uses'=>'SiteController@altera']);
 Route::post('/site/atualizar/{id}', ['as'=>'site.atualizar', 'uses'=>'SiteController@atualizar']);
 Route::get('/site/apagar/{id}', ['as'=>'site.apagar', 'uses'=>'SiteController@apagar']);
+
+//rotas p/ Item Configuração
+Route::get('/item_config/itens_config', ['as'=>'itens_config', 'uses'=>'ItemConfigController@listar']);
+Route::post('/item_config/inserir', ['as'=>'item_config.inserir', 'uses'=>'ItemConfigController@inserir']);
+Route::get('/item_config/detalha/{id}', ['as'=>'item_config.detalhar', 'uses'=>'ItemConfigController@detalhar']);
+Route::get('/item_config/altera/{id}', ['as'=>'item_config.altera', 'uses'=>'ItemConfigController@altera']);
