@@ -3,7 +3,7 @@
 
 @section('content')
 
-<div class="container" style="margin-top: 60px; margin-bottom: 60px;">
+<div class="container">
 	<!-- div painel -->
 	<div class="row">
 		<div class="col-xs-12">

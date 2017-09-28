@@ -9,13 +9,21 @@
 
 @section('content')
 
-<div class="container" style="margin-top: 60px; margin-bottom: 60px;">
+<div class="container">
 	<div class="row">
 		<div class="panel panel-default">
 		  <div class="panel-heading"><h4>Alterar Sistema</h4></div>
 		</div>
 	</div>
 	<!-- fim painel -->
+	<!-- alerts -->
+    @if(Session::has('retorno'))
+    <div class="alert alert-{{Session::get('retorno')['tipo']}} alert-dismissable">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <li>{{Session::get('retorno')['msg']}}</li>
+    </div>
+    @endif
+    <!-- fim alerts -->
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="alerta" id="alerta"></div>

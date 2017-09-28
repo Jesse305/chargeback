@@ -6,7 +6,7 @@
   }
 </style>
 @section('content')
-<div class="container" style="margin-top: 60px; margin-bottom: 60px;">
+<div class="container">
   <div class="row">
     <div class="panel panel-default">
       <div class="panel-heading">

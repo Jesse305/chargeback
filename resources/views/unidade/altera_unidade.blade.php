@@ -8,7 +8,7 @@
 </style>
 
 @section('content')
-<div class="container" style="margin-top: 60px; margin-bottom: 60px;">
+<div class="container">
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="panel panel-default">

@@ -9,7 +9,7 @@
 
 @section('content')
 
-<div class="container" style="margin-top: 60px; margin-botton: 60px;">
+<div class="container">
 	<div class="row">
 		<div class="panel panel-default">
 			<div class="panel-heading"><h4>Altera Desenvolvedor</h4></div>

@@ -67,8 +67,8 @@
          </nav>
          <!-- /navbar  -->
 
-        <div class="container">
-            @yield('content')
+        <div class="container" style="margin-top: 60px; margin-bottom: 60px;">
+          @yield('content')
         </div>
 
         <script type="text/javascript" src={{ asset('js/jquery.js') }} ></script>

@@ -48,7 +48,7 @@ class ItemConfigController extends Controller
         $dados = $req->except('_token');
         $update = ItemConfig::where('id', $id)->update($dados);
         \Session::flash('retorno', ['tipo'=>'success', 'msg'=>'Cadastro alterado com sucesso.']);
-        return redirect()->back();
+        return redirect()->route('itens_config');
 
     }
 
