@@ -18,12 +18,18 @@
 	</div>
 	<!-- fim painel -->
 	<!-- alertas -->
+	@if(Session::has('retorno'))
+	<div class="alert alert-{{Session::get('retorno')['tipo']}} alert-dismissable">
+	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	<li>{{Session::get('retorno')['msg']}}</li>
+	</div>
+	@endif
 	<div id="alerta"></div>
 	<!-- fim alertas -->
 	<!-- formulario alterar -->
 	<div class="row">
 		<div class="col-xs-12">
-			<form id="form_altera" method="post" action="">
+			<form id="form_altera" method="post" action="{{route('item_config.atualizar', $item->id)}}">
 				{{csrf_field()}}
 				<div class="row">
 					<div class="col-xs-12 col-md-6">
@@ -62,6 +68,25 @@
 			      		</div>
 					</div>
 				</div>
+				<!-- fim row 3 -->
+				<div class="row">
+					<div class="col-xs-12 col-md-6">
+						<div class="form-group">
+			      			<label for="ds_descricao">Descrição:</label>
+			      			<textarea class="form-control" rows="4" id="ds_descricao" name="ds_descricao">{{$item->ds_descricao}}	      			
+			      			</textarea>
+			      		</div>
+					</div>
+					<div class="col-xs-12 col-md-6">
+						<label for="">Status</label>
+			      		<label class="radio-inline"><input type="radio" name="status" value="1"
+			      		@if($item->status == 1) checked @endif >Ativo</label>    		
+			      		<label class="radio-inline"><input type="radio" name="status" value="0"
+			      		@if ($item->status == 0) checked @endif >Inativo</label>
+					</div>
+				</div>
+				<!-- fim row 4 -->
+				<input type="hidden" name="dt_atualizacao" value="{{date('Y-m-d H:i:s')}}">
 				<div class="text-right">
 					<a href="javascript:history.back();" class="btn btn-warning btn-sm">Cancelar</a>
 					<button type="submit" class="btn btn-success btn-sm" id="btn_alterar">Alterar</button>
@@ -72,3 +97,5 @@
 	<!-- fim do formulario alterar -->
 </div>
 @endsection
+<script type="text/javascript" src={{asset('js/jquery.js')}}></script>
+<script type="text/javascript" src={{asset('js/altera_item_config.js')}}></script>

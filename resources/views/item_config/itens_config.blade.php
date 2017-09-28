@@ -115,7 +115,7 @@
 							<a href={{route('item_config.altera', $itens->id)}} class="btn btn-warning btn-sm" title="editar">
 								<i class="glyphicon glyphicon-edit"></i>
 							</a>&nbsp;
-							<button class="btn btn-danger btn-sm" onclick="confirmaDeleta();" title="cuidado! apaga definitivamente o registro">
+							<button class="btn btn-danger btn-sm" onclick="confirmaDeleta('{{route('item_config.apagar', $itens->id)}}');" title="cuidado! apaga definitivamente o registro" disabled>
 								<i class="glyphicon glyphicon-remove"></i>
 							</button>
 						</td>

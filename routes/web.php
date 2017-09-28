@@ -97,3 +97,5 @@ Route::get('/item_config/itens_config', ['as'=>'itens_config', 'uses'=>'ItemConf
 Route::post('/item_config/inserir', ['as'=>'item_config.inserir', 'uses'=>'ItemConfigController@inserir']);
 Route::get('/item_config/detalha/{id}', ['as'=>'item_config.detalhar', 'uses'=>'ItemConfigController@detalhar']);
 Route::get('/item_config/altera/{id}', ['as'=>'item_config.altera', 'uses'=>'ItemConfigController@altera']);
+Route::post('/item_config/atualizar{id}', ['as'=>'item_config.atualizar', 'uses'=>'ItemConfigController@atualizar']);
+Route::get('/item_config/apagar/{id}', ['as'=>'item_config.apagar', 'uses'=>'ItemConfigController@apagar']);

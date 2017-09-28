@@ -46,9 +46,9 @@ $(document).ready(function(){
 		var retorno = false;
 		var alerta = $('#alert_modal');
 		var tipoMsg = 'warning';
-		if(document.getElementById('no_categoria').selectedIndex == 0){
+		if(document.getElementById('categoriaitem_id').selectedIndex == 0){
 			criaAlerta(alerta, tipoMsg, 'Selecione a categoria do Item.');
-			$('#no_categoria').focus();
+			$('#categoriaitem_id').focus();
 		}
 		else{
 			retorno = true;

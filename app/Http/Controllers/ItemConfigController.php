@@ -43,4 +43,18 @@ class ItemConfigController extends Controller
     	$categoriasItens = DB::table('categoriaitem')->get();
     	return view('item_config/altera_item_config', compact('item', 'categoriasItens'));
     }
+
+    public function atualizar(Request $req, $id){
+        $dados = $req->except('_token');
+        $update = ItemConfig::where('id', $id)->update($dados);
+        \Session::flash('retorno', ['tipo'=>'success', 'msg'=>'Cadastro alterado com sucesso.']);
+        return redirect()->back();
+
+    }
+
+    public function apagar($id){
+        ItemConfig::where('id', $id)->delete();
+        \Session::flash('retorno', ['tipo'=>'success', 'msg'=>'Cadastro excluído com sucesso.']);
+        return redirect()->back();
+    }
 }
