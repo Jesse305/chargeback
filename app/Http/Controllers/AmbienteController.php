@@ -16,7 +16,7 @@ class AmbienteController extends Controller
 
     public function inserir(Request $request)
     {
-        $dados = $request->except(['_token', '_insert']);
+        $dados = $request->except(['_token']);
         Ambiente::insert($dados);
         \Session::flash('retorno', ['tipo' => 'success', 'msg' => 'Registro inserido com sucesso!']);
 

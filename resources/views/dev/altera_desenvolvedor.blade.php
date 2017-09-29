@@ -19,14 +19,14 @@
 
 	<div class="row">
 		<div class="col-xs-12 col-md-8 col-md-offset-2">
-			@foreach($dev as $d)
-			<form id="form_dev" method="POST" action={{route('desenvolvedor.atualizar', $d->id)}}>
+			
+			<form id="form_dev" method="POST" action={{route('desenvolvedor.atualizar', $dev->id)}}>
 				  {{csrf_field()}}
 				  <input type="hidden" name="_update" value="update">
 				  <div class="input-group">
 				    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 				    <input id="no_dev" type="text" class="form-control" name="no_dev" placeholder="nome do desenvolvedor"
-				     required maxlength="200" value="{{$d->no_dev}}"
+				     required maxlength="200" value="{{$dev->no_dev}}"
 				    >
 				  </div>
 
@@ -34,8 +34,8 @@
 				    <span class="input-group-addon">IP:</span>
 				    <input id="ip_dev" type="text" class="form-control" name="ip_dev" placeholder="IP do desenvolvedor"
 				    required maxlength="50"
-				    @if(!$d->ip_dev == '')
-				    	value="{{$d->ip_dev}}"
+				    @if(!$dev->ip_dev == '')
+				    	value="{{$dev->ip_dev}}"
 				    @else
 				    	value="ip não cadastrado"
 				    @endif
@@ -48,7 +48,7 @@
 				  </div>
 
 			</form>
-			@endforeach
+			
 		</div>
 	</div>
 

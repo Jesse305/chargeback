@@ -20,81 +20,81 @@ Route::get('/menu', function () {
 });
 
 //rotas sistema
-Route::get('/sistema/sistemas', ['as' => 'sistemas', 'uses' => 'SistemaController@listar']);
-Route::post('/sistema/inserir', ['as' => 'sistema.inserir', 'uses' => 'SistemaController@inserir']);
-Route::get('/sistema/detalha/{id}', ['as' => 'sistema.detalhar', 'uses' => 'SistemaController@detalhar']);
-Route::get('/sistema/altera/{id}', ['as' => 'sistema.altera', 'uses' => 'SistemaController@altera']);
-Route::post('/sistema/atualizar/{id}', ['as' => 'sistema.atualizar', 'uses' => 'SistemaController@atualizar']);
-Route::get('/sistema/apagar/{id}', ['as' => 'sistema.apagar', 'uses' => 'SistemaController@apagar']);
+Route::get('sistemas', 'SistemaController@listar')->name('sistemas');
+Route::post('sistema/inserir', 'SistemaController@inserir')->name('sistema.inserir');
+Route::get('sistema/detalha/{id}', 'SistemaController@detalhar')->name('sistema.detalhar');
+Route::get('sistema/altera/{id}', 'SistemaController@altera')->name('sistema.altera');
+Route::post('sistema/atualizar/{id}', 'SistemaController@atualizar')->name('sistema.atualizar');
+Route::get('sistema/apagar/{id}', 'SistemaController@apagar')->name('sistema.apagar');
 
 //rotas orgaos
-Route::get('/orgao/orgaos', ['as' => 'orgaos', 'uses' => 'OrgaoController@listar']);
-Route::get('/orgaos/json', ['as' => 'orgaos.json', 'uses' => 'OrgaoController@listarJson']);
-Route::post('/orgao/inserir', ['as' => 'orgao.inserir', 'uses' => 'OrgaoController@inserir']);
-Route::get('/orgao/detalha/{id}', ['as' => 'orgao.detalhar', 'uses' => 'OrgaoController@detalhar']);
-Route::get('/orgao/altera/{id}', ['as' => 'orgao.altera', 'uses' => 'OrgaoController@altera']);
-route::post('/orgao/atualizar/{id}', ['as' => 'orgao.atualizar', 'uses' => 'OrgaoController@atualizar']);
-Route::get('/orgao/apagar/{id}', ['as' => 'orgao.apagar', 'uses' => 'OrgaoController@apagar']);
+Route::get('orgaos', 'OrgaoController@listar')->name('orgaos');
+Route::get('orgaos/json', 'OrgaoController@listarJson')->name('orgaos.json');
+Route::post('orgao/inserir', 'OrgaoController@inserir')->name('orgao.inserir');
+Route::get('orgao/detalha/{id}', 'OrgaoController@detalhar')->name('orgao.detalhar');
+Route::get('orgao/altera/{id}', 'OrgaoController@altera')->name('orgao.altera');
+route::post('orgao/atualizar/{id}', 'OrgaoController@atualizar')->name('orgao.atualizar');
+Route::get('orgao/apagar/{id}', 'OrgaoController@apagar')->name('orgao.apagar');
 
 //rotas unidades
-Route::get('/unidade/json/{id_orgao}', ['as' => 'unidade.json', 'uses' => 'UnidadeController@unidadeByIdJson']);
-Route::get('/unidade/unidades', ['as' => 'unidades', 'uses' => 'UnidadeController@listar']);
-Route::get('/unidade/detalha/{id}', ['as' => 'unidade.detalhar', 'uses' => 'UnidadeController@detalhar']);
-Route::post('/unidade/inserir', ['as' => 'unidade.inserir', 'uses' => 'UnidadeController@inserir']);
-Route::get('/unidade/altera/{id}', ['as' => 'unidade.altera', 'uses' => 'UnidadeController@altera']);
-Route::post('/unidade/atualizar/{id}', ['as' => 'unidade.atualizar', 'uses' => 'UnidadeController@atualizar']);
-Route::get('/unidade/apagar/{id}', ['as' => 'unidade.apagar', 'uses' => 'UnidadeController@apagar']);
+Route::get('unidade/json/{id_orgao}', 'UnidadeController@unidadeByIdJson')->name('unidade.json');
+Route::get('unidades', 'UnidadeController@listar')->name('unidades');
+Route::get('unidade/detalha/{id}', 'UnidadeController@detalhar')->name('unidade.detalhar');
+Route::post('unidade/inserir', 'UnidadeController@inserir')->name('unidade.inserir');
+Route::get('unidade/altera/{id}', 'UnidadeController@altera')->name('unidade.altera');
+Route::post('unidade/atualizar/{id}', 'UnidadeController@atualizar')->name('unidade.atualizar');
+Route::get('unidade/apagar/{id}', 'UnidadeController@apagar')->name('unidade.apagar');
 
 //rotas responsáveis
-Route::get('/responsavel/responsaveis', ['as' => 'responsaveis', 'uses' => 'ResponsavelController@listar']);
-Route::post('/responsavel/inserir', ['as' => 'responsavel.inserir', 'uses' => 'ResponsavelController@inserir']);
-Route::get('/responsavel/detalha/{id}', ['as' => 'responsavel.detalha', 'uses' => 'ResponsavelController@detalha']);
-Route::get('/responsavel/altera/{id}', ['as' => 'responsavel.altera', 'uses' => 'ResponsavelController@altera']);
-Route::post('/responsavel/atualizar/{id}', ['as' => 'responsavel.atualizar', 'uses' => 'ResponsavelController@atualizar']);
-Route::get('/responsavel/apagar/{id}', ['as' => 'responsavel.apagar', 'uses' => 'ResponsavelController@apagar']);
+Route::get('responsaveis', 'ResponsavelController@listar')->name('responsaveis');
+Route::post('responsavel/inserir', 'ResponsavelController@inserir')->name('responsavel.inserir');
+Route::get('responsavel/detalha/{id}', 'ResponsavelController@detalha')->name('responsavel.detalha');
+Route::get('responsavel/altera/{id}', 'ResponsavelController@altera')->name('responsavel.altera');
+Route::post('responsavel/atualizar/{id}', 'ResponsavelController@atualizar')->name('responsavel.atualizar');
+Route::get('responsavel/apagar/{id}', 'ResponsavelController@apagar')->name('responsavel.apagar');
 
 //rotas banco
-Route::get('/banco/bancos', ['as' => 'bancos', 'uses' => 'BancoController@listar']);
-Route::post('/banco/inserir', ['as' => 'banco.inserir', 'uses' => 'BancoController@inserir']);
-Route::get('/banco/detalha/{id}', ['as' => 'banco.detalhar', 'uses' => 'BancoController@detalhar']);
-Route::get('/banco/altera/{id}', ['as' => 'banco.altera', 'uses' => 'BancoController@altera']);
-Route::post('/banco/atualizar/{id}', ['as' => 'banco.atualizar', 'uses' => 'BancoController@atualizar']);
-Route::get('/banco/apagar/{id}', ['as' => 'banco.apagar', 'uses' => 'BancoController@apagar']);
+Route::get('bancos', 'BancoController@listar')->name('bancos');
+Route::post('banco/inserir', 'BancoController@inserir')->name('banco.inserir');
+Route::get('banco/detalha/{id}', 'BancoController@detalhar')->name('banco.detalhar');
+Route::get('banco/altera/{id}', 'BancoController@altera')->name('banco.altera');
+Route::post('banco/atualizar/{id}', 'BancoController@atualizar')->name('banco.atualizar');
+Route::get('banco/apagar/{id}', 'BancoController@apagar')->name('banco.apagar');
 
 //rotas desenvolvedor
-Route::get('/dev/desenvolvedores', ['as' => 'desenvolvedores', 'uses' => 'DesenvolvedorController@listar']);
-Route::post('/dev/inserir', ['as' => 'desenvolvedor.inserir', 'uses' => 'DesenvolvedorController@inserir']);
-Route::get('/dev/altera/{id}', ['as' => 'desenvolvedor.altera', 'uses' => 'DesenvolvedorController@altera']);
-Route::post('/dev/atualizar/{id}', ['as' => 'desenvolvedor.atualizar', 'uses' => 'DesenvolvedorController@atualizar']);
-Route::get('/dev/apagar/{id}', ['as' => 'desenvolvedor.apagar', 'uses' => 'DesenvolvedorController@apagar']);
+Route::get('devs', 'DesenvolvedorController@listar')->name('desenvolvedores');
+Route::post('dev/inserir', 'DesenvolvedorController@inserir')->name('desenvolvedor.inserir');
+Route::get('dev/altera/{id}', 'DesenvolvedorController@altera')->name('desenvolvedor.altera');
+Route::post('dev/atualizar/{id}', 'DesenvolvedorController@atualizar')->name('desenvolvedor.atualizar');
+Route::get('dev/apagar/{id}', 'DesenvolvedorController@apagar')->name('desenvolvedor.apagar');
 
 //rotas framework
-Route::get('/framework/frameworks', ['as' => 'frameworks', 'uses' => 'FrameworkController@listar']);
-Route::post('/framework/inserir', ['as' => 'framework.inserir', 'uses' => 'FrameworkController@inserir']);
-Route::get('/framework/altera/{id}', ['as' => 'framework.altera', 'uses' => 'FrameworkController@altera']);
-Route::post('/framework/atualizar/{id}', ['as' => 'framework.atualizar', 'uses' => 'FrameworkController@atualizar']);
-Route::get('/framework/apagar/{id}', ['as' => 'framework.apagar', 'uses' => 'FrameworkController@apagar']);
+Route::get('frameworks', 'FrameworkController@listar')->name('frameworks');
+Route::post('framework/inserir', 'FrameworkController@inserir')->name('framework.inserir');
+Route::get('framework/altera/{id}', 'FrameworkController@altera')->name('framework.altera');
+Route::post('framework/atualizar/{id}', 'FrameworkController@atualizar')->name('framework.atualizar');
+Route::get('framework/apagar/{id}', 'FrameworkController@apagar')->name('framework.apagar');
 
 //rotas ambiente
-Route::get('/ambiente/ambientes', ['as' => 'ambientes', 'uses' => 'AmbienteController@listar']);
-Route::post('/ambiente/inserir', ['as' => 'ambiente.inserir', 'uses' => 'AmbienteController@inserir']);
-Route::get('/ambiente/detalha/{id}', ['as' => 'ambiente.detalhar', 'uses' => 'AmbienteController@detalhar']);
-Route::get('/ambiente/altera/{id}', ['as' => 'ambiente.altera', 'uses' => 'AmbienteController@altera']);
-Route::post('/ambiente/atualizar/{id}', ['as' => 'ambiente.atualizar', 'uses' => 'AmbienteController@atualizar']);
-Route::get('/ambiente/apagar/{id}', ['as' => 'ambiente.apagar', 'uses' => 'AmbienteController@apagar']);
+Route::get('ambientes', 'AmbienteController@listar')->name('ambientes');
+Route::post('ambiente/inserir', 'AmbienteController@inserir')->name('ambiente.inserir');
+Route::get('ambiente/detalha/{id}', 'AmbienteController@detalhar')->name('ambiente.detalhar');
+Route::get('ambiente/altera/{id}', 'AmbienteController@altera')->name('ambiente.altera');
+Route::post('ambiente/atualizar/{id}', 'AmbienteController@atualizar')->name('ambiente.atualizar');
+Route::get('ambiente/apagar/{id}', 'AmbienteController@apagar')->name('ambiente.apagar');
 
 // rotas site
-Route::get('site/sites', ['as' => 'sites', 'uses' => 'SiteController@listar']);
-Route::post('/site/inserir', ['as' => 'site.inserir', 'uses' => 'SiteController@inserir']);
-Route::get('/site/detalha/{id}', ['as' => 'site.detalhar', 'uses' => 'SiteController@detalhar']);
-Route::get('/site/altera/{id}', ['as' => 'site.altera', 'uses' => 'SiteController@altera']);
-Route::post('/site/atualizar/{id}', ['as' => 'site.atualizar', 'uses' => 'SiteController@atualizar']);
-Route::get('/site/apagar/{id}', ['as' => 'site.apagar', 'uses' => 'SiteController@apagar']);
+Route::get('sites', 'SiteController@listar')->name('sites');
+Route::post('site/inserir', 'SiteController@inserir')->name('site.inserir');
+Route::get('site/detalha/{id}', 'SiteController@detalhar')->name('site.detalhar');
+Route::get('site/altera/{id}', 'SiteController@altera')->name('site.altera');
+Route::post('site/atualizar/{id}', 'SiteController@atualizar')->name('site.atualizar');
+Route::get('site/apagar/{id}', 'SiteController@apagar')->name('site.apagar');
 
 //rotas p/ Item Configuração
-Route::get('/item_config/itens_config', ['as' => 'itens_config', 'uses' => 'ItemConfigController@listar']);
-Route::post('/item_config/inserir', ['as' => 'item_config.inserir', 'uses' => 'ItemConfigController@inserir']);
-Route::get('/item_config/detalha/{id}', ['as' => 'item_config.detalhar', 'uses' => 'ItemConfigController@detalhar']);
-Route::get('/item_config/altera/{id}', ['as' => 'item_config.altera', 'uses' => 'ItemConfigController@altera']);
-Route::post('/item_config/atualizar{id}', ['as' => 'item_config.atualizar', 'uses' => 'ItemConfigController@atualizar']);
-Route::get('/item_config/apagar/{id}', ['as' => 'item_config.apagar', 'uses' => 'ItemConfigController@apagar']);
+Route::get('itens_config', 'ItemConfigController@listar')->name('itens_config');
+Route::post('item_config/inserir', 'ItemConfigController@inserir')->name('item_config.inserir');
+Route::get('item_config/detalha/{id}', 'ItemConfigController@detalhar')->name('item_config.detalhar');
+Route::get('item_config/altera/{id}', 'ItemConfigController@altera')->name('item_config.altera');
+Route::post('item_config/atualizar{id}', 'ItemConfigController@atualizar')->name('item_config.atualizar');
+Route::get('item_config/apagar/{id}', 'ItemConfigController@apagar')->name('item_config.apagar');

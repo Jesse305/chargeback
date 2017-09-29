@@ -42,7 +42,6 @@
         <div class="modal-body">
 			<form action={{route('ambiente.inserir')}} method="post" id="form_amb">
 				{{csrf_field()}}
-				<input type="hidden" name="_insert" value="insert">
 				<div class="input-group">
 					<span class="input-group-addon">Descrição:</span>
 					<input id="desc_amb" type="text" class="form-control" name="desc_amb" placeholder="Ex.: nome do sistema"
