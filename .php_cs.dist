@@ -1,0 +1,20 @@
+<?php
+
+use PhpCsFixer\Finder;
+use PhpCsFixer\Config;
+
+$rules = [
+    '@Symfony' => true,
+    'yoda_style' => false,
+];
+
+$finder = Finder::create()
+    ->in(__DIR__)
+    ->exclude('bootstrap/cache')
+    ->exclude('resources/lang')
+    ->exclude('storage');
+
+return Config::create()
+    ->setFinder($finder)
+    ->setRules($rules)
+    ->setUsingCache(true);

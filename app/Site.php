@@ -11,8 +11,3 @@ class Site extends Model
     const CREATED_AT = 'dt_cadastro';
     const UPDATED_AT = 'dt_atualizacao';
 }
-
- 
-
-
-    
