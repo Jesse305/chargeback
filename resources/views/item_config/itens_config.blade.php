@@ -36,33 +36,39 @@
 	      		{{csrf_field()}}
 	      		<div class="input-group">
 	      			<span class="input-group-addon">Nome:</span>
-	      			<input class="form-control" type="text" name="no_item" id="no_item" maxlength="150" required>
+	      			<input class="form-control" type="text" name="no_item" id="no_item" maxlength="150" 
+	      			value="{{old('no_item')}}" required>
 	      		</div>
 	      		<div class="form-group">
 	      			<label for="ds_descricao">Descrição:</label>
-	      			<textarea class="form-control" rows="4" id="ds_descricao" name="ds_descricao"></textarea>
+	      			<textarea class="form-control" rows="4" id="ds_descricao" name="ds_descricao">{{old('ds_descricao')}}</textarea>
 	      		</div>
 	      		<div class="input-group">
 	      			<span class="input-group-addon">Categoria:</span>
 	      			<select class="form-control" id="categoriaitem_id" name="categoriaitem_id">
 	      				<option value="">--Selecione--</option>
 	      				@foreach($categoriasItens as $itens)
-	      				<option value="{{$itens->id}}">{{$itens->no_categoriaitem}}</option>
+	      				<option value="{{$itens->id}}"
+	      				@if(old('categoriaitem_id') == $itens->id) selected @endif
+	      				>{{$itens->no_categoriaitem}}</option>
 	      				@endforeach
 	      			</select>
 	      		</div>
 	      		<div class="input-group">
 	      			<span class="input-group-addon">Configuração:</span>
-	      			<input class="form-control" type="text" name="ds_configuracao" id="ds_configuracao" maxlength="100" required>
+	      			<input class="form-control" type="text" name="ds_configuracao" id="ds_configuracao" maxlength="100" 
+	      			value="{{old('ds_configuracao')}}" required>
 	      		</div>
 	      		<div class="input-group">
 	      			<span class="input-group-addon">Custo Mensal:</span>
-	      			<input class="form-control" type="text" name="nu_custo_mensal" id="nu_custo_mensal" maxlength="13" required>
+	      			<input class="form-control" type="text" name="nu_custo_mensal" id="nu_custo_mensal" maxlength="13" 
+	      			value="{{old('nu_custo_mensal')}}" required>
 	      		</div>
 	      		<label for="">Status</label>
-	      		<label class="radio-inline"><input type="radio" name="status" value="1" checked>Ativo</label>    		
-	      		<label class="radio-inline"><input type="radio" name="status" value="0" >Inativo</label> 
-	      		<input type="hidden" name="dt_cadastro" value="{{date('Y-m-d H:i:s')}}">   		
+	      		<label class="radio-inline"><input type="radio" name="status" value="1" 
+	      		checked>Ativo</label>    		
+	      		<label class="radio-inline"><input type="radio" name="status" value="0" 
+	      		@if(old('status') == 0) checked @endif >Inativo</label>   		
 	      	</form>	        
 	      </div>
 	      <div class="modal-footer">

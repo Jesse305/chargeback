@@ -10,48 +10,44 @@ class FrameworkController extends Controller
     public function listar()
     {
         $listaFrameworks = Framework::all();
-
         return view('framework/frameworks', compact('listaFrameworks'));
     }
 
     public function inserir(Request $request)
     {
         $dados = $request->except(['_token']);
-        $count = Framework::where('no_framework', '=', $request->no_framework)->count();
+        $count = Framework::where('no_framework', $request->no_framework)->count();
 
         if ($count == 0) {
-            Framework::insert($dados);
-            \Session::flash('retorno', ['tipo' => 'success', 'msg' => 'Registro inserido com sucesso!']);
-
-            return redirect()->back();
+            $frame = new Framework();
+            $frame->fill($dados);
+            $frame->save();
+            return redirect()->back()->
+            with('retorno', ['tipo' => 'success', 'msg' => 'Registro inserido com sucesso!']);
         } else {
-            \Session::flash('retorno', ['tipo' => 'warning', 'msg' => 'Framework já possui registro!']);
-
-            return redirect()->back();
+            return redirect()->back()->
+            with('retorno', ['tipo' => 'warning', 'msg' => 'Framework já possui registro!']);
         }
     }
 
     public function altera($id)
     {
-        $framework = Framework::find($id);
-
+        $framework = Framework::findOrFail($id);
         return view('/framework/altera_framework', compact('framework'));
     }
 
     public function atualizar(Request $request, $id)
     {
-        $dados = $request->except(['_token', '_update']);
-        Framework::where('id', $id)->update($dados);
-        \Session::flash('retorno', ['tipo' => 'success', 'msg' => 'Registro alterado com sucesso!']);
-
-        return redirect()->route('frameworks');
+        $dados = $request->except('_token');
+        $frame = new Framework();
+        $frame->findOrFail($id)->update($dados);
+        return redirect()->route('frameworks')->
+        with('retorno', ['tipo' => 'success', 'msg' => 'Registro alterado com sucesso!']);
     }
 
     public function apagar($id)
     {
-        Framework::find($id)->delete();
-        \Session::flash('retorno', ['tipo' => 'success', 'msg' => 'Registro apagado com sucesso!']);
-
-        return redirect()->back()->with('delete', ['deletado']);
+        Framework::findOrFail($id)->delete();
+        return redirect()->back()->with('retorno', ['tipo' => 'success', 'msg' => 'Registro apagado com sucesso!']);
     }
 }

@@ -1,13 +1,8 @@
 $(document).ready(function(){
 
-	//limpa formulario
-    function limpaForm(form){
-        $(form)[0].reset();
-    }
-
      //click do botão chama modal
     $('#btn_cad').click(function(){
-        limpaForm('#form_dev');
+        $('#btn_salvar').attr('disabled', false);
     });
 
     //altera idioma labels da tabela
@@ -29,6 +24,10 @@ $(document).ready(function(){
 
     //função data table jquery
     $('#tab_resumo').dataTable();
+
+    $('#form_dev').on('submit', function(){
+        $('#btn_salvar').attr('disabled', true);
+    });
 
 
 });

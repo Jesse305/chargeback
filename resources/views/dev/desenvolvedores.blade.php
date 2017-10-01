@@ -24,16 +24,6 @@
 	</div>
 	<!-- fim div painel -->
 
-		     @if ($errors->any())
-			    <div class="alert alert-danger">
-			        <ul>
-			            @foreach ($errors->all() as $error)
-			                <li>{{ $error }}</li>
-			            @endforeach
-			        </ul>
-			    </div>
-			@endif
-
 	<!-- Modal -->
 	<div id="modal_cad" class="modal fade" role="dialog">
 	  <div class="modal-dialog">
@@ -49,18 +39,17 @@
 
 	      	<form id="form_dev" method="POST" action="{{ route('desenvolvedor.inserir') }}">
 	      		{{ csrf_field() }}
-	      		<input type="hidden" name="_insert" value="insert">
 	      		<div class="input-group">
 				    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 				    <input id="no_dev" type="text" class="form-control" name="no_dev" placeholder="nome do desenvolvedor"
-				    maxlength="200">
+				    maxlength="200" value="{{old('no_dev')}}" required>
 				</div>
 				<div class="input-group">
 				    <span class="input-group-addon">IP:</span>
 				    <input id="ip_dev" type="text" class="form-control" name="ip_dev" placeholder="IP do desenvolvedor"
-				    maxlength="50">
+				    maxlength="50" value="{{old('ip_dev')}}" required>
 				</div>
-	      	</form>
+			</form>
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-warning btn-sm" data-dismiss="modal">Cancelar</button>

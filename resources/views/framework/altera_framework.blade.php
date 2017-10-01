@@ -15,7 +15,6 @@
     <div class="col-xs-12 col-md-6 col-md-offset-3">
       <form class="form_framework" action={{route('framework.atualizar', $framework->id)}} method="post">
         {{csrf_field()}}
-        <input type="hidden" name="_update" value="update">
         <div class="input-group">
           <span class="input-group-addon">Nome:</span>
           <input class="form-control" type="text" name="no_framework" id="no_framework" required maxlength="200"

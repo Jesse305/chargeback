@@ -86,7 +86,6 @@
 					</div>
 				</div>
 				<!-- fim row 4 -->
-				<input type="hidden" name="dt_atualizacao" value="{{date('Y-m-d H:i:s')}}">
 				<div class="text-right">
 					<a href="javascript:history.back();" class="btn btn-warning btn-sm">Cancelar</a>
 					<button type="submit" class="btn btn-success btn-sm" id="btn_alterar">Alterar</button>

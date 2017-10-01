@@ -16,24 +16,24 @@ class DesenvolvedorController extends Controller
     public function inserir(Request $request)
     {
 
-        $dados = $request->except(['_token', '_insert']);
-        $count = Desenvolvedor::where('no_dev', '=', $request->no_dev)->count();
+        $dados = $request->except(['_token']);
+        $count = Desenvolvedor::where('no_dev', $request->no_dev)->count();
         if ($count == 0) {
-            Desenvolvedor::insert($dados);
-            \Session::flash('retorno', ['tipo' => 'success', 'msg' => 'Registro inserido com sucesso!']);
+            $dev = new Desenvolvedor();
+            $dev->fill($dados);
+            $dev->save();
 
-            return redirect()->back();
+            return redirect()->back()->with('retorno', ['tipo' => 'success', 'msg' => 'Registro inserido com sucesso!']);
         } else {
-            \Session::flash('retorno', ['tipo' => 'warning', 'msg' => 'Desenvolvedor já possui cadastro!']);
-
-            return redirect()->back();
+            return redirect()->back()->
+            with('retorno', ['tipo' => 'warning', 'msg' => 'Desenvolvedor já possui cadastro!'])->withInput();
         }
     }
 
     public function altera($id)
     {
-        $dev = Desenvolvedor::findOrFail($id);
-        return view('dev/altera_desenvolvedor', compact('dev'));
+        $des = Desenvolvedor::findOrFail($id);
+        return view('dev/altera_desenvolvedor', compact('des'));
     }
 
     public function atualizar(Request $request, $id)

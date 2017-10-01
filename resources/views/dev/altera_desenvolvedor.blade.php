@@ -20,32 +20,22 @@
 	<div class="row">
 		<div class="col-xs-12 col-md-8 col-md-offset-2">
 			
-			<form id="form_dev" method="POST" action={{route('desenvolvedor.atualizar', $dev->id)}}>
-				  {{csrf_field()}}
-				  <input type="hidden" name="_update" value="update">
-				  <div class="input-group">
+			<form id="form_dev" method="POST" action={{route('desenvolvedor.atualizar', $des->id)}}>
+			    {{csrf_field()}}
+				<div class="input-group">
 				    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 				    <input id="no_dev" type="text" class="form-control" name="no_dev" placeholder="nome do desenvolvedor"
-				     required maxlength="200" value="{{$dev->no_dev}}"
-				    >
-				  </div>
-
-				  <div class="input-group">
+				    maxlength="200" value="{{$des->no_dev}}" required>
+				</div>
+				<div class="input-group">
 				    <span class="input-group-addon">IP:</span>
 				    <input id="ip_dev" type="text" class="form-control" name="ip_dev" placeholder="IP do desenvolvedor"
-				    required maxlength="50"
-				    @if(!$dev->ip_dev == '')
-				    	value="{{$dev->ip_dev}}"
-				    @else
-				    	value="ip não cadastrado"
-				    @endif
-				    >
-				  </div>
-
-				  <div class="text-right" style="margin-top: 10px;">
+				    maxlength="50" value="{{$des->ip_dev}}" required>
+				</div>
+				<div class="text-right" style="margin-top: 10px;">
 					<a href="javascript:history.back()" class="btn btn-warning btn-sm">Cancelar</a>
 					<button type="submit" class="btn btn-success btn-sm" id="btn_salvar">Alterar</button>
-				  </div>
+				 </div>
 
 			</form>
 			

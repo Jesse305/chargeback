@@ -14,27 +14,26 @@
   <!-- tabela -->
 
   <table class="table table-striped table-bordered table-hover" id="tab_detalhes" style="font-size: 12px;">
-    @foreach($ambiente as $a)
       <tr>
         <td class="col-xs-4"><b>Descrição:</b></td>
-        <td class="col-xs-8">{{$a->desc_amb}}</td>
+        <td class="col-xs-8">{{$ambiente->desc_amb}}</td>
       </tr>
       <tr>
         <td colspan="2"><h5>Ambiente Treinamento</h5s></td>
       </tr>
       <tr>
         <td class="col-xs-4"><b>IP:</b></td>
-        <td class="col-xs-8">{{$a->ip_trein}}</td>
+        <td class="col-xs-8">{{$ambiente->ip_trein}}</td>
       </tr>
       <tr>
         <td class="col-xs-4"><b>Usuário:</b></td>
-        <td class="col-xs-8">{{$a->usuario_trein}}</td>
+        <td class="col-xs-8">{{$ambiente->usuario_trein}}</td>
       </tr>
       <tr>
         <td class="col-xs-4"><b>Senha:</b></td>
         <td class="col-xs-8">
                     <div class="input-group">
-            <input type="password" class="form-control senha" value="{{$a->senha_trein}}" readonly>
+            <input type="password" class="form-control senha" value="{{$ambiente->senha_trein}}" readonly>
             <span class="input-group-addon">
                 <button  class="btn btn-xs revela_senha" onclick="return false;" title="mostrar senhas">
                   <i class="glyphicon glyphicon-eye-open"></i>
@@ -48,17 +47,17 @@
       </tr>
       <tr>
         <td class="col-xs-4"><b>IP:</b></td>
-        <td class="col-xs-8">{{$a->ip_homol}}</td>
+        <td class="col-xs-8">{{$ambiente->ip_homol}}</td>
       </tr>
       <tr>
         <td class="col-xs-4"><b>Usuário:</b></td>
-        <td class="col-xs-8">{{$a->usuario_homol}}</td>
+        <td class="col-xs-8">{{$ambiente->usuario_homol}}</td>
       </tr>
       <tr>
         <td class="col-xs-4"><b>Senha:</b></td>
         <td class="col-xs-8">
           <div class="input-group">
-            <input type="password" class="form-control senha" value="{{$a->senha_homol}}" readonly>
+            <input type="password" class="form-control senha" value="{{$ambiente->senha_homol}}" readonly>
             <span class="input-group-addon">
                 <button  class="btn btn-xs revela_senha" onclick="return false;" title="mostrar senhas">
                   <i class="glyphicon glyphicon-eye-open"></i>
@@ -72,17 +71,17 @@
       </tr>
       <tr>
         <td class="col-xs-4"><b>IP:</b></td>
-        <td class="col-xs-8">{{$a->ip_prod}}</td>
+        <td class="col-xs-8">{{$ambiente->ip_prod}}</td>
       </tr>
       <tr>
         <td class="col-xs-4"><b>Usuário:</b></td>
-        <td class="col-xs-8">{{$a->usuario_prod}}</td>
+        <td class="col-xs-8">{{$ambiente->usuario_prod}}</td>
       </tr>
       <tr>
         <td class="col-xs-4"><b>Senha:</b></td>
         <td class="col-xs-8">
           <div class="input-group">
-            <input type="password" class="form-control senha" value="{{$a->senha_prod}}" readonly>
+            <input type="password" class="form-control senha" value="{{$ambiente->senha_prod}}" readonly>
             <span class="input-group-addon">
                 <button  class="btn btn-xs revela_senha" onclick="return false;" title="mostrar senhas">
                   <i class="glyphicon glyphicon-eye-open"></i>
@@ -94,11 +93,9 @@
       <tr>
         <td class="col-xs-4"><b>Link:</b></td>
         <td class="col-xs-8">
-          <a href="{{$a->link_prod}}">{{$a->link_prod}}</a>
+          <a href="{{$ambiente->link_prod}}">{{$ambiente->link_prod}}</a>
         </td>
       </tr>
-
-    @endforeach
 
   </table>
   <div class="text-right">

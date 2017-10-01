@@ -22,14 +22,16 @@ class ItemConfigController extends Controller
         $count = ItemConfig::where('no_item', $req->no_item)->count();
 
         if ($count == 0) {
-            ItemConfig::insert($dados);
-            \Session::flash('retorno', ['tipo' => 'success', 'msg' => 'Cadastro efetuado com sucesso.']);
+            $item = new ItemConfig();
+            $item->fill($dados)->save();
 
-            return redirect()->back();
+            return redirect()->back()->
+            with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro efetuado com sucesso.']);
         } else {
-            \Session::flash('retorno', ['tipo' => 'warning', 'msg' => 'Já existe um Item de configuração de mesmo nome.']);
 
-            return redirect()->back();
+            return redirect()->back()->
+            with('retorno', ['tipo' => 'warning', 'msg' => 'Já existe um Item de configuração de mesmo nome.'])->
+            withInput();
         }
     }
 
@@ -37,7 +39,7 @@ class ItemConfigController extends Controller
 
     public function detalhar($id)
     {
-        $item = ItemConfig::where('id', $id)->first();
+        $item = ItemConfig::findOrFail($id);
         $categoria = DB::table('categoriaitem')->where('id', $item->categoriaitem_id)->first();
 
         return view('item_config/item_config', compact('item', 'categoria'));
@@ -45,7 +47,7 @@ class ItemConfigController extends Controller
 
     public function altera($id)
     {
-        $item = ItemConfig::where('id', $id)->first();
+        $item = ItemConfig::findOrFail($id);
         $categoriasItens = DB::table('categoriaitem')->get();
 
         return view('item_config/altera_item_config', compact('item', 'categoriasItens'));
@@ -54,17 +56,18 @@ class ItemConfigController extends Controller
     public function atualizar(Request $req, $id)
     {
         $dados = $req->except('_token');
-        $update = ItemConfig::where('id', $id)->update($dados);
-        \Session::flash('retorno', ['tipo' => 'success', 'msg' => 'Cadastro alterado com sucesso.']);
+        $item_config = new ItemConfig();
+        $item_config->findOrFail($id)->update($dados);
 
-        return redirect()->route('itens_config');
+        return redirect()->route('itens_config')->
+        with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro alterado com sucesso.']);
     }
 
     public function apagar($id)
     {
-        ItemConfig::where('id', $id)->delete();
-        \Session::flash('retorno', ['tipo' => 'success', 'msg' => 'Cadastro excluído com sucesso.']);
+        ItemConfig::findOrFail($id)->delete();
 
-        return redirect()->back();
+        return redirect()->back()->
+        with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro excluído com sucesso.']);
     }
 }

@@ -41,14 +41,19 @@
 	        	<div class="alerta"></div>
 	        	<form id="form_banco" method="POST" action="{{route('banco.inserir')}}">
 	        		{{ csrf_field() }}
-	        		<input type="hidden" name="_insert" value="insert">
 	        		<div class="input-group" style="margin-top: 5px;">
 					    <span class="input-group-addon">Ambiente:</span>
 					    <select class="form-control" id="slc_ambiente" name="ambiente_banco">
 					    	<option value="">--SELECIONE--</option>
-					    	<option value="Homologação">Homologação</option>
-					    	<option value="Treinamento">Treinamento</option>
-					    	<option value="Produção">Produção</option>
+					    	<option value="Homologação"
+					    	@if(old('ambiente_banco') == "Homologação") selected @endif 
+					    	>Homologação</option>
+					    	<option value="Treinamento"
+					    	@if(old('ambiente_banco') == "Treinamento") selected @endif
+					    	>Treinamento</option>
+					    	<option value="Produção"
+					    	@if(old('ambiente_banco') == "Produção") selected @endif
+					    	>Produção</option>
 					    </select>
 					</div>
 
@@ -56,22 +61,32 @@
 					    <span class="input-group-addon">Tecnologia:</span>
 					    <select class="form-control" id="slc_tecnologia" name="tecnologia_banco">
 					    	<option value="">--SELECIONE--</option>
-					    	<option value="Oracle">Oracle</option>
-					    	<option value="Sql Server">SQL Server</option>
-					    	<option value="Postgre SQL">Postgre SQL</option>
-					    	<option value="DB2">DB2</option>
-					    	<option value="MySQL">MySQL</option>
+					    	<option value="Oracle"
+					    	@if(old('tecnologia_banco') == "Oracle") selected @endif 
+					    	>Oracle</option>
+					    	<option value="Sql Server"
+					    	@if(old('tecnologia_banco') == "Sql Server") selected @endif
+					    	>SQL Server</option>
+					    	<option value="Postgre SQL"
+					    	@if(old('tecnologia_banco') == "Postgre SQL") selected @endif
+					    	>Postgre SQL</option>
+					    	<option value="DB2"
+					    	@if(old('tecnologia_banco') == "DB2") selected @endif
+					    	>DB2</option>
+					    	<option value="MySQL"
+					    	@if(old('tecnologia_banco') == "MySQL") selected @endif
+					    	>MySQL</option>
 					    </select>
 					</div>
 
 					<div class="input-group" style="margin-top: 5px;">
 					    <span class="input-group-addon">IP:</span>
-					    <input id="ip" type="text" class="form-control" name="ip_banco" placeholder="IP do banco de dados" maxlength="100">
+					    <input id="ip" type="text" class="form-control" name="ip_banco" placeholder="IP do banco de dados" maxlength="100" value="{{old('ip_banco')}}">
 					</div>
 
 					<div class="input-group" style="margin-top: 5px;">
 					    <span class="input-group-addon">Usuário:</span>
-					    <input id="usuario" type="text" class="form-control" name="usuario_banco" placeholder="usuário para acesso do banco" maxlength="100">
+					    <input id="usuario" type="text" class="form-control" name="usuario_banco" placeholder="usuário para acesso do banco" maxlength="100" value="{{old('usuario_banco')}}">
 					</div>
 
 					<div class="input-group" style="margin-top: 5px;">
@@ -84,7 +99,7 @@
 
 					<div class="input-group" style="margin-top: 5px;">
 					    <span class="input-group-addon">Schema:</span>
-					    <input id="schema" type="text" class="form-control" name="schema_banco" placeholder="nome do banco de dados" maxlength="100" required>
+					    <input id="schema" type="text" class="form-control" name="schema_banco" placeholder="nome do banco de dados" maxlength="100" required value="{{old('schema_banco')}}">
 					</div>
 
 	        	</form>

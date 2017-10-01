@@ -2,7 +2,6 @@ $(document).ready(function(){
 
 	//click botão chama modal
 	$('#btn_cad').click(function(){
-		$('#form_item')[0].reset();
 		$('#btn_salvar').attr('disabled', false);
 
 	});

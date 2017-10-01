@@ -17,40 +17,42 @@ class AmbienteController extends Controller
     public function inserir(Request $request)
     {
         $dados = $request->except(['_token']);
-        Ambiente::insert($dados);
-        \Session::flash('retorno', ['tipo' => 'success', 'msg' => 'Registro inserido com sucesso!']);
+        $amb = new Ambiente();
+        $amb->fill($dados)->save();
 
-        return redirect()->back();
+        return redirect()->back()->
+        with('retorno', ['tipo' => 'success', 'msg' => 'Registro inserido com sucesso!']);
     }
 
     public function detalhar($id)
     {
-        $ambiente = Ambiente::where('id', $id)->get();
+        $ambiente = Ambiente::findOrFail($id);
 
         return view('ambiente/ambiente', compact('ambiente'));
     }
 
     public function altera($id)
     {
-        $ambiente = Ambiente::where('id', $id)->get();
+        $ambiente = Ambiente::findOrFail($id);
 
         return view('ambiente/altera_ambiente', compact('ambiente'));
     }
 
     public function atualizar(Request $request, $id)
     {
-        $dados = $request->except(['_token', '_update']);
-        Ambiente::where('id', $id)->update($dados);
-        \Session::flash('retorno', ['tipo' => 'success', 'msg' => 'Registro alterado com sucesso!']);
+        $dados = $request->except('_token');
+        $amb = new Ambiente();
+        $amb->findOrFail($id)->update($dados);
 
-        return redirect()->route('ambientes');
+        return redirect()->route('ambientes')->
+        with('retorno', ['tipo' => 'success', 'msg' => 'Registro alterado com sucesso!']);
     }
 
     public function apagar($id)
     {
-        Ambiente::find($id)->delete();
-        \Session::flash('retorno', ['tipo' => 'success', 'msg' => 'Registro apagado com sucesso!']);
+        Ambiente::findOrFail($id)->delete();
 
-        return redirect()->back();
+        return redirect()->back()->
+        with('retorno', ['tipo' => 'success', 'msg' => 'Registro apagado com sucesso!']);
     }
 }
