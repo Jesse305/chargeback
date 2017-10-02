@@ -1,7 +1,6 @@
 $(document).ready(function(){
 
 	$('#btn_cad').click(function(){
-		$('#form_resp')[0].reset();
 		$('#btn_salvar').attr('disabled', false);
 	});
 
@@ -30,7 +29,7 @@ $(document).ready(function(){
 		$.ajax({
 			type: 'GET',
 			dataType: 'json',
-			url: '../unidade/json/'+idOrgao,
+			url: 'unidade/json/'+idOrgao,
 			success: function(unidade){
 				var option = "<option value=''>--Selecione--</option>";
 				if(unidade.length > 0){

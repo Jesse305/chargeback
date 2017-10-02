@@ -25,6 +25,10 @@
 			<td><b>Acesso:</b>  {{$sis->tp_acesso}}</td>
 			<td><b>Status:</b>  {{$sis->status}}</td>
 		</tr>
+		<tr>
+			<td><b>Data Cadastro: </b> {{$sis->dt_cadastro}}</td>
+			<td><b>Data Atualização: </b> {{$sis->dt_atualizacao}}</td>
+		</tr>
 		@endforeach
 	</table>
 	<!-- fim sistema -->
@@ -151,7 +155,7 @@
 	<!-- fim frameworks -->
 
 	<div class="text-right">
-		<button class="btn btn-success" onclick="javascript: history.back();">
+		<button class="btn btn-success btn-sm" onclick="javascript: history.back();">
 			<span class="glyphicon glyphicon-arrow-left"></span>
 		</button>
 	</div>

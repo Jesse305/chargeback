@@ -21,22 +21,19 @@ class ResponsavelController extends Controller
     {
         $dados = $request->except('_token');
         $count = Responsavel::where('no_responsavel', $request->no_responsavel)->
-      where('orgao_id', $request->orgao_id)->where('unidade_id', $request->unidade_id)->count();
+        where('unidade_id', $request->unidade_id)->count();
         if ($count == 0) {
-            $insert = Responsavel::insert($dados);
-            if ($insert) {
-                \Session::flash('retorno', ['tipo' => 'success', 'msg' => 'Cadastro inserido com sucesso.']);
 
-                return redirect()->back();
-            } else {
-                \Session::flash('retorno', ['tipo' => 'warning', 'msg' => 'Erro ao inserir cadastro.']);
+            $resp = new Responsavel();
+            $resp->fill($dados)->save();
 
-                return redirect()->back();
-            }
+            return redirect()->back()->
+            with('retorno', ['tipo'=>'success', 'msg'=>'Cadastro efetuado com sucesso.']);
         } else {
-            \Session::flash('retorno', ['tipo' => 'warning', 'msg' => 'Já existe um responsavel de mesmo nome na unidade selecionada.']);
 
-            return redirect()->back();
+            return redirect()->back()->
+            with('retorno', ['tipo' => 'warning', 'msg' => 'Já existe um responsavel de mesmo nome na unidade selecionada.'])->
+            withInput();
         }
     }
 
@@ -44,9 +41,9 @@ class ResponsavelController extends Controller
 
     public function detalha($id)
     {
-        $responsavel = Responsavel::where('id', $id)->get();
-        $orgao = Orgao::where('id', $responsavel[0]->orgao_id)->get();
-        $unidade = Unidade::where('id', $responsavel[0]->unidade_id)->get();
+        $responsavel = Responsavel::findOrFail($id);
+        $orgao = Orgao::findOrFail($responsavel->orgao_id);
+        $unidade = Unidade::findOrFail($responsavel->unidade_id);
 
         return view('responsavel/responsavel', compact('responsavel', 'orgao', 'unidade'));
     }
@@ -55,9 +52,9 @@ class ResponsavelController extends Controller
 
     public function altera($id)
     {
-        $responsavel = Responsavel::where('id', $id)->get();
-        $orgao = Orgao::where('id', $responsavel[0]->orgao_id)->get();
-        $unidade = Unidade::where('id', $responsavel[0]->unidade_id)->get();
+        $responsavel = Responsavel::findOrFail($id);
+        $orgao = Orgao::findOrFail($responsavel->orgao_id);
+        $unidade = Unidade::findOrFail($responsavel->unidade_id);
 
         return view('responsavel/altera_responsavel', compact('responsavel', 'orgao', 'unidade'));
     }
@@ -65,29 +62,17 @@ class ResponsavelController extends Controller
     public function atualizar(Request $request, $id)
     {
         $dados = $request->except('_token');
-        $altera = Responsavel::where('id', $id)->update($dados);
-        if ($altera) {
-            \Session::flash('retorno', ['tipo' => 'success', 'msg' => 'Cadastro alterado com sucesso.']);
+        $resp = new Responsavel();
+        $resp->findOrFail($id)->update($dados);
 
-            return redirect()->route('responsaveis');
-        } else {
-            \Session::flash('retorno', ['tipo' => 'warning', 'msg' => 'Cadastro não alterado']);
-
-            return redirect()->route('responaveis');
-        }
+        return redirect()->route('responsaveis')->
+        with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro alterado com sucesso.']);
     }
 
     public function apagar($id)
     {
-        $delete = Responsavel::where('id', $id)->delete();
-        if ($delete) {
-            \Session::flash('retorno', ['tipo' => 'success', 'msg' => 'Cadastro apagado com sucesso!']);
+        Responsavel::findOrFail($id)->delete();
 
-            return redirect()->back();
-        } else {
-            \Session::flash('retorno', ['tipo' => 'warning', 'msg' => 'Não foi possível apagar o registro.']);
-
-            return redirect()->back();
-        }
+        return redirect()->with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro apagado com sucesso!']);
     }
 }

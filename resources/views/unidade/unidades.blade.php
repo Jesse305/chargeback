@@ -50,7 +50,9 @@
 		      		<select class="form-control" name="orgao_id" id="orgao_id">
 		      			<option value="">--Selecione--</option>
 		      			@foreach($orgaos as $orgs)
-		      			<option value="{{$orgs->id}}">{{$orgs->no_sigla}} - {{$orgs->no_orgao}}</option>
+		      			<option value="{{$orgs->id}}"
+		      			@if(old('orgao_id') == $orgs->id) selected @endif
+		      			>{{$orgs->no_sigla}} - {{$orgs->no_orgao}}</option>
 		      			@endforeach
 		      		</select>
 		      	</div>
@@ -58,19 +60,19 @@
 		      	<div class="input-group">
 		      		<span class="input-group-addon">Nome:</span>
 		      		<input class="form-control" type="text" name="no_unidade" id="no_unidade" placeholder="Nome da Unidade"
-		      		required maxlength="100">
+		      		required maxlength="100" value="{{old('no_unidade')}}">
 		      	</div>
 
 		      	<div class="input-group col-xs-6">
 		      		<span class="input-group-addon">Sigla:</span>
 		      		<input class="form-control" type="text" name="no_sigla" id="no_sigla" placeholder="Sigla da Unidade"
-		      		maxlength="45">
+		      		maxlength="45" value="{{old('no_sigla')}}">
 		      	</div>
 
 		      	<div class="input-group">
 		      		<span class="input-group-addon">Endereço:</span>
 		      		<input class="form-control" type="text" name="no_endereco" id="no_endereco" 
-		      		placeholder="Endereço da Unidade" maxlength="100" required>
+		      		placeholder="Endereço da Unidade" maxlength="100" required value="{{old('no_endereco')}}">
 		      	</div>
 
 		      	<div class="input-group">
@@ -78,14 +80,17 @@
 		      		<select class="form-control" name="cidade_id" id="cidade_id">
 		      			<option value="">--Selecione--</option>
 		      			@foreach($cidades as $cidade)
-		      			<option value="{{$cidade->id}}">{{$cidade->no_cidade}}</option>
+		      			<option value="{{$cidade->id}}"
+		      			@if(old('cidade_id') == $cidade->id) selected @endif
+		      			>{{$cidade->no_cidade}}</option>
 		      			@endforeach
 		      		</select>
 		      	</div>
 
 		      	<div class="input-group col-xs-6">
 		      		<span class="input-group-addon">CEP:</span>
-		      		<input class="form-control" type="text" name="nu_cep" id="nu_cep" maxlength="45">
+		      		<input class="form-control" type="text" name="nu_cep" id="nu_cep" maxlength="45" 
+		      		value="{{old('nu_cep')}}">
 		      	</div>
 		      	<label for="status">Status: </label>
 		      	<label class="radio-inline"><input type="radio" name="status" value="1" checked> Ativo</label>
@@ -123,11 +128,7 @@
 				<td class="col-xs-1">{{$unidade->no_sigla}}</td>
 				<td>{{$unidade->no_unidade}}</td>
 				<td>
-					@foreach($orgaos as $org)
-						@if($org->id == $unidade->orgao_id)
-						{{$org->no_orgao}}
-						@endif
-					@endforeach
+					{{$unidade->getOrgao($unidade->orgao_id)->no_orgao}}
 				</td>
 				<td class="col-xs-2" align="center">
 					<a href={{route('unidade.detalhar', $unidade->id)}} class="btn btn-info btn-sm" title="visualizar">

@@ -62,30 +62,34 @@
 	      		</div>
 	      		<div class="input-group">
 	      			<div class="input-group-addon">Nome:</div>
-	      			<input class="form-control" type="text" name="no_responsavel" maxlength="100" id="no_responsavel">
+	      			<input class="form-control" type="text" name="no_responsavel" maxlength="100" id="no_responsavel"
+	      			value="{{old('no_responsavel')}}">
 	      		</div>
 	      		<div class="input-group col-xs-6">
 	      			<div class="input-group-addon">Telefone:</div>
-	      			<input class="form-control" type="text" name="nu_telefone" maxlength="15" id="nu_telefone">
+	      			<input class="form-control" type="text" name="nu_telefone" maxlength="15" id="nu_telefone"
+	      			value="{{old('nu_telefone')}}">
 	      		</div>
 	      		<div class="input-group col-xs-6">
 	      			<div class="input-group-addon">Celular:</div>
-	      			<input class="form-control" type="text" name="nu_celular" maxlength="15" id="nu_celular">
+	      			<input class="form-control" type="text" name="nu_celular" maxlength="15" id="nu_celular"
+	      			value="{{old('nu_celular')}}">
 	      		</div>
 	      		<div class="input-group">
 	      			<div class="input-group-addon">E-mail:</div>
-	      			<input class="form-control" type="text" name="no_email" maxlength="30" id="no_email">
+	      			<input class="form-control" type="text" name="no_email" maxlength="30" id="no_email"
+	      			value="{{old('no_email')}}">
 	      		</div>
 
 	      		<label for="status">Status:</label>
 	      		<label class="radio-inline"><input type="radio" name="status" value="1" checked> Ativo</label>
-	      		<label class="radio-inline"><input type="radio" name="status" value="0"> Inativo</label>
+	      		<label class="radio-inline"><input type="radio" name="status" value="0" > Inativo</label>
 
-	      		 <div class="form-group">
-						  <label for="ds_observacao">Observações:</label>
-						  <textarea class="form-control" rows="5" id="ds_observacao" name="ds_observacao"></textarea>
-						</div>
-						<input type="hidden" name="dt_cadastro" value="{{date('Y-m-d H:i:s')}}">
+	      		<div class="form-group">
+					<label for="ds_observacao">Observações:</label>
+					<textarea class="form-control" rows="5" id="ds_observacao" name="ds_observacao">{{old('ds_oservacao')}}</textarea>
+				</div>
+						
 	      	</form>
 
 	      </div>
@@ -115,11 +119,7 @@
 			@foreach($responsaveis as $resp)
 			<tr>
 				<td>
-					@foreach($orgaos as $orgao)
-						@if($orgao->id == $resp->orgao_id)
-						{{$orgao->no_orgao}}
-						@endif
-					@endforeach
+					{{$resp->getOrgao($resp->orgao_id)->no_orgao}}
 				</td>
 				<td>{{$resp->no_responsavel}}</td>
 				<td>{{$resp->nu_telefone}}</td>

@@ -93,15 +93,15 @@ class SistemaController extends Controller
 
     public function altera($id)
     {
-        $sistema = Sistema::where('id', $id)->get();
+        $sistema = Sistema::findOrFail($id);
         $orgaos = Orgao::orderBy('no_orgao')->get();
-        $unidade = Unidade::where('id', $sistema[0]->id_unidade)->get();
+        $unidade = Unidade::where('id', $sistema->id_unidade)->get();
         $bancos = Banco::orderBy('schema_banco')->get();
         $ambientes = Ambiente::orderBy('desc_amb')->get();
         $devs = Desenvolvedor::orderBy('no_dev')->get();
         $frames = Framework::orderBy('no_framework')->get();
-        $slcDevs = DB::table('sistemas_devs')->where('sistemas_devs.id_sistema', $sistema[0]->id)->get();
-        $slcFrames = DB::table('sistemas_frameworks')->where('sistemas_frameworks.id_sistema', $sistema[0]->id)->get();
+        $slcDevs = DB::table('sistemas_devs')->where('sistemas_devs.id_sistema', $sistema->id)->get();
+        $slcFrames = DB::table('sistemas_frameworks')->where('sistemas_frameworks.id_sistema', $sistema->id)->get();
 
         return view('sistema/altera_sistema', compact('sistema', 'orgaos', 'unidade', 'bancos', 'ambientes', 'devs', 'frames', 'slcDevs', 'slcFrames'));
     }
@@ -111,9 +111,10 @@ class SistemaController extends Controller
     public function atualizar(Request $request, $id)
     {
         $dados = $request->except(['_token', 'devs', 'frames']);
-        $updateSis = Sistema::where('id', $id)->update($dados);
+        $sistema = new Sistema();
+        $sistema->findOrFail($id)->update($dados);
 
-        $updateDev = DB::table('sistemas_devs')->where('id_sistema', $id)->delete();
+        DB::table('sistemas_devs')->where('id_sistema', $id)->delete();
         foreach ($request->devs as $devs) {
             DB::table('sistemas_devs')->insert(
                 ['id_sistema' => $id, 'id_dev' => $devs]
@@ -131,31 +132,16 @@ class SistemaController extends Controller
             DB::table('sistemas_frameworks')->where('id_sistema', $id)->delete();
         }
 
-        if ($updateSis || $updateDev) {
-            \Session::flash('retorno', ['tipo' => 'success', 'msg' => 'Cadastro alterado com sucesso!']);
-
-            return redirect()->route('sistemas');
-        } else {
-            \Session::flash('retorno', ['tipo' => 'warning', 'msg' => 'Cadastro não alterado!']);
-
-            return redirect()->route('sistemas');
-        }
+        return redirect()->route('sistemas')->
+        with('retorno', ['tipo'=>'success', 'msg'=>'Cadastro Atualizado com sucesso.']);
     }
+    //fim atualiza cadastro
 
     public function apagar($id)
     {
-        $apaga = Sistema::find($id)->delete();
+        Sistema::findOrFail($id)->delete();
 
-        if ($apaga) {
-            DB::table('sistemas_devs')->where('id_sistema', $id)->delete();
-            DB::table('sistemas_frameworks')->where('id_sistema', $id)->delete();
-            \Session::flash('retorno', ['tipo' => 'success', 'msg' => 'Registro apagado com sucesso!']);
-
-            return redirect()->back();
-        } else {
-            \Session::flash('retorno', ['tipo' => 'warning', 'msg' => 'Não foi possível apagar o registro!']);
-
-            return redirect()->back();
-        }
+        return redirect()->back()->
+        with('retorno', ['tipo'=>'success', 'msg'=>'Cadastro apagado com sucesso.']);
     }
 }

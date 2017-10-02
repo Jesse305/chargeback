@@ -26,9 +26,9 @@ class UnidadeController extends Controller
 
     public function detalhar($id)
     {
-        $unidade = Unidade::where('id', $id)->get();
-        $orgao = Orgao::where('id', $unidade[0]->orgao_id)->get();
-        $cidade = DB::table('cidade')->where('id', $unidade[0]->cidade_id)->get();
+        $unidade = Unidade::findOrFail($id);
+        $orgao = Orgao::findOrFail($unidade->orgao_id);
+        $cidade = DB::table('cidade')->where('id', $unidade->cidade_id)->first();
 
         return view('unidade/unidade', compact('unidade', 'orgao', 'cidade'));
     }
@@ -37,30 +37,27 @@ class UnidadeController extends Controller
     {
         $dados = $request->except('_token');
 
-        $count = Unidade::where('orgao_id', $request->orgao_id)->where('no_unidade', $request->no_unidade)->count();
+        $count = Unidade::where('orgao_id', $request->orgao_id)->
+        where('no_unidade', $request->no_unidade)->count();
 
         if ($count == 0) {
-            $insere = Unidade::insert($dados);
-            if ($insere) {
-                \Session::flash('retorno', ['tipo' => 'success', 'msg' => 'Unidade cadastrada com sucesso!']);
+            $unidade = new Unidade();
+            $unidade->fill($dados)->save();
 
-                return redirect()->back();
-            } else {
-                \Session::flash('retorno', ['tipo' => 'warning', 'msg' => 'Não foi possível cadastrar unidade!']);
-
-                return redirect()->back();
-            }
+            return redirect()->back()->
+            with('retorno', ['tipo'=>'success', 'msg'=>'Cadastro inserido com sucesso.']);
         } else {
-            \Session::flash('retorno', ['tipo' => 'warning', 'msg' => 'Orgão já possui unidade de mesmo nome!']);
 
-            return redirect()->back();
+            return redirect()->back()->
+            with('retorno', ['tipo' => 'warning', 'msg' => 'Orgão já possui unidade de mesmo nome!'])->
+            withInput();
         }
     }
 
     public function altera($id)
     {
-        $unidade = Unidade::where('id', $id)->get();
-        $orgao = Orgao::where('id', $unidade[0]->orgao_id)->get();
+        $unidade = Unidade::findOrFail($id);
+        $orgao = Orgao::findOrFail($unidade->orgao_id);
         $cidades = DB::table('cidade')->orderBy('no_cidade')->get();
 
         return view('unidade/altera_unidade', compact('unidade', 'orgao', 'cidades'));
@@ -69,30 +66,19 @@ class UnidadeController extends Controller
     public function atualizar(Request $request, $id)
     {
         $dados = $request->except(['_token', 'no_orgao']);
+        $unidade = new Unidade();
+        $unidade->findOrFail($id)->update($dados);
         $update = Unidade::where('id', $id)->update($dados);
-        if ($update) {
-            \Session::flash('retorno', ['tipo' => 'success', 'msg' => 'Cadastro alterado com sucesso!']);
 
-            return redirect()->route('unidades');
-        } else {
-            \Session::flash('retorno', ['tipo' => 'warning', 'msg' => 'O cadastro não foi alterado!']);
-
-            return redirect()->route('unidades');
-        }
+        return redirect()->route('unidades')->
+        with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro alterado com sucesso!']);
     }
 
     public function apagar($id)
     {
-        $delete = Unidade::find($id)->delete();
+        $delete = Unidade::findOrFail($id)->delete();
 
-        if ($delete) {
-            \Session::flash('retorno', ['tipo' => 'success', 'msg' => 'Cadastro excluído com sucesso!']);
-
-            return redirect()->back();
-        } else {
-            \Session::flash('retorno', ['tipo' => 'warning', 'msg' => 'Não foi possível excluir cadastro!']);
-
-            return redirect()->back();
-        }
+        return redirect()->back()->
+        with('retorno', ['tipo'=>'success', 'msg'=>'Registro deletado com sucesso.']);
     }
 }

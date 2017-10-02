@@ -27,8 +27,7 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="alerta" id="alerta"></div>
-			@foreach($sistema as $sis)
-			<form id="form_sis" method="POST" action={{route('sistema.atualizar', $sis->id)}}>
+			<form id="form_sis" method="POST" action={{route('sistema.atualizar', $sistema->id)}}>
 				{{csrf_field()}}
 				<div class="row">
 					<div class="col-xs-12 col-md-4">
@@ -36,7 +35,7 @@
 			      			<span class="input-group-addon">Sigla:</span>
 			      			<input class="form-control" type="text" name="no_sigla" id="sigla"  maxlength="20"
 			      			placeholder="sigla do sistema" onkeyup="maiuscula(this);"
-			      			value="{{$sis->no_sigla}}">
+			      			value="{{$sistema->no_sigla}}">
 			      		</div>
 					</div>
 					<div class="col-xs-12 col-md-8">
@@ -44,7 +43,7 @@
 			      			<span class="input-group-addon">Nome:</span>
 			      			<input class="form-control" type="text" name="no_sistema" id="nome" required maxlength="200"
 			      			placeholder="nome do sistema" onkeyup="maiuscula(this);"
-			      			value="{{$sis->no_sistema}}">
+			      			value="{{$sistema->no_sistema}}">
 			      		</div>
 					</div>
 				</div>
@@ -56,22 +55,22 @@
 			      			<span class="input-group-addon">Desenvolvimento:</span>
 			      			<select class="form-control" name="desenvolvimento" id="slc_amb" title="Ambiente programação">
 			      				<option value="Java"
-			      				@if($sis->desenvolvimento == 'Java')
+			      				@if($sistema->desenvolvimento == 'Java')
 			      				selected			      				
 			      				@endif 
 			      				>Java</option>
 			      				<option value="PHP"
-			      				@if($sis->desenvolvimento == 'PHP')
+			      				@if($sistema->desenvolvimento == 'PHP')
 			      				selected			      				
 			      				@endif 
 			      				>PHP</option>
 			      				<option value="Mobile"
-			      				@if($sis->desenvolvimento == 'Mobile')
+			      				@if($sistema->desenvolvimento == 'Mobile')
 			      				selected			      				
 			      				@endif 
 			      				>Mobile</option>
 			      				<option value="Cobol"
-			      				@if($sis->desenvolvimento == 'Cobol')
+			      				@if($sistema->desenvolvimento == 'Cobol')
 			      				selected			      				
 			      				@endif 
 			      				>Cobol</option>
@@ -84,12 +83,12 @@
 			      			<span class="input-group-addon">Acesso:</span>
 			      			<select class="form-control" name="tp_acesso" id="slc_acesso" title="Tipo de acesso">
 			      				<option value="Externo"
-			      				@if($sis->tp_acesso == 'Externo')
+			      				@if($sistema->tp_acesso == 'Externo')
 			      				selected
 			      				@endif
 			      				>Externo</option>
 			      				<option value="Interno"
-			      				@if($sis->tp_acesso == 'Interno')
+			      				@if($sistema->tp_acesso == 'Interno')
 			      				selected
 			      				@endif
 			      				>Interno</option>
@@ -102,27 +101,27 @@
 			      			<span class="input-group-addon">Status:</span>
 			      			<select class="form-control" name="status" id="slc_status" title="">
 			      				<option value="Desenvolvimento"
-			      				@if($sis->status == 'Desenvolvimento')
+			      				@if($sistema->status == 'Desenvolvimento')
 			      				selected
 			      				@endif
 			      				>Desenvolvimento</option>
 			      				<option value="Homologação"
-			      				@if($sis->status == 'Homologação')
+			      				@if($sistema->status == 'Homologação')
 			      				selected
 			      				@endif
 			      				>Homologação</option>
 			      				<option value="Treinamento"
-			      				@if($sis->status == 'Treinamento')
+			      				@if($sistema->status == 'Treinamento')
 			      				selected
 			      				@endif
 			      				>Treinamento</option>
 			      				<option value="Produção"
-			      				@if($sis->status == 'Produção')
+			      				@if($sistema->status == 'Produção')
 			      				selected
 			      				@endif
 			      				>Produção</option>
 			      				<option value="Desuso"
-			      				@if($sis->status == 'Desuso')
+			      				@if($sistema->status == 'Desuso')
 			      				selected
 			      				@endif
 			      				>Desuso</option>
@@ -140,7 +139,7 @@
 			      				<option value="">--Selecione--</option>
 			      				@foreach($orgaos as $org)
 			      				<option value="{{$org->id}}" 			      				
-			      				@if($org->id == $sis->id_orgao)
+			      				@if($org->id == $sistema->id_orgao)
 			      				selected
 			      				@endif			      				
 			      				>{{$org->no_sigla}} - {{$org->no_orgao}}</option>
@@ -167,7 +166,7 @@
 			      			<span class="input-group-addon">Banco Dados:</span>
 			      			<select class="form-control" name="id_banco" id="slc_banco" title="Banco de Dados utilizado" >     @foreach($bancos as $b)
 			      				<option value="{{$b->id_banco}}"
-			      				@if($b->id_banco == $sis->id_banco)
+			      				@if($b->id_banco == $sistema->id_banco)
 			      				selected
 			      				@endif
 			      				>SCHEMA : {{$b->schema_banco}} / AMB.: {{$b->ambiente_banco}}</option>
@@ -182,7 +181,7 @@
 			      			<select class="form-control" name="id_amb" id="slc_ambSis" title="Ambientes do sistema">
 			      				@foreach($ambientes as $amb)
 			      				<option value="{{$amb->id}}"
-			      				@if($amb->id == $sis->id_amb)
+			      				@if($amb->id == $sistema->id_amb)
 			      				selected
 			      				@endif
 			      				> {{$amb->desc_amb}}</option>
@@ -191,10 +190,6 @@
 			      		</div>
 					</div>
 				</div>
-	      		
-
-	      	@endforeach
-	      	<!-- fim foreach sistema -->
 
 	      	<div class="row">
 					<div class="col-xs-12 col-md-6">

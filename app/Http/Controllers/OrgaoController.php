@@ -21,20 +21,17 @@ class OrgaoController extends Controller
         $count = Orgao::where('no_orgao', $request->no_orgao)->count();
 
         if ($count == 0) {
-            $insere = Orgao::insert($dados);
-            if ($insere) {
-                \Session::flash('retorno', ['tipo' => 'success', 'msg' => 'Registro inserido com sucesso!']);
+            $orgao = new Orgao();
+            $orgao->fill($dados)->save();
 
-                return redirect()->back();
-            } else {
-                \Session::flash('retorno', ['tipo' => 'warning', 'msg' => 'Não foi possível inserir registro!']);
-
-                return redirect()->back();
-            }
+            return redirect()->back()->
+            with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro efetuado com sucesso.']);
         } else {
             \Session::flash('retorno', ['tipo' => 'warning', 'msg' => 'Já existe órgão de mesmo nome!']);
 
-            return redirect()->back();
+            return redirect()->back()->
+            with('retorno', ['tipo' => 'warning', 'msg' => 'Já existe órgão de mesmo nome!'])->
+            withInput();
         }
     }
 
@@ -42,7 +39,7 @@ class OrgaoController extends Controller
 
     public function detalhar($id)
     {
-        $orgao = Orgao::where('id', $id)->get();
+        $orgao = Orgao::findOrfail($id);
 
         return view('orgao/orgao', compact('orgao'));
     }
@@ -55,7 +52,7 @@ class OrgaoController extends Controller
 
     public function altera($id)
     {
-        $orgao = Orgao::where('id', $id)->get();
+        $orgao = Orgao::findOrfail($id);
 
         return view('orgao/altera_orgao', compact('orgao'));
     }
@@ -63,31 +60,19 @@ class OrgaoController extends Controller
     public function atualizar(Request $request, $id)
     {
         $dados = $request->except('_token');
-        $atualizar = Orgao::where('id', $id)->update($dados);
+        
+        $orgao = new Orgao();
+        $orgao->findOrfail($id)->update($dados);
 
-        if ($atualizar) {
-            \Session::flash('retorno', ['tipo' => 'success', 'msg' => 'Cadastro atualizado com sucesso!']);
-
-            return redirect()->route('orgaos');
-        } else {
-            \Session::flash('retorno', ['tipo' => 'warning', 'msg' => 'Cadastro não alterado!']);
-
-            return redirect()->route('orgaos');
-        }
+        return redirect()->route('orgaos')->
+        with('retorno', ['tipo'=>'success', 'msg'=>'Registro alterado com sucesso']);
     }
 
     public function apagar($id)
     {
-        $delete = Orgao::find($id)->delete();
+        $delete = Orgao::findOrfail($id)->delete();
 
-        if ($delete) {
-            \Session::flash('retorno', ['tipo' => 'success', 'msg' => 'Registro apagado com sucesso.']);
-
-            return redirect()->back();
-        } else {
-            \Session::flash('retorno', ['tipo' => 'warning', 'msg' => 'Registro não apagado.']);
-
-            return redirect()->back();
-        }
+        return redirect()->back()->
+        with('retorno', ['tipo' => 'success', 'msg' => 'Registro apagado com sucesso.']);
     }
 }

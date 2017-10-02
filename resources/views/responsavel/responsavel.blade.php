@@ -15,20 +15,20 @@
   <!-- tabela -->
   <table class="table table-striped table-bordered table-hover">
     <tr>
-      <td><b>Órgão:</b> {{$orgao[0]->no_orgao}}</td>
-      <td><b>Unidade:</b> {{$unidade[0]->no_unidade}}</td>
+      <td><b>Órgão:</b> {{$orgao->no_orgao}}</td>
+      <td><b>Unidade:</b> {{$unidade->no_unidade}}</td>
     </tr>
     <tr>
-      <td colspan="2"><b>Nome:</b> {{$responsavel[0]->no_responsavel}}</td>
+      <td colspan="2"><b>Nome:</b> {{$responsavel->no_responsavel}}</td>
     </tr>
     <tr>
-      <td><b>Telefone:</b> {{$responsavel[0]->nu_telefone}}</td>
-      <td><b>Celular:</b> {{$responsavel[0]->nu_celular}}</td>
+      <td><b>Telefone:</b> {{$responsavel->nu_telefone}}</td>
+      <td><b>Celular:</b> {{$responsavel->nu_celular}}</td>
     </tr>
     <tr>
-      <td><b>E-mail:</b> {{$responsavel[0]->no_email}}</td>
+      <td><b>E-mail:</b> {{$responsavel->no_email}}</td>
       <td><b>Status:</b>
-        @if($responsavel[0]->status == 1)
+        @if($responsavel->status == 1)
         Ativo
         @else
         Inativo
@@ -36,10 +36,10 @@
       </td>
     </tr>
     <tr>
-      <td><b>Data Cadastro: </b> {{$responsavel[0]->dt_cadastro}}</td>
+      <td><b>Data Cadastro: </b> {{$responsavel->dt_cadastro}}</td>
       <td><b>Data Atulização:</b>
-        @if($responsavel[0]->dt_atualizacao)
-        {{$responsavel[0]->dt_atualizacao}}
+        @if($responsavel->dt_atualizacao)
+        {{$responsavel->dt_atualizacao}}
         @else
         Nunca Atualizado.
         @endif
@@ -47,8 +47,8 @@
     </tr>
     <tr>
       <td colspan="2"><b>Observações:</b>
-        @if($responsavel[0]->ds_observacao)
-        {{$responsavel[0]->ds_observacao}}
+        @if($responsavel->ds_observacao)
+        {{$responsavel->ds_observacao}}
         @else
         Sem observações.
         @endif

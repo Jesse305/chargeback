@@ -17,23 +17,23 @@
 			<table class="table table-bordered table-striped table-hover">
 				<tr>
 					<td><b>Orgão:</b></td>
-					<td> {{$orgao[0]->no_sigla}} - {{$orgao[0]->no_orgao}}</td>
+					<td> {{$orgao->no_sigla}} - {{$orgao->no_orgao}}</td>
 				</tr>
 				<tr>
-					<td class="col-xs-2"><b>Sigla:</b> {{$unidade[0]->no_sigla}}</td>
-					<td class="col-xs-10"><b>Unidade:</b> {{$unidade[0]->no_unidade}}</td>
+					<td class="col-xs-2"><b>Sigla:</b> {{$unidade->no_sigla}}</td>
+					<td class="col-xs-10"><b>Unidade:</b> {{$unidade->no_unidade}}</td>
 				</tr>
 				<tr>
 					<td><b>Endereço:</b></td>
-					<td>{{$unidade[0]->no_endereco}}</td>
+					<td>{{$unidade->no_endereco}}</td>
 				</tr>
 				<tr>
-					<td><b>CEP:</b> {{$unidade[0]->nu_cep}} </td>
-					<td><b>Cidade:</b> {{$cidade[0]->no_cidade}}</td>
+					<td><b>CEP:</b> {{$unidade->nu_cep}} </td>
+					<td><b>Cidade:</b> {{$cidade->no_cidade}}</td>
 				</tr>
 				<tr>
 					<td><b>Status:</b>
-						@if($unidade[0]->status == 1)
+						@if($unidade->status == 1)
 						Ativo
 						@else
 						Inativo
@@ -41,15 +41,15 @@
 					</td>
 					<td>
 						<b>Data Cadastro:</b>
-						@if($unidade[0]->dt_cadastro)
-						{{$unidade[0]->dt_cadastro}}
+						@if($unidade->dt_cadastro)
+						{{$unidade->dt_cadastro}}
 						@else
 						Informação indisponível.
 						@endif
 						&nbsp;
 						<b>Data Atualização:</b>
-						@if($unidade[0]->dt_atualizacao)
-						{{$unidade[0]->dt_atualizacao}}
+						@if($unidade->dt_atualizacao)
+						{{$unidade->dt_atualizacao}}
 						@else
 						Informação indisponível.
 						@endif

@@ -15,44 +15,43 @@
 	<div class="row">		
 		<div class="col-xs-12">
 			<table class="table table-striped table-bordered table-hover" id="tab_resumo">
-				@foreach($orgao as $org)
+				
 				<tr>
-					<td><b>Sigla: </b>{{$org->no_sigla}}</td>
-					<td><b>Nome: </b>{{$org->no_orgao}}</td>
+					<td><b>Sigla: </b>{{$orgao->no_sigla}}</td>
+					<td><b>Nome: </b>{{$orgao->no_orgao}}</td>
 				</tr>
 				<tr>
 					<td><b>Tipo Orgão: </b>
-						@if($org->tp_orgao == 0)
+						@if($orgao->tp_orgao == 0)
 						Adiministração Direta
-						@elseif($org->tp_orgao == 1)
+						@elseif($orgao->tp_orgao == 1)
 						Administração Indireta
 						@endif
 					</td>
 					<td><b>Status:</b>
-						@if($org->status == 0)
+						@if($orgao->status == 0)
 						Inativo
-						@elseif($org->status == 1)
+						@elseif($orgao->status == 1)
 						Ativo
 						@endif
 					</td>
 				</tr>
 				<tr>
 					<td><b>Data/Hora Cadastro:</b>
-						@if($org->dt_cadastro)
-						{{$org->dt_cadastro}}
+						@if($orgao->dt_cadastro)
+						{{$orgao->dt_cadastro}}
 						@else
 						Informação não disponível.
 						@endif
 					</td>
 					<td><b>Data/Hora Atualização:</b>
-						@if($org->dt_atualizacao)
-						{{$org->dt_atualizacao}}
+						@if($orgao->dt_atualizacao)
+						{{$orgao->dt_atualizacao}}
 						@else
 						Informação não disponível.
 						@endif
 					</td>
-				</tr>
-				@endforeach		
+				</tr>		
 			</table>
 		</div>
 	</div>

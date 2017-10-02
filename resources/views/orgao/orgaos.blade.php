@@ -48,21 +48,25 @@
       		  <div class="input-group">
 			    <span class="input-group-addon">Nome:</span>
 			    <input id="no_orgao" type="text" class="form-control" name="no_orgao" placeholder="Nome do Orgão"
-			    required maxlength="100">
+			    required maxlength="100" value="{{old('no_orgao')}}">
 			  </div>
 
 			  <div class="input-group">	
 		    	<span class="input-group-addon">Sigla:</span>
 		    	<input id="no_sigla" type="text" class="form-control" name="no_sigla" placeholder="Sigla do Orgão"
-		    	required maxlength="15" onkeyup="maiuscula(this);">			    
+		    	required maxlength="15" onkeyup="maiuscula(this);" value="{{old('no_sigla')}}" >			    
 			  </div>
 
 			  <div class="input-group">
 			  	<span class="input-group-addon">Tipo:</span>
 			  	<select class="form-control" name="tp_orgao" id="tp_orgao">
 			  		<option value="">--Selecione--</option>
-			  		<option value="0">Administração Direta</option>
-			  		<option value="1">Administração Indireta</option>
+			  		<option value="0"
+			  		{{old('tp_orgao') == "0" ? "selected" : ""}} 
+			  		>Administração Direta</option>
+			  		<option value="1"
+			  		{{old('tp_orgao') == "1" ? "selected" : ""}} 
+			  		>Administração Indireta</option>
 			  	</select>
 			  </div>
 
@@ -70,8 +74,12 @@
 			  	<span class="input-group-addon">Status:</span>
 			  	<select class="form-control" name="status" id="status">
 			  		<option value="">--Selecione--</option>
-			  		<option value="1">Ativo</option>
-			  		<option value="0">Inativo</option>
+			  		<option value="1"
+			  		{{old('status') == "1" ? "selected" : "" }}
+			  		>Ativo</option>
+			  		<option value="0"
+			  		{{old('status') == "0" ? "selected" : "" }}
+			  		>Inativo</option>
 			  	</select>
 			  </div>
 
