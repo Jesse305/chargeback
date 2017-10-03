@@ -20,15 +20,15 @@
     </tr>
     <tr>
       <td><b>Órgão:</b>
-        @if(sizeof($orgao) > 0)
-        {{$orgao[0]->no_orgao}}
+        @if($orgao)
+        {{$orgao->no_orgao}}
         @else
         Informação não cadastrada
         @endif
       </td>
       <td><b>Unidade:</b>
-        @if(sizeof($unidade))
-        {{$unidade[0]->no_unidade}}
+        @if($unidade)
+        {{$unidade->no_unidade}}
         @else
         Informação não cadastrada.
         @endif
@@ -59,32 +59,35 @@
       <td colspan="2"><h4><font color="#000080">Dados Site</font></h4></td>
     </tr>
     <tr>
-      <td><b>Nome:</b> {{$site[0]->no_site}}</td>
-      <td><b>End. Web:</b> <a href="http://{{$site[0]->ds_website}}">{{$site[0]->ds_website}}</a></td>
+      <td><b>Nome:</b> {{$site->no_site}}</td>
+      <td><b>End. Web:</b> <a href="http://{{$site->ds_website}}">{{$site->ds_website}}</a></td>
     </tr>
     <tr>
-      <td><b>Caminho Servidor:</b> {{$site[0]->ip_html}}</td>
+      <td><b>Caminho Servidor:</b> {{$site->ip_html}}</td>
       <td><b>Tipo Site:</b>
-        @if($site[0]->tp_portal == 'RA')
+        @if($site->tp_portal == 'RA')
         Região Administrativa.
-        @else
-        {{$site[0]->tp_portal}}
+        {{$site->tp_portal}}
         @endif
       </td>
     </tr>
     <tr>
-      <td><b>End. Publicador:</b> <a href="http://{{$site[0]->no_dns}}">{{$site[0]->no_dns}}</a></td>
-      <td><b>Token de acesso?</b> {{$site[0]->st_token}} </td>
+      <td><b>End. Publicador:</b> <a href="http://{{$site->no_dns}}">{{$site->no_dns}}</a></td>
+      <td><b>Token de acesso?</b> {{$site->st_token}} </td>
+    </tr>
+    <tr>
+      <td><b>Data Cadastro:</b> {{$site->dt_cadastro}}</td>
+      <td><b>Data Atualização:</b> {{$site->dt_atualizacao}}</td>
     </tr>
     <tr>
       <td colspan="2"><h4><font color="#000080">Dados Google Analytics</font></h4></td>
     </tr>
     <tr>
-      <td><b>Usuário:</b> {{$site[0]->usuario_analytics}} </td>
+      <td><b>Usuário:</b> {{$site->usuario_analytics}} </td>
       <td>
         <div class="input-group">
           <span class="input-group-addon">Senha:</span>
-          <input class="form-control senha" type="password" name="" value="{{$site[0]->senha_analytics}}">
+          <input class="form-control senha" type="password" name="" value="{{$site->senha_analytics}}">
           <span class="input-group-addon">
             <button class="btn btn-xs revela_senha"><i class="glyphicon glyphicon-eye-open" onclick="return false;"></i></button>
           </span>
@@ -92,21 +95,21 @@
       </td>
     </tr>
     <tr>
-      <td colspan="2"><b>Código</b> {{$site[0]->codigo_analytics}}</td>
+      <td colspan="2"><b>Código</b> {{$site->codigo_analytics}}</td>
     </tr>
     <tr>
       <td colspan="2"><b><h4><font color="#000080">Dados Banco de Dados</font></h4></b></td>
     </tr>
     <tr>
-      <td><b>IP:</b> {{$site[0]->ip_banco}}</td>
-      <td><b>Schema:</b> {{$site[0]->esquema_banco}}</td>
+      <td><b>IP:</b> {{$site->ip_banco}}</td>
+      <td><b>Schema:</b> {{$site->esquema_banco}}</td>
     </tr>
     <tr>
-      <td><b>Usuário:</b> {{$site[0]->usuario_banco}}</td>
+      <td><b>Usuário:</b> {{$site->usuario_banco}}</td>
       <td>
         <div class="input-group">
           <span class="input-group-addon">Senha:</span>
-          <input class="form-control senha" type="password" name="" value="{{$site[0]->pwd_banco}}">
+          <input class="form-control senha" type="password" name="" value="{{$site->pwd_banco}}">
           <span class="input-group-addon">
             <button class="btn btn-xs revela_senha"><i class="glyphicon glyphicon-eye-open"></i></button>
           </span>
@@ -114,7 +117,7 @@
       </td>
     </tr>
     <tr>
-      <td colspan="2"><b>Prefixo da Tabela:</b> {{$site[0]->prefixo_tabela}}</td>
+      <td colspan="2"><b>Prefixo da Tabela:</b> {{$site->prefixo_tabela}}</td>
     </tr>
   </table>
   <!-- fim tabela -->

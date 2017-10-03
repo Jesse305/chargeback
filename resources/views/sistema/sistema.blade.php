@@ -14,39 +14,36 @@
 	<!-- tabela -->
 
 	<table class="table table-striped table-bordered table-hover" style="font-size: 13px;">
-		@foreach($sistema as $sis)
+		
 		<h5><b>Sistema</b></h5>
 		<tr>
-			<td colspan="2"><b>Nome:</b>  {{$sis->no_sistema}}</td>
-			<td><b>Sigla:</b>  {{$sis->no_sigla}}</td>
+			<td colspan="2"><b>Nome:</b>  {{$sistema->no_sistema}}</td>
+			<td><b>Sigla:</b>  {{$sistema->no_sigla}}</td>
 		</tr>
 		<tr>
-			<td><b>Linguagem:</b>  {{$sis->desenvolvimento}}</td>
-			<td><b>Acesso:</b>  {{$sis->tp_acesso}}</td>
-			<td><b>Status:</b>  {{$sis->status}}</td>
+			<td><b>Linguagem:</b>  {{$sistema->desenvolvimento}}</td>
+			<td><b>Acesso:</b>  {{$sistema->tp_acesso}}</td>
+			<td><b>Status:</b>  {{$sistema->status}}</td>
 		</tr>
 		<tr>
-			<td><b>Data Cadastro: </b> {{$sis->dt_cadastro}}</td>
-			<td><b>Data Atualização: </b> {{$sis->dt_atualizacao}}</td>
+			<td><b>Data Cadastro: </b> {{$sistema->dt_cadastro}}</td>
+			<td><b>Data Atualização: </b> {{$sistema->dt_atualizacao}}</td>
 		</tr>
-		@endforeach
+	
 	</table>
 	<!-- fim sistema -->
 
 	<h5><b>Solicitante</b></h5>
 	<table class="table table-striped table-bordered table-hover" style="font-size: 13px;">
-		@foreach($orgao as $org)
+		
 		<tr>
 			<td><b>Orgão:</b></td>
-			<td>{{$org->no_orgao}}</td>
+			<td>{{$orgao->no_orgao}}</td>
 		</tr>
-		@endforeach
-		@foreach($unidade as $unid)
 		<tr>
 			<td><b>Unidade:</b></td>
-			<td>{{$unid->no_unidade}}</td>
-		</tr>
-		@endforeach		
+			<td>{{$unidade->no_unidade}}</td>
+		</tr>		
 	</table>
 
 	<!-- fim solicitante -->
@@ -72,40 +69,36 @@
 
 	<h5><b>Banco de Dados</b></h5>
 	<table class="table table-striped table-bordered table-hover" style="font-size: 13px;">
-		@foreach($banco as $b)
 		<tr>
-			<td colspan="2"><b>Schema:</b>  {{$b->schema_banco}} </td>
-			<td><b>IP:</b>  {{$b->ip_banco}} </td>
+			<td colspan="2"><b>Schema:</b>  {{$banco->chema_banco}} </td>
+			<td><b>IP:</b>  {{$banco->ip_banco}} </td>
 		</tr>
 		<tr>
-			<td><b>Ambiente:</b>  {{$b->ambiente_banco}} </td>
-			<td><b>Tecnologia:</b>  {{$b->tecnologia_banco}} </td>
+			<td><b>Ambiente:</b>  {{$banco->ambiente_banco}} </td>
+			<td><b>Tecnologia:</b>  {{$banco->tecnologia_banco}} </td>
 			<td class="col-xs-2"><b>Detalhes:</b>
 				<div class="pull-right">
-					<a href={{route('banco.detalhar', $b->id_banco)}} class="btn btn-info btn-sm" title="visualizar detalhes">
+					<a href={{route('banco.detalhar', $banco->id_banco)}} class="btn btn-info btn-sm" title="visualizar detalhes">
 						<i class="glyphicon glyphicon-eye-open"></i>
 					</a>
 				</div>
 			</td>
 		</tr>
-		@endforeach
 	</table>
 	<!-- fim banco de dados -->
 
 	<h5><b>Ambientes</b></h5>
-	<table class="table table-striped table-bordered table-hover" style="font-size: 13px;">
-		@foreach($ambientes as $amb)
+	<table class="table table-striped table-bordered table-hover" style="font-size: 13px;">		
 		<tr>
-			<td><b>Link:</b> <a href="{{$amb->link_prod}}">{{$amb->link_prod}}</a></td>
+			<td><b>Link:</b> <a href="{{$ambientes->link_prod}}">{{$ambientes->link_prod}}</a></td>
 			<td class="col-xs-2"><b>Detalhes:</b>
 				<div class="pull-right">
-					<a href={{route('ambiente.detalhar', $amb->id)}} class="btn btn-info btn-sm" title="visualizar detalhes">
+					<a href={{route('ambiente.detalhar', $ambientes->id)}} class="btn btn-info btn-sm" title="visualizar detalhes">
 						<i class="glyphicon glyphicon-eye-open"></i>
 					</a>
 				</div>
 			</td>
 		</tr>
-		@endforeach
 	</table>
 	<!-- fim ambiente -->
 

@@ -23,20 +23,16 @@ class SiteController extends Controller
         $dados = $request->except('_token');
         $count = Site::where('no_site', $request->no_site)->count();
         if ($count == 0) {
-            $insert = Site::insert($dados);
-            if ($insert) {
-                \Session::flash('retorno', ['tipo' => 'success', 'msg' => 'Cadastro efetuado com sucesso']);
+            $site = new Site();
+            $site->fill($dados)->save();
 
-                return redirect()->back();
-            } else {
-                \Session::flash('retorno', ['tipo' => 'warning', 'msg' => 'Não foi possível efetuar cadastro.']);
-
-                return redirect()->back();
-            }
+            return redirect()->back()->
+            with('retorno', ['tipo'=>'success', 'msg'=>'Cadastro efetuado com sucesso.']);
         } else {
-            \Session::flash('retorno', ['tipo' => 'warning', 'msg' => 'Já existe um site de mesmo nome.']);
 
-            return redirect()->back();
+            return redirect()->back()->
+            with('retorno', ['tipo' => 'warning', 'msg' => 'Já existe um site de mesmo nome.'])->
+            withInput();
         }
     }
 
@@ -44,11 +40,11 @@ class SiteController extends Controller
 
     public function detalhar($id)
     {
-        $site = Site::where('id', $id)->get();
-        $orgao = Orgao::where('id', $site[0]->orgao_id)->get();
-        $unidade = Unidade::where('id', $site[0]->unidade_id)->get();
-        if (sizeof($unidade) > 0) {
-            $responsaveis = Responsavel::where('unidade_id', $unidade[0]->id)->get();
+        $site = Site::findOrFail($id);
+        $orgao = Orgao::where('id', $site->orgao_id)->first();
+        $unidade = Unidade::where('id', $site->unidade_id)->first();
+        if ($unidade) {
+            $responsaveis = Responsavel::where('unidade_id', $unidade->id)->get();
         }
 
         return view('site/site', compact('site', 'orgao', 'unidade', 'responsaveis'));
@@ -58,9 +54,9 @@ class SiteController extends Controller
 
     public function altera($id)
     {
-        $site = Site::where('id', $id)->get();
+        $site = Site::findOrFail($id);
         $listaOrgaos = Orgao::orderBy('no_orgao')->get();
-        $unidade = Unidade::where('id', $site[0]->unidade_id)->get();
+        $unidade = Unidade::where('id', $site->unidade_id)->first();
 
         return view('site/altera_site', compact('site', 'listaOrgaos', 'unidade'));
     }
@@ -68,29 +64,19 @@ class SiteController extends Controller
     public function atualizar($id, Request $request)
     {
         $dados = $request->except('_token');
-        $update = Site::where('id', $id)->update($dados);
-        if ($update) {
-            \Session::flash('retorno', ['tipo' => 'success', 'msg' => 'Cadastro alterado com sucesso.']);
-
-            return redirect()->route('sites');
-        } else {
-            \Session::flash('retorno', ['tipo' => 'warning', 'msg' => 'Cadastro não foi alterado.']);
-
-            return redirect()->route('sites');
-        }
+        $site = new Site();
+        $site->findOrFail($id)->update($dados);
+        
+        return redirect()->route('sites')->
+        with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro alterado com sucesso.']);
     }
 
     public function apagar($id)
     {
-        $delete = Site::where('id', $id)->delete();
-        if ($delete) {
-            \Session::flash('retorno', ['tipo' => 'success', 'msg' => 'Cadastro excluído com sucesso.']);
+        Site::findOrFail($id)->delete();
 
-            return redirect()->back();
-        } else {
-            \Session::flash('retorno', ['tipo' => 'warning', 'msg' => 'Cadastro não excluído.']);
+        return redirect()->back()->
+        with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro excluído com sucesso.']);
 
-            return redirect()->back();
-        }
     }
 }

@@ -55,32 +55,39 @@
           </div>
           <div class="input-group">
             <span class="input-group-addon">Nome:</span>
-            <input class="form-control" type="text" name="no_site" id="no_site" maxlength="100">
+            <input class="form-control" type="text" name="no_site" id="no_site" maxlength="100"
+            value="{{old('no_site')}}" >
           </div>
           <div class="input-group">
             <span class="input-group-addon">Endereço do Site:</span>
-            <input class="form-control" type="text" name="ds_website" id="ds_website" maxlength="45">
+            <input class="form-control" type="text" name="ds_website" id="ds_website" maxlength="45"
+            value="{{old('ds_website')}}">
           </div>
           <div class="input-group">
             <span class="input-group-addon">Caminho do Servidor:</span>
-            <input class="form-control" type="text" name="ip_html" id="ip_html" maxlength="50">
+            <input class="form-control" type="text" name="ip_html" id="ip_html" maxlength="50"
+            value="{{old('ip_html')}}">
           </div>
           <label for="tp_portal">Tipo de Site:</label>
           <label class="radio-inline"> <input type="radio" name="tp_portal" id="tp_portal" value="RA" checked> Região Admistrativa </label>
-          <label class="radio-inline"> <input type="radio" name="tp_portal" id="tp_hotsite" value="Secretaria"> Secretaria </label>
-          <label class="radio-inline"> <input type="radio" name="tp_portal" id="tp_outros" value="Outros"> Outros </label>
+          <label class="radio-inline"> <input type="radio" name="tp_portal" id="tp_hotsite" value="Secretaria"
+          @if(old('tp_portal') == 'Secretaria') checked @endif > Secretaria </label>
+          <label class="radio-inline"> <input type="radio" name="tp_portal" id="tp_outros" value="Outros"
+          @if(old('tp_portal') == 'Outros') checked @endif > Outros </label>
           <div class="input-group">
             <span class="input-group-addon">End. do Publicador:</span>
-            <input class="form-control" type="text" name="no_dns" id="no_dns" maxlength="100">
+            <input class="form-control" type="text" name="no_dns" id="no_dns" maxlength="100" value="{{old('no_dns')}}">
           </div>
           <label for="">Necessita Token de Acesso?</label>
           <label class="radio-inline"><input type="radio" name="st_token" id="token_sim" value="SIM" checked="checked">SIM</label>
-          <label class="radio-inline"><input type="radio" name="st_token" id="token_nao" value="NÃO">NÃO</label>
+          <label class="radio-inline"><input type="radio" name="st_token" id="token_nao" value="NÃO"
+          @if(old('st_token') == 'NÃO') checked @endif >NÃO</label>
 
           <h5><b>Dados Google Analytics</b></h5>
           <div class="input-group">
             <span class="input-group-addon">Conta:</span>
-            <input class="form-control" type="text" name="usuario_analytics" id="usuario_analytics" maxlength="100">
+            <input class="form-control" type="text" name="usuario_analytics" id="usuario_analytics" maxlength="100" 
+            value="{{old('usuario_analytics')}}">
           </div>
           <div class="input-group">
             <span class="input-group-addon">Senha:</span>
@@ -93,16 +100,19 @@
           </div>
           <div class="input-group">
             <span class="input-group-addon">Código:</span>
-            <input class="form-control" type="text" name="codigo_analytics" id="codigo_analytics" maxlength="45">
+            <input class="form-control" type="text" name="codigo_analytics" id="codigo_analytics" maxlength="45"
+            value="{{old('codigo_analytics')}}">
           </div>
           <h5><b>Dados Banco de Dados</b></h5>
           <div class="input-group">
             <span class="input-group-addon">IP:</span>
-            <input class="form-control" type="text" name="ip_banco" id="ip_banco" maxlength="15">
+            <input class="form-control" type="text" name="ip_banco" id="ip_banco" maxlength="15"
+            value="{{old('ip_banco')}}">
           </div>
           <div class="input-group">
             <span class="input-group-addon">Usuário:</span>
-            <input class="form-control" type="text" name="usuario_banco" id="usuario_banco" maxlength="45">
+            <input class="form-control" type="text" name="usuario_banco" id="usuario_banco" maxlength="45"
+            value="{{old('usuario_banco')}}">
           </div>
           <div class="input-group">
             <span class="input-group-addon">Senha:</span>
@@ -115,13 +125,14 @@
           </div>
           <div class="input-group">
             <span class="input-group-addon">Schema:</span>
-            <input class="form-control" type="text" name="esquema_banco" id="esquema_banco" maxlength="45">
+            <input class="form-control" type="text" name="esquema_banco" id="esquema_banco" maxlength="45"
+            value="{{old('esquema_banco')}}">
           </div>
           <div class="input-group">
             <span class="input-group-addon">Prefixo Tabela:</span>
-            <input class="form-control" type="text" name="prefixo_tabela" id="prefixo_tabela" maxlength="45">
+            <input class="form-control" type="text" name="prefixo_tabela" id="prefixo_tabela" maxlength="45"
+            value="{{old('prefixo_tabela')}}">
           </div>
-					<input type="hidden" name="dt_cadastro" value="{{date('Y-m-d H:i:s')}}">
       	</form>
       </div>
       <div class="modal-footer">

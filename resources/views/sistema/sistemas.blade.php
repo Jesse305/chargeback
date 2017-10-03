@@ -52,13 +52,13 @@
 		      		<div class="input-group">
 		      			<span class="input-group-addon">Nome:</span>
 		      			<input class="form-control" type="text" name="no_sistema" id="nome" required maxlength="200"
-		      			placeholder="nome do sistema" onkeyup="maiuscula(this);">
+		      			placeholder="nome do sistema" onkeyup="maiuscula(this);" value="{{old('no_sistema')}}">
 		      		</div>
 
 		      		<div class="input-group">
 		      			<span class="input-group-addon">Sigla:</span>
 		      			<input class="form-control" type="text" name="no_sigla" id="sigla"  maxlength="20"
-		      			placeholder="sigla do sistema" onkeyup="maiuscula(this);">
+		      			placeholder="sigla do sistema" onkeyup="maiuscula(this);" value="{{old('no_sigla')}}">
 		      		</div>
 
 		      		<div class="dropdown" style="margin-bottom: 5px;">
@@ -103,7 +103,9 @@
 		      			<select class="form-control" name="id_banco" id="slc_banco" title="Banco de Dados utilizado" >
 		      				<option value="">--Selecione--</option>
 		      				@foreach($listaBancos as $bancos)
-		      				<option value={{$bancos->id_banco}}>SCHEMA: {{$bancos->schema_banco}} / AMBIENTE: {{$bancos->ambiente_banco}}</option>
+		      				<option value={{$bancos->id_banco}}
+		      				@if(old('id_banco') == $bancos->id_banco) selected @endif
+		      				>SCHEMA: {{$bancos->schema_banco}} / AMBIENTE: {{$bancos->ambiente_banco}}</option>
 		      				@endforeach	      				
 		      			</select>
 		      		</div>
@@ -112,7 +114,9 @@
 		      			<select class="form-control" name="id_amb" id="slc_ambSis" title="Ambientes do sistema">
 		      				<option value="">--Selecione--</option>
 		      				@foreach($listaAmbientes as $ambientes)
-		      				<option value={{$ambientes->id}}>{{$ambientes->desc_amb}}</option>
+		      				<option value={{$ambientes->id}}
+		      				@if(old('id_amb') == $ambientes->id) selected @endif
+		      				>{{$ambientes->desc_amb}}</option>
 		      				@endforeach
 		      			</select>
 		      		</div>
@@ -122,10 +126,14 @@
 		      			<span class="input-group-addon">Desenvolvimento:</span>
 		      			<select class="form-control" name="desenvolvimento" id="slc_amb" title="Ambiente programação">
 		      				<option value="">--Selecione--</option>
-		      				<option value="Java">Java</option>
-		      				<option value="PHP">PHP</option>
-		      				<option value="Mobile">Mobile</option>
-		      				<option value="Cobol">Cobol</option>
+		      				<option value="Java"
+		      				@if(old('desenvolvimento') == 'Java') selected @endif >Java</option>
+		      				<option value="PHP"
+		      				@if(old('desenvolvimento') == 'PHP') selected @endif>PHP</option>
+		      				<option value="Mobile"
+		      				@if(old('desenvolvimento') == 'Mobile') selected @endif>Mobile</option>
+		      				<option value="Cobol"
+		      				@if(old('desenvolvimento') == 'Cobol') selected @endif>Cobol</option>
 		      			</select>
 		      		</div>
 
@@ -133,8 +141,10 @@
 		      			<span class="input-group-addon">Acesso:</span>
 		      			<select class="form-control" name="tp_acesso" id="slc_acesso" title="Tipo de acesso">
 		      				<option value="">--Selecione--</option>
-		      				<option value="Externo">Externo</option>
-		      				<option value="Interno">Interno</option>
+		      				<option value="Externo"
+		      				@if(old('tp_acesso') == 'Externo') selected @endif >Externo</option>
+		      				<option value="Interno"
+		      				@if(old('tp_acesso') == 'Interno') selected @endif>Interno</option>
 		      			</select>
 		      		</div>
 
@@ -142,18 +152,23 @@
 		      			<span class="input-group-addon">Status:</span>
 		      			<select class="form-control" name="status" id="slc_status" title="">
 		      				<option value="">--Selecione--</option>
-		      				<option value="Desenvolvimento">Desenvolvimento</option>
-		      				<option value="Homologação">Homologação</option>
-		      				<option value="Treinamento">Treinamento</option>
-		      				<option value="Produção">Produção</option>
-		      				<option value="Desuso">Desuso</option>
+		      				<option value="Desenvolvimento"
+		      				@if(old('status') == 'Desenvolvimento') selected @endif >Desenvolvimento</option>
+		      				<option value="Homologação"
+		      				@if(old('status') == 'Homologação') selected @endif >Homologação</option>
+		      				<option value="Treinamento"
+		      				@if(old('status') == 'Treinamento') selected @endif >Treinamento</option>
+		      				<option value="Produção"
+		      				@if(old('status') == 'Produção') selected @endif >Produção</option>
+		      				<option value="Desuso"
+		      				@if(old('status') == 'Desuso') selected @endif >Desuso</option>
 		      			</select>
 		      		</div>
 
 		      	</form>
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-warning btn-sm" data-dismiss="modal">Cancelar</button>
+		        <button type="reset" class="btn btn-warning btn-sm" form="form_cad" id="btn_cancelar">Cancelar</button>
 		        <button type="submit" class="btn btn-success btn-sm btn_salvar" form="form_cad" id="btn_salvar">Salvar</button>
 		      </div>
 		    </div>

@@ -152,7 +152,7 @@
 						<div class="input-group" id="div_unidade">
 			      			<span class="input-group-addon">Unidade:</span>
 			      			<select class="form-control" name="id_unidade" id="slc_unidade" title="Unidade solicitante" >
-			      				<option value="{{$unidade[0]->id}}">{{$unidade[0]->no_unidade}}</option>
+			      				<option value="{{$unidade->id}}">{{$unidade->no_unidade}}</option>
 			      			</select>
 			      		</div>						
 					</div>

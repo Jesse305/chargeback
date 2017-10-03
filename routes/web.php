@@ -98,3 +98,6 @@ Route::get('item_config/detalha/{id}', 'ItemConfigController@detalhar')->name('i
 Route::get('item_config/altera/{id}', 'ItemConfigController@altera')->name('item_config.altera');
 Route::post('item_config/atualizar{id}', 'ItemConfigController@atualizar')->name('item_config.atualizar');
 Route::get('item_config/apagar/{id}', 'ItemConfigController@apagar')->name('item_config.apagar');
+
+//rotas Servidor VM
+Route::get('servidores_vm', 'ServidorVmController@listar')->name('servidores_vm');

@@ -34,36 +34,37 @@ class SistemaController extends Controller
         $count = Sistema::where('no_sistema', $request->no_sistema)->count();
 
         if ($count > 0) {
-            \Session::flash('retorno', ['tipo' => 'warning', 'msg' => 'Já existe Sistema de mesmo Nome!']);
 
-            return redirect()->back();
+            return redirect()->back()->
+            with('retorno', ['tipo' => 'warning', 'msg' => 'Já existe Sistema de mesmo Nome!'])->
+            withInput();
         } else {
-            $insert = Sistema::insert($dados);
-
+            $sistema = new Sistema();
+            $insert = $sistema->fill($dados)->save();
             if ($insert) {
-                $sis = Sistema::where('no_sistema', $request->no_sistema)->where('id_orgao', $request->id_orgao)->where('id_unidade', $request->id_unidade)->get();
+                // $sis = Sistema::where('no_sistema', $request->no_sistema)->where('id_orgao', $request->id_orgao)->where('id_unidade', $request->id_unidade)->get();
 
                 foreach ($request->devs as $devs) {
                     DB::table('sistemas_devs')->insert(
-                        ['id_sistema' => $sis[0]->id, 'id_dev' => $devs]
+                        ['id_sistema' => $sistema->id, 'id_dev' => $devs]
                     );
                 }
 
                 if ($request->frames) {
                     foreach ($request->frames as $frames) {
                         DB::table('sistemas_frameworks')->insert(
-                            ['id_sistema' => $sis[0]->id, 'id_framework' => $frames]
+                            ['id_sistema' => $sistema->id, 'id_framework' => $frames]
                         );
                     }
                 }
 
-                \Session::flash('retorno', ['tipo' => 'success', 'msg' => 'Cadastro inserido com sucesso!']);
-
-                return redirect()->back();
+                return redirect()->back()->
+                with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro inserido com sucesso!']);
             } else {
-                \Session::flash('retorno', ['tipo' => 'danger', 'msg' => 'Não foi possível inserir cadastro!']);
 
-                return redirect()->back();
+                return redirect()->back()->
+                with('retorno', ['tipo' => 'danger', 'msg' => 'Não foi possível inserir cadastro!'])->
+                withInput();
             }
         }
     }
@@ -72,18 +73,18 @@ class SistemaController extends Controller
 
     public function detalhar($id)
     {
-        $sistema = Sistema::where('id', $id)->get();
-        $orgao = Orgao::where('id', $sistema[0]->id_orgao)->get();
-        $unidade = Unidade::where('id', $sistema[0]->id_unidade)->get();
-        $responsaveis = Responsavel::where('orgao_id', $orgao[0]->id)->where('unidade_id', $unidade[0]->id)->get();
-        $banco = Banco::where('id_banco', $sistema[0]->id_banco)->get();
-        $ambientes = Ambiente::where('id', $sistema[0]->id_amb)->get();
+        $sistema = Sistema::findOrFail($id);
+        $orgao = Orgao::findOrFail($sistema->id_orgao);
+        $unidade = Unidade::findOrFail($sistema->id_unidade);
+        $responsaveis = Responsavel::where('orgao_id', $orgao->id)->where('unidade_id', $unidade->id)->get();
+        $banco = Banco::findOrFail($sistema->id_banco);
+        $ambientes = Ambiente::findOrFail($sistema->id_amb);
 
         $devs = DB::table('dev')->join('sistemas_devs', 'dev.id', '=', 'sistemas_devs.id_dev')->
-        where('sistemas_devs.id_sistema', $sistema[0]->id)->get();
+        where('sistemas_devs.id_sistema', $sistema->id)->get();
 
         $frames = DB::table('frameworks')->join('sistemas_frameworks', 'frameworks.id', '=', 'sistemas_frameworks.id_framework')->
-        where('sistemas_frameworks.id_sistema', $sistema[0]->id)->get();
+        where('sistemas_frameworks.id_sistema', $sistema->id)->get();
 
         return view('sistema/sistema',
          compact('sistema', 'orgao', 'unidade', 'responsaveis', 'banco', 'ambientes', 'devs', 'frames'));
@@ -95,7 +96,7 @@ class SistemaController extends Controller
     {
         $sistema = Sistema::findOrFail($id);
         $orgaos = Orgao::orderBy('no_orgao')->get();
-        $unidade = Unidade::where('id', $sistema->id_unidade)->get();
+        $unidade = Unidade::findOrFail($sistema->id_unidade);
         $bancos = Banco::orderBy('schema_banco')->get();
         $ambientes = Ambiente::orderBy('desc_amb')->get();
         $devs = Desenvolvedor::orderBy('no_dev')->get();

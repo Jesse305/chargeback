@@ -23,6 +23,15 @@
                 <div class="collapse navbar-collapse" id="myNavbar">
                   <ul class="nav navbar-nav">
                     <li class="active"><a href="#"><i class="glyphicon glyphicon-home"></i></a></li>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Servidores
+                        <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                          <li><a href={{ route('servidores_vm') }} >VMs</a></li>
+                        </ul>                      
+                    </li>
+
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">WEB
                         <span class="caret"></span></a>

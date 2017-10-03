@@ -34,7 +34,7 @@ $(document).ready(function(){
 			type: 'get',
 			dataType: 'json',
 			data: id_orgao,
-			url: '../unidade/json/'+id_orgao,
+			url: 'unidade/json/'+id_orgao,
 			success: function(dados){
 				var option = "<option value=''>--Selecione--</option>";
 				if(dados.length > 0){

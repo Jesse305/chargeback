@@ -22,10 +22,14 @@ $(document).ready(function(){
 
 	//click botao novo sistema
 	$('#btn_cad').click(function(){
-		$('#form_cad')[0].reset();
 		limpaAlerta($('#alerta_cad'));
+		$('#btn_salvar').attr('disabled', false);
 
 	});
+
+	$('#btn_cancelar').click(function(){
+		$('.modal').modal('hide');
+	})
 
 	//funções de alerta
 	function limpaAlerta(div_alerta){
@@ -112,7 +116,7 @@ $(document).ready(function(){
 			type: 'GET',
 			dataType: 'json',
 			data: '',
-			url: '../unidade/json/'+id_orgao,
+			url: 'unidade/json/'+id_orgao,
 			beforeSend: function(){
 
 			},
@@ -141,7 +145,7 @@ $(document).ready(function(){
 	$('#form_cad').on('submit', function(){	
 
 		if(valida()){
-			$('#btn_salvar').attr('disable', 'disable');
+			$('#btn_salvar').attr('disabled', true);
 			return true;
 		}else{
 			return false;
