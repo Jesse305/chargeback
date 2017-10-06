@@ -8,7 +8,7 @@
 			<div class="panel-heading"><h4>Servidores VM</h4></div>
 			<div class="panel-body">
 				<div class="text-right">
-					<a href="#" class="btn btn-success btn-sm">Novo Servidor VM</a>
+					<a href={{route('servidor_vm.form.insere')}} class="btn btn-success btn-sm">Novo Servidor VM</a>
 				</div>
 			</div>
 		</div>		
@@ -17,14 +17,14 @@
 
 	<!-- tabela -->
 	<div class="row">
-		<table class="table table-striped table-bordered table-hover" style="font-size: 12px;">
+		<table class="table table-striped table-bordered table-hover" id="tab_resumo" style="font-size: 12px;">
 			<thead>
 				<tr>
 					<td>Nome:</td>
 					<td>End. IP:</td>
 					<td>DNS:</td>
 					<td>Status:</td>
-					<td align="center" width="100">Ações</td>
+					<td align="center" width="150">Ações</td>
 				</tr>
 			</thead>
 			<tbody>
@@ -40,7 +40,11 @@
 						Inativo
 						@endif
 					</td>
-					<td align="center">Ações</td>
+					<td align="center">
+						<a href={{route('servidor_vm.detalhar', $svm->id)}} class="btn btn-info btn-sm"><i class="glyphicon glyphicon-eye-open" title="visualizar"></i></a>&nbsp;
+						<a href={{route('servidor_vm.altera', $svm->id)}} class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-edit" title="editar"></i></a>&nbsp;
+						<button class="btn btn-danger btn-sm" onclick="confirmaDeleta('#');" title="cuidado! apaga o registro definitivamente." disabled><i class="glyphicon glyphicon-remove"></i></button>
+					</td>
 				</tr>
 				@endforeach				
 			</tbody>
@@ -58,3 +62,6 @@
 	<!-- fim tabela -->
 </div>
 @endsection
+
+<script type="text/javascript" src={{asset('js/jquery.js')}}></script>
+<script type="text/javascript" src={{asset('js/serv_vm.js')}}></script>

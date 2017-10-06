@@ -52,6 +52,8 @@ Route::get('responsavel/detalha/{id}', 'ResponsavelController@detalha')->name('r
 Route::get('responsavel/altera/{id}', 'ResponsavelController@altera')->name('responsavel.altera');
 Route::post('responsavel/atualizar/{id}', 'ResponsavelController@atualizar')->name('responsavel.atualizar');
 Route::get('responsavel/apagar/{id}', 'ResponsavelController@apagar')->name('responsavel.apagar');
+//pelo id da unidade
+Route::get('responsaveis/json/{id}', 'ResponsavelController@respsByIdJson')->name('resps.json');
 
 //rotas banco
 Route::get('bancos', 'BancoController@listar')->name('bancos');
@@ -101,3 +103,7 @@ Route::get('item_config/apagar/{id}', 'ItemConfigController@apagar')->name('item
 
 //rotas Servidor VM
 Route::get('servidores_vm', 'ServidorVmController@listar')->name('servidores_vm');
+Route::get('servidor_vm/detalha/{id}', 'ServidorVmController@detalhar')->name('servidor_vm.detalhar');
+Route::get('servidor_vm/form/insere', 'ServidorVmController@viewInsere')->name('servidor_vm.form.insere');
+Route::post('servidor_vm/inserir', 'ServidorVmController@inserir')->name('servidor_vm.inserir');
+Route::get('servidor_vm/altera/{id}', 'ServidorVmController@altera')->name('servidor_vm.altera');

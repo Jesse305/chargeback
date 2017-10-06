@@ -9,6 +9,14 @@ use App\Unidade;
 
 class ResponsavelController extends Controller
 {
+
+    //pelo id da unidade
+    public function respsByIdJson($id)
+    {
+        $respByIdJson = Responsavel::where('unidade_id', $id)->get();
+        echo json_encode($respByIdJson, JSON_UNESCAPED_UNICODE);
+    }
+
     public function listar()
     {
         $responsaveis = Responsavel::orderBy('no_responsavel')->get();
