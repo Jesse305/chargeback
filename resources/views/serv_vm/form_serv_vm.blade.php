@@ -4,6 +4,19 @@
 	}
 </style>
 
+<!-- alertas validação -->
+@if ($errors->any())
+<div class="alert alert-danger alert-dismissable">
+	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+<!-- fim alertas validação -->
+
 <div class="row">
 	<div class="col-xs-12 col-md-6">
 		<div class="input-group">
@@ -153,7 +166,7 @@
 	<div class="col-xs-12 col-md-6">
 		<div class="form-group">
 		  <label for="ds_observacao">Observações:</label>
-		  <textarea class="form-control" rows="5" id="ds_observacao" name="ds_observacao">{{old('ds_observacao')}}{{isset($serv_vm) ? $serv_vm->ds_observacao : ''}}</textarea>
+		  <textarea class="form-control" rows="5" id="ds_observacao" name="ds_observacao">{{old('ds_observacao', isset($serv_vm) ? $serv_vm->ds_observacao : '')}}</textarea>
 		</div> 
 	</div>
 </div>

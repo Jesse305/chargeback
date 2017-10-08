@@ -37,14 +37,23 @@ class ServidorVmController extends Controller
         return view('serv_vm/novo_serv_vm', compact('orgaos', 'clouds', 'sis_ops'));
     }
 
-    public function inserir(Request $request){
-        $dados = $request->except('_token');
+    private function found($valor){
+        $retorno = false;
+        $count = ServidorVm::where('no_servidor', $valor)->count();
+        if($count > 0){
+            $retorno = true;
+        }
 
+        return $retorno;
+    }
+
+    
+    private function validaDados($dados){
         $rules = [
             'orgao_id' => 'required',
             'unidade_id' => 'required',
             'responsavel_id' => 'required',
-            'no_servidor' => 'required|unique:servidorvm',
+            'no_servidor' => 'required',
             'ip_endereco' => 'required',
             'no_dns' => 'required'
         ];
@@ -54,19 +63,33 @@ class ServidorVmController extends Controller
             'unidade_id.required' => 'Selecione a Unidade solicitante.',
             'responsavel_id.required' => 'Selecione o Responsavel.',
             'no_servidor.required' => 'Informe um nome para o Servidor VM.',
-            'no_servidor.unique' => 'Já existe Servidor VM de mesmo nome.',
             'ip_endereco.required' => 'Informe IP do Servidor VM.',
             'no_dns.required' => 'Informe o DNS do Servidor VM.'
         ];
 
-        Validator::make($request->all(), $rules, $messages)->validate();
+        return Validator::make($dados, $rules, $messages)->validate();
+    }        
+   
 
-        $serv_vm = new ServidorVm();
-        $serv_vm->fill($dados)->save();
+    public function inserir(Request $request){
+        if($this->found($request->no_servidor)){
 
-        return redirect()
-        ->back()
-        ->with('retorno', ['tipo'=>'success', 'msg'=>'Cadastro efetuado com sucesso.']);   
+            return redirect()
+            ->back()
+            ->with('retorno', ['tipo'=>'warning', 'msg'=>'Já existe um Servidor VM de Mesmo Nome.'])
+            ->withInput();
+        }else{
+
+            $this->validaDados($request->all());
+            $dados = $request->except('_token');
+            $serv_vm = new ServidorVm();
+            $serv_vm->fill($dados)->save();
+
+            return redirect()
+            ->route('servidores_vm')
+            ->with('retorno', ['tipo'=>'success', 'msg'=>'Cadastro efetuado com sucesso.']);
+        }
+     
 
     }
     // fim inserir
@@ -82,5 +105,29 @@ class ServidorVmController extends Controller
         return view('serv_vm/alt_serv_vm', compact('serv_vm', 'unidade', 'responsavel', 'orgaos', 'clouds', 'sis_ops'));
     }
 
+    // fim altera
+
+    public function atualizar($id, Request $request){
+        $this->validaDados($request->all());
+
+        $dados = $request->except('_token');
+        $serv_vm = new ServidorVm();
+        $serv_vm->findOrfail($id)->update($dados);
+
+        return redirect()
+        ->route('servidores_vm')
+        ->with('retorno', ['tipo'=>'success', 'msg'=>'Registro Atualizado com sucesso.']);
+    }
+
+    // fim atualizar
+
+
+    public function apagar($id){
+        ServidorVm::findOrfail($id)->delete();
+
+        return redirect()
+        ->back()
+        ->with('retorno', ['tipo'=>'success', 'msg'=>'Registro apagado com sucesso']);
+    }
 
 }

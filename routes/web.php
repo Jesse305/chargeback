@@ -107,3 +107,5 @@ Route::get('servidor_vm/detalha/{id}', 'ServidorVmController@detalhar')->name('s
 Route::get('servidor_vm/form/insere', 'ServidorVmController@viewInsere')->name('servidor_vm.form.insere');
 Route::post('servidor_vm/inserir', 'ServidorVmController@inserir')->name('servidor_vm.inserir');
 Route::get('servidor_vm/altera/{id}', 'ServidorVmController@altera')->name('servidor_vm.altera');
+Route::post('servidor_vm/atualizar/{id}', 'ServidorVmController@atualizar')->name('servidor_vm.atualizar');
+Route::get('servidor_vm/apagar/{id}', 'ServidorVmController@apagar')->name('servidor_vm.apagar');

@@ -15,6 +15,17 @@
 	</div>
 	<!-- fim panel -->
 
+	<!-- alertas -->
+	@if(session('retorno'))
+	<div class="row">
+		<div class="alert alert-{{session('retorno')['tipo']}} alert-dismissable">
+		  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		  <li>{{session('retorno')['msg']}}</li>
+		</div>
+	</div>
+	@endif
+	<!-- fim aletas -->
+
 	<!-- tabela -->
 	<div class="row">
 		<table class="table table-striped table-bordered table-hover" id="tab_resumo" style="font-size: 12px;">
@@ -43,7 +54,7 @@
 					<td align="center">
 						<a href={{route('servidor_vm.detalhar', $svm->id)}} class="btn btn-info btn-sm"><i class="glyphicon glyphicon-eye-open" title="visualizar"></i></a>&nbsp;
 						<a href={{route('servidor_vm.altera', $svm->id)}} class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-edit" title="editar"></i></a>&nbsp;
-						<button class="btn btn-danger btn-sm" onclick="confirmaDeleta('#');" title="cuidado! apaga o registro definitivamente." disabled><i class="glyphicon glyphicon-remove"></i></button>
+						<button class="btn btn-danger btn-sm" onclick="confirmaDeleta('{{route('servidor_vm.apagar', $svm->id)}}');" title="cuidado! apaga o registro definitivamente." disabled><i class="glyphicon glyphicon-remove"></i></button>
 					</td>
 				</tr>
 				@endforeach				

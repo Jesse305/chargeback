@@ -19,19 +19,6 @@
 	</div>
 	@endif
 	<!-- fim alertas -->
-
-	<!-- alertas validação -->
-	@if ($errors->any())
-    <div class="alert alert-danger alert-dismissable">
-    	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-	@endif
-	<!-- fim alertas validação -->
 	
 	<!-- formulário -->
 	<div class="row">

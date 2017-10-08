@@ -11,7 +11,7 @@
 	<!-- fim painel -->
 
 	<!-- form -->
-	<form id="form_alterar" method="post" action="">
+	<form id="form_alterar" method="post" action={{route('servidor_vm.atualizar', $serv_vm->id)}}>
 		{{csrf_field()}}
 		@include('serv_vm.form_serv_vm')
 		<div class="text-right">
