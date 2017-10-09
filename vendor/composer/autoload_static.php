@@ -323,6 +323,7 @@ class ComposerStaticInit9c104e2d5baa4acf71ee916fd589be37
     public static $classMap = array (
         'App\\Ambiente' => __DIR__ . '/../..' . '/app/Ambiente.php',
         'App\\Banco' => __DIR__ . '/../..' . '/app/Banco.php',
+        'App\\CircuitoMpls' => __DIR__ . '/../..' . '/app/CircuitoMpls.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Desenvolvedor' => __DIR__ . '/../..' . '/app/Desenvolvedor.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
@@ -339,6 +340,7 @@ class ComposerStaticInit9c104e2d5baa4acf71ee916fd589be37
         'App\\Http\\Controllers\\ItemConfigController' => __DIR__ . '/../..' . '/app/Http/Controllers/ItemConfigController.php',
         'App\\Http\\Controllers\\OrgaoController' => __DIR__ . '/../..' . '/app/Http/Controllers/OrgaoController.php',
         'App\\Http\\Controllers\\ResponsavelController' => __DIR__ . '/../..' . '/app/Http/Controllers/ResponsavelController.php',
+        'App\\Http\\Controllers\\ServidorVmController' => __DIR__ . '/../..' . '/app/Http/Controllers/ServidorVmController.php',
         'App\\Http\\Controllers\\SistemaController' => __DIR__ . '/../..' . '/app/Http/Controllers/SistemaController.php',
         'App\\Http\\Controllers\\SiteController' => __DIR__ . '/../..' . '/app/Http/Controllers/SiteController.php',
         'App\\Http\\Controllers\\UnidadeController' => __DIR__ . '/../..' . '/app/Http/Controllers/UnidadeController.php',

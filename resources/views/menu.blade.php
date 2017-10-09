@@ -25,6 +25,14 @@
                     <li class="active"><a href="#"><i class="glyphicon glyphicon-home"></i></a></li>
 
                     <li class="dropdown">
+                      <a class="dropdown-toggle" data-toggle="dropdown" href="#">Rede
+                        <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                          <li><a href={{route('circuitos_mpls')}}> Link MPLS</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Servidores
                         <span class="caret"></span></a>
                         <ul class="dropdown-menu">

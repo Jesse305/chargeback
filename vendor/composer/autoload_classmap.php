@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Ambiente' => $baseDir . '/app/Ambiente.php',
     'App\\Banco' => $baseDir . '/app/Banco.php',
+    'App\\CircuitoMpls' => $baseDir . '/app/CircuitoMpls.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Desenvolvedor' => $baseDir . '/app/Desenvolvedor.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
@@ -24,6 +25,7 @@ return array(
     'App\\Http\\Controllers\\ItemConfigController' => $baseDir . '/app/Http/Controllers/ItemConfigController.php',
     'App\\Http\\Controllers\\OrgaoController' => $baseDir . '/app/Http/Controllers/OrgaoController.php',
     'App\\Http\\Controllers\\ResponsavelController' => $baseDir . '/app/Http/Controllers/ResponsavelController.php',
+    'App\\Http\\Controllers\\ServidorVmController' => $baseDir . '/app/Http/Controllers/ServidorVmController.php',
     'App\\Http\\Controllers\\SistemaController' => $baseDir . '/app/Http/Controllers/SistemaController.php',
     'App\\Http\\Controllers\\SiteController' => $baseDir . '/app/Http/Controllers/SiteController.php',
     'App\\Http\\Controllers\\UnidadeController' => $baseDir . '/app/Http/Controllers/UnidadeController.php',
