@@ -114,6 +114,6 @@ Route::get('servidor_vm/apagar/{id}', 'ServidorVmController@apagar')->name('serv
 
 Route::get('circuitos_mpls', 'CircuitoMplsController@listar')->name('circuitos_mpls');
 Route::get('circuito_mpls/detalha/{id}', 'CircuitoMplsController@detalhar')->name('circuito_mpls.detalhar');
-Route::get('circuito_mpls/view_novo', function(){
-	return view('circuito_mpls/novo_circuito_mpls');
-})->name('circuito_mpls.novo');
+Route::get('circuito_mpls/view_novo', 'CircuitoMplsController@novo')->name('circuito_mpls.novo');
+
+Route::get('circuito_mpls_altera/{id}', 'CircuitoMplsController@altera')->name('circuito_mpls.altera');

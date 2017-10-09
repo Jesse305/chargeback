@@ -1,15 +1,15 @@
 @extends('menu')
-@section('title', 'Novo Circuito MPLS')
+@section('title', 'Alterar Circuito MPLS')
 
 @section('content')
 <div class="container">
 	<div class="row">
 		<div class="panel panel-default">
-			<div class="panel-body"><h4>Novo Circuito MPLS</h4></div>
+			<div class="panel-body"><h4>Alterar Circuito MPLS</h4></div>
 		</div>
 	</div>
 	<!-- fim painel -->
-
+	
 	<div class="row">
 		<form id="form_circuito_mpls" method="post" action="">
 			@include('circuito_mpls.form')

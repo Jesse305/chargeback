@@ -40,7 +40,7 @@
 					<a href={{route('circuito_mpls.detalhar', $circuito->id)}} class="btn btn-info btn-sm" title="visualizar" title="editar">
 						<i class="glyphicon glyphicon-eye-open"></i>
 					</a> &nbsp;
-					<a href="#" class="btn btn-warning btn-sm">
+					<a href={{route('circuito_mpls.altera', $circuito->id)}} class="btn btn-warning btn-sm" title="atualizar">
 						<i class="glyphicon glyphicon-edit"></i>
 					</a>&nbsp;
 					<button class="btn btn-danger btn-sm" onclick="confirmaDeleta('#');" title="cuidado! apaga definitivamente o registro.">
