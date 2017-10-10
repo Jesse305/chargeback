@@ -111,9 +111,8 @@ Route::post('servidor_vm/atualizar/{id}', 'ServidorVmController@atualizar')->nam
 Route::get('servidor_vm/apagar/{id}', 'ServidorVmController@apagar')->name('servidor_vm.apagar');
 
 //rotas circuitos MPLS
-
 Route::get('circuitos_mpls', 'CircuitoMplsController@listar')->name('circuitos_mpls');
 Route::get('circuito_mpls/detalha/{id}', 'CircuitoMplsController@detalhar')->name('circuito_mpls.detalhar');
 Route::get('circuito_mpls/view_novo', 'CircuitoMplsController@novo')->name('circuito_mpls.novo');
-
+Route::post('circuito_mpls/inserir', 'CircuitoMplsController@inserir')->name('circuito_mpls.inserir');
 Route::get('circuito_mpls_altera/{id}', 'CircuitoMplsController@altera')->name('circuito_mpls.altera');

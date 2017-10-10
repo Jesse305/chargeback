@@ -15,6 +15,17 @@
 	</div>
 	<!-- fim painel -->
 
+	@if(session('retorno'))
+	<div class="row">
+		<div class="alert alert-{{session('retorno')['tipo']}} alert-dismissable">
+			<a href="#" class="close" data-dismiss="alert">&times;</a>
+			<ul>
+				<li>{{session('retorno')['msg']}}</li>
+			</ul>
+		</div>
+	</div>
+	@endif
+
 	<!-- tabela -->
 
 	<table class="table table-bordered table-striped table-hover" id="tab_resumo" style="font-size: 12px;">

@@ -17,6 +17,12 @@ $(document).ready(function(){
 		  }
 	});
 
+	//disabilita botão salvar após click
+	$('#btn_salvar').attr('disabled', false);
+	$('#btn_salvar').click(function(){
+		$('#btn_salvar').attr('disabled', true);
+	});
+
 });
 
 // confirma apagar
