@@ -25,3 +25,18 @@ function confirmaDeleta(url){
 		window.href = url;
 	}
 }
+
+//mascaras
+$('.nu_ip').mask('099.099.099.099');
+
+$('.dtp').datetimepicker({
+    language:  'pt-BR',
+    weekStart: 1,
+    todayBtn:  1,
+	autoclose: 1,
+	todayHighlight: 1,
+	startView: 2,
+	minView: 2,
+	forceParse: 0
+});
+
