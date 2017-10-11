@@ -11,7 +11,7 @@
 	<!-- fim painel -->
 	
 	<div class="row">
-		<form id="form_circuito_mpls" method="post" action="">
+		<form id="form_circuito_mpls" method="post" action={{route('circuito_mpls.atualizar', $circuito->id)}}>
 			@include('circuito_mpls.form')
 			<div class="text-right">
 				<a href="javascript:history.back();" class="btn btn-warning btn-sm">Cancelar</a>

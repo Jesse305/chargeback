@@ -28,7 +28,7 @@ $(document).ready(function(){
 // confirma apagar
 function confirmaDeleta(url){
 	if(window.confirm('Deseja realmente apagar o registro?')){
-		window.href = url;
+		window.location = url;
 	}
 }
 

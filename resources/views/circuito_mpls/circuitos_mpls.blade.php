@@ -34,8 +34,9 @@
 				<td>Órgão:</td>
 				<td>Unidade:</td>
 				<td>Circuito:</td>
-				<td>Designação</td>
+				<td>Designação:</td>
 				<td>Status:</td>
+				<td>Movimentação:</td>
 				<td align="center" width="150">Ações</td>
 			</tr>
 		</thead>
@@ -48,19 +49,31 @@
 				<td>{{$circuito->no_designacao}}</td>
 				<td>{{$circuito->printStatus($circuito->status)}}</td>
 				<td align="center">
+					<a href={{route('movimentacoes_circ', $circuito->id)}} title="movimentação"><i class="glyphicon glyphicon-retweet"></i></a>
+				</td>
+				<td align="center">
 					<a href={{route('circuito_mpls.detalhar', $circuito->id)}} class="btn btn-info btn-sm" title="visualizar" title="editar">
 						<i class="glyphicon glyphicon-eye-open"></i>
 					</a> &nbsp;
 					<a href={{route('circuito_mpls.altera', $circuito->id)}} class="btn btn-warning btn-sm" title="atualizar">
 						<i class="glyphicon glyphicon-edit"></i>
 					</a>&nbsp;
-					<button class="btn btn-danger btn-sm" onclick="confirmaDeleta('#');" title="cuidado! apaga definitivamente o registro.">
+					<button class="btn btn-danger btn-sm" onclick="confirmaDeleta('{{route('circuito_mpls.apagar', $circuito->id)}}');" title="cuidado! apaga definitivamente o registro." disabled>
 						<i class="glyphicon glyphicon-remove"></i>
 					</button>					
 				</td>
 			</tr>
 			@endforeach			
 		</tbody>
+			<tr>
+				<td>Órgão:</td>
+				<td>Unidade:</td>
+				<td>Circuito:</td>
+				<td>Designação:</td>
+				<td>Status:</td>
+				<td>Movimentação:</td>
+				<td align="center" width="150">Ações</td>
+			</tr>
 		<tfoot>
 			
 		</tfoot>

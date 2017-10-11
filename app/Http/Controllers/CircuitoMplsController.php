@@ -73,4 +73,23 @@ class CircuitoMplsController extends Controller
 
     	return view('circuito_mpls/alt_circuito_mpls', compact('circuito', 'orgaos', 'itensConfig'));
     }
+
+    public function atualizar(Request $request, $id){
+    	$this->valida($request->all());
+    	$dados = $request->except('_token');
+    	$circuito = new CircuitoMpls();
+    	$circuito->findOrFail($id)->update($dados);
+
+    	return redirect()
+    	->route('circuitos_mpls')
+    	->with('retorno', ['tipo'=>'success', 'msg'=>'Cadastro alterado com sucesso.']); 
+    }
+
+    public function apagar($id){
+    	CircuitoMpls::findOrFail($id)->delete();
+
+    	return redirect()
+    	->back()
+    	->with('retorno', ['tipo'=>'success', 'msg'=>'Cadastro excluído com sucesso.']);
+    }
 }
