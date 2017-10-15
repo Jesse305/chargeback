@@ -34,4 +34,10 @@ class MovCircuito extends Model
     		echo '<i>Informação indisponível.</i>';
     	}
     }
+
+    public function selected($val1, $val2){
+        if( $val1 == $val2){
+            echo 'selected';
+        }
+    }
 }

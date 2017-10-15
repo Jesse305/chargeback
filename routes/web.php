@@ -122,4 +122,5 @@ Route::get('circuito_mpls/apagar/{id}', 'CircuitoMplsController@apagar')->name('
 //rotas movimentação circuito por id circuito
 Route::get('movimentacoes_circ/{id}', 'MovCircuitoController@listar')->name('movimentacoes_circ');
 Route::get('movimentacao_circ/detalha/{id}', 'MovCircuitoController@detalhar')->name('movimentacao_circ.detalhar');
-Route::get('movimentacao_circ/novo/{id}', 'MovCircuitoController@novo')->name('movimentacao_circ.novo');
+Route::get('movimentacao_circ_novo/{id}', 'MovCircuitoController@novo')->name('movimentacao_circ.novo');
+Route::post('movimentacao_circ/inserir', 'MovCircuitoController@inserir')->name('movimentacao_circ.inserir');

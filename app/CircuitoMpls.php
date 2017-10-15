@@ -53,5 +53,11 @@ class CircuitoMpls extends Model
             echo 'Inativo';
         }
     }
+
+    public function selected($v1, $v2){
+        if($v1 == $v2){
+            echo 'selected';
+        }
+    }
     
 }

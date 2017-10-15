@@ -1,11 +1,10 @@
 <link rel="stylesheet" type="text/css" href={{asset('css/bootstrap-formhelpers.min.css')}}>
+<link rel="stylesheet" type="text/css" href={{asset('css/bootstrap-datetimepicker.min.css')}}>
 <style type="text/css">
 	.input-group {
 		margin-bottom: 1px;
 	}
 </style>
-
-<link rel="stylesheet" type="text/css" href={{asset('css/bootstrap-datetimepicker.min.css')}}>
 
 @if($errors->any())
 <div class="alert alert-danger alert-dismissable">
