@@ -74,3 +74,5 @@ function confirmaDeleta(url){
 		window.location = url;
 	}
 }
+
+$('.nu_ip').mask('099.099.099.099');

@@ -52,7 +52,7 @@
 
 				<div class="input-group">
 					<span class="input-group-addon">IP:</span>
-					<input id="ip_trein" type="text" class="form-control" name="ip_trein" placeholder="IP do ambiente de treinamento"
+					<input id="ip_trein" type="text" class="form-control ip" name="ip_trein" placeholder="IP do ambiente de treinamento"
 				  maxlength="45">
 				</div>
 
@@ -71,7 +71,7 @@
 
 				<div class="input-group">
 					<span class="input-group-addon">IP:</span>
-					<input id="ip_homol" type="text" class="form-control" name="ip_homol" placeholder="IP do ambiente de homologação"
+					<input id="ip_homol" type="text" class="form-control ip" name="ip_homol" placeholder="IP do ambiente de homologação"
 					maxlength="45" required>
 				</div>
 
@@ -91,7 +91,7 @@
 
 				<div class="input-group">
 					<span class="input-group-addon">IP:</span>
-					<input id="ip_prod" type="text" class="form-control" name="ip_prod" placeholder="IP do ambiente de produção"
+					<input id="ip_prod" type="text" class="form-control ip" name="ip_prod" placeholder="IP do ambiente de produção"
 					maxlength="45" required>
 				</div>
 
@@ -183,12 +183,11 @@
 
 @endsection
 <script type="text/javascript" src={{asset('js/jquery.js')}}></script>
+<script type="text/javascript" src={{asset('js/jquery.mask.min.js')}}></script>
 <script type="text/javascript" src={{asset('js/ambiente.js')}}></script>
+<script type="text/javascript">
+	$(document).ready(function($){
+		$('.ip').mask('099.099.099.099');
+	})
+</script>
 
-<!-- <script type="text/javascript">
-	function confirmaDeleta(url){
-		if(window.confirm('Deseja realmente apagar o registro?')){
-			window.location = url;
-		}
-	}
-</script> -->

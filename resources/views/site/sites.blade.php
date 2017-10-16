@@ -65,7 +65,7 @@
           </div>
           <div class="input-group">
             <span class="input-group-addon">Caminho do Servidor:</span>
-            <input class="form-control" type="text" name="ip_html" id="ip_html" maxlength="50"
+            <input class="form-control ip" type="text" name="ip_html" id="ip_html" maxlength="50"
             value="{{old('ip_html')}}">
           </div>
           <label for="tp_portal">Tipo de Site:</label>
@@ -106,7 +106,7 @@
           <h5><b>Dados Banco de Dados</b></h5>
           <div class="input-group">
             <span class="input-group-addon">IP:</span>
-            <input class="form-control" type="text" name="ip_banco" id="ip_banco" maxlength="15"
+            <input class="form-control ip" type="text" name="ip_banco" id="ip_banco" maxlength="15"
             value="{{old('ip_banco')}}">
           </div>
           <div class="input-group">
@@ -203,3 +203,10 @@
 
 <script type="text/javascript" src={{asset('js/jquery.js')}} ></script>
 <script type="text/javascript" src={{asset('js/site.js')}} ></script>
+<script type="text/javascript" src={{asset('js/jquery.mask.min.js')}} ></script>
+<script type="text/javascript">
+  $(document).ready(function($){
+    $('.ip').mask('099.099.099.099');
+  });
+</script>
+

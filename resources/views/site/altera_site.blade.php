@@ -85,7 +85,7 @@
 					<div class="col-xs-12 col-md-6">
 						<div class="input-group">
 				           <span class="input-group-addon">Caminho do Servidor:</span>
-				           <input class="form-control" type="text" name="ip_html" id="ip_html" maxlength="50"
+				           <input class="form-control ip" type="text" name="ip_html" id="ip_html" maxlength="50"
 				           value="{{$site->ip_html}}" required>
 				         </div>
 					</div>
@@ -169,7 +169,7 @@
 					<div class="col-xs-12 col-md-6">
 						<div class="input-group">
 				            <span class="input-group-addon">IP:</span>
-				            <input class="form-control" type="text" name="ip_banco" id="ip_banco" maxlength="15"
+				            <input class="form-control ip" type="text" name="ip_banco" id="ip_banco" maxlength="15"
 				            value="{{$site->ip_banco}}" required>
 				        </div>
 					</div>
@@ -228,3 +228,9 @@
 
 <script type="text/javascript" src="{{asset('js/jquery.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/altera_site.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/jquery.mask.min.js')}}"></script>
+<script type="text/javascript">
+	$(document).ready(function($){
+		$('.ip').mask('099.099.099.099');
+	});
+</script>

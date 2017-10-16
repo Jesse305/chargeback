@@ -81,7 +81,7 @@
 	<div class="col-xs-12 col-md-4">
 		<div class="input-group">
 			<span class="input-group-addon">IP:</span>
-			<input class="form-control" type="text" name="ip_endereco" id="ip_endereco" 
+			<input class="form-control nu_ip" type="text" name="ip_endereco" id="ip_endereco" 
 			value="{{old('ip_endereco', isset($serv_vm->ip_endereco) ? $serv_vm->ip_endereco : '')}}" maxlength="45">
 		</div>
 	</div>
@@ -172,4 +172,5 @@
 </div>
 
 <script type="text/javascript" src={{asset('js/jquery.js')}}></script>
+<script type="text/javascript" src={{asset('js/jquery.mask.min.js')}}></script>
 <script type="text/javascript" src={{asset('js/serv_vm.js')}}></script>

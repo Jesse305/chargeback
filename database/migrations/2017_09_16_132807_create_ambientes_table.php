@@ -13,7 +13,17 @@ class CreateAmbientesTable extends Migration
     {
         Schema::create('ambientes', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->string('desc_amb', 200);
+            $table->string('ip_trein', 45)->nullable();
+            $table->string('usuario_trein', 100)->nullable();
+            $table->string('senha_trein', 100)->nullable();
+            $table->string('ip_homol', 45);
+            $table->string('usuario_homol', 100);
+            $table->string('senha_homol', 100);
+            $table->string('ip_prod', 45);
+            $table->string('usuario_prod', 100);
+            $table->string('senha_prod', 100);
+            $table->string('link_prod', 200);
         });
     }
 

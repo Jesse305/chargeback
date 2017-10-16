@@ -17,9 +17,6 @@ $(document).ready(function(){
       }
   } );
 
-  //função data table jquery
-  $('#tab_resumo').dataTable();
-
   // click btn chama modal
   $('#btn_cad').click(function(){
     $('#form_amb')[0].reset();
@@ -36,3 +33,9 @@ $(document).ready(function(){
   });
 
 });
+
+function confirmaDeleta(url){
+  if(window.confirm('Deseja realmente apagar o registro?')){
+    window.location = url;
+  }
+}
