@@ -11,9 +11,21 @@ class CreateResponsavelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('responsavels', function (Blueprint $table) {
+        Schema::create('responsavel', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->string('no_responsavel', 100);
+            $table->string('nu_telefone', 15);
+            $table->string('nu_celular', 15)->nullable();
+            $table->string('no_email', 30)->nullable();
+            $table->string('status', 45);
+            $table->text('ds_observacao')->nullable();
+            $table->datetime('dt_cadastro');
+            $table->datetime('dt_atualizacao');
+            $table->integer('orgao_id');
+            $table->integer('unidade_id');
+
+            $table->foreign('orgao_id')->references('id')->on('orgao');
+            $table->foreign('unidade_id')->references('id')->on('unidade');
         });
     }
 
@@ -22,6 +34,6 @@ class CreateResponsavelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('responsavels');
+        Schema::dropIfExists('responsavel');
     }
 }

@@ -89,7 +89,7 @@
 
 		      	<div class="input-group col-xs-6">
 		      		<span class="input-group-addon">CEP:</span>
-		      		<input class="form-control" type="text" name="nu_cep" id="nu_cep" maxlength="45" 
+		      		<input class="form-control cep" type="text" name="nu_cep" id="nu_cep" maxlength="45" 
 		      		value="{{old('nu_cep')}}">
 		      	</div>
 		      	<label for="status">Status: </label>
@@ -163,4 +163,10 @@
 @endsection
 
 <script type="text/javascript" src={{asset('js/jquery.js')}}></script>
+<script type="text/javascript" src={{asset('js/jquery.mask.min.js')}}></script>
 <script type="text/javascript" src={{asset('js/unidade.js')}}></script>
+<script type="text/javascript">
+	$(document).ready(function($){
+		$('.cep').mask('00000-000');
+	});
+</script>

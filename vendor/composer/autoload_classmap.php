@@ -24,6 +24,7 @@ return array(
     'App\\Http\\Controllers\\DesenvolvedorController' => $baseDir . '/app/Http/Controllers/DesenvolvedorController.php',
     'App\\Http\\Controllers\\FrameworkController' => $baseDir . '/app/Http/Controllers/FrameworkController.php',
     'App\\Http\\Controllers\\ItemConfigController' => $baseDir . '/app/Http/Controllers/ItemConfigController.php',
+    'App\\Http\\Controllers\\MovCircuitoController' => $baseDir . '/app/Http/Controllers/MovCircuitoController.php',
     'App\\Http\\Controllers\\OrgaoController' => $baseDir . '/app/Http/Controllers/OrgaoController.php',
     'App\\Http\\Controllers\\ResponsavelController' => $baseDir . '/app/Http/Controllers/ResponsavelController.php',
     'App\\Http\\Controllers\\ServidorVmController' => $baseDir . '/app/Http/Controllers/ServidorVmController.php',

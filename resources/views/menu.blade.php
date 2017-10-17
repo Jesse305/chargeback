@@ -40,15 +40,9 @@
                         </ul>                      
                     </li>
 
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">WEB
-                        <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                          <li><a href={{ route('sistemas') }} >Sistemas</a></li>
-                          <li><a href={{ route('sites') }} >Sites</a></li>
-                        </ul>
-                    </li>
-                    <!-- fim dropdown web -->
+                    <li><a href={{ route('sites') }} >Sites</a></li>
+
+                    <li><a href={{ route('sistemas') }} >Sistemas</a></li>
 
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#" title="pré cadastro para sistemas">Pré Cadastro

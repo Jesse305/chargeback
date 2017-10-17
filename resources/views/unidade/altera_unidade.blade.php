@@ -71,7 +71,7 @@
 					<div class="col-xs-12 col-md-4">
 						<div class="input-group">
 							<span class="input-group-addon">CEP:</span>
-							<input class="form-control" type="text" name="nu_cep" value="{{$unidade->nu_cep}}" maxlength="45">
+							<input class="form-control cep" type="text" name="nu_cep" value="{{$unidade->nu_cep}}" maxlength="45">
 						</div>
 					</div>					
 				</div>
@@ -101,10 +101,9 @@
 @endsection
 
 <script type="text/javascript" src={{asset('js/jquery.js')}}></script>
+<script type="text/javascript" src={{asset('js/jquery.mask.min.js')}}></script>
 <script type="text/javascript">
-	$(document).ready(function(){
-		$('#form_unidade').on('submit', function(){
-			$('#btn_salvar').attr('disabled', true);
-		});
+	$(document).ready(function($){
+		$('.cep').mask('00000-000');		
 	});
 </script>

@@ -29,5 +29,10 @@ $(document).ready(function(){
         $('#btn_salvar').attr('disabled', true);
     });
 
-
 });
+
+function confirmaDeleta(url){
+    if(window.confirm('Deseja realmente apagar o registro?')){
+        window.location = url;
+    }
+}

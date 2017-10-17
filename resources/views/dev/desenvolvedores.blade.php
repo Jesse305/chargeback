@@ -46,8 +46,8 @@
 				</div>
 				<div class="input-group">
 				    <span class="input-group-addon">IP:</span>
-				    <input id="ip_dev" type="text" class="form-control" name="ip_dev" placeholder="IP do desenvolvedor"
-				    maxlength="50" value="{{old('ip_dev')}}" required>
+				    <input id="ip_dev" type="text" class="form-control ip" name="ip_dev" placeholder="IP do desenvolvedor"
+				    maxlength="50" value="{{old('ip_dev')}}">
 				</div>
 			</form>
 	      </div>
@@ -128,11 +128,10 @@
 @endsection
 
 <script type="text/javascript" src={{asset('js/jquery.js')}}></script>
+<script type="text/javascript" src={{asset('js/jquery.mask.min.js')}}></script>
 <script type="text/javascript" src={{asset('js/desenvolvedor.js')}}></script>
-<!-- <script type="text/javascript">
-    function confirmaDeleta(url){
-        if(window.confirm('Deseja realmente apagar o registro?')){
-            window.location = url;
-        }
-    }
-</script> -->
+<script type="text/javascript">
+	$(document).ready(function($){
+		$('.ip').mask('099.099.099.099');
+	});
+</script>

@@ -91,3 +91,9 @@ $(document).ready(function(){
     });
 
 });
+
+function confirmaDeleta(url){
+    if(window.confirm('Deseja realmente apagar o registro?')){
+        window.location = url;
+    }
+}

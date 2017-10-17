@@ -152,4 +152,11 @@
 @endsection
 
 <script type="text/javascript" src={{asset('js/jquery.js')}}></script>
+<script type="text/javascript" src={{asset('js/jquery.mask.min.js')}}></script>
 <script type="text/javascript" src={{asset('js/responsavel.js')}}></script>
+<script type="text/javascript">
+	$(document).ready(function($){
+		$('#nu_telefone').mask('(00) 0000-0000');
+		$('#nu_celular').mask('(00) 00000-0000');
+	});
+</script>

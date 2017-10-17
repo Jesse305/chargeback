@@ -13,7 +13,7 @@ class CreateFrameworksTable extends Migration
     {
         Schema::create('frameworks', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->string('no_framework', 200);
         });
     }
 

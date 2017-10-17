@@ -11,9 +11,18 @@ class CreateItemConfigsTable extends Migration
      */
     public function up()
     {
-        Schema::create('item_configs', function (Blueprint $table) {
+        Schema::create('itemdeconfiguracao', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->string('no_item', 150);
+            $table->text('ds_descricao')->nullable();
+            $table->string('ds_configuracao', 100)->nullable();
+            $table->integer('status');
+            $table->decimal('nu_custo_mensal', 10, 2);
+            $table->datetime('dt_cadastro');
+            $table->datetime('dt_atualizacao');
+            $table->integer('categoriaitem_id');
+
+            $table->foreign('categoriaitem_id')->references('id')->on('categoriaitem');
         });
     }
 
@@ -22,6 +31,6 @@ class CreateItemConfigsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('item_configs');
+        Schema::dropIfExists('itemdeconfiguracao');
     }
 }

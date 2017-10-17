@@ -81,7 +81,7 @@
 
 					<div class="input-group" style="margin-top: 5px;">
 					    <span class="input-group-addon">IP:</span>
-					    <input id="ip" type="text" class="form-control" name="ip_banco" placeholder="IP do banco de dados" maxlength="100" value="{{old('ip_banco')}}">
+					    <input id="ip" type="text" class="form-control ip" name="ip_banco" placeholder="IP do banco de dados" maxlength="100" value="{{old('ip_banco')}}">
 					</div>
 
 					<div class="input-group" style="margin-top: 5px;">
@@ -176,14 +176,13 @@
 	<!-- fim div table -->
 
 </div>
-<script type="text/javascript" src={{asset('js/jquery.js')}}></script>
-<script type="text/javascript" src={{asset('js/banco.js')}}></script>
-<!-- <script type="text/javascript">
-    function confirmaDeleta(url){
-        if(window.confirm('Deseja realmente apagar o registro?')){
-            window.location = url;
-        }
-    }
-</script> -->
-
 @endsection
+
+<script type="text/javascript" src={{asset('js/jquery.js')}}></script>
+<script type="text/javascript" src={{asset('js/jquery.mask.min.js')}}></script>
+<script type="text/javascript" src={{asset('js/banco.js')}}></script>
+<script type="text/javascript">
+	$(document).ready(function($){
+		$('.ip').mask('099.099.099.099');
+	});
+</script>

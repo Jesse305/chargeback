@@ -29,8 +29,8 @@
 				</div>
 				<div class="input-group">
 				    <span class="input-group-addon">IP:</span>
-				    <input id="ip_dev" type="text" class="form-control" name="ip_dev" placeholder="IP do desenvolvedor"
-				    maxlength="50" value="{{$des->ip_dev}}" required>
+				    <input id="ip_dev" type="text" class="form-control ip" name="ip_dev" placeholder="IP do desenvolvedor"
+				    maxlength="50" value="{{$des->ip_dev}}">
 				</div>
 				<div class="text-right" style="margin-top: 10px;">
 					<a href="javascript:history.back()" class="btn btn-warning btn-sm">Cancelar</a>
@@ -43,5 +43,12 @@
 	</div>
 
 </div>
-
 @endsection
+
+<script type="text/javascript" src={{asset('js/jquery.js')}}></script>
+<script type="text/javascript" src={{asset('js/jquery.mask.min.js')}}></script>
+<script type="text/javascript">
+	$(document).ready(function($){
+		$('.ip').mask('099.099.099.099');
+	});
+</script>

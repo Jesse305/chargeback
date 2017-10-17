@@ -339,6 +339,7 @@ class ComposerStaticInit9c104e2d5baa4acf71ee916fd589be37
         'App\\Http\\Controllers\\DesenvolvedorController' => __DIR__ . '/../..' . '/app/Http/Controllers/DesenvolvedorController.php',
         'App\\Http\\Controllers\\FrameworkController' => __DIR__ . '/../..' . '/app/Http/Controllers/FrameworkController.php',
         'App\\Http\\Controllers\\ItemConfigController' => __DIR__ . '/../..' . '/app/Http/Controllers/ItemConfigController.php',
+        'App\\Http\\Controllers\\MovCircuitoController' => __DIR__ . '/../..' . '/app/Http/Controllers/MovCircuitoController.php',
         'App\\Http\\Controllers\\OrgaoController' => __DIR__ . '/../..' . '/app/Http/Controllers/OrgaoController.php',
         'App\\Http\\Controllers\\ResponsavelController' => __DIR__ . '/../..' . '/app/Http/Controllers/ResponsavelController.php',
         'App\\Http\\Controllers\\ServidorVmController' => __DIR__ . '/../..' . '/app/Http/Controllers/ServidorVmController.php',

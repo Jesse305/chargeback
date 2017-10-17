@@ -11,9 +11,14 @@ class CreateOrgaosTable extends Migration
      */
     public function up()
     {
-        Schema::create('orgaos', function (Blueprint $table) {
+        Schema::create('orgao', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->string('no_orgao', 100);
+            $table->string('no_sigla', 15)->nullable();
+            $table->integer('tp_orgao');
+            $table->integer('status');
+            $table->datetime('dt_cadastro');
+            $table->datetime('dt_atualizacao');
         });
     }
 
@@ -22,6 +27,6 @@ class CreateOrgaosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orgaos');
+        Schema::dropIfExists('orgao');
     }
 }

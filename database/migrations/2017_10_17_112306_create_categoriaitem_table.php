@@ -4,25 +4,29 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDesenvolvedorsTable extends Migration
+class CreateCategoriaitemTable extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
     public function up()
     {
-        Schema::create('dev', function (Blueprint $table) {
+        Schema::create('categoriaitem', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('no_dev', 200);
-            $table->string('ip_dev', 50)->nullable();
+            $table->string('no_categoriaitem', 100);
+            $table->text('ds_descricao')->nullable();
         });
     }
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
     public function down()
     {
-        Schema::dropIfExists('dev');
+        Schema::dropIfExists('categoriaitem');
     }
 }
