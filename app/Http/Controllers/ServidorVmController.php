@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Validator;
 use App\ServidorVm;
 use App\Orgao;
@@ -15,47 +14,50 @@ class ServidorVmController extends Controller
 {
     public function listar()
     {
-    	$servs_vm = ServidorVm::all();
+        $servs_vm = ServidorVm::all();
 
-    	return view('serv_vm/servidores_vm', compact('servs_vm'));
+        return view('serv_vm/servidores_vm', compact('servs_vm'));
     }
 
     public function detalhar($id)
     {
-    	$serv_vm = ServidorVm::findOrfail($id);
-    	$orgao = Orgao::findOrfail($serv_vm->orgao_id);
-    	$unidade = Unidade::find($serv_vm->unidade_id);
-    	$resp = Responsavel::find($serv_vm->responsavel_id);
+        $serv_vm = ServidorVm::findOrfail($id);
+        $orgao = Orgao::findOrfail($serv_vm->orgao_id);
+        $unidade = Unidade::find($serv_vm->unidade_id);
+        $resp = Responsavel::find($serv_vm->responsavel_id);
 
-    	return view('serv_vm/servidor_vm', compact('serv_vm', 'orgao', 'unidade', 'resp'));
+        return view('serv_vm/servidor_vm', compact('serv_vm', 'orgao', 'unidade', 'resp'));
     }
 
-    public function viewInsere(){
+    public function viewInsere()
+    {
         $orgaos = Orgao::orderBy('no_orgao')->get();
         $clouds = ItemConfig::where('categoriaitem_id', 1)->orderBy('no_item')->get();
         $sis_ops = ItemConfig::where('categoriaitem_id', 2)->orderBy('no_item')->get();
+
         return view('serv_vm/novo_serv_vm', compact('orgaos', 'clouds', 'sis_ops'));
     }
 
-    private function found($valor){
+    private function found($valor)
+    {
         $retorno = false;
         $count = ServidorVm::where('no_servidor', $valor)->count();
-        if($count > 0){
+        if ($count > 0) {
             $retorno = true;
         }
 
         return $retorno;
     }
 
-    
-    private function validaDados($dados){
+    private function validaDados($dados)
+    {
         $rules = [
             'orgao_id' => 'required',
             'unidade_id' => 'required',
             'responsavel_id' => 'required',
             'no_servidor' => 'required',
             'ip_endereco' => 'required',
-            'no_dns' => 'required'
+            'no_dns' => 'required',
         ];
 
         $messages = [
@@ -64,22 +66,20 @@ class ServidorVmController extends Controller
             'responsavel_id.required' => 'Selecione o Responsavel.',
             'no_servidor.required' => 'Informe um nome para o Servidor VM.',
             'ip_endereco.required' => 'Informe IP do Servidor VM.',
-            'no_dns.required' => 'Informe o DNS do Servidor VM.'
+            'no_dns.required' => 'Informe o DNS do Servidor VM.',
         ];
 
         return Validator::make($dados, $rules, $messages)->validate();
-    }        
-   
+    }
 
-    public function inserir(Request $request){
-        if($this->found($request->no_servidor)){
-
+    public function inserir(Request $request)
+    {
+        if ($this->found($request->no_servidor)) {
             return redirect()
             ->back()
-            ->with('retorno', ['tipo'=>'warning', 'msg'=>'Já existe um Servidor VM de Mesmo Nome.'])
+            ->with('retorno', ['tipo' => 'warning', 'msg' => 'Já existe um Servidor VM de Mesmo Nome.'])
             ->withInput();
-        }else{
-
+        } else {
             $this->validaDados($request->all());
             $dados = $request->except('_token');
             $serv_vm = new ServidorVm();
@@ -87,14 +87,14 @@ class ServidorVmController extends Controller
 
             return redirect()
             ->route('servidores_vm')
-            ->with('retorno', ['tipo'=>'success', 'msg'=>'Cadastro efetuado com sucesso.']);
+            ->with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro efetuado com sucesso.']);
         }
-     
-
     }
+
     // fim inserir
 
-    public function altera($id){
+    public function altera($id)
+    {
         $serv_vm = ServidorVm::findOrfail($id);
         $orgaos = Orgao::orderBy('no_orgao')->get();
         $unidade = Unidade::find($serv_vm->unidade_id);
@@ -107,7 +107,8 @@ class ServidorVmController extends Controller
 
     // fim altera
 
-    public function atualizar($id, Request $request){
+    public function atualizar($id, Request $request)
+    {
         $this->validaDados($request->all());
 
         $dados = $request->except('_token');
@@ -116,18 +117,17 @@ class ServidorVmController extends Controller
 
         return redirect()
         ->route('servidores_vm')
-        ->with('retorno', ['tipo'=>'success', 'msg'=>'Registro Atualizado com sucesso.']);
+        ->with('retorno', ['tipo' => 'success', 'msg' => 'Registro Atualizado com sucesso.']);
     }
 
     // fim atualizar
 
-
-    public function apagar($id){
+    public function apagar($id)
+    {
         ServidorVm::findOrfail($id)->delete();
 
         return redirect()
         ->back()
-        ->with('retorno', ['tipo'=>'success', 'msg'=>'Registro apagado com sucesso']);
+        ->with('retorno', ['tipo' => 'success', 'msg' => 'Registro apagado com sucesso']);
     }
-
 }

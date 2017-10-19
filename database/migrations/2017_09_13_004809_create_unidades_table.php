@@ -25,7 +25,6 @@ class CreateUnidadesTable extends Migration
 
             $table->foreign('orgao_id')->references('id')->on('orgao');
             $table->foreign('cidade_id')->references('id')->on('cidade');
-
         });
     }
 

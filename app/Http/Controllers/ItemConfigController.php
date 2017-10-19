@@ -28,7 +28,6 @@ class ItemConfigController extends Controller
             return redirect()->back()->
             with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro efetuado com sucesso.']);
         } else {
-
             return redirect()->back()->
             with('retorno', ['tipo' => 'warning', 'msg' => 'Já existe um Item de configuração de mesmo nome.'])->
             withInput();

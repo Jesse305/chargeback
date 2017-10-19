@@ -45,9 +45,8 @@ class UnidadeController extends Controller
             $unidade->fill($dados)->save();
 
             return redirect()->back()->
-            with('retorno', ['tipo'=>'success', 'msg'=>'Cadastro inserido com sucesso.']);
+            with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro inserido com sucesso.']);
         } else {
-
             return redirect()->back()->
             with('retorno', ['tipo' => 'warning', 'msg' => 'Orgão já possui unidade de mesmo nome!'])->
             withInput();
@@ -79,6 +78,6 @@ class UnidadeController extends Controller
         $delete = Unidade::findOrFail($id)->delete();
 
         return redirect()->back()->
-        with('retorno', ['tipo'=>'success', 'msg'=>'Registro deletado com sucesso.']);
+        with('retorno', ['tipo' => 'success', 'msg' => 'Registro deletado com sucesso.']);
     }
 }

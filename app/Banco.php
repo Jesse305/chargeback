@@ -11,6 +11,6 @@ class Banco extends Model
     public $timestamps = false;
 
     protected $fillable = [
-    	'ambiente_banco', 'tecnologia_banco', 'ip_banco', 'usuario_banco', 'senha_banco', 'schema_banco'
+        'ambiente_banco', 'tecnologia_banco', 'ip_banco', 'usuario_banco', 'senha_banco', 'schema_banco',
     ];
 }

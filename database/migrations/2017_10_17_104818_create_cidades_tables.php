@@ -8,12 +8,10 @@ class CreateCidadesTables extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
-        Schema::create('cidade', function(Blueprint $table){
+        Schema::create('cidade', function (Blueprint $table) {
             $table->incrementd('id');
             $table->string('no_cidade', 100);
         });
@@ -21,8 +19,6 @@ class CreateCidadesTables extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {

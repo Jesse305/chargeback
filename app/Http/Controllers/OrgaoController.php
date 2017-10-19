@@ -60,12 +60,12 @@ class OrgaoController extends Controller
     public function atualizar(Request $request, $id)
     {
         $dados = $request->except('_token');
-        
+
         $orgao = new Orgao();
         $orgao->findOrfail($id)->update($dados);
 
         return redirect()->route('orgaos')->
-        with('retorno', ['tipo'=>'success', 'msg'=>'Registro alterado com sucesso']);
+        with('retorno', ['tipo' => 'success', 'msg' => 'Registro alterado com sucesso']);
     }
 
     public function apagar($id)

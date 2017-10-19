@@ -27,9 +27,8 @@ class SiteController extends Controller
             $site->fill($dados)->save();
 
             return redirect()->back()->
-            with('retorno', ['tipo'=>'success', 'msg'=>'Cadastro efetuado com sucesso.']);
+            with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro efetuado com sucesso.']);
         } else {
-
             return redirect()->back()->
             with('retorno', ['tipo' => 'warning', 'msg' => 'Já existe um site de mesmo nome.'])->
             withInput();
@@ -66,7 +65,7 @@ class SiteController extends Controller
         $dados = $request->except('_token');
         $site = new Site();
         $site->findOrFail($id)->update($dados);
-        
+
         return redirect()->route('sites')->
         with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro alterado com sucesso.']);
     }
@@ -77,6 +76,5 @@ class SiteController extends Controller
 
         return redirect()->back()->
         with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro excluído com sucesso.']);
-
     }
 }

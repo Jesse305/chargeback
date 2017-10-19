@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\CircuitoMpls;
 use App\Orgao;
 use App\ItemConfig;
@@ -11,35 +10,38 @@ use Validator;
 
 class CircuitoMplsController extends Controller
 {
-    public function listar(){
-    	$circuitos = CircuitoMpls::all();
+    public function listar()
+    {
+        $circuitos = CircuitoMpls::all();
 
-    	return view('circuito_mpls/circuitos_mpls', compact("circuitos"));
+        return view('circuito_mpls/circuitos_mpls', compact('circuitos'));
     }
 
-    public function detalhar($id){
-    	$circuito = CircuitoMpls::findOrFail($id);
+    public function detalhar($id)
+    {
+        $circuito = CircuitoMpls::findOrFail($id);
 
-    	return view('circuito_mpls/circuito_mpls', compact('circuito'));
-
+        return view('circuito_mpls/circuito_mpls', compact('circuito'));
     }
 
-    public function novo(){
-    	$orgaos = Orgao::orderBy('no_orgao')->get(['id','no_orgao', 'no_sigla']);
-    	$itensConfig = ItemConfig::where('categoriaitem_id', 4)
-    	->where('no_item', 'LIKE', '%MPLS%')
-    	->orderBy('id')->get(['id', 'no_item']); 
+    public function novo()
+    {
+        $orgaos = Orgao::orderBy('no_orgao')->get(['id', 'no_orgao', 'no_sigla']);
+        $itensConfig = ItemConfig::where('categoriaitem_id', 4)
+        ->where('no_item', 'LIKE', '%MPLS%')
+        ->orderBy('id')->get(['id', 'no_item']);
 
-    	return view('circuito_mpls/novo_circuito_mpls', compact('orgaos', 'itensConfig'));
+        return view('circuito_mpls/novo_circuito_mpls', compact('orgaos', 'itensConfig'));
     }
 
-    public function valida($dados){
+    public function valida($dados)
+    {
         $rules = [
             'orgao_id' => 'required',
             'unidade_id' => 'required',
             'responsavel_id' => 'required',
             'itemdeconfiguracao_id' => 'required',
-            'no_designacao' => 'required'
+            'no_designacao' => 'required',
         ];
 
         $messages = [
@@ -53,7 +55,8 @@ class CircuitoMplsController extends Controller
         return Validator::make($dados, $rules, $messages)->validate();
     }
 
-    public function inserir(Request $request){
+    public function inserir(Request $request)
+    {
         $this->valida($request->all());
         $dados = $request->except('_token');
         $circuito = new CircuitoMpls();
@@ -61,35 +64,38 @@ class CircuitoMplsController extends Controller
 
         return redirect()
         ->route('circuitos_mpls')
-        ->with('retorno', ['tipo'=>'success', 'msg'=>'Cadastro efetuado com sucesso.']);
+        ->with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro efetuado com sucesso.']);
     }
 
-    public function altera($id){
-    	$circuito = CircuitoMpls::findOrFail($id);
-    	$orgaos = Orgao::orderBy('no_orgao')->get(['id','no_orgao', 'no_sigla']); 
-    	$itensConfig = ItemConfig::where('categoriaitem_id', 4)
-    	->where('no_item', 'LIKE', '%MPLS%')
-    	->orderBy('id')->get(['id', 'no_item']);  	
+    public function altera($id)
+    {
+        $circuito = CircuitoMpls::findOrFail($id);
+        $orgaos = Orgao::orderBy('no_orgao')->get(['id', 'no_orgao', 'no_sigla']);
+        $itensConfig = ItemConfig::where('categoriaitem_id', 4)
+        ->where('no_item', 'LIKE', '%MPLS%')
+        ->orderBy('id')->get(['id', 'no_item']);
 
-    	return view('circuito_mpls/alt_circuito_mpls', compact('circuito', 'orgaos', 'itensConfig'));
+        return view('circuito_mpls/alt_circuito_mpls', compact('circuito', 'orgaos', 'itensConfig'));
     }
 
-    public function atualizar(Request $request, $id){
-    	$this->valida($request->all());
-    	$dados = $request->except('_token');
-    	$circuito = new CircuitoMpls();
-    	$circuito->findOrFail($id)->update($dados);
+    public function atualizar(Request $request, $id)
+    {
+        $this->valida($request->all());
+        $dados = $request->except('_token');
+        $circuito = new CircuitoMpls();
+        $circuito->findOrFail($id)->update($dados);
 
-    	return redirect()
-    	->route('circuitos_mpls')
-    	->with('retorno', ['tipo'=>'success', 'msg'=>'Cadastro alterado com sucesso.']); 
+        return redirect()
+        ->route('circuitos_mpls')
+        ->with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro alterado com sucesso.']);
     }
 
-    public function apagar($id){
-    	CircuitoMpls::findOrFail($id)->delete();
+    public function apagar($id)
+    {
+        CircuitoMpls::findOrFail($id)->delete();
 
-    	return redirect()
-    	->back()
-    	->with('retorno', ['tipo'=>'success', 'msg'=>'Cadastro excluído com sucesso.']);
+        return redirect()
+        ->back()
+        ->with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro excluído com sucesso.']);
     }
 }

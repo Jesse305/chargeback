@@ -10,12 +10,12 @@ class DesenvolvedorController extends Controller
     public function listar()
     {
         $listaDevs = Desenvolvedor::all();
+
         return view('dev/desenvolvedores', compact('listaDevs'));
     }
 
     public function inserir(Request $request)
     {
-
         $dados = $request->except(['_token']);
         $count = Desenvolvedor::where('no_dev', $request->no_dev)->count();
         if ($count == 0) {
@@ -33,6 +33,7 @@ class DesenvolvedorController extends Controller
     public function altera($id)
     {
         $des = Desenvolvedor::findOrFail($id);
+
         return view('dev/altera_desenvolvedor', compact('des'));
     }
 
@@ -41,6 +42,7 @@ class DesenvolvedorController extends Controller
         $dados = $request->except(['_token', '_update']);
         $dev = new Desenvolvedor();
         $dev->findOrFail($id)->update($dados);
+
         return redirect()->
         route('desenvolvedores')->
         with('retorno', ['tipo' => 'success', 'msg' => 'Registro alterado com sucesso!']);
@@ -49,6 +51,7 @@ class DesenvolvedorController extends Controller
     public function apagar($id)
     {
         Desenvolvedor::findOrFail($id)->delete();
+
         return redirect()->back()->with('retorno', ['tipo' => 'success', 'msg' => 'Registro apagado com sucesso!']);
     }
 }

@@ -11,6 +11,6 @@ class Framework extends Model
     public $timestamps = false;
 
     protected $fillable = [
-    	'no_framework'
+        'no_framework',
     ];
 }

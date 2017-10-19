@@ -29,7 +29,6 @@ class CreateSistemasTable extends Migration
             $table->foreign('id_unidade')->references('id')->on('unidade');
             $table->foreign('id_banco')->references('id_banco')->on('banco_dados');
             $table->foreign('id_amb')->references('id')->on('ambientes');
-
         });
     }
 

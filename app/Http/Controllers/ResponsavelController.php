@@ -9,7 +9,6 @@ use App\Unidade;
 
 class ResponsavelController extends Controller
 {
-
     //pelo id da unidade
     public function respsByIdJson($id)
     {
@@ -31,14 +30,12 @@ class ResponsavelController extends Controller
         $count = Responsavel::where('no_responsavel', $request->no_responsavel)->
         where('unidade_id', $request->unidade_id)->count();
         if ($count == 0) {
-
             $resp = new Responsavel();
             $resp->fill($dados)->save();
 
             return redirect()->back()->
-            with('retorno', ['tipo'=>'success', 'msg'=>'Cadastro efetuado com sucesso.']);
+            with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro efetuado com sucesso.']);
         } else {
-
             return redirect()->back()->
             with('retorno', ['tipo' => 'warning', 'msg' => 'Já existe um responsavel de mesmo nome na unidade selecionada.'])->
             withInput();

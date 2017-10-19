@@ -12,6 +12,6 @@ class Site extends Model
     const UPDATED_AT = 'dt_atualizacao';
 
     protected $fillable = [
-    	'orgao_id', 'unidade_id', 'no_dns', 'no_site', 'codigo_analytics', 'ip_html', 'ip_banco', 'usuario_banco', 'pwd_banco', 'esquema_banco', 'ds_website', 'tp_portal', 'prefixo_tabela', 'st_token', 'usuario_analytics', 'senha_analytics'	
+        'orgao_id', 'unidade_id', 'no_dns', 'no_site', 'codigo_analytics', 'ip_html', 'ip_banco', 'usuario_banco', 'pwd_banco', 'esquema_banco', 'ds_website', 'tp_portal', 'prefixo_tabela', 'st_token', 'usuario_analytics', 'senha_analytics',
     ];
 }

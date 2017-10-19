@@ -1,7 +1,6 @@
 <?php
 
 namespace App;
-use App\Orgao;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,11 +12,13 @@ class Unidade extends Model
     const UPDATED_AT = 'dt_atualizacao';
 
     protected $fillable = [
-    	'no_unidade', 'no_sigla', 'no_endereco', 'nu_cep', 'status', 'orgao_id', 'cidade_id'
+        'no_unidade', 'no_sigla', 'no_endereco', 'nu_cep', 'status', 'orgao_id', 'cidade_id',
     ];
 
-    public function getOrgao($id){
-    	$orgao = Orgao::findOrFail($id);
-    	return $orgao;
+    public function getOrgao($id)
+    {
+        $orgao = Orgao::findOrFail($id);
+
+        return $orgao;
     }
 }

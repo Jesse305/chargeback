@@ -8,8 +8,6 @@ class CreateCircuitoMplsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
@@ -43,18 +41,11 @@ class CreateCircuitoMplsTable extends Migration
             $table->datetime('dt_homologacao');
             $table->string('wan_operadora', 45);
             $table->string('nu_dhcp', 45);
-
-
-
-
-            
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {

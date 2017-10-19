@@ -11,6 +11,6 @@ class Desenvolvedor extends Model
     public $timestamps = false;
 
     protected $fillable = [
-    	'no_dev', 'ip_dev'
+        'no_dev', 'ip_dev',
     ];
 }

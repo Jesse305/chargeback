@@ -8,8 +8,6 @@ class CreateServidorVmsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
@@ -38,14 +36,11 @@ class CreateServidorVmsTable extends Migration
             ->references('id')->on('unidade');
             $table->foreign('orgao_id')
             ->references('id')->on('orgao');
-
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {

@@ -12,6 +12,6 @@ class Orgao extends Model
     const UPDATED_AT = 'dt_atualizacao';
 
     protected $fillable = [
-    	'no_orgao', 'no_sigla', 'tp_orgao', 'status'
+        'no_orgao', 'no_sigla', 'tp_orgao', 'status',
     ];
 }

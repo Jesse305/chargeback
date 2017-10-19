@@ -11,8 +11,7 @@ class ItemConfig extends Model
     const CREATED_AT = 'dt_cadastro';
     const UPDATED_AT = 'dt_atualizacao';
 
-    protected $fillable =  [
-    	'no_item', 'ds_descricao', 'nu_custo_mensal', 'categoriaitem_id', 'ds_configuracao', 'status'
+    protected $fillable = [
+        'no_item', 'ds_descricao', 'nu_custo_mensal', 'categoriaitem_id', 'ds_configuracao', 'status',
     ];
-
 }

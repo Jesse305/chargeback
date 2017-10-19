@@ -8,8 +8,6 @@ class CreateMovCircuitosTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
@@ -38,18 +36,15 @@ class CreateMovCircuitosTable extends Migration
             $table->integer('responsavel_id');
             $table->foreign('responsavel_id')
             ->references('id')->on('responsavel');
-            
+
             $table->integer('unidade_id');
             $table->foreign('unidade_id')
             ->references('id')->on('unidade');
-            
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {

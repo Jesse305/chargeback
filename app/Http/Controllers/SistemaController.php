@@ -34,7 +34,6 @@ class SistemaController extends Controller
         $count = Sistema::where('no_sistema', $request->no_sistema)->count();
 
         if ($count > 0) {
-
             return redirect()->back()->
             with('retorno', ['tipo' => 'warning', 'msg' => 'Já existe Sistema de mesmo Nome!'])->
             withInput();
@@ -61,7 +60,6 @@ class SistemaController extends Controller
                 return redirect()->back()->
                 with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro inserido com sucesso!']);
             } else {
-
                 return redirect()->back()->
                 with('retorno', ['tipo' => 'danger', 'msg' => 'Não foi possível inserir cadastro!'])->
                 withInput();
@@ -134,8 +132,9 @@ class SistemaController extends Controller
         }
 
         return redirect()->route('sistemas')->
-        with('retorno', ['tipo'=>'success', 'msg'=>'Cadastro Atualizado com sucesso.']);
+        with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro Atualizado com sucesso.']);
     }
+
     //fim atualiza cadastro
 
     public function apagar($id)
@@ -143,6 +142,6 @@ class SistemaController extends Controller
         Sistema::findOrFail($id)->delete();
 
         return redirect()->back()->
-        with('retorno', ['tipo'=>'success', 'msg'=>'Cadastro apagado com sucesso.']);
+        with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro apagado com sucesso.']);
     }
 }

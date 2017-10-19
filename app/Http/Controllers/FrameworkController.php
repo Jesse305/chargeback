@@ -10,6 +10,7 @@ class FrameworkController extends Controller
     public function listar()
     {
         $listaFrameworks = Framework::all();
+
         return view('framework/frameworks', compact('listaFrameworks'));
     }
 
@@ -22,6 +23,7 @@ class FrameworkController extends Controller
             $frame = new Framework();
             $frame->fill($dados);
             $frame->save();
+
             return redirect()->back()->
             with('retorno', ['tipo' => 'success', 'msg' => 'Registro inserido com sucesso!']);
         } else {
@@ -33,6 +35,7 @@ class FrameworkController extends Controller
     public function altera($id)
     {
         $framework = Framework::findOrFail($id);
+
         return view('/framework/altera_framework', compact('framework'));
     }
 
@@ -41,6 +44,7 @@ class FrameworkController extends Controller
         $dados = $request->except('_token');
         $frame = new Framework();
         $frame->findOrFail($id)->update($dados);
+
         return redirect()->route('frameworks')->
         with('retorno', ['tipo' => 'success', 'msg' => 'Registro alterado com sucesso!']);
     }
@@ -48,6 +52,7 @@ class FrameworkController extends Controller
     public function apagar($id)
     {
         Framework::findOrFail($id)->delete();
+
         return redirect()->back()->with('retorno', ['tipo' => 'success', 'msg' => 'Registro apagado com sucesso!']);
     }
 }

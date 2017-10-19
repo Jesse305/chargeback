@@ -12,6 +12,6 @@ class Sistema extends Model
     const UPDATED_AT = 'dt_atualizacao';
 
     protected $fillable = [
-    	'no_sistema', 'no_sigla', 'id_orgao', 'id_unidade', 'id_banco', 'id_amb', 'desenvolvimento', 'tp_acesso', 'status'
+        'no_sistema', 'no_sigla', 'id_orgao', 'id_unidade', 'id_banco', 'id_amb', 'desenvolvimento', 'tp_acesso', 'status',
     ];
 }
