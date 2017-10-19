@@ -96,8 +96,6 @@ class ServidorVmController extends Controller
         }
     }
 
-    // fim inserir
-
     public function altera(ServidorVm $servVm)
     {
         $clouds = ItemConfig::where('categoriaitem_id', 1)->orderBy('no_item')->get();
@@ -110,8 +108,6 @@ class ServidorVmController extends Controller
             'sis_ops' => $sis_ops,
         ]);
     }
-
-    // fim altera
 
     public function atualizar(Request $request, ServidorVm $servVm)
     {
@@ -127,8 +123,6 @@ class ServidorVmController extends Controller
                 'msg' => 'Registro Atualizado com sucesso.',
             ]);
     }
-
-    // fim atualizar
 
     public function apagar(ServidorVm $servVm)
     {

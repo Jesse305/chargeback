@@ -48,16 +48,12 @@ class ResponsavelController extends Controller
         }
     }
 
-    // fim inserir
-
     public function detalha(Responsavel $responsavel)
     {
         return view('responsavel/responsavel', [
             'responsavel' => $responsavel,
          ]);
     }
-
-    // fim detalha
 
     public function altera(Responsavel $responsavel)
     {

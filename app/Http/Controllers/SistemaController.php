@@ -72,8 +72,6 @@ class SistemaController extends Controller
         }
     }
 
-    // fim inserir
-
     public function detalhar(Sistema $sistema)
     {
         $responsaveis = Responsavel::where('orgao_id', $sistema->orgao->id)->where('unidade_id', $sistema->unidade->id)->get();
@@ -92,8 +90,6 @@ class SistemaController extends Controller
         ]);
     }
 
-    // fim detalhar
-
     public function altera(Sistema $sistema)
     {
         $slcDevs = DB::table('sistemas_devs')->where('sistemas_devs.id_sistema', $sistema->id)->get();
@@ -110,8 +106,6 @@ class SistemaController extends Controller
             'slcFrames' => $slcFrames,
         ]);
     }
-
-    // fim altera
 
     public function atualizar(Request $request, Sistema $sistema)
     {
@@ -143,8 +137,6 @@ class SistemaController extends Controller
                 'msg' => 'Cadastro Atualizado com sucesso.',
             ]);
     }
-
-    //fim atualiza cadastro
 
     public function apagar(Sistema $sistema)
     {

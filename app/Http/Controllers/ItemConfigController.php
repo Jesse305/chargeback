@@ -40,8 +40,6 @@ class ItemConfigController extends Controller
         }
     }
 
-    // fim inserir
-
     public function detalhar(ItemConfig $item)
     {
         $categoria = DB::table('categoriaitem')->where('id', $item->categoriaitem_id)->first();

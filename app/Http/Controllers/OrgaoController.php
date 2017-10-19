@@ -30,8 +30,6 @@ class OrgaoController extends Controller
                     'msg' => 'Cadastro efetuado com sucesso.',
                 ]);
         } else {
-            \Session::flash('retorno', ['tipo' => 'warning', 'msg' => 'Já existe órgão de mesmo nome!']);
-
             return redirect()
                 ->back()
                 ->with('retorno', [
@@ -40,8 +38,6 @@ class OrgaoController extends Controller
                 ])->withInput();
         }
     }
-
-    //fim insere
 
     public function detalhar(Orgao $orgao)
     {

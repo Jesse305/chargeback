@@ -40,8 +40,6 @@ class SiteController extends Controller
         }
     }
 
-    // fim inserir
-
     public function detalhar(Site $site)
     {
         $responsaveis = $site->unidade ?
@@ -53,8 +51,6 @@ class SiteController extends Controller
             'responsaveis' => $responsaveis,
         ]);
     }
-
-    // fim detalhar
 
     public function altera(Site $site)
     {
