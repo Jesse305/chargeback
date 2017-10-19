@@ -16,7 +16,7 @@ class DesenvolvedorController extends Controller
 
     public function inserir(Request $request)
     {
-        $dados = $request->except(['_token']);
+        $dados = $request->all();
         $count = Desenvolvedor::where('no_dev', $request->no_dev)->count();
         if ($count == 0) {
             $dev = new Desenvolvedor();

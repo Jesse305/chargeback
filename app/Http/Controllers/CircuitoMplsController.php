@@ -61,7 +61,7 @@ class CircuitoMplsController extends Controller
     public function inserir(Request $request)
     {
         $this->valida($request->all());
-        $dados = $request->except('_token');
+        $dados = $request->all();
         $circuito = new CircuitoMpls();
         $circuito->fill($dados)->save();
 
@@ -87,7 +87,7 @@ class CircuitoMplsController extends Controller
     public function atualizar(Request $request, $id)
     {
         $this->valida($request->all());
-        $dados = $request->except('_token');
+        $dados = $request->all();
         $circuito = new CircuitoMpls();
         $circuito->findOrFail($id)->update($dados);
 

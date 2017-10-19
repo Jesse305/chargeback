@@ -86,7 +86,7 @@ class ServidorVmController extends Controller
             ->withInput();
         } else {
             $this->validaDados($request->all());
-            $dados = $request->except('_token');
+            $dados = $request->all();
             $serv_vm = new ServidorVm();
             $serv_vm->fill($dados)->save();
 
@@ -120,7 +120,7 @@ class ServidorVmController extends Controller
     {
         $this->validaDados($request->all());
 
-        $dados = $request->except('_token');
+        $dados = $request->all();
         $serv_vm = new ServidorVm();
         $serv_vm->findOrfail($id)->update($dados);
 

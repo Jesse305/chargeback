@@ -16,7 +16,7 @@ class BancoController extends Controller
 
     public function inserir(Request $request)
     {
-        $dados = $request->except('_token');
+        $dados = $request->all();
 
         $count = Banco::where('schema_banco', $request->schema_banco)->
         where('ambiente_banco', $request->ambiente_banco)->count();
@@ -51,7 +51,7 @@ class BancoController extends Controller
 
     public function atualizar(Request $request, $id)
     {
-        $dados = $request->except('_token');
+        $dados = $request->all();
         $banco = new Banco();
         $banco->findOrFail($id)->update($dados);
 

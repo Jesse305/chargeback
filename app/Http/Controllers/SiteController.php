@@ -20,7 +20,7 @@ class SiteController extends Controller
 
     public function inserir(Request $request)
     {
-        $dados = $request->except('_token');
+        $dados = $request->all();
         $count = Site::where('no_site', $request->no_site)->count();
         if ($count == 0) {
             $site = new Site();
@@ -66,7 +66,7 @@ class SiteController extends Controller
 
     public function atualizar($id, Request $request)
     {
-        $dados = $request->except('_token');
+        $dados = $request->all();
         $site = new Site();
         $site->findOrFail($id)->update($dados);
 

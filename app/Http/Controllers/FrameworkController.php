@@ -16,7 +16,7 @@ class FrameworkController extends Controller
 
     public function inserir(Request $request)
     {
-        $dados = $request->except(['_token']);
+        $dados = $request->all();
         $count = Framework::where('no_framework', $request->no_framework)->count();
 
         if ($count == 0) {
@@ -41,7 +41,7 @@ class FrameworkController extends Controller
 
     public function atualizar(Request $request, $id)
     {
-        $dados = $request->except('_token');
+        $dados = $request->all();
         $frame = new Framework();
         $frame->findOrFail($id)->update($dados);
 

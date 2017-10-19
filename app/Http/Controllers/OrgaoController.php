@@ -16,7 +16,7 @@ class OrgaoController extends Controller
 
     public function inserir(Request $request)
     {
-        $dados = $request->except('_token');
+        $dados = $request->all();
 
         $count = Orgao::where('no_orgao', $request->no_orgao)->count();
 
@@ -59,7 +59,7 @@ class OrgaoController extends Controller
 
     public function atualizar(Request $request, $id)
     {
-        $dados = $request->except('_token');
+        $dados = $request->all();
 
         $orgao = new Orgao();
         $orgao->findOrfail($id)->update($dados);

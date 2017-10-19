@@ -16,7 +16,7 @@ class AmbienteController extends Controller
 
     public function inserir(Request $request)
     {
-        $dados = $request->except(['_token']);
+        $dados = $request->all();
         $amb = new Ambiente();
         $amb->fill($dados)->save();
 
@@ -40,7 +40,7 @@ class AmbienteController extends Controller
 
     public function atualizar(Request $request, $id)
     {
-        $dados = $request->except('_token');
+        $dados = $request->all();
         $amb = new Ambiente();
         $amb->findOrFail($id)->update($dados);
 

@@ -26,7 +26,7 @@ class ResponsavelController extends Controller
 
     public function inserir(Request $request)
     {
-        $dados = $request->except('_token');
+        $dados = $request->all();
         $count = Responsavel::where('no_responsavel', $request->no_responsavel)->
         where('unidade_id', $request->unidade_id)->count();
         if ($count == 0) {
@@ -66,7 +66,7 @@ class ResponsavelController extends Controller
 
     public function atualizar(Request $request, $id)
     {
-        $dados = $request->except('_token');
+        $dados = $request->all();
         $resp = new Responsavel();
         $resp->findOrFail($id)->update($dados);
 

@@ -37,7 +37,7 @@ class UnidadeController extends Controller
 
     public function inserir(Request $request)
     {
-        $dados = $request->except('_token');
+        $dados = $request->all();
 
         $count = Unidade::where('orgao_id', $request->orgao_id)->
         where('no_unidade', $request->no_unidade)->count();
