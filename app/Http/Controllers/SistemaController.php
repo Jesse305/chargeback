@@ -29,7 +29,7 @@ class SistemaController extends Controller
 
     public function inserir(Request $request)
     {
-        $dados = $request->except(['_token', 'devs', 'frames']);
+        $dados = $request->all();
 
         $count = Sistema::where('no_sistema', $request->no_sistema)->count();
 
@@ -121,7 +121,7 @@ class SistemaController extends Controller
 
     public function atualizar(Request $request, Sistema $sistema)
     {
-        $dados = $request->except(['_token', 'devs', 'frames']);
+        $dados = $request->all();
         $sistema->update($dados);
 
         DB::table('sistemas_devs')->where('id_sistema', $id)->delete();

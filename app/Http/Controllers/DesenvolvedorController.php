@@ -46,7 +46,7 @@ class DesenvolvedorController extends Controller
 
     public function atualizar(Request $request, Desenvolvedor $dev)
     {
-        $dados = $request->except(['_token', '_update']);
+        $dados = $request->all();
         $dev->update($dados);
 
         return redirect()

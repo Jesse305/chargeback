@@ -72,7 +72,7 @@ class UnidadeController extends Controller
 
     public function atualizar(Request $request, Unidade $unidade)
     {
-        $dados = $request->except(['_token', 'no_orgao']);
+        $dados = $request->all();
         $unidade->update($dados);
 
         return redirect()

@@ -18,7 +18,7 @@ class ItemConfigController extends Controller
 
     public function inserir(Request $req)
     {
-        $dados = $req->except('_token');
+        $dados = $req->all();
         $count = ItemConfig::where('no_item', $req->no_item)->count();
 
         if ($count == 0) {
@@ -62,7 +62,7 @@ class ItemConfigController extends Controller
 
     public function atualizar(Request $req, ItemConfig $item)
     {
-        $dados = $req->except('_token');
+        $dados = $req->all();
         $item->update($dados);
 
         return redirect()
