@@ -44,9 +44,8 @@ class SiteController extends Controller
 
     // fim inserir
 
-    public function detalhar($id)
+    public function detalhar(Site $site)
     {
-        $site = Site::findOrFail($id);
         $unidade = Unidade::where('id', $site->unidade_id)->first();
         $responsaveis = $unidade ?
             Responsavel::where('unidade_id', $unidade->id)->get() :
@@ -62,20 +61,19 @@ class SiteController extends Controller
 
     // fim detalhar
 
-    public function altera($id)
+    public function altera(Site $site)
     {
         return view('site/altera_site', [
-            'site' => Site::findOrFail($id),
+            'site' => $site,
             'listaOrgaos' => Orgao::orderBy('no_orgao')->get(),
             'unidade' => Unidade::where('id', $site->unidade_id)->first(),
          ]);
     }
 
-    public function atualizar($id, Request $request)
+    public function atualizar(Request $request, Site $site)
     {
         $dados = $request->all();
-        $site = new Site();
-        $site->findOrFail($id)->update($dados);
+        $site->update($dados);
 
         return redirect()
             ->route('sites')
@@ -85,9 +83,9 @@ class SiteController extends Controller
             ]);
     }
 
-    public function apagar($id)
+    public function apagar(Site $site)
     {
-        Site::findOrFail($id)->delete();
+        $site->delete();
 
         return redirect()
             ->back()

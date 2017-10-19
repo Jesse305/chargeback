@@ -22,21 +22,21 @@ class MovCircuitoController extends Controller
          ]);
     }
 
-    public function detalhar($id)
+    public function detalhar(MovCircuito $mc)
     {
         return view('mov_circuito/movimentacao_circ', [
-            'mc' => MovCircuito::findOrFail($id),
+            'mc' => $mc,
          ]);
     }
 
-    public function novo($id)
+    public function novo(CircuitoMpls $circuito)
     {
         $itens = ItemConfig::where('categoriaitem_id', 4)
         ->where('no_item', 'LIKE', '%MPLS%')
         ->get(['id', 'no_item']);
 
         return view('mov_circuito/novo_movimentacao_circ', [
-            'circuito' => CircuitoMpls::findOrFail($id),
+            'circuito' => $circuito,
             'orgaos' => Orgao::orderBy('no_orgao')->get(['no_orgao', 'id']),
             'itens' => $itens,
          ]);

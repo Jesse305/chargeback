@@ -40,18 +40,17 @@ class FrameworkController extends Controller
         }
     }
 
-    public function altera($id)
+    public function altera(Framework $framework)
     {
         return view('/framework/altera_framework', [
-            'framework' => Framework::findOrFail($id),
+            'framework' => $framework,
          ]);
     }
 
-    public function atualizar(Request $request, $id)
+    public function atualizar(Request $request, Framework $framework)
     {
         $dados = $request->all();
-        $frame = new Framework();
-        $frame->findOrFail($id)->update($dados);
+        $framework->update($dados);
 
         return redirect()
             ->route('frameworks')
@@ -61,9 +60,9 @@ class FrameworkController extends Controller
             ]);
     }
 
-    public function apagar($id)
+    public function apagar(Framework $framework)
     {
-        Framework::findOrFail($id)->delete();
+        $framework->delete();
 
         return redirect()
             ->back()

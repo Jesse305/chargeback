@@ -19,15 +19,13 @@ class ServidorVmController extends Controller
         ]);
     }
 
-    public function detalhar($id)
+    public function detalhar(ServidorVm $servVm)
     {
-        $serv_vm = ServidorVm::findOrfail($id);
-
         return view('serv_vm/servidor_vm', [
-            'serv_vm' => $serv_vm,
-            'orgao' => Orgao::findOrfail($serv_vm->orgao_id),
-            'unidade' => Unidade::find($serv_vm->unidade_id),
-            'resp' => Responsavel::find($serv_vm->responsavel_id),
+            'serv_vm' => $servVm,
+            'orgao' => Orgao::findOrfail($servVm->orgao_id),
+            'unidade' => Unidade::find($servVm->unidade_id),
+            'resp' => Responsavel::find($servVm->responsavel_id),
         ]);
     }
 
@@ -101,16 +99,15 @@ class ServidorVmController extends Controller
 
     // fim inserir
 
-    public function altera($id)
+    public function altera(ServidorVm $servVm)
     {
-        $serv_vm = ServidorVm::findOrfail($id);
         $clouds = ItemConfig::where('categoriaitem_id', 1)->orderBy('no_item')->get();
         $sis_ops = ItemConfig::where('categoriaitem_id', 2)->orderBy('no_item')->get();
 
         return view('serv_vm/alt_serv_vm', [
-            'serv_vm' => $serv_vm,
-            'unidade' => Unidade::find($serv_vm->unidade_id),
-            'responsavel' => Responsavel::find($serv_vm->responsavel_id),
+            'serv_vm' => $serv_servVmvm,
+            'unidade' => Unidade::find($servVm->unidade_id),
+            'responsavel' => Responsavel::find($servVm->responsavel_id),
             'orgaos' => Orgao::orderBy('no_orgao')->get(),
             'clouds' => $clouds,
             'sis_ops' => $sis_ops,
@@ -119,13 +116,12 @@ class ServidorVmController extends Controller
 
     // fim altera
 
-    public function atualizar($id, Request $request)
+    public function atualizar(Request $request, ServidorVm $servVm)
     {
         $this->validaDados($request->all());
 
         $dados = $request->all();
-        $serv_vm = new ServidorVm();
-        $serv_vm->findOrfail($id)->update($dados);
+        $servVm->update($dados);
 
         return redirect()
             ->route('servidores_vm')
@@ -137,9 +133,9 @@ class ServidorVmController extends Controller
 
     // fim atualizar
 
-    public function apagar($id)
+    public function apagar(ServidorVm $servVm)
     {
-        ServidorVm::findOrfail($id)->delete();
+        $servVm->delete();
 
         return redirect()
             ->back()

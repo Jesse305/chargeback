@@ -24,12 +24,12 @@ class UnidadeController extends Controller
          ]);
     }
 
-    public function detalhar($id)
+    public function detalhar(Unidade $unidade)
     {
         $cidade = DB::table('cidade')->where('id', $unidade->cidade_id)->first();
 
         return view('unidade/unidade', [
-            'unidade' => Unidade::findOrFail($id),
+            'unidade' => $unidade,
             'orgao' => Orgao::findOrFail($unidade->orgao_id),
             'cidade' => $cidade,
          ]);
@@ -62,21 +62,19 @@ class UnidadeController extends Controller
         }
     }
 
-    public function altera($id)
+    public function altera(Unidade $unidade)
     {
         return view('unidade/altera_unidade', [
-            'unidade' => Unidade::findOrFail($id),
+            'unidade' => $unidade,
             'orgao' => Orgao::findOrFail($unidade->orgao_id),
             'cidades' => DB::table('cidade')->orderBy('no_cidade')->get(),
          ]);
     }
 
-    public function atualizar(Request $request, $id)
+    public function atualizar(Request $request, Unidade $unidade)
     {
         $dados = $request->except(['_token', 'no_orgao']);
-        $unidade = new Unidade();
-        $unidade->findOrFail($id)->update($dados);
-        $update = Unidade::where('id', $id)->update($dados);
+        $unidade->update($dados);
 
         return redirect()
             ->route('unidades')
@@ -86,15 +84,15 @@ class UnidadeController extends Controller
             ]);
     }
 
-    public function apagar($id)
+    public function apagar(Unidade $unidade)
     {
-        $delete = Unidade::findOrFail($id)->delete();
+        $unidade->delete();
 
         return redirect()
-        ->back()
-        ->with('retorno', [
-            'tipo' => 'success',
-            'msg' => 'Registro deletado com sucesso.',
-        ]);
+            ->back()
+            ->with('retorno', [
+                'tipo' => 'success',
+                'msg' => 'Registro deletado com sucesso.',
+            ]);
     }
 }

@@ -39,30 +39,29 @@ class DesenvolvedorController extends Controller
         }
     }
 
-    public function altera($id)
+    public function altera(Desenvolvedor $dev)
     {
         return view('dev/altera_desenvolvedor', [
-            'des' => Desenvolvedor::findOrFail($id),
+            'des' => $dev,
          ]);
     }
 
-    public function atualizar(Request $request, $id)
+    public function atualizar(Request $request, Desenvolvedor $dev)
     {
         $dados = $request->except(['_token', '_update']);
-        $dev = new Desenvolvedor();
-        $dev->findOrFail($id)->update($dados);
+        $dev->update($dados);
 
         return redirect()
-        ->route('desenvolvedores')
-        ->with('retorno', [
-            'tipo' => 'success',
-            'msg' => 'Registro alterado com sucesso!',
-        ]);
+            ->route('desenvolvedores')
+            ->with('retorno', [
+                'tipo' => 'success',
+                'msg' => 'Registro alterado com sucesso!',
+            ]);
     }
 
-    public function apagar($id)
+    public function apagar(Desenvolvedor $dev)
     {
-        Desenvolvedor::findOrFail($id)->delete();
+        $dev->delete();
 
         return redirect()
             ->back()

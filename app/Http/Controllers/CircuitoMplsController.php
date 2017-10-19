@@ -17,10 +17,10 @@ class CircuitoMplsController extends Controller
          ]);
     }
 
-    public function detalhar($id)
+    public function detalhar(CircuitoMpls $circuito)
     {
         return view('circuito_mpls/circuito_mpls', [
-            'circuito' => CircuitoMpls::findOrFail($id),
+            'circuito' => $circuito,
          ]);
     }
 
@@ -73,7 +73,7 @@ class CircuitoMplsController extends Controller
             ]);
     }
 
-    public function altera($id)
+    public function altera(CircuitoMpls $circuito)
     {
         $orgaos = Orgao::orderBy('no_orgao')->get(['id', 'no_orgao', 'no_sigla']);
         $itensConfig = ItemConfig::where('categoriaitem_id', 4)
@@ -81,18 +81,17 @@ class CircuitoMplsController extends Controller
         ->orderBy('id')->get(['id', 'no_item']);
 
         return view('circuito_mpls/alt_circuito_mpls', [
-            'circuito' => CircuitoMpls::findOrFail($id),
+            'circuito' => $circuito,
             'orgaos' => $orgaos,
             'itensConfig' => $itensConfig,
         ]);
     }
 
-    public function atualizar(Request $request, $id)
+    public function atualizar(Request $request, CircuitoMpls $circuito)
     {
         $this->valida($request->all());
         $dados = $request->all();
-        $circuito = new CircuitoMpls();
-        $circuito->findOrFail($id)->update($dados);
+        $circuito->update($dados);
 
         return redirect()
             ->route('circuitos_mpls')
@@ -102,9 +101,9 @@ class CircuitoMplsController extends Controller
             ]);
     }
 
-    public function apagar($id)
+    public function apagar(CircuitoMpls $circuito)
     {
-        CircuitoMpls::findOrFail($id)->delete();
+        $circuito->delete();
 
         return redirect()
             ->back()

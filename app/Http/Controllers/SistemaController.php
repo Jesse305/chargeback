@@ -76,9 +76,8 @@ class SistemaController extends Controller
 
     // fim inserir
 
-    public function detalhar($id)
+    public function detalhar(Sistema $sistema)
     {
-        $sistema = Sistema::findOrFail($id);
         $responsaveis = Responsavel::where('orgao_id', $orgao->id)->where('unidade_id', $unidade->id)->get();
 
         $devs = DB::table('dev')->join('sistemas_devs', 'dev.id', '=', 'sistemas_devs.id_dev')->
@@ -101,9 +100,8 @@ class SistemaController extends Controller
 
     // fim detalhar
 
-    public function altera($id)
+    public function altera(Sistema $sistema)
     {
-        $sistema = Sistema::findOrFail($id);
         $slcDevs = DB::table('sistemas_devs')->where('sistemas_devs.id_sistema', $sistema->id)->get();
         $slcFrames = DB::table('sistemas_frameworks')->where('sistemas_frameworks.id_sistema', $sistema->id)->get();
 
@@ -122,11 +120,10 @@ class SistemaController extends Controller
 
     // fim altera
 
-    public function atualizar(Request $request, $id)
+    public function atualizar(Request $request, Sistema $sistema)
     {
         $dados = $request->except(['_token', 'devs', 'frames']);
-        $sistema = new Sistema();
-        $sistema->findOrFail($id)->update($dados);
+        $sistema->update($dados);
 
         DB::table('sistemas_devs')->where('id_sistema', $id)->delete();
         foreach ($request->devs as $devs) {
@@ -156,9 +153,9 @@ class SistemaController extends Controller
 
     //fim atualiza cadastro
 
-    public function apagar($id)
+    public function apagar(Sistema $sistema)
     {
-        Sistema::findOrFail($id)->delete();
+        $sistema->delete();
 
         return redirect()
             ->back()

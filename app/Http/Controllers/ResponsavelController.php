@@ -51,10 +51,10 @@ class ResponsavelController extends Controller
 
     // fim inserir
 
-    public function detalha($id)
+    public function detalha(Responsavel $responsavel)
     {
         return view('responsavel/responsavel', [
-            'responsavel' => Responsavel::findOrFail($id),
+            'responsavel' => $responsavel,
             'orgao' => Orgao::findOrFail($responsavel->orgao_id),
             'unidade' => Unidade::findOrFail($responsavel->unidade_id),
          ]);
@@ -62,20 +62,19 @@ class ResponsavelController extends Controller
 
     // fim detalha
 
-    public function altera($id)
+    public function altera(Responsavel $responsavel)
     {
         return view('responsavel/altera_responsavel', [
-            'responsavel' => Responsavel::findOrFail($id),
+            'responsavel' => $responsavel,
             'orgao' => Orgao::findOrFail($responsavel->orgao_id),
             'unidade' => Unidade::findOrFail($responsavel->unidade_id),
          ]);
     }
 
-    public function atualizar(Request $request, $id)
+    public function atualizar(Request $request, Responsavel $responsavel)
     {
         $dados = $request->all();
-        $resp = new Responsavel();
-        $resp->findOrFail($id)->update($dados);
+        $responsavel->update($dados);
 
         return redirect()
             ->route('responsaveis')
@@ -85,9 +84,9 @@ class ResponsavelController extends Controller
             ]);
     }
 
-    public function apagar($id)
+    public function apagar(Responsavel $responsavel)
     {
-        Responsavel::findOrFail($id)->delete();
+        $responsavel->delete();
 
         return redirect()
             ->with('retorno', [

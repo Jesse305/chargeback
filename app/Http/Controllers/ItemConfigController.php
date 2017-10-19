@@ -43,29 +43,28 @@ class ItemConfigController extends Controller
 
     // fim inserir
 
-    public function detalhar($id)
+    public function detalhar(ItemConfig $item)
     {
         $categoria = DB::table('categoriaitem')->where('id', $item->categoriaitem_id)->first();
 
         return view('item_config/item_config', [
-            'item' => ItemConfig::findOrFail($id),
+            'item' => $item,
             'categoria' => $categoria,
          ]);
     }
 
-    public function altera($id)
+    public function altera(ItemConfig $item)
     {
         return view('item_config/altera_item_config', [
-            'item' => ItemConfig::findOrFail($id),
+            'item' => $item,
             'categoriasItens' => DB::table('categoriaitem')->get(),
          ]);
     }
 
-    public function atualizar(Request $req, $id)
+    public function atualizar(Request $req, ItemConfig $item)
     {
         $dados = $req->except('_token');
-        $item_config = new ItemConfig();
-        $item_config->findOrFail($id)->update($dados);
+        $item->update($dados);
 
         return redirect()
             ->route('itens_config')
@@ -75,9 +74,9 @@ class ItemConfigController extends Controller
             ]);
     }
 
-    public function apagar($id)
+    public function apagar(ItemConfig $item)
     {
-        ItemConfig::findOrFail($id)->delete();
+        $item->delete();
 
         return redirect()
             ->back()

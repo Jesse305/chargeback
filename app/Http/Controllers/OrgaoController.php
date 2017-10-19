@@ -44,10 +44,10 @@ class OrgaoController extends Controller
 
     //fim insere
 
-    public function detalhar($id)
+    public function detalhar(Orgao $orgao)
     {
         return view('orgao/orgao', [
-            'orgao' => Orgao::findOrfail($id),
+            'orgao' => $orgao,
          ]);
     }
 
@@ -57,19 +57,17 @@ class OrgaoController extends Controller
         echo json_encode($orgaosJson, JSON_UNESCAPED_UNICODE);
     }
 
-    public function altera($id)
+    public function altera(Orgao $orgao)
     {
         return view('orgao/altera_orgao', [
-            'orgao' => Orgao::findOrfail($id),
+            'orgao' => $orgao,
          ]);
     }
 
-    public function atualizar(Request $request, $id)
+    public function atualizar(Request $request, Orgao $orgao)
     {
         $dados = $request->all();
-
-        $orgao = new Orgao();
-        $orgao->findOrfail($id)->update($dados);
+        $orgao->update($dados);
 
         return redirect()
             ->route('orgaos')
@@ -79,9 +77,9 @@ class OrgaoController extends Controller
             ]);
     }
 
-    public function apagar($id)
+    public function apagar(Orgao $orgao)
     {
-        $delete = Orgao::findOrfail($id)->delete();
+        $orgao->delete();
 
         return redirect()
             ->back()

@@ -28,17 +28,17 @@ class AmbienteController extends Controller
             ]);
     }
 
-    public function detalhar($id)
+    public function detalhar(Ambiente $ambiente)
     {
         return view('ambiente/ambiente', [
-            'ambiente' => Ambiente::findOrFail($id),
+            'ambiente' => $ambiente,
         ]);
     }
 
-    public function altera($id)
+    public function altera(Ambiente $ambiente)
     {
         return view('ambiente/altera_ambiente', [
-            'ambiente' => Ambiente::findOrFail($id),
+            'ambiente' => $ambiente,
         ]);
     }
 
@@ -56,9 +56,9 @@ class AmbienteController extends Controller
             ]);
     }
 
-    public function apagar($id)
+    public function apagar(Ambiente $ambiente)
     {
-        Ambiente::findOrFail($id)->delete();
+        $ambiente->delete();
 
         return redirect()
             ->back()

@@ -35,25 +35,24 @@ class BancoController extends Controller
         }
     }
 
-    public function detalhar($id)
+    public function detalhar(Banco $banco)
     {
         return view('banco/banco', [
-            'banco' => Banco::findOrFail($id),
+            'banco' => $banco,
          ]);
     }
 
-    public function altera($id)
+    public function altera(Banco $banco)
     {
         return view('banco/altera_banco', [
-            'banco' => Banco::findOrFail($id),
+            'banco' => $banco,
          ]);
     }
 
-    public function atualizar(Request $request, $id)
+    public function atualizar(Request $request, Banco $banco)
     {
         $dados = $request->all();
-        $banco = new Banco();
-        $banco->findOrFail($id)->update($dados);
+        $banco->update($dados);
 
         return redirect()
             ->route('bancos')
@@ -63,9 +62,9 @@ class BancoController extends Controller
             ]);
     }
 
-    public function apagar($id)
+    public function apagar(Banco $banco)
     {
-        Banco::findOrFail($id)->delete();
+        $banco->delete();
 
         return redirect()
             ->back()
