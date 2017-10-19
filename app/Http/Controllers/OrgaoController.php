@@ -48,8 +48,7 @@ class OrgaoController extends Controller
 
     public function listarJson()
     {
-        $orgaosJson = Orgao::orderBy('no_orgao')->get();
-        echo json_encode($orgaosJson, JSON_UNESCAPED_UNICODE);
+        return Orgao::orderBy('no_orgao')->get();
     }
 
     public function altera(Orgao $orgao)

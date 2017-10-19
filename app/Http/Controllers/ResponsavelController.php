@@ -12,8 +12,7 @@ class ResponsavelController extends Controller
     //pelo id da unidade
     public function respsByIdJson($id)
     {
-        $respByIdJson = Responsavel::where('unidade_id', $id)->get();
-        echo json_encode($respByIdJson, JSON_UNESCAPED_UNICODE);
+        return Responsavel::where('unidade_id', $id)->get();
     }
 
     public function listar()
