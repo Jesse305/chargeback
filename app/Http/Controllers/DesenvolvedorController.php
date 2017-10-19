@@ -23,10 +23,19 @@ class DesenvolvedorController extends Controller
             $dev->fill($dados);
             $dev->save();
 
-            return redirect()->back()->with('retorno', ['tipo' => 'success', 'msg' => 'Registro inserido com sucesso!']);
+            return redirect()
+                ->back()
+                ->with('retorno', [
+                    'tipo' => 'success',
+                    'msg' => 'Registro inserido com sucesso!',
+                ]);
         } else {
-            return redirect()->back()->
-            with('retorno', ['tipo' => 'warning', 'msg' => 'Desenvolvedor já possui cadastro!'])->withInput();
+            return redirect()
+                ->back()
+                ->with('retorno', [
+                    'tipo' => 'warning',
+                    'msg' => 'Desenvolvedor já possui cadastro!',
+                ])->withInput();
         }
     }
 
@@ -43,15 +52,23 @@ class DesenvolvedorController extends Controller
         $dev = new Desenvolvedor();
         $dev->findOrFail($id)->update($dados);
 
-        return redirect()->
-        route('desenvolvedores')->
-        with('retorno', ['tipo' => 'success', 'msg' => 'Registro alterado com sucesso!']);
+        return redirect()
+        ->route('desenvolvedores')
+        ->with('retorno', [
+            'tipo' => 'success',
+            'msg' => 'Registro alterado com sucesso!',
+        ]);
     }
 
     public function apagar($id)
     {
         Desenvolvedor::findOrFail($id)->delete();
 
-        return redirect()->back()->with('retorno', ['tipo' => 'success', 'msg' => 'Registro apagado com sucesso!']);
+        return redirect()
+            ->back()
+            ->with('retorno', [
+                'tipo' => 'success',
+                'msg' => 'Registro apagado com sucesso!',
+            ]);
     }
 }

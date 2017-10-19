@@ -46,12 +46,19 @@ class UnidadeController extends Controller
             $unidade = new Unidade();
             $unidade->fill($dados)->save();
 
-            return redirect()->back()->
-            with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro inserido com sucesso.']);
+            return redirect()
+                ->back()
+                ->with('retorno', [
+                    'tipo' => 'success',
+                    'msg' => 'Cadastro inserido com sucesso.',
+                ]);
         } else {
-            return redirect()->back()->
-            with('retorno', ['tipo' => 'warning', 'msg' => 'Orgão já possui unidade de mesmo nome!'])->
-            withInput();
+            return redirect()
+                ->back()
+                ->with('retorno', [
+                    'tipo' => 'warning',
+                    'msg' => 'Orgão já possui unidade de mesmo nome!',
+                ])->withInput();
         }
     }
 
@@ -71,15 +78,23 @@ class UnidadeController extends Controller
         $unidade->findOrFail($id)->update($dados);
         $update = Unidade::where('id', $id)->update($dados);
 
-        return redirect()->route('unidades')->
-        with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro alterado com sucesso!']);
+        return redirect()
+            ->route('unidades')
+            ->with('retorno', [
+                'tipo' => 'success',
+                'msg' => 'Cadastro alterado com sucesso!',
+            ]);
     }
 
     public function apagar($id)
     {
         $delete = Unidade::findOrFail($id)->delete();
 
-        return redirect()->back()->
-        with('retorno', ['tipo' => 'success', 'msg' => 'Registro deletado com sucesso.']);
+        return redirect()
+        ->back()
+        ->with('retorno', [
+            'tipo' => 'success',
+            'msg' => 'Registro deletado com sucesso.',
+        ]);
     }
 }

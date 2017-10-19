@@ -26,12 +26,19 @@ class SiteController extends Controller
             $site = new Site();
             $site->fill($dados)->save();
 
-            return redirect()->back()->
-            with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro efetuado com sucesso.']);
+            return redirect()
+                ->back()
+                ->with('retorno', [
+                    'tipo' => 'success',
+                    'msg' => 'Cadastro efetuado com sucesso.',
+                ]);
         } else {
-            return redirect()->back()->
-            with('retorno', ['tipo' => 'warning', 'msg' => 'Já existe um site de mesmo nome.'])->
-            withInput();
+            return redirect()
+                ->back()
+                ->with('retorno', [
+                    'tipo' => 'warning',
+                    'msg' => 'Já existe um site de mesmo nome.',
+                ])->withInput();
         }
     }
 
@@ -70,15 +77,23 @@ class SiteController extends Controller
         $site = new Site();
         $site->findOrFail($id)->update($dados);
 
-        return redirect()->route('sites')->
-        with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro alterado com sucesso.']);
+        return redirect()
+            ->route('sites')
+            ->with('retorno', [
+                'tipo' => 'success',
+                'msg' => 'Cadastro alterado com sucesso.',
+            ]);
     }
 
     public function apagar($id)
     {
         Site::findOrFail($id)->delete();
 
-        return redirect()->back()->
-        with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro excluído com sucesso.']);
+        return redirect()
+            ->back()
+            ->with('retorno', [
+                'tipo' => 'success',
+                'msg' => 'Cadastro excluído com sucesso.',
+            ]);
     }
 }

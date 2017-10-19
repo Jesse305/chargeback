@@ -91,8 +91,11 @@ class ServidorVmController extends Controller
             $serv_vm->fill($dados)->save();
 
             return redirect()
-            ->route('servidores_vm')
-            ->with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro efetuado com sucesso.']);
+                ->route('servidores_vm')
+                ->with('retorno', [
+                    'tipo' => 'success',
+                    'msg' => 'Cadastro efetuado com sucesso.',
+                ]);
         }
     }
 
@@ -125,8 +128,11 @@ class ServidorVmController extends Controller
         $serv_vm->findOrfail($id)->update($dados);
 
         return redirect()
-        ->route('servidores_vm')
-        ->with('retorno', ['tipo' => 'success', 'msg' => 'Registro Atualizado com sucesso.']);
+            ->route('servidores_vm')
+            ->with('retorno', [
+                'tipo' => 'success',
+                'msg' => 'Registro Atualizado com sucesso.',
+            ]);
     }
 
     // fim atualizar
@@ -136,7 +142,10 @@ class ServidorVmController extends Controller
         ServidorVm::findOrfail($id)->delete();
 
         return redirect()
-        ->back()
-        ->with('retorno', ['tipo' => 'success', 'msg' => 'Registro apagado com sucesso']);
+            ->back()
+            ->with('retorno', [
+                'tipo' => 'success',
+                'msg' => 'Registro apagado com sucesso',
+            ]);
     }
 }

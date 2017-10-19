@@ -57,12 +57,19 @@ class SistemaController extends Controller
                     }
                 }
 
-                return redirect()->back()->
-                with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro inserido com sucesso!']);
+                return redirect()
+                    ->back()
+                    ->with('retorno', [
+                        'tipo' => 'success',
+                        'msg' => 'Cadastro inserido com sucesso!',
+                    ]);
             } else {
-                return redirect()->back()->
-                with('retorno', ['tipo' => 'danger', 'msg' => 'Não foi possível inserir cadastro!'])->
-                withInput();
+                return redirect()
+                    ->back()
+                    ->with('retorno', [
+                        'tipo' => 'danger',
+                        'msg' => 'Não foi possível inserir cadastro!',
+                    ])->withInput();
             }
         }
     }
@@ -139,8 +146,12 @@ class SistemaController extends Controller
             DB::table('sistemas_frameworks')->where('id_sistema', $id)->delete();
         }
 
-        return redirect()->route('sistemas')->
-        with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro Atualizado com sucesso.']);
+        return redirect()
+            ->route('sistemas')
+            ->with('retorno', [
+                'tipo' => 'success',
+                'msg' => 'Cadastro Atualizado com sucesso.',
+            ]);
     }
 
     //fim atualiza cadastro
@@ -149,7 +160,11 @@ class SistemaController extends Controller
     {
         Sistema::findOrFail($id)->delete();
 
-        return redirect()->back()->
-        with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro apagado com sucesso.']);
+        return redirect()
+            ->back()
+            ->with('retorno', [
+                'tipo' => 'success',
+                'msg' => 'Cadastro apagado com sucesso.',
+            ]);
     }
 }

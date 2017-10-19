@@ -33,12 +33,19 @@ class ResponsavelController extends Controller
             $resp = new Responsavel();
             $resp->fill($dados)->save();
 
-            return redirect()->back()->
-            with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro efetuado com sucesso.']);
+            return redirect()
+                ->back()
+                ->with('retorno', [
+                    'tipo' => 'success',
+                    'msg' => 'Cadastro efetuado com sucesso.',
+                ]);
         } else {
-            return redirect()->back()->
-            with('retorno', ['tipo' => 'warning', 'msg' => 'Já existe um responsavel de mesmo nome na unidade selecionada.'])->
-            withInput();
+            return redirect()
+                ->back()
+                ->with('retorno', [
+                    'tipo' => 'warning',
+                    'msg' => 'Já existe um responsavel de mesmo nome na unidade selecionada.',
+                ])->withInput();
         }
     }
 
@@ -70,14 +77,22 @@ class ResponsavelController extends Controller
         $resp = new Responsavel();
         $resp->findOrFail($id)->update($dados);
 
-        return redirect()->route('responsaveis')->
-        with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro alterado com sucesso.']);
+        return redirect()
+            ->route('responsaveis')
+            ->with('retorno', [
+                'tipo' => 'success',
+                'msg' => 'Cadastro alterado com sucesso.',
+            ]);
     }
 
     public function apagar($id)
     {
         Responsavel::findOrFail($id)->delete();
 
-        return redirect()->with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro apagado com sucesso!']);
+        return redirect()
+            ->with('retorno', [
+                'tipo' => 'success',
+                'msg' => 'Cadastro apagado com sucesso!',
+            ]);
     }
 }

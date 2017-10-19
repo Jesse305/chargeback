@@ -24,14 +24,21 @@ class OrgaoController extends Controller
             $orgao = new Orgao();
             $orgao->fill($dados)->save();
 
-            return redirect()->back()->
-            with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro efetuado com sucesso.']);
+            return redirect()
+                ->back()
+                ->with('retorno', [
+                    'tipo' => 'success',
+                    'msg' => 'Cadastro efetuado com sucesso.',
+                ]);
         } else {
             \Session::flash('retorno', ['tipo' => 'warning', 'msg' => 'Já existe órgão de mesmo nome!']);
 
-            return redirect()->back()->
-            with('retorno', ['tipo' => 'warning', 'msg' => 'Já existe órgão de mesmo nome!'])->
-            withInput();
+            return redirect()
+                ->back()
+                ->with('retorno', [
+                    'tipo' => 'warning',
+                    'msg' => 'Já existe órgão de mesmo nome!',
+                ])->withInput();
         }
     }
 
@@ -64,15 +71,23 @@ class OrgaoController extends Controller
         $orgao = new Orgao();
         $orgao->findOrfail($id)->update($dados);
 
-        return redirect()->route('orgaos')->
-        with('retorno', ['tipo' => 'success', 'msg' => 'Registro alterado com sucesso']);
+        return redirect()
+            ->route('orgaos')
+            ->with('retorno', [
+                'tipo' => 'success',
+                'msg' => 'Registro alterado com sucesso',
+            ]);
     }
 
     public function apagar($id)
     {
         $delete = Orgao::findOrfail($id)->delete();
 
-        return redirect()->back()->
-        with('retorno', ['tipo' => 'success', 'msg' => 'Registro apagado com sucesso.']);
+        return redirect()
+            ->back()
+            ->with('retorno', [
+                'tipo' => 'success',
+                'msg' => 'Registro apagado com sucesso.',
+            ]);
     }
 }

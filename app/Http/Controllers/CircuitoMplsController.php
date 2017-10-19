@@ -66,8 +66,11 @@ class CircuitoMplsController extends Controller
         $circuito->fill($dados)->save();
 
         return redirect()
-        ->route('circuitos_mpls')
-        ->with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro efetuado com sucesso.']);
+            ->route('circuitos_mpls')
+            ->with('retorno', [
+                'tipo' => 'success',
+                'msg' => 'Cadastro efetuado com sucesso.',
+            ]);
     }
 
     public function altera($id)
@@ -92,8 +95,11 @@ class CircuitoMplsController extends Controller
         $circuito->findOrFail($id)->update($dados);
 
         return redirect()
-        ->route('circuitos_mpls')
-        ->with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro alterado com sucesso.']);
+            ->route('circuitos_mpls')
+            ->with('retorno', [
+                'tipo' => 'success',
+                'msg' => 'Cadastro alterado com sucesso.',
+            ]);
     }
 
     public function apagar($id)
@@ -101,7 +107,10 @@ class CircuitoMplsController extends Controller
         CircuitoMpls::findOrFail($id)->delete();
 
         return redirect()
-        ->back()
-        ->with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro excluído com sucesso.']);
+            ->back()
+            ->with('retorno', [
+                'tipo' => 'success',
+                'msg' => 'Cadastro excluído com sucesso.',
+            ]);
     }
 }

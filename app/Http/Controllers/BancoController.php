@@ -55,15 +55,23 @@ class BancoController extends Controller
         $banco = new Banco();
         $banco->findOrFail($id)->update($dados);
 
-        return redirect()->route('bancos')->
-        with('retorno', ['tipo' => 'success', 'msg' => 'Registro alterado com sucesso!']);
+        return redirect()
+            ->route('bancos')
+            ->with('retorno', [
+                'tipo' => 'success',
+                'msg' => 'Registro alterado com sucesso!',
+            ]);
     }
 
     public function apagar($id)
     {
         Banco::findOrFail($id)->delete();
 
-        return redirect()->back()->
-        with('retorno', ['tipo' => 'success', 'msg' => 'Registro apagado com sucesso!']);
+        return redirect()
+            ->back()
+            ->with('retorno', [
+                'tipo' => 'success',
+                'msg' => 'Registro apagado com sucesso!',
+            ]);
     }
 }

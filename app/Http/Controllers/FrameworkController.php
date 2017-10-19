@@ -24,11 +24,19 @@ class FrameworkController extends Controller
             $frame->fill($dados);
             $frame->save();
 
-            return redirect()->back()->
-            with('retorno', ['tipo' => 'success', 'msg' => 'Registro inserido com sucesso!']);
+            return redirect()
+                ->back()
+                ->with('retorno', [
+                    'tipo' => 'success',
+                    'msg' => 'Registro inserido com sucesso!',
+                ]);
         } else {
-            return redirect()->back()->
-            with('retorno', ['tipo' => 'warning', 'msg' => 'Framework já possui registro!']);
+            return redirect()
+                ->back()
+                ->with('retorno', [
+                    'tipo' => 'warning',
+                    'msg' => 'Framework já possui registro!',
+                ]);
         }
     }
 
@@ -45,14 +53,23 @@ class FrameworkController extends Controller
         $frame = new Framework();
         $frame->findOrFail($id)->update($dados);
 
-        return redirect()->route('frameworks')->
-        with('retorno', ['tipo' => 'success', 'msg' => 'Registro alterado com sucesso!']);
+        return redirect()
+            ->route('frameworks')
+            ->with('retorno', [
+                'tipo' => 'success',
+                'msg' => 'Registro alterado com sucesso!',
+            ]);
     }
 
     public function apagar($id)
     {
         Framework::findOrFail($id)->delete();
 
-        return redirect()->back()->with('retorno', ['tipo' => 'success', 'msg' => 'Registro apagado com sucesso!']);
+        return redirect()
+            ->back()
+            ->with('retorno', [
+                'tipo' => 'success',
+                'msg' => 'Registro apagado com sucesso!',
+            ]);
     }
 }

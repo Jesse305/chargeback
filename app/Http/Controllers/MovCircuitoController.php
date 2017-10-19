@@ -102,7 +102,10 @@ class MovCircuitoController extends Controller
         $mov_circ->fill($insert)->save();
 
         return redirect()
-        ->route('movimentacoes_circ', $request->circuitompls_id)
-        ->with('retorno', ['tipo' => 'success', 'msg' => 'Movimentação salva com sucesso.']);
+            ->route('movimentacoes_circ', $request->circuitompls_id)
+            ->with('retorno', [
+                'tipo' => 'success',
+                'msg' => 'Movimentação salva com sucesso.',
+            ]);
     }
 }

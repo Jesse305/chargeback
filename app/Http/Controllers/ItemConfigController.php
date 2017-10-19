@@ -25,12 +25,19 @@ class ItemConfigController extends Controller
             $item = new ItemConfig();
             $item->fill($dados)->save();
 
-            return redirect()->back()->
-            with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro efetuado com sucesso.']);
+            return redirect()
+                ->back()
+                ->with('retorno', [
+                    'tipo' => 'success',
+                    'msg' => 'Cadastro efetuado com sucesso.',
+                ]);
         } else {
-            return redirect()->back()->
-            with('retorno', ['tipo' => 'warning', 'msg' => 'Já existe um Item de configuração de mesmo nome.'])->
-            withInput();
+            return redirect()
+                ->back()
+                ->with('retorno', [
+                    'tipo' => 'warning',
+                    'msg' => 'Já existe um Item de configuração de mesmo nome.',
+                ])->withInput();
         }
     }
 
@@ -60,15 +67,23 @@ class ItemConfigController extends Controller
         $item_config = new ItemConfig();
         $item_config->findOrFail($id)->update($dados);
 
-        return redirect()->route('itens_config')->
-        with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro alterado com sucesso.']);
+        return redirect()
+            ->route('itens_config')
+            ->with('retorno', [
+                'tipo' => 'success',
+                'msg' => 'Cadastro alterado com sucesso.',
+            ]);
     }
 
     public function apagar($id)
     {
         ItemConfig::findOrFail($id)->delete();
 
-        return redirect()->back()->
-        with('retorno', ['tipo' => 'success', 'msg' => 'Cadastro excluído com sucesso.']);
+        return redirect()
+            ->back()
+            ->with('retorno', [
+                'tipo' => 'success',
+                'msg' => 'Cadastro excluído com sucesso.',
+            ]);
     }
 }
