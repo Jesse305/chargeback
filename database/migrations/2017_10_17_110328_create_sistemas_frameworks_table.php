@@ -12,10 +12,10 @@ class CreateSistemasFrameworksTable extends Migration
     public function up()
     {
         Schema::create('sistemas_frameworks', function (Blueprint $table) {
-            $table->integer('id_sistemas');
+            $table->integer('id_sistema');
             $table->integer('id_framework');
 
-            $table->foreign('id_sistemas')->references('id')->on('sistemas');
+            $table->foreign('id_sistema')->references('id')->on('sistemas');
             $table->foreign('id_framework')->references('id')->on('frameworks');
         });
     }

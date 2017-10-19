@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Orgao;
 use App\Banco;
 use App\Ambiente;
@@ -39,21 +38,8 @@ class SistemaController extends Controller
         } else {
             $sistema = new Sistema($dados);
             if ($sistema->save()) {
-                // $sis = Sistema::where('no_sistema', $request->no_sistema)->where('id_orgao', $request->id_orgao)->where('id_unidade', $request->id_unidade)->get();
-
-                foreach ($request->devs as $devs) {
-                    DB::table('sistemas_devs')->insert(
-                        ['id_sistema' => $sistema->id, 'id_dev' => $devs]
-                    );
-                }
-
-                if ($request->frames) {
-                    foreach ($request->frames as $frames) {
-                        DB::table('sistemas_frameworks')->insert(
-                            ['id_sistema' => $sistema->id, 'id_framework' => $frames]
-                        );
-                    }
-                }
+                $sistema->desenvolvedores()->sync($request->devs);
+                $sistema->frameworks()->sync($request->frames);
 
                 return redirect()
                     ->back()
@@ -76,25 +62,14 @@ class SistemaController extends Controller
     {
         $responsaveis = Responsavel::where('orgao_id', $sistema->orgao->id)->where('unidade_id', $sistema->unidade->id)->get();
 
-        $devs = DB::table('dev')->join('sistemas_devs', 'dev.id', '=', 'sistemas_devs.id_dev')->
-        where('sistemas_devs.id_sistema', $sistema->id)->get();
-
-        $frames = DB::table('frameworks')->join('sistemas_frameworks', 'frameworks.id', '=', 'sistemas_frameworks.id_framework')->
-        where('sistemas_frameworks.id_sistema', $sistema->id)->get();
-
         return view('sistema/sistema', [
             'sistema' => $sistema,
             'responsaveis' => $responsaveis,
-            'devs' => $devs,
-            'frames' => $frames,
         ]);
     }
 
     public function altera(Sistema $sistema)
     {
-        $slcDevs = DB::table('sistemas_devs')->where('sistemas_devs.id_sistema', $sistema->id)->get();
-        $slcFrames = DB::table('sistemas_frameworks')->where('sistemas_frameworks.id_sistema', $sistema->id)->get();
-
         return view('sistema/altera_sistema', [
             'sistema' => $sistema,
             'orgaos' => Orgao::orderBy('no_orgao')->get(),
@@ -102,8 +77,6 @@ class SistemaController extends Controller
             'ambientes' => Ambiente::orderBy('desc_amb')->get(),
             'devs' => Desenvolvedor::orderBy('no_dev')->get(),
             'frames' => Framework::orderBy('no_framework')->get(),
-            'slcDevs' => $slcDevs,
-            'slcFrames' => $slcFrames,
         ]);
     }
 
@@ -112,23 +85,8 @@ class SistemaController extends Controller
         $dados = $request->all();
         $sistema->update($dados);
 
-        DB::table('sistemas_devs')->where('id_sistema', $id)->delete();
-        foreach ($request->devs as $devs) {
-            DB::table('sistemas_devs')->insert(
-                ['id_sistema' => $id, 'id_dev' => $devs]
-            );
-        }
-
-        if ($request->frames) {
-            DB::table('sistemas_frameworks')->where('id_sistema', $id)->delete();
-            foreach ($request->frames as $frames) {
-                DB::table('sistemas_frameworks')->insert(
-                    ['id_sistema' => $id, 'id_framework' => $frames]
-                );
-            }
-        } else {
-            DB::table('sistemas_frameworks')->where('id_sistema', $id)->delete();
-        }
+        $sistema->desenvolvedores()->sync($request->devs);
+        $sistema->frameworks()->sync($request->frames);
 
         return redirect()
             ->route('sistemas')

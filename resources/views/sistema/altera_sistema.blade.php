@@ -199,8 +199,8 @@
 						  <ul class="dropdown-menu">
 						  	@foreach($devs as $dev)
 						  	<li>&nbsp; <input type="checkbox" name="devs[]" value={{$dev->id}}
-						  		@foreach($slcDevs as $sd)
-						  			@if($sd->id_dev == $dev->id)
+						  		@foreach($sistema->desenvolvedores as $sd)
+						  			@if($sd->id == $dev->id)
 						  				checked
 						  			@endif
 						  		@endforeach
@@ -216,8 +216,8 @@
 						  <ul class="dropdown-menu">
 						  @foreach($frames as $f)
 						  <li>&nbsp; <input type="checkbox" name="frames[]" value={{$f->id}}
-						  @foreach($slcFrames as $sf)
-						  	@if($sf->id_framework == $f->id)
+						  @foreach($sistema->frameworks as $sf)
+						  	@if($sf->id == $f->id)
 						  		checked
 						  	@endif
 						  @endforeach

@@ -90,10 +90,10 @@
 	<h5><b>Ambientes</b></h5>
 	<table class="table table-striped table-bordered table-hover" style="font-size: 13px;">
 		<tr>
-			<td><b>Link:</b> <a href="{{$sistemas->ambientes->link_prod}}">{{$sistemas->ambientes->link_prod}}</a></td>
+			<td><b>Link:</b> <a href="{{$sistema->ambientes->link_prod}}">{{$sistema->ambientes->link_prod}}</a></td>
 			<td class="col-xs-2"><b>Detalhes:</b>
 				<div class="pull-right">
-					<a href={{route('ambiente.detalhar', $sistemas->ambientes->id)}} class="btn btn-info btn-sm" title="visualizar detalhes">
+					<a href={{route('ambiente.detalhar', $sistema->ambientes->id)}} class="btn btn-info btn-sm" title="visualizar detalhes">
 						<i class="glyphicon glyphicon-eye-open"></i>
 					</a>
 				</div>
@@ -111,10 +111,10 @@
 			</tr>
 		</thead>
 		<tbody>
-			@foreach($devs as $d)
+			@foreach($sistema->desenvolvedores as $desenvolvedor)
 			<tr>
-				<td>{{$d->no_dev}} </td>
-				<td>{{$d->ip_dev}} </td>
+				<td>{{$desenvolvedor->no_dev}} </td>
+				<td>{{$desenvolvedor->ip_dev}} </td>
 			</tr>
 			@endforeach
 		</tbody>
@@ -123,7 +123,7 @@
 	<!-- fim desenvolvedores -->
 
 	<h5><b>Frameworks</b></h5>
-	@if(count($frames) < 1)
+	@if(count($sistema->frameworks) < 1)
 	<h5><font color="red">Sistema não faz uso de framework.</font></h5>
 	@else
 	<table class="table table-striped table-bordered table-hover" style="font-size: 13px;">
@@ -135,9 +135,9 @@
 				</tr>
 			</thead>
 			<tbody>
-				@foreach($frames as $f)
+				@foreach($sistema->frameworks as $framework)
 				<tr>
-					<td>{{$f->no_framework}}</td>
+					<td>{{$framework->no_framework}}</td>
 				</tr>
 				@endforeach
 			</tbody>

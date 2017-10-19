@@ -18,12 +18,12 @@ class Sistema extends Model
 
     public function orgao()
     {
-        return $this->belongsTo(Orgao::class, 'orgao_id');
+        return $this->belongsTo(Orgao::class, 'id_orgao');
     }
 
     public function unidade()
     {
-        return $this->belongsTo(Unidade::class, 'unidade_id');
+        return $this->belongsTo(Unidade::class, 'id_unidade');
     }
 
     public function banco()
@@ -34,5 +34,15 @@ class Sistema extends Model
     public function ambientes()
     {
         return $this->belongsTo(Ambiente::class, 'id_amb');
+    }
+
+    public function desenvolvedores()
+    {
+        return $this->belongsToMany(Desenvolvedor::class, 'sistemas_devs', 'id_sistema', 'id_dev');
+    }
+
+    public function frameworks()
+    {
+        return $this->belongsToMany(Framework::class, 'sistemas_frameworks', 'id_sistema', 'id_framework');
     }
 }
