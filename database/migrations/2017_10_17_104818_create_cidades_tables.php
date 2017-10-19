@@ -12,7 +12,7 @@ class CreateCidadesTables extends Migration
     public function up()
     {
         Schema::create('cidade', function (Blueprint $table) {
-            $table->incrementd('id');
+            $table->increments('id');
             $table->string('no_cidade', 100);
         });
     }

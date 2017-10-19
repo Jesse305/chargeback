@@ -13,7 +13,7 @@ class CreateCircuitoMplsTable extends Migration
     {
         Schema::create('circuitompls', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('nu_lote', 11);
+            $table->integer('nu_lote');
             $table->string('ip_lan', 45);
             $table->string('ip_mascara', 45);
             $table->string('wan_cliente', 45);
@@ -36,7 +36,7 @@ class CreateCircuitoMplsTable extends Migration
             $table->datetime('dt_cadastro');
             $table->datetime('dt_atualizacao');
             $table->text('ds_observacao');
-            $table->integer('nu_usuarios', 11)->unsigned();
+            $table->integer('nu_usuarios')->unsigned();
             $table->datetime('dt_instalacao');
             $table->datetime('dt_homologacao');
             $table->string('wan_operadora', 45);
