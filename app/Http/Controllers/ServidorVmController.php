@@ -14,28 +14,33 @@ class ServidorVmController extends Controller
 {
     public function listar()
     {
-        $servs_vm = ServidorVm::all();
-
-        return view('serv_vm/servidores_vm', compact('servs_vm'));
+        return view('serv_vm/servidores_vm', [
+            'servs_vm' => ServidorVm::all(),
+        ]);
     }
 
     public function detalhar($id)
     {
         $serv_vm = ServidorVm::findOrfail($id);
-        $orgao = Orgao::findOrfail($serv_vm->orgao_id);
-        $unidade = Unidade::find($serv_vm->unidade_id);
-        $resp = Responsavel::find($serv_vm->responsavel_id);
 
-        return view('serv_vm/servidor_vm', compact('serv_vm', 'orgao', 'unidade', 'resp'));
+        return view('serv_vm/servidor_vm', [
+            'serv_vm' => $serv_vm,
+            'orgao' => Orgao::findOrfail($serv_vm->orgao_id),
+            'unidade' => Unidade::find($serv_vm->unidade_id),
+            'resp' => Responsavel::find($serv_vm->responsavel_id),
+        ]);
     }
 
     public function viewInsere()
     {
-        $orgaos = Orgao::orderBy('no_orgao')->get();
         $clouds = ItemConfig::where('categoriaitem_id', 1)->orderBy('no_item')->get();
         $sis_ops = ItemConfig::where('categoriaitem_id', 2)->orderBy('no_item')->get();
 
-        return view('serv_vm/novo_serv_vm', compact('orgaos', 'clouds', 'sis_ops'));
+        return view('serv_vm/novo_serv_vm', [
+            'orgaos' => Orgao::orderBy('no_orgao')->get(),
+            'clouds' => $clouds,
+            'sis_ops' => $sis_ops,
+         ]);
     }
 
     private function found($valor)
@@ -96,13 +101,17 @@ class ServidorVmController extends Controller
     public function altera($id)
     {
         $serv_vm = ServidorVm::findOrfail($id);
-        $orgaos = Orgao::orderBy('no_orgao')->get();
-        $unidade = Unidade::find($serv_vm->unidade_id);
-        $responsavel = Responsavel::find($serv_vm->responsavel_id);
         $clouds = ItemConfig::where('categoriaitem_id', 1)->orderBy('no_item')->get();
         $sis_ops = ItemConfig::where('categoriaitem_id', 2)->orderBy('no_item')->get();
 
-        return view('serv_vm/alt_serv_vm', compact('serv_vm', 'unidade', 'responsavel', 'orgaos', 'clouds', 'sis_ops'));
+        return view('serv_vm/alt_serv_vm', [
+            'serv_vm' => $serv_vm,
+            'unidade' => Unidade::find($serv_vm->unidade_id),
+            'responsavel' => Responsavel::find($serv_vm->responsavel_id),
+            'orgaos' => Orgao::orderBy('no_orgao')->get(),
+            'clouds' => $clouds,
+            'sis_ops' => $sis_ops,
+        ]);
     }
 
     // fim altera

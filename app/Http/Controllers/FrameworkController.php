@@ -9,9 +9,9 @@ class FrameworkController extends Controller
 {
     public function listar()
     {
-        $listaFrameworks = Framework::all();
-
-        return view('framework/frameworks', compact('listaFrameworks'));
+        return view('framework/frameworks', [
+            'listaFrameworks' => Framework::all(),
+         ]);
     }
 
     public function inserir(Request $request)
@@ -34,9 +34,9 @@ class FrameworkController extends Controller
 
     public function altera($id)
     {
-        $framework = Framework::findOrFail($id);
-
-        return view('/framework/altera_framework', compact('framework'));
+        return view('/framework/altera_framework', [
+            'framework' => Framework::findOrFail($id),
+         ]);
     }
 
     public function atualizar(Request $request, $id)

@@ -9,9 +9,9 @@ class OrgaoController extends Controller
 {
     public function listar()
     {
-        $orgaos = Orgao::orderBy('no_orgao')->get();
-
-        return view('orgao/orgaos', compact('orgaos'));
+        return view('orgao/orgaos', [
+            'orgaos' => Orgao::orderBy('no_orgao')->get(),
+         ]);
     }
 
     public function inserir(Request $request)
@@ -39,9 +39,9 @@ class OrgaoController extends Controller
 
     public function detalhar($id)
     {
-        $orgao = Orgao::findOrfail($id);
-
-        return view('orgao/orgao', compact('orgao'));
+        return view('orgao/orgao', [
+            'orgao' => Orgao::findOrfail($id),
+         ]);
     }
 
     public function listarJson()
@@ -52,9 +52,9 @@ class OrgaoController extends Controller
 
     public function altera($id)
     {
-        $orgao = Orgao::findOrfail($id);
-
-        return view('orgao/altera_orgao', compact('orgao'));
+        return view('orgao/altera_orgao', [
+            'orgao' => Orgao::findOrfail($id),
+         ]);
     }
 
     public function atualizar(Request $request, $id)

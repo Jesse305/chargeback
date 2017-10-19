@@ -17,20 +17,22 @@ class UnidadeController extends Controller
 
     public function listar()
     {
-        $unidades = Unidade::orderBy('no_unidade')->get();
-        $orgaos = Orgao::orderBy('no_orgao')->get();
-        $cidades = DB::table('cidade')->orderBy('no_cidade')->get();
-
-        return view('unidade/unidades', compact('unidades', 'orgaos', 'cidades'));
+        return view('unidade/unidades', [
+            'unidades' => Unidade::orderBy('no_unidade')->get(),
+            'orgaos' => Orgao::orderBy('no_orgao')->get(),
+            'cidades' => DB::table('cidade')->orderBy('no_cidade')->get(),
+         ]);
     }
 
     public function detalhar($id)
     {
-        $unidade = Unidade::findOrFail($id);
-        $orgao = Orgao::findOrFail($unidade->orgao_id);
         $cidade = DB::table('cidade')->where('id', $unidade->cidade_id)->first();
 
-        return view('unidade/unidade', compact('unidade', 'orgao', 'cidade'));
+        return view('unidade/unidade', [
+            'unidade' => Unidade::findOrFail($id),
+            'orgao' => Orgao::findOrFail($unidade->orgao_id),
+            'cidade' => $cidade,
+         ]);
     }
 
     public function inserir(Request $request)
@@ -55,11 +57,11 @@ class UnidadeController extends Controller
 
     public function altera($id)
     {
-        $unidade = Unidade::findOrFail($id);
-        $orgao = Orgao::findOrFail($unidade->orgao_id);
-        $cidades = DB::table('cidade')->orderBy('no_cidade')->get();
-
-        return view('unidade/altera_unidade', compact('unidade', 'orgao', 'cidades'));
+        return view('unidade/altera_unidade', [
+            'unidade' => Unidade::findOrFail($id),
+            'orgao' => Orgao::findOrFail($unidade->orgao_id),
+            'cidades' => DB::table('cidade')->orderBy('no_cidade')->get(),
+         ]);
     }
 
     public function atualizar(Request $request, $id)

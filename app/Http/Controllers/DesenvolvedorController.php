@@ -9,9 +9,9 @@ class DesenvolvedorController extends Controller
 {
     public function listar()
     {
-        $listaDevs = Desenvolvedor::all();
-
-        return view('dev/desenvolvedores', compact('listaDevs'));
+        return view('dev/desenvolvedores', [
+            'listaDevs' => Desenvolvedor::all(),
+         ]);
     }
 
     public function inserir(Request $request)
@@ -32,9 +32,9 @@ class DesenvolvedorController extends Controller
 
     public function altera($id)
     {
-        $des = Desenvolvedor::findOrFail($id);
-
-        return view('dev/altera_desenvolvedor', compact('des'));
+        return view('dev/altera_desenvolvedor', [
+            'des' => Desenvolvedor::findOrFail($id),
+         ]);
     }
 
     public function atualizar(Request $request, $id)

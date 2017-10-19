@@ -16,25 +16,30 @@ class MovCircuitoController extends Controller
     {
         $movs_circuito = MovCircuito::where('circuitompls_id', $id)->get();
 
-        return view('mov_circuito/movimentacoes_circ', compact('movs_circuito', 'id'));
+        return view('mov_circuito/movimentacoes_circ', [
+            'movs_circuito' => $movs_circuito,
+            'id' => $id,
+         ]);
     }
 
     public function detalhar($id)
     {
-        $mc = MovCircuito::findOrFail($id);
-
-        return view('mov_circuito/movimentacao_circ', compact('mc'));
+        return view('mov_circuito/movimentacao_circ', [
+            'mc' => MovCircuito::findOrFail($id),
+         ]);
     }
 
     public function novo($id)
     {
-        $circuito = CircuitoMpls::findOrFail($id);
-        $orgaos = Orgao::orderBy('no_orgao')->get(['no_orgao', 'id']);
         $itens = ItemConfig::where('categoriaitem_id', 4)
         ->where('no_item', 'LIKE', '%MPLS%')
         ->get(['id', 'no_item']);
 
-        return view('mov_circuito/novo_movimentacao_circ', compact('circuito', 'orgaos', 'itens'));
+        return view('mov_circuito/novo_movimentacao_circ', [
+            'circuito' => CircuitoMpls::findOrFail($id),
+            'orgaos' => Orgao::orderBy('no_orgao')->get(['no_orgao', 'id']),
+            'itens' => $itens,
+         ]);
     }
 
     public function valida($dados)

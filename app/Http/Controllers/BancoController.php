@@ -9,9 +9,9 @@ class BancoController extends Controller
 {
     public function listar()
     {
-        $listaBanco = Banco::all();
-
-        return view('banco/bancos', compact('listaBanco'));
+        return view('banco/bancos', [
+            'listaBanco' => Banco::all(),
+         ]);
     }
 
     public function inserir(Request $request)
@@ -37,16 +37,16 @@ class BancoController extends Controller
 
     public function detalhar($id)
     {
-        $banco = Banco::findOrFail($id);
-
-        return view('banco/banco', compact('banco'));
+        return view('banco/banco', [
+            'banco' => Banco::findOrFail($id),
+         ]);
     }
 
     public function altera($id)
     {
-        $banco = Banco::findOrFail($id);
-
-        return view('banco/altera_banco', compact('banco'));
+        return view('banco/altera_banco', [
+            'banco' => Banco::findOrFail($id),
+         ]);
     }
 
     public function atualizar(Request $request, $id)

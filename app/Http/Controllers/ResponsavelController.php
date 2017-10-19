@@ -18,10 +18,10 @@ class ResponsavelController extends Controller
 
     public function listar()
     {
-        $responsaveis = Responsavel::orderBy('no_responsavel')->get();
-        $orgaos = Orgao::orderBy('no_orgao')->get();
-
-        return view('responsavel/responsaveis', compact('responsaveis', 'orgaos'));
+        return view('responsavel/responsaveis', [
+            'responsaveis' => Responsavel::orderBy('no_responsavel')->get(),
+            'orgaos' => Orgao::orderBy('no_orgao')->get(),
+         ]);
     }
 
     public function inserir(Request $request)
@@ -46,22 +46,22 @@ class ResponsavelController extends Controller
 
     public function detalha($id)
     {
-        $responsavel = Responsavel::findOrFail($id);
-        $orgao = Orgao::findOrFail($responsavel->orgao_id);
-        $unidade = Unidade::findOrFail($responsavel->unidade_id);
-
-        return view('responsavel/responsavel', compact('responsavel', 'orgao', 'unidade'));
+        return view('responsavel/responsavel', [
+            'responsavel' => Responsavel::findOrFail($id),
+            'orgao' => Orgao::findOrFail($responsavel->orgao_id),
+            'unidade' => Unidade::findOrFail($responsavel->unidade_id),
+         ]);
     }
 
     // fim detalha
 
     public function altera($id)
     {
-        $responsavel = Responsavel::findOrFail($id);
-        $orgao = Orgao::findOrFail($responsavel->orgao_id);
-        $unidade = Unidade::findOrFail($responsavel->unidade_id);
-
-        return view('responsavel/altera_responsavel', compact('responsavel', 'orgao', 'unidade'));
+        return view('responsavel/altera_responsavel', [
+            'responsavel' => Responsavel::findOrFail($id),
+            'orgao' => Orgao::findOrFail($responsavel->orgao_id),
+            'unidade' => Unidade::findOrFail($responsavel->unidade_id),
+         ]);
     }
 
     public function atualizar(Request $request, $id)

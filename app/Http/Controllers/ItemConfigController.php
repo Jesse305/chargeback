@@ -10,10 +10,10 @@ class ItemConfigController extends Controller
 {
     public function listar()
     {
-        $listaItens = ItemConfig::orderBy('no_item')->get();
-        $categoriasItens = DB::table('categoriaitem')->get();
-
-        return view('item_config/itens_config', compact('listaItens', 'categoriasItens'));
+        return view('item_config/itens_config', [
+            'listaItens' => ItemConfig::orderBy('no_item')->get(),
+            'categoriasItens' => DB::table('categoriaitem')->get(),
+         ]);
     }
 
     public function inserir(Request $req)
@@ -38,18 +38,20 @@ class ItemConfigController extends Controller
 
     public function detalhar($id)
     {
-        $item = ItemConfig::findOrFail($id);
         $categoria = DB::table('categoriaitem')->where('id', $item->categoriaitem_id)->first();
 
-        return view('item_config/item_config', compact('item', 'categoria'));
+        return view('item_config/item_config', [
+            'item' => ItemConfig::findOrFail($id),
+            'categoria' => $categoria,
+         ]);
     }
 
     public function altera($id)
     {
-        $item = ItemConfig::findOrFail($id);
-        $categoriasItens = DB::table('categoriaitem')->get();
-
-        return view('item_config/altera_item_config', compact('item', 'categoriasItens'));
+        return view('item_config/altera_item_config', [
+            'item' => ItemConfig::findOrFail($id),
+            'categoriasItens' => DB::table('categoriaitem')->get(),
+         ]);
     }
 
     public function atualizar(Request $req, $id)

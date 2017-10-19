@@ -17,14 +17,14 @@ class SistemaController extends Controller
 {
     public function listar()
     {
-        $listaOrgaos = Orgao::orderBy('no_orgao')->get();
-        $listaBancos = Banco::orderBy('schema_banco')->get();
-        $listaAmbientes = Ambiente::orderBy('desc_amb')->get();
-        $listaDevs = Desenvolvedor::orderBy('no_dev')->get();
-        $listaFrames = Framework::orderBy('no_framework')->get();
-        $listaSistemas = Sistema::all();
-
-        return view('sistema/sistemas', compact('listaOrgaos', 'listaBancos', 'listaAmbientes', 'listaDevs', 'listaFrames', 'listaSistemas'));
+        return view('sistema/sistemas', [
+            'listaOrgaos' => Orgao::orderBy('no_orgao')->get(),
+            'listaBancos' => Banco::orderBy('schema_banco')->get(),
+            'listaAmbientes' => Ambiente::orderBy('desc_amb')->get(),
+            'listaDevs' => Desenvolvedor::orderBy('no_dev')->get(),
+            'listaFrames' => Framework::orderBy('no_framework')->get(),
+            'listaSistemas' => Sistema::all(),
+        ]);
     }
 
     public function inserir(Request $request)
@@ -72,11 +72,7 @@ class SistemaController extends Controller
     public function detalhar($id)
     {
         $sistema = Sistema::findOrFail($id);
-        $orgao = Orgao::findOrFail($sistema->id_orgao);
-        $unidade = Unidade::findOrFail($sistema->id_unidade);
         $responsaveis = Responsavel::where('orgao_id', $orgao->id)->where('unidade_id', $unidade->id)->get();
-        $banco = Banco::findOrFail($sistema->id_banco);
-        $ambientes = Ambiente::findOrFail($sistema->id_amb);
 
         $devs = DB::table('dev')->join('sistemas_devs', 'dev.id', '=', 'sistemas_devs.id_dev')->
         where('sistemas_devs.id_sistema', $sistema->id)->get();
@@ -84,8 +80,16 @@ class SistemaController extends Controller
         $frames = DB::table('frameworks')->join('sistemas_frameworks', 'frameworks.id', '=', 'sistemas_frameworks.id_framework')->
         where('sistemas_frameworks.id_sistema', $sistema->id)->get();
 
-        return view('sistema/sistema',
-         compact('sistema', 'orgao', 'unidade', 'responsaveis', 'banco', 'ambientes', 'devs', 'frames'));
+        return view('sistema/sistema', [
+            'sistema' => $sistema,
+            'orgao' => Orgao::findOrFail($sistema->id_orgao),
+            'unidade' => Unidade::findOrFail($sistema->id_unidade),
+            'responsaveis' => $responsaveis,
+            'banco' => Banco::findOrFail($sistema->id_banco),
+            'ambientes' => Ambiente::findOrFail($sistema->id_amb),
+            'devs' => $devs,
+            'frames' => $frames,
+        ]);
     }
 
     // fim detalhar
@@ -93,16 +97,20 @@ class SistemaController extends Controller
     public function altera($id)
     {
         $sistema = Sistema::findOrFail($id);
-        $orgaos = Orgao::orderBy('no_orgao')->get();
-        $unidade = Unidade::findOrFail($sistema->id_unidade);
-        $bancos = Banco::orderBy('schema_banco')->get();
-        $ambientes = Ambiente::orderBy('desc_amb')->get();
-        $devs = Desenvolvedor::orderBy('no_dev')->get();
-        $frames = Framework::orderBy('no_framework')->get();
         $slcDevs = DB::table('sistemas_devs')->where('sistemas_devs.id_sistema', $sistema->id)->get();
         $slcFrames = DB::table('sistemas_frameworks')->where('sistemas_frameworks.id_sistema', $sistema->id)->get();
 
-        return view('sistema/altera_sistema', compact('sistema', 'orgaos', 'unidade', 'bancos', 'ambientes', 'devs', 'frames', 'slcDevs', 'slcFrames'));
+        return view('sistema/altera_sistema', [
+            'sistema' => $sistema,
+            'orgaos' => Orgao::orderBy('no_orgao')->get(),
+            'unidade' => Unidade::findOrFail($sistema->id_unidade),
+            'bancos' => Banco::orderBy('schema_banco')->get(),
+            'ambientes' => Ambiente::orderBy('desc_amb')->get(),
+            'devs' => Desenvolvedor::orderBy('no_dev')->get(),
+            'frames' => Framework::orderBy('no_framework')->get(),
+            'slcDevs' => $slcDevs,
+            'slcFrames' => $slcFrames,
+        ]);
     }
 
     // fim altera

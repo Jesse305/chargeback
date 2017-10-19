@@ -12,10 +12,10 @@ class SiteController extends Controller
 {
     public function listar()
     {
-        $listaOrgaos = Orgao::orderBy('no_orgao')->get();
-        $listaSites = Site::orderBy('no_site')->get();
-
-        return view('site/sites', compact('listaOrgaos', 'listaSites'));
+        return view('site/sites', [
+            'listaOrgaos' => Orgao::orderBy('no_orgao')->get(),
+            'listaSites' => Site::orderBy('no_site')->get(),
+         ]);
     }
 
     public function inserir(Request $request)
@@ -40,24 +40,28 @@ class SiteController extends Controller
     public function detalhar($id)
     {
         $site = Site::findOrFail($id);
-        $orgao = Orgao::where('id', $site->orgao_id)->first();
         $unidade = Unidade::where('id', $site->unidade_id)->first();
-        if ($unidade) {
-            $responsaveis = Responsavel::where('unidade_id', $unidade->id)->get();
-        }
+        $responsaveis = $unidade ?
+            Responsavel::where('unidade_id', $unidade->id)->get() :
+            [];
 
-        return view('site/site', compact('site', 'orgao', 'unidade', 'responsaveis'));
+        return view('site/site', [
+            'site' => $site,
+            'orgao' => Orgao::where('id', $site->orgao_id)->first(),
+            'unidade' => $unidade,
+            'responsaveis' => $responsaveis,
+        ]);
     }
 
     // fim detalhar
 
     public function altera($id)
     {
-        $site = Site::findOrFail($id);
-        $listaOrgaos = Orgao::orderBy('no_orgao')->get();
-        $unidade = Unidade::where('id', $site->unidade_id)->first();
-
-        return view('site/altera_site', compact('site', 'listaOrgaos', 'unidade'));
+        return view('site/altera_site', [
+            'site' => Site::findOrFail($id),
+            'listaOrgaos' => Orgao::orderBy('no_orgao')->get(),
+            'unidade' => Unidade::where('id', $site->unidade_id)->first(),
+         ]);
     }
 
     public function atualizar($id, Request $request)

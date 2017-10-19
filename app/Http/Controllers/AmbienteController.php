@@ -9,9 +9,9 @@ class AmbienteController extends Controller
 {
     public function listar()
     {
-        $listaAmbientes = Ambiente::all();
-
-        return view('ambiente/ambientes', compact('listaAmbientes'));
+        return view('ambiente/ambientes', [
+            'listaAmbientes' => Ambiente::all(),
+        ]);
     }
 
     public function inserir(Request $request)
@@ -26,16 +26,16 @@ class AmbienteController extends Controller
 
     public function detalhar($id)
     {
-        $ambiente = Ambiente::findOrFail($id);
-
-        return view('ambiente/ambiente', compact('ambiente'));
+        return view('ambiente/ambiente', [
+            'ambiente' => Ambiente::findOrFail($id),
+        ]);
     }
 
     public function altera($id)
     {
-        $ambiente = Ambiente::findOrFail($id);
-
-        return view('ambiente/altera_ambiente', compact('ambiente'));
+        return view('ambiente/altera_ambiente', [
+            'ambiente' => Ambiente::findOrFail($id),
+        ]);
     }
 
     public function atualizar(Request $request, $id)
