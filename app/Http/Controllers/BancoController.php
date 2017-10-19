@@ -25,13 +25,19 @@ class BancoController extends Controller
             $banco = new Banco();
             $banco->fill($dados)->save();
 
-            return redirect()->route('bancos')->
-            with('retorno', ['tipo' => 'success', 'msg' => 'Registro inserido com sucesso!']);
+            return redirect()
+                ->route('bancos')
+                ->with('retorno', [
+                    'tipo' => 'success',
+                    'msg' => 'Registro inserido com sucesso!',
+                ]);
         } else {
-            return redirect()->
-            route('bancos')->
-            with('retorno', ['tipo' => 'warning', 'msg' => 'Já existe o Schema informado com mesmo Ambiente.'])->
-            withInput();
+            return redirect()
+                ->route('bancos')
+                ->with('retorno', [
+                    'tipo' => 'warning',
+                    'msg' => 'Já existe o Schema informado com mesmo Ambiente.',
+                ])->withInput();
         }
     }
 
