@@ -12,6 +12,7 @@ class ItemConfig extends Model
     const UPDATED_AT = 'dt_atualizacao';
 
     protected $fillable = [
-        'no_item', 'ds_descricao', 'nu_custo_mensal', 'categoriaitem_id', 'ds_configuracao', 'status',
+        'no_item', 'ds_descricao', 'nu_custo_mensal', 'categoriaitem_id',
+        'ds_configuracao', 'status',
     ];
 }

@@ -12,9 +12,10 @@ class CircuitoMpls extends Model
     const UPDATED_AT = 'dt_atualizacao';
 
     protected $fillable = [
-        'nu_lote', 'ip_lan', 'ip_mascara', 'wan_cliente', 'no_designacao', 'itemdeconfiguracao_id', 'categoriaitem_id',
-        'responsavel_id', 'unidade_id', 'orgao_id', 'status', 'ds_observacao', 'nu_usuarios', 'dt_instalacao', 'dt_homologacao',
-        'wan_operadora', 'nu_dhcp',
+        'nu_lote', 'ip_lan', 'ip_mascara', 'wan_cliente', 'no_designacao',
+        'itemdeconfiguracao_id', 'categoriaitem_id', 'responsavel_id',
+        'unidade_id', 'orgao_id', 'status', 'ds_observacao', 'nu_usuarios',
+        'dt_instalacao', 'dt_homologacao', 'wan_operadora', 'nu_dhcp',
     ];
 
     public function getOrgao($orgao_id)

@@ -12,7 +12,8 @@ class Unidade extends Model
     const UPDATED_AT = 'dt_atualizacao';
 
     protected $fillable = [
-        'no_unidade', 'no_sigla', 'no_endereco', 'nu_cep', 'status', 'orgao_id', 'cidade_id',
+        'no_unidade', 'no_sigla', 'no_endereco', 'nu_cep', 'status', 'orgao_id',
+        'cidade_id',
     ];
 
     public function getOrgao($id)

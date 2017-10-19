@@ -13,8 +13,9 @@ class ServidorVm extends Model
 
     protected $fillable =
     [
-        'no_servidor', 'no_dns', 'ip_endereco', 'nu_cpu', 'nu_espaco_sas', 'nu_espaco_sata', 'cloud_server', 'sis_operacional',
-        'ds_observacao', 'responsavel_id', 'unidade_id', 'orgao_id', 'no_aquivo', 'status',
+        'no_servidor', 'no_dns', 'ip_endereco', 'nu_cpu', 'nu_espaco_sas',
+        'nu_espaco_sata', 'cloud_server', 'sis_operacional', 'ds_observacao',
+        'responsavel_id', 'unidade_id', 'orgao_id', 'no_aquivo', 'status',
     ];
 
     public function printStatus($nStatus)
