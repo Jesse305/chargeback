@@ -21,8 +21,7 @@ class OrgaoController extends Controller
         $count = Orgao::where('no_orgao', $request->no_orgao)->count();
 
         if ($count == 0) {
-            $orgao = new Orgao();
-            $orgao->fill($dados)->save();
+            Orgao::create($dados);
 
             return redirect()
                 ->back()

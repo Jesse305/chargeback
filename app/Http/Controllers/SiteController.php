@@ -23,8 +23,7 @@ class SiteController extends Controller
         $dados = $request->all();
         $count = Site::where('no_site', $request->no_site)->count();
         if ($count == 0) {
-            $site = new Site();
-            $site->fill($dados)->save();
+            Site::create($dados);
 
             return redirect()
                 ->back()

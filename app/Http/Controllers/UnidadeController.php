@@ -43,8 +43,7 @@ class UnidadeController extends Controller
         where('no_unidade', $request->no_unidade)->count();
 
         if ($count == 0) {
-            $unidade = new Unidade();
-            $unidade->fill($dados)->save();
+            Unidade::create($dados);
 
             return redirect()
                 ->back()

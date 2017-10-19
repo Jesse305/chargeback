@@ -85,8 +85,7 @@ class ServidorVmController extends Controller
         } else {
             $this->validaDados($request->all());
             $dados = $request->all();
-            $serv_vm = new ServidorVm();
-            $serv_vm->fill($dados)->save();
+            ServidorVm::create($dados);
 
             return redirect()
                 ->route('servidores_vm')

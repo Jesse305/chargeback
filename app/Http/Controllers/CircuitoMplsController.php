@@ -62,8 +62,7 @@ class CircuitoMplsController extends Controller
     {
         $this->valida($request->all());
         $dados = $request->all();
-        $circuito = new CircuitoMpls();
-        $circuito->fill($dados)->save();
+        CircuitoMpls::create($dados);
 
         return redirect()
             ->route('circuitos_mpls')

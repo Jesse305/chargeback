@@ -17,8 +17,7 @@ class AmbienteController extends Controller
     public function inserir(Request $request)
     {
         $dados = $request->all();
-        $amb = new Ambiente();
-        $amb->fill($dados)->save();
+        Ambiente::create($dados);
 
         return redirect()
             ->back()

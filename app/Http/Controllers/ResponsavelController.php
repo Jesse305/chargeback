@@ -30,8 +30,7 @@ class ResponsavelController extends Controller
         $count = Responsavel::where('no_responsavel', $request->no_responsavel)->
         where('unidade_id', $request->unidade_id)->count();
         if ($count == 0) {
-            $resp = new Responsavel();
-            $resp->fill($dados)->save();
+            Responsavel::create($dados);
 
             return redirect()
                 ->back()

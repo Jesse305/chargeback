@@ -20,9 +20,7 @@ class FrameworkController extends Controller
         $count = Framework::where('no_framework', $request->no_framework)->count();
 
         if ($count == 0) {
-            $frame = new Framework();
-            $frame->fill($dados);
-            $frame->save();
+            Framework::creaet($dados);
 
             return redirect()
                 ->back()

@@ -22,8 +22,7 @@ class ItemConfigController extends Controller
         $count = ItemConfig::where('no_item', $req->no_item)->count();
 
         if ($count == 0) {
-            $item = new ItemConfig();
-            $item->fill($dados)->save();
+            ItemConfig::create($dados);
 
             return redirect()
                 ->back()

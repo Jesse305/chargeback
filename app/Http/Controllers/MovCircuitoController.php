@@ -98,8 +98,7 @@ class MovCircuitoController extends Controller
         $circuito_mpls = new CircuitoMpls();
         $circuito_mpls->findOrFail($request->circuitompls_id)->update($update);
 
-        $mov_circ = new MovCircuito();
-        $mov_circ->fill($insert)->save();
+        MovCircuito::create($insert);
 
         return redirect()
             ->route('movimentacoes_circ', $request->circuitompls_id)

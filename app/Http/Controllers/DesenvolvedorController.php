@@ -19,9 +19,7 @@ class DesenvolvedorController extends Controller
         $dados = $request->all();
         $count = Desenvolvedor::where('no_dev', $request->no_dev)->count();
         if ($count == 0) {
-            $dev = new Desenvolvedor();
-            $dev->fill($dados);
-            $dev->save();
+            Desenvolvedor::create($dados);
 
             return redirect()
                 ->back()

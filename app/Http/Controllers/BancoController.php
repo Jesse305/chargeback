@@ -22,8 +22,7 @@ class BancoController extends Controller
         where('ambiente_banco', $request->ambiente_banco)->count();
 
         if ($count == 0) {
-            $banco = new Banco();
-            $banco->fill($dados)->save();
+            Banco::create($dados);
 
             return redirect()
                 ->route('bancos')

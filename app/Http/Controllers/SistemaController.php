@@ -38,9 +38,8 @@ class SistemaController extends Controller
             with('retorno', ['tipo' => 'warning', 'msg' => 'Já existe Sistema de mesmo Nome!'])->
             withInput();
         } else {
-            $sistema = new Sistema();
-            $insert = $sistema->fill($dados)->save();
-            if ($insert) {
+            $sistema = new Sistema($dados);
+            if ($sistema->save()) {
                 // $sis = Sistema::where('no_sistema', $request->no_sistema)->where('id_orgao', $request->id_orgao)->where('id_unidade', $request->id_unidade)->get();
 
                 foreach ($request->devs as $devs) {
