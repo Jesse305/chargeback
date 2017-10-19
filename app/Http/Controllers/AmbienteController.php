@@ -41,11 +41,10 @@ class AmbienteController extends Controller
         ]);
     }
 
-    public function atualizar(Request $request, $id)
+    public function atualizar(Request $request, Ambiente $ambiente)
     {
         $dados = $request->all();
-        $amb = new Ambiente();
-        $amb->findOrFail($id)->update($dados);
+        $ambiente->update($dados);
 
         return redirect()
             ->route('ambientes')
