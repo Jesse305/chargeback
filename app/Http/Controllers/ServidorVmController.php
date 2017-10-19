@@ -79,9 +79,12 @@ class ServidorVmController extends Controller
     {
         if ($this->found($request->no_servidor)) {
             return redirect()
-            ->back()
-            ->with('retorno', ['tipo' => 'warning', 'msg' => 'Já existe um Servidor VM de Mesmo Nome.'])
-            ->withInput();
+                ->back()
+                ->with('retorno', [
+                    'tipo' => 'warning',
+                    'msg' => 'Já existe um Servidor VM de Mesmo Nome.',
+                ])
+                ->withInput();
         } else {
             $this->validaDados($request->all());
             $dados = $request->all();
