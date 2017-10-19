@@ -30,7 +30,6 @@ class UnidadeController extends Controller
 
         return view('unidade/unidade', [
             'unidade' => $unidade,
-            'orgao' => Orgao::findOrFail($unidade->orgao_id),
             'cidade' => $cidade,
          ]);
     }
@@ -65,7 +64,6 @@ class UnidadeController extends Controller
     {
         return view('unidade/altera_unidade', [
             'unidade' => $unidade,
-            'orgao' => Orgao::findOrFail($unidade->orgao_id),
             'cidades' => DB::table('cidade')->orderBy('no_cidade')->get(),
          ]);
     }

@@ -18,32 +18,24 @@ class CircuitoMpls extends Model
         'dt_instalacao', 'dt_homologacao', 'wan_operadora', 'nu_dhcp',
     ];
 
-    public function getOrgao($orgao_id)
+    public function orgao()
     {
-        $orgao = Orgao::findOrFail($orgao_id);
-
-        return $orgao;
+        return $this->belongsTo(Orgao::class, 'orgao_id');
     }
 
-    public function getUnidade($unidade_id)
+    public function unidade()
     {
-        $unidade = Unidade::findOrFail($unidade_id);
-
-        return $unidade;
+        return $this->belongsTo(Unidade::class, 'unidade_id');
     }
 
-    public function getResponsavel($resp_id)
+    public function responsavel()
     {
-        $responsavel = Responsavel::findOrFail($resp_id);
-
-        return $responsavel;
+        return $this->belongsTo(Responsavel::class, 'responsavel_id');
     }
 
-    public function getItemConfig($itemConfig_id)
+    public function itemConfig()
     {
-        $itemConfig = ItemConfig::findOrFail($itemConfig_id);
-
-        return $itemConfig;
+        return $this->belongsTo(ItemConfig::class, 'itemdeconfiguracao_id');
     }
 
     public function existe($valor)

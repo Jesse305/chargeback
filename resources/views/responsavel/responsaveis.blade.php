@@ -89,7 +89,7 @@
 					<label for="ds_observacao">Observações:</label>
 					<textarea class="form-control" rows="5" id="ds_observacao" name="ds_observacao">{{old('ds_oservacao')}}</textarea>
 				</div>
-						
+
 	      	</form>
 
 	      </div>
@@ -119,7 +119,7 @@
 			@foreach($responsaveis as $resp)
 			<tr>
 				<td>
-					{{$resp->getOrgao($resp->orgao_id)->no_orgao}}
+					{{$resp->orgao->no_orgao}}
 				</td>
 				<td>{{$resp->no_responsavel}}</td>
 				<td>{{$resp->nu_telefone}}</td>

@@ -14,7 +14,7 @@
 		<div class="panel panel-default">
 		  <div class="panel-heading"><h4>Unidades</h4></div>
 		  <div class="panel-body text-right">
-		  	<button class="btn btn-success btn-sm" id="btn_cad" title="Cadastrar nova Unidade" 
+		  	<button class="btn btn-success btn-sm" id="btn_cad" title="Cadastrar nova Unidade"
 		  	data-toggle="modal" data-target="#modal_cad">Nova Unidade</button>
 		  </div>
 		</div>
@@ -71,7 +71,7 @@
 
 		      	<div class="input-group">
 		      		<span class="input-group-addon">Endereço:</span>
-		      		<input class="form-control" type="text" name="no_endereco" id="no_endereco" 
+		      		<input class="form-control" type="text" name="no_endereco" id="no_endereco"
 		      		placeholder="Endereço da Unidade" maxlength="100" required value="{{old('no_endereco')}}">
 		      	</div>
 
@@ -89,13 +89,13 @@
 
 		      	<div class="input-group col-xs-6">
 		      		<span class="input-group-addon">CEP:</span>
-		      		<input class="form-control cep" type="text" name="nu_cep" id="nu_cep" maxlength="45" 
+		      		<input class="form-control cep" type="text" name="nu_cep" id="nu_cep" maxlength="45"
 		      		value="{{old('nu_cep')}}">
 		      	</div>
 		      	<label for="status">Status: </label>
 		      	<label class="radio-inline"><input type="radio" name="status" value="1" checked> Ativo</label>
 		      	<label class="radio-inline"><input type="radio" name="status" value="0"> Inativo</label>
-	      		
+
 	      	</form>
 	      </div>
 	      <div class="modal-footer">
@@ -128,7 +128,7 @@
 				<td class="col-xs-1">{{$unidade->no_sigla}}</td>
 				<td>{{$unidade->no_unidade}}</td>
 				<td>
-					{{$unidade->getOrgao($unidade->orgao_id)->no_orgao}}
+					{{$unidade->orgao->no_orgao}}
 				</td>
 				<td class="col-xs-2" align="center">
 					<a href={{route('unidade.detalhar', $unidade->id)}} class="btn btn-info btn-sm" title="visualizar">
@@ -144,7 +144,7 @@
 				</td>
 			</tr>
 			@endforeach
-			
+
 		</tbody>
 		<tfoot>
 			<td>Sigla:</td>
@@ -152,11 +152,11 @@
 			<td>Orgão:</td>
 			<td align="center">Ações</td>
 		</tfoot>
-		
+
 	</table>
 
 	<!-- fim tabela -->
-	
+
 </div>
 <!-- fim container -->
 

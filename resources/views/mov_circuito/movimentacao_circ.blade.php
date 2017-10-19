@@ -14,8 +14,8 @@
 	<div class="row">
 		<table class="table table-bordered table-striped table-hover">
 			<tr>
-				<td class="col-xs-12 col-md-6"><b>Unidade Anterior:</b> {{$mc->getUnidade($mc->unidade_id)->no_unidade}}</td>
-				<td class="col-xs-12 col-md-6"><b>Circuito Anterior:</b> {{$mc->getItemConfig($mc->itemdeconfiguracao_id)->no_item}}</td>
+				<td class="col-xs-12 col-md-6"><b>Unidade Anterior:</b> {{$mc->unidade->no_unidade}}</td>
+				<td class="col-xs-12 col-md-6"><b>Circuito Anterior:</b> {{$mc->itemConfig->no_item}}</td>
 			</tr>
 			<tr>
 				<td class="col-xs-12 col-md-6"><b>Designação Anterior:</b> {{$mc->no_designacao}}</td>
@@ -41,7 +41,7 @@
 					<b>Observações:</b>{{$mc->nulo($mc->ds_observacao)}}
 				</td>
 			</tr>
-		</table>		
+		</table>
 	</div>
 	<!-- fim tabela -->
 	<div class="text-right">

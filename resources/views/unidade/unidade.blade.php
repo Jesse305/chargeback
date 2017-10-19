@@ -6,7 +6,7 @@
 <div class="container">
 	<div class="row">
 		<div class="panel panel-default">
-		  <div class="panel-heading"><h4>Detalhes da Unidadade</h4></div>		  
+		  <div class="panel-heading"><h4>Detalhes da Unidadade</h4></div>
 		</div>
 	</div>
 	<!-- fim painel -->
@@ -17,7 +17,7 @@
 			<table class="table table-bordered table-striped table-hover">
 				<tr>
 					<td><b>Orgão:</b></td>
-					<td> {{$orgao->no_sigla}} - {{$orgao->no_orgao}}</td>
+					<td> {{$unidade->orgao->no_sigla}} - {{$unidade->orgao->no_orgao}}</td>
 				</tr>
 				<tr>
 					<td class="col-xs-2"><b>Sigla:</b> {{$unidade->no_sigla}}</td>

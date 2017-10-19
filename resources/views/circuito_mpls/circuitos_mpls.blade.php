@@ -43,9 +43,9 @@
 		<tbody>
 			@foreach($circuitos as $circuito)
 			<tr>
-				<td>{{$circuito->getOrgao($circuito->orgao_id)->no_sigla}}</td>
-				<td>{{$circuito->getUnidade($circuito->unidade_id)->no_unidade}}</td>
-				<td>{{$circuito->getItemConfig($circuito->itemdeconfiguracao_id)->no_item}}</td>
+				<td>{{$circuito->orgao->no_sigla}}</td>
+				<td>{{$circuito->unidade->no_unidade}}</td>
+				<td>{{$circuito->itemConfig->no_item}}</td>
 				<td>{{$circuito->no_designacao}}</td>
 				<td>{{$circuito->printStatus($circuito->status)}}</td>
 				<td align="center">
@@ -60,10 +60,10 @@
 					</a>&nbsp;
 					<button class="btn btn-danger btn-sm" onclick="confirmaDeleta('{{route('circuito_mpls.apagar', $circuito->id)}}');" title="cuidado! apaga definitivamente o registro." disabled>
 						<i class="glyphicon glyphicon-remove"></i>
-					</button>					
+					</button>
 				</td>
 			</tr>
-			@endforeach			
+			@endforeach
 		</tbody>
 			<tr>
 				<td>Órgão:</td>
@@ -75,7 +75,7 @@
 				<td align="center" width="150">Ações</td>
 			</tr>
 		<tfoot>
-			
+
 		</tfoot>
 	</table>
 

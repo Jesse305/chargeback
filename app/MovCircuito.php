@@ -18,18 +18,14 @@ class MovCircuito extends Model
         'unidade_id',
     ];
 
-    public function getUnidade($unidade_id)
+    public function unidade()
     {
-        $unidade = Unidade::findOrFail($unidade_id);
-
-        return $unidade;
+        return $this->belongsTo(Unidade::class, 'unidade_id');
     }
 
-    public function getItemConfig($item_id)
+    public function itemConfig()
     {
-        $itemConfig = ItemConfig::findOrFail($item_id);
-
-        return $itemConfig;
+        return $this->belongsTo(ItemConfig::class, 'itemdeconfiguracao_id');
     }
 
     public function nulo($valor)

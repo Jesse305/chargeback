@@ -23,9 +23,6 @@ class ServidorVmController extends Controller
     {
         return view('serv_vm/servidor_vm', [
             'serv_vm' => $servVm,
-            'orgao' => Orgao::findOrfail($servVm->orgao_id),
-            'unidade' => Unidade::find($servVm->unidade_id),
-            'resp' => Responsavel::find($servVm->responsavel_id),
         ]);
     }
 
@@ -107,9 +104,7 @@ class ServidorVmController extends Controller
         $sis_ops = ItemConfig::where('categoriaitem_id', 2)->orderBy('no_item')->get();
 
         return view('serv_vm/alt_serv_vm', [
-            'serv_vm' => $serv_servVmvm,
-            'unidade' => Unidade::find($servVm->unidade_id),
-            'responsavel' => Responsavel::find($servVm->responsavel_id),
+            'serv_vm' => $servVm,
             'orgaos' => Orgao::orderBy('no_orgao')->get(),
             'clouds' => $clouds,
             'sis_ops' => $sis_ops,

@@ -15,8 +15,8 @@
   <!-- tabela -->
   <table class="table table-striped table-bordered table-hover">
     <tr>
-      <td><b>Órgão:</b> {{$orgao->no_orgao}}</td>
-      <td><b>Unidade:</b> {{$unidade->no_unidade}}</td>
+      <td><b>Órgão:</b> {{$responsavel->orgao->no_orgao}}</td>
+      <td><b>Unidade:</b> {{$responsavel->unidade->no_unidade}}</td>
     </tr>
     <tr>
       <td colspan="2"><b>Nome:</b> {{$responsavel->no_responsavel}}</td>

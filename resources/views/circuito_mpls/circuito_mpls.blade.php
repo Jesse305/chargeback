@@ -13,22 +13,22 @@
 		<h4><font color="#000080">Responsável</font></h4>
 		<table class="table table-bordered table-striped table-hover">
 			<tr>
-				<td><b>Órgão: </b>{{$circuito->getOrgao($circuito->orgao_id)->no_sigla}} - {{$circuito->getOrgao($circuito->orgao_id)->no_orgao}}</td>
-				<td><b>Unidade: </b>{{$circuito->getUnidade($circuito->unidade_id)->no_sigla}} - {{$circuito->getUnidade($circuito->unidade_id)->no_unidade}}
+				<td><b>Órgão: </b>{{$circuito->orgao->no_sigla}} - {{$circuito->orgao->no_orgao}}</td>
+				<td><b>Unidade: </b>{{$circuito->unidade->no_sigla}} - {{$circuito->unidade->no_unidade}}
 					<div class="pull-right">
-						<a href={{route('unidade.detalhar', $circuito->getUnidade($circuito->unidade_id)->id)}} class="btn btn-info btn-sm" title="mais detalhes da unidade">
+						<a href={{route('unidade.detalhar', $circuito->unidade->id)}} class="btn btn-info btn-sm" title="mais detalhes da unidade">
 							<i class="glyphicon glyphicon-eye-open"></i>
 						</a>
 					</div>
 				</td>
 			</tr>
 			<tr>
-				<td><b>Nome:</b> {{$circuito->getResponsavel($circuito->responsavel_id)->no_responsavel}}</td>
-				<td><b>E-mail:</b> {{$circuito->existe($circuito->getResponsavel($circuito->responsavel_id)->no_email)}}</td>
+				<td><b>Nome:</b> {{$circuito->responsavel->no_responsavel}}</td>
+				<td><b>E-mail:</b> {{$circuito->existe($circuito->responsavel->no_email)}}</td>
 			</tr>
 			<tr>
-				<td><b>Tel. Fixo:</b> {{$circuito->getResponsavel($circuito->responsavel_id)->nu_telefone}}</td>
-				<td><b>Tel. Celular:</b> {{$circuito->existe($circuito->getResponsavel($circuito->responsavel_id)->nu_celular)}}</td>
+				<td><b>Tel. Fixo:</b> {{$circuito->responsavel->nu_telefone}}</td>
+				<td><b>Tel. Celular:</b> {{$circuito->existe($circuito->responsavel->nu_celular)}}</td>
 			</tr>
 		</table>
 	</div>
@@ -37,7 +37,7 @@
 		<table class="table table-bordered table-striped table-hover">
 			<h4><font color="#000080">Circuito MPLS</font></h4>
 			<tr>
-				<td><b>Circuito:</b> {{$circuito->getItemConfig($circuito->itemdeconfiguracao_id)->no_item}}</td>
+				<td><b>Circuito:</b> {{$circuito->itemConfig->no_item}}</td>
 				<td><b>Designação:</b> {{$circuito->no_designacao}}</td>
 				<td><b>Status:</b> {{$circuito->printStatus($circuito->status)}}</td>
 			</tr>

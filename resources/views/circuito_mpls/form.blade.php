@@ -39,7 +39,7 @@
 			<span class="input-group-addon">Unidade:</span>
 			<select class="form-control" name="unidade_id" id="unidade_id">
 				@if(isset($circuito))
-					<option value="{{$circuito->unidade_id}}">{{$circuito->getUnidade($circuito->unidade_id)->no_unidade}}</option>
+					<option value="{{$circuito->unidade_id}}">{{$circuito->unidade->no_unidade}}</option>
 				@else
 				<option value="">--Selecione a Unidade--</option>
 				@endif
@@ -54,7 +54,7 @@
 			<span class="input-group-addon">Responsável:</span>
 			<select class="form-control" name="responsavel_id" id="responsavel_id">
 				@if(isset($circuito))
-				<option value="{{$circuito->responsavel_id}}">{{$circuito->getResponsavel($circuito->responsavel_id)->no_responsavel}}</option>
+				<option value="{{$circuito->responsavel_id}}">{{$circuito->responsavel->no_responsavel}}</option>
 				@else
 				<option value="">--Selecione o Responsável--</option>
 				@endif
@@ -68,8 +68,8 @@
 				<option value="">--Selecione o Item--</option>
 				@foreach($itensConfig as $itemConfig)
 				<option value="{{$itemConfig->id}}"
-				@if(old('itemdeconfiguracao_id') == $itemConfig->id) 
-				selected 
+				@if(old('itemdeconfiguracao_id') == $itemConfig->id)
+				selected
 				@elseif(isset($circuito))
 					@if($circuito->itemdeconfiguracao_id == $itemConfig->id) selected @endif
 				@endif
@@ -84,9 +84,9 @@
 	<div class="col-xs-12 col-md-3">
 		<div class="input-group">
 			<span class="input-group-addon">Lote:</span>
-			<input type="text" class="form-control bfh-number" name="nu_lote" id="nu_lote" data-min="0" data-max="5" 
+			<input type="text" class="form-control bfh-number" name="nu_lote" id="nu_lote" data-min="0" data-max="5"
 			value="{{old('nu_lote', isset($circuito) ? $circuito->nu_lote : '')}}">
-		</div>		
+		</div>
 	</div>
 	<div class="col-xs-12 col-md-3">
 		<div class="input-group">
@@ -139,22 +139,22 @@
 	<div class="col-xs-12 col-md-4">
 		<div class='input-group date form-date dtp' data-date="" data-date-format="yyyy-mm-dd" data-link-format="yyyy-mm-dd">
 			<span class="input-group-addon">Instalação:</span>
-            <input type='text' class="form-control" name="dt_instalacao" id="dt_instalacao" 
+            <input type='text' class="form-control" name="dt_instalacao" id="dt_instalacao"
             value="{{old('dt_instalacao', isset($circuito) ? $circuito->dt_instalacao : '')}}" readonly />
             <span class="input-group-addon">
                 <span class="glyphicon glyphicon-calendar"></span>
             </span>
-        </div>        
+        </div>
 	</div>
 	<div class="col-xs-12 col-md-4">
 		<div class='input-group date form-date dtp' data-date="" data-date-format="yyyy-mm-dd" data-link-format="yyyy-mm-dd">
 			<span class="input-group-addon">Homologação:</span>
-            <input type='text' class="form-control" name="dt_homologacao" id="dt_homologacao" 
+            <input type='text' class="form-control" name="dt_homologacao" id="dt_homologacao"
             value="{{old('dt_homologacao', isset($circuito) ? $circuito->dt_homologacao : '')}}" readonly />
             <span class="input-group-addon">
                 <span class="glyphicon glyphicon-calendar"></span>
             </span>
-        </div>		
+        </div>
 	</div>
 	<div class="col-xs-12 col-md-4">
 		<div class="input-group">

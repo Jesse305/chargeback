@@ -16,10 +16,8 @@ class Unidade extends Model
         'cidade_id',
     ];
 
-    public function getOrgao($id)
+    public function orgao()
     {
-        $orgao = Orgao::findOrFail($id);
-
-        return $orgao;
+        return $this->belongsTo(Orgao::class, 'orgao_id');
     }
 }

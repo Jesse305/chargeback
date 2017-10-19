@@ -24,9 +24,9 @@
 	<div class="col-xs-12 col-md-6">
 		<div class="input-group">
 			<span class="input-group-addon">Órgão Atual:</span>
-			<input class="form-control" type="text" name="no_orgao" id="no_orgao" value="{{$circuito->getOrgao($circuito->orgao_id)->no_orgao}}" disabled>			
+			<input class="form-control" type="text" name="no_orgao" id="no_orgao" value="{{$circuito->orgao->no_orgao}}" disabled>
 		</div>
-		<input type="hidden" name="old_orgao_id" value="{{$circuito->getOrgao($circuito->orgao_id)->id}}">		
+		<input type="hidden" name="old_orgao_id" value="{{$circuito->orgao->id}}">
 	</div>
 	<div class="col-xs-12 col-md-6">
 		<div class="input-group">
@@ -45,9 +45,9 @@
 	<div class="col-xs-12 col-md-6">
 		<div class="input-group">
 			<span class="input-group-addon">Unidade Atual:</span>
-			<input class="form-control" type="text" name="" id="" value="{{$circuito->getUnidade($circuito->unidade_id)->no_unidade}}" disabled>
+			<input class="form-control" type="text" name="" id="" value="{{$circuito->unidade->no_unidade}}" disabled>
 		</div>
-		<input type="hidden" name="old_unidade_id" value="{{$circuito->getUnidade($circuito->unidade_id)->id}}">
+		<input type="hidden" name="old_unidade_id" value="{{$circuito->unidade->id}}">
 	</div>
 	<div class="col-xs-12 col-md-6">
 		<div class="input-group">
@@ -65,7 +65,7 @@
 			<span class="input-group-addon">Responsável Atual:</span>
 			<input class="form-control" type="text" name="" id="" value="{{$circuito->getResponsavel($circuito->responsavel_id)->no_responsavel}}" disabled>
 		</div>
-		<input type="hidden" name="old_responsavel_id" value="{{$circuito->getResponsavel($circuito->responsavel_id)->id}}">
+		<input type="hidden" name="old_responsavel_id" value="{{$circuito->responsavel->id}}">
 	</div>
 	<div class="col-xs-12 col-md-6">
 		<div class="input-group">
@@ -105,7 +105,7 @@
 	<div class="col-xs-12 col-md-4">
 		<div class="input-group">
 			<span class="input-group-addon">IP LAN:</span>
-			<input class="form-control nu_ip" type="text" name="ip_lan" id="ip_lan" maxlength="45" 
+			<input class="form-control nu_ip" type="text" name="ip_lan" id="ip_lan" maxlength="45"
 			value="{{old('ip_lan', $circuito->ip_lan)}}">
 		</div>
 		<input type="hidden" name="old_ip_lan" value="{{$circuito->ip_lan}}">
@@ -113,7 +113,7 @@
 	<div class="col-xs-12 col-md-4">
 		<div class="input-group">
 			<span class="input-group-addon">Máscara:</span>
-			<input class="form-control nu_ip" type="text" name="ip_mascara" id="ip_mascara" 
+			<input class="form-control nu_ip" type="text" name="ip_mascara" id="ip_mascara"
 			value="{{old('ip_mascara', $circuito->ip_mascara)}}">
 		</div>
 		<input type="hidden" name="old_ip_mascara" value="{{$circuito->ip_mascara}}">
@@ -121,7 +121,7 @@
 	<div class="col-xs-12 col-md-4">
 		<div class="input-group">
 			<span class="input-group-addon">WAN Cliente:</span>
-			<input class="form-control nu_ip" type="text" name="wan_cliente" id="wan_cliente" 
+			<input class="form-control nu_ip" type="text" name="wan_cliente" id="wan_cliente"
 			value="{{old('wan_cliente', $circuito->wan_cliente)}}">
 		</div>
 		<input type="hidden" name="old_wan_cliente" value="{{$circuito->wan_cliente}}">
@@ -132,7 +132,7 @@
 	<div class="col-xs-12 col-md-4">
 		<div class="input-group">
 			<span class="input-group-addon">WAN Operadora:</span>
-			<input class="form-control nu_ip" type="text" name="wan_operadora" id="wan_operadora" 
+			<input class="form-control nu_ip" type="text" name="wan_operadora" id="wan_operadora"
 			value="{{old('wan_operadora', $circuito->wan_operadora)}}">
 		</div>
 		<input type="hidden" name="old_wan_operadora" value="{{$circuito->wan_operadora}}">

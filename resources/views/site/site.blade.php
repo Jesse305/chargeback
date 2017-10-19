@@ -20,15 +20,15 @@
     </tr>
     <tr>
       <td><b>Órgão:</b>
-        @if($orgao)
-        {{$orgao->no_orgao}}
+        @if($site->orgao)
+        {{$site->orgao->no_orgao}}
         @else
         Informação não cadastrada
         @endif
       </td>
       <td><b>Unidade:</b>
-        @if($unidade)
-        {{$unidade->no_unidade}}
+        @if($site->unidade)
+        {{$site->unidade->no_unidade}}
         @else
         Informação não cadastrada.
         @endif

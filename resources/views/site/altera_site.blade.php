@@ -52,8 +52,8 @@
 				            <span class="input-group-addon">Unidade:</span>
 				            <select class="form-control" id="unidade_id" name="unidade_id" disabled>
 				            	<option value="">--Selecione--</option>
-				            	@if($unidade)
-				                <option value="{{$unidade->id}}" selected>{{$unidade->no_unidade}}</option>
+				            	@if($site->unidade)
+				                <option value="{{$site->unidade->id}}" selected>{{$site->unidade->no_unidade}}</option>
 				                @else
 				                <option value="0" selected="">Selecione o Órgão.</option>
 				                @endif
@@ -109,9 +109,9 @@
 						<div class="input-group">
 				           <span class="input-group-addon">End. do Publicador:</span>
 				           <input class="form-control" type="text" name="no_dns" id="no_dns" maxlength="100"
-				           value="{{$site->no_dns}}"  required 
+				           value="{{$site->no_dns}}"  required
 				           >
-				        </div>						
+				        </div>
 					</div>
 					<div class="col-xs-12 col-md-6">
 						  <label for="">Necessita Token de Acesso?</label>
@@ -129,7 +129,7 @@
 						<b>Dados do Google Analytics</b>
 					</div>
 				</div>
-				<!-- fim row 6 -->				
+				<!-- fim row 6 -->
 
 				<div class="row">
 					<div class="col-xs-12 col-md-4">

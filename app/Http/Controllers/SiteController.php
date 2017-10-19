@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Orgao;
-use App\Unidade;
 use App\Responsavel;
 use App\Site;
 
@@ -45,15 +44,12 @@ class SiteController extends Controller
 
     public function detalhar(Site $site)
     {
-        $unidade = Unidade::where('id', $site->unidade_id)->first();
-        $responsaveis = $unidade ?
-            Responsavel::where('unidade_id', $unidade->id)->get() :
+        $responsaveis = $site->unidade ?
+            Responsavel::where('unidade_id', $site->unidade->id)->get() :
             [];
 
         return view('site/site', [
             'site' => $site,
-            'orgao' => Orgao::where('id', $site->orgao_id)->first(),
-            'unidade' => $unidade,
             'responsaveis' => $responsaveis,
         ]);
     }
@@ -65,7 +61,6 @@ class SiteController extends Controller
         return view('site/altera_site', [
             'site' => $site,
             'listaOrgaos' => Orgao::orderBy('no_orgao')->get(),
-            'unidade' => Unidade::where('id', $site->unidade_id)->first(),
          ]);
     }
 

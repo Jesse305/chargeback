@@ -56,23 +56,23 @@
 			      			<select class="form-control" name="desenvolvimento" id="slc_amb" title="Ambiente programação">
 			      				<option value="Java"
 			      				@if($sistema->desenvolvimento == 'Java')
-			      				selected			      				
-			      				@endif 
+			      				selected
+			      				@endif
 			      				>Java</option>
 			      				<option value="PHP"
 			      				@if($sistema->desenvolvimento == 'PHP')
-			      				selected			      				
-			      				@endif 
+			      				selected
+			      				@endif
 			      				>PHP</option>
 			      				<option value="Mobile"
 			      				@if($sistema->desenvolvimento == 'Mobile')
-			      				selected			      				
-			      				@endif 
+			      				selected
+			      				@endif
 			      				>Mobile</option>
 			      				<option value="Cobol"
 			      				@if($sistema->desenvolvimento == 'Cobol')
-			      				selected			      				
-			      				@endif 
+			      				selected
+			      				@endif
 			      				>Cobol</option>
 			      			</select>
 			      		</div>
@@ -138,25 +138,25 @@
 			      			<select class="form-control" name="id_orgao" id="slc_orgao" title="Órgão solicitante">
 			      				<option value="">--Selecione--</option>
 			      				@foreach($orgaos as $org)
-			      				<option value="{{$org->id}}" 			      				
+			      				<option value="{{$org->id}}"
 			      				@if($org->id == $sistema->id_orgao)
 			      				selected
-			      				@endif			      				
+			      				@endif
 			      				>{{$org->no_sigla}} - {{$org->no_orgao}}</option>
 			      				@endforeach
 			      			</select>
-			      		</div>						
+			      		</div>
 					</div>
 
 					<div class="col-xs-12 col-md-6">
 						<div class="input-group" id="div_unidade">
 			      			<span class="input-group-addon">Unidade:</span>
 			      			<select class="form-control" name="id_unidade" id="slc_unidade" title="Unidade solicitante" >
-			      				<option value="{{$unidade->id}}">{{$unidade->no_unidade}}</option>
+			      				<option value="{{$sistema->unidade->id}}">{{$sistema->unidade->no_unidade}}</option>
 			      			</select>
-			      		</div>						
+			      		</div>
 					</div>
-					
+
 				</div>
 				<!-- fim row 3 -->
 
@@ -224,7 +224,7 @@
 						  > {{$f->no_framework}} </li>
 						  @endforeach
 						  </ul>
-						</div>						
+						</div>
 					</div>
 				</div>
 
@@ -232,10 +232,10 @@
 					<a href="javascript: history.back();" class="btn btn-warning btn-sm">Cancelar</a>
 					<button class="btn btn-success btn-sm" type="input" id="btn_alterar">Alterar</button>
 				</div>
-				
+
 			</form>
-			
-		</div>	
+
+		</div>
 	</div>
 
 </div>

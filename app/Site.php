@@ -17,4 +17,14 @@ class Site extends Model
         'ds_website', 'tp_portal', 'prefixo_tabela', 'st_token',
         'usuario_analytics', 'senha_analytics',
     ];
+
+    public function unidade()
+    {
+        return $this->belongsTo(Unidade::class, 'unidade_id');
+    }
+
+    public function orgao()
+    {
+        return $this->belongsTo(Orgao::class, 'orgao_id');
+    }
 }

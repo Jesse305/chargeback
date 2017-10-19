@@ -18,6 +18,21 @@ class ServidorVm extends Model
         'responsavel_id', 'unidade_id', 'orgao_id', 'no_aquivo', 'status',
     ];
 
+    public function orgao()
+    {
+        return $this->belongsTo(Orgao::class, 'orgao_id');
+    }
+
+    public function unidade()
+    {
+        return $this->belongsTo(Unidade::class, 'unidade_id');
+    }
+
+    public function responsavel()
+    {
+        return $this->belongsTo(Responsavel::class, 'responsavel_id');
+    }
+
     public function printStatus($nStatus)
     {
         if ($nStatus === 1) {

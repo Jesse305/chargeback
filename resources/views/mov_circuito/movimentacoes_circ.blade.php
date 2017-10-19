@@ -41,18 +41,18 @@
 				<tbody>
 					@foreach($movs_circuito as $mc)
 					<tr>
-						<td>{{$mc->dt_cadastro}}</td>			
-						<td>{{$mc->getUnidade($mc->unidade_id)->no_unidade}}</td>			
-						<td>{{$mc->getItemConfig($mc->itemdeconfiguracao_id)->no_item}}</td>			
-						<td>{{$mc->no_designacao}}</td>			
+						<td>{{$mc->dt_cadastro}}</td>
+						<td>{{$mc->unidade->no_unidade}}</td>
+						<td>{{$mc->getItemConfig($mc->itemdeconfiguracao_id)->no_item}}</td>
+						<td>{{$mc->no_designacao}}</td>
 						<td align="center">
 							<a href={{route('movimentacao_circ.detalhar', $mc->id)}} class="btn btn-info btn-sm" title="visualizar">
 								<i class="glyphicon glyphicon-eye-open"></i>
 							</a>
 						</td>
 					</tr>
-					@endforeach			
-				</tbody>			
+					@endforeach
+				</tbody>
 				<tfoot>
 					<tr>
 						<td>Data Cadastro:</td>
@@ -61,7 +61,7 @@
 						<td>Designação:</td>
 						<td align="center">Visualizar</td>
 					</tr>
-				</tfoot>		
+				</tfoot>
 			</table>
 	</div>
 	<!-- fim tabela -->

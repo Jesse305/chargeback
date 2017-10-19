@@ -14,7 +14,7 @@
 	<!-- tabela -->
 
 	<table class="table table-striped table-bordered table-hover" style="font-size: 13px;">
-		
+
 		<h5><b>Sistema</b></h5>
 		<tr>
 			<td colspan="2"><b>Nome:</b>  {{$sistema->no_sistema}}</td>
@@ -29,26 +29,26 @@
 			<td><b>Data Cadastro: </b> {{$sistema->dt_cadastro}}</td>
 			<td><b>Data Atualização: </b> {{$sistema->dt_atualizacao}}</td>
 		</tr>
-	
+
 	</table>
 	<!-- fim sistema -->
 
 	<h5><b>Solicitante</b></h5>
 	<table class="table table-striped table-bordered table-hover" style="font-size: 13px;">
-		
+
 		<tr>
 			<td><b>Orgão:</b></td>
-			<td>{{$orgao->no_orgao}}</td>
+			<td>{{$sistema->orgao->no_orgao}}</td>
 		</tr>
 		<tr>
 			<td><b>Unidade:</b></td>
-			<td>{{$unidade->no_unidade}}</td>
-		</tr>		
+			<td>{{$sistema->unidade->no_unidade}}</td>
+		</tr>
 	</table>
 
 	<!-- fim solicitante -->
 
-	<h5><b>Responsável(eis):</b></h5>	
+	<h5><b>Responsável(eis):</b></h5>
 	@if(count($responsaveis) < 1)
 	<h5><font color="red">Não há responsável vinculdado.</font></h5>
 	@else
@@ -70,15 +70,15 @@
 	<h5><b>Banco de Dados</b></h5>
 	<table class="table table-striped table-bordered table-hover" style="font-size: 13px;">
 		<tr>
-			<td colspan="2"><b>Schema:</b>  {{$banco->chema_banco}} </td>
-			<td><b>IP:</b>  {{$banco->ip_banco}} </td>
+			<td colspan="2"><b>Schema:</b>  {{$sistema->banco->chema_banco}} </td>
+			<td><b>IP:</b>  {{$sistema->banco->ip_banco}} </td>
 		</tr>
 		<tr>
-			<td><b>Ambiente:</b>  {{$banco->ambiente_banco}} </td>
-			<td><b>Tecnologia:</b>  {{$banco->tecnologia_banco}} </td>
+			<td><b>Ambiente:</b>  {{$sistema->banco->ambiente_banco}} </td>
+			<td><b>Tecnologia:</b>  {{$sistema->banco->tecnologia_banco}} </td>
 			<td class="col-xs-2"><b>Detalhes:</b>
 				<div class="pull-right">
-					<a href={{route('banco.detalhar', $banco->id_banco)}} class="btn btn-info btn-sm" title="visualizar detalhes">
+					<a href={{route('banco.detalhar', $sistema->banco->id_banco)}} class="btn btn-info btn-sm" title="visualizar detalhes">
 						<i class="glyphicon glyphicon-eye-open"></i>
 					</a>
 				</div>
@@ -88,12 +88,12 @@
 	<!-- fim banco de dados -->
 
 	<h5><b>Ambientes</b></h5>
-	<table class="table table-striped table-bordered table-hover" style="font-size: 13px;">		
+	<table class="table table-striped table-bordered table-hover" style="font-size: 13px;">
 		<tr>
-			<td><b>Link:</b> <a href="{{$ambientes->link_prod}}">{{$ambientes->link_prod}}</a></td>
+			<td><b>Link:</b> <a href="{{$sistemas->ambientes->link_prod}}">{{$sistemas->ambientes->link_prod}}</a></td>
 			<td class="col-xs-2"><b>Detalhes:</b>
 				<div class="pull-right">
-					<a href={{route('ambiente.detalhar', $ambientes->id)}} class="btn btn-info btn-sm" title="visualizar detalhes">
+					<a href={{route('ambiente.detalhar', $sistemas->ambientes->id)}} class="btn btn-info btn-sm" title="visualizar detalhes">
 						<i class="glyphicon glyphicon-eye-open"></i>
 					</a>
 				</div>
@@ -108,7 +108,7 @@
 			<tr>
 				<td>Nome:</td>
 				<td>IP:</td>
-			</tr>			
+			</tr>
 		</thead>
 		<tbody>
 			@foreach($devs as $d)
@@ -118,7 +118,7 @@
 			</tr>
 			@endforeach
 		</tbody>
-		
+
 	</table>
 	<!-- fim desenvolvedores -->
 
@@ -127,7 +127,7 @@
 	<h5><font color="red">Sistema não faz uso de framework.</font></h5>
 	@else
 	<table class="table table-striped table-bordered table-hover" style="font-size: 13px;">
-		
+
 		<tr>
 			<thead>
 				<tr>
@@ -139,10 +139,10 @@
 				<tr>
 					<td>{{$f->no_framework}}</td>
 				</tr>
-				@endforeach				
+				@endforeach
 			</tbody>
 		</tr>
-		
+
 	</table>
 	@endif
 	<!-- fim frameworks -->
@@ -152,7 +152,7 @@
 			<span class="glyphicon glyphicon-arrow-left"></span>
 		</button>
 	</div>
-	
+
 </div>
 <!-- fim container -->
 

@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Orgao;
 use App\Banco;
-use App\Unidade;
 use App\Ambiente;
 use App\Desenvolvedor;
 use App\Framework;
@@ -77,7 +76,7 @@ class SistemaController extends Controller
 
     public function detalhar(Sistema $sistema)
     {
-        $responsaveis = Responsavel::where('orgao_id', $orgao->id)->where('unidade_id', $unidade->id)->get();
+        $responsaveis = Responsavel::where('orgao_id', $sistema->orgao->id)->where('unidade_id', $sistema->unidade->id)->get();
 
         $devs = DB::table('dev')->join('sistemas_devs', 'dev.id', '=', 'sistemas_devs.id_dev')->
         where('sistemas_devs.id_sistema', $sistema->id)->get();
@@ -87,11 +86,7 @@ class SistemaController extends Controller
 
         return view('sistema/sistema', [
             'sistema' => $sistema,
-            'orgao' => Orgao::findOrFail($sistema->id_orgao),
-            'unidade' => Unidade::findOrFail($sistema->id_unidade),
             'responsaveis' => $responsaveis,
-            'banco' => Banco::findOrFail($sistema->id_banco),
-            'ambientes' => Ambiente::findOrFail($sistema->id_amb),
             'devs' => $devs,
             'frames' => $frames,
         ]);
@@ -107,7 +102,6 @@ class SistemaController extends Controller
         return view('sistema/altera_sistema', [
             'sistema' => $sistema,
             'orgaos' => Orgao::orderBy('no_orgao')->get(),
-            'unidade' => Unidade::findOrFail($sistema->id_unidade),
             'bancos' => Banco::orderBy('schema_banco')->get(),
             'ambientes' => Ambiente::orderBy('desc_amb')->get(),
             'devs' => Desenvolvedor::orderBy('no_dev')->get(),

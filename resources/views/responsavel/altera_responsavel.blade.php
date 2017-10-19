@@ -21,13 +21,13 @@
       <div class="col-xs-12 col-md-6">
         <div class="input-group">
           <span class="input-group-addon">Órgão:</span>
-          <input class="form-control" type="text" name="" value="{{$orgao->no_orgao}}" readonly>
+          <input class="form-control" type="text" name="" value="{{$responsavel->orgao->no_orgao}}" readonly>
         </div>
       </div>
       <div class="col-xs-12 col-md-6">
         <div class="input-group">
           <span class="input-group-addon">Unidade:</span>
-          <input class="form-control" type="text" name="" value="{{$unidade->no_unidade}}" readonly>
+          <input class="form-control" type="text" name="" value="{{$responsavel->unidade->no_unidade}}" readonly>
         </div>
       </div>
     </div>

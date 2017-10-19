@@ -16,17 +16,13 @@ class Responsavel extends Model
         'orgao_id', 'nu_celular', 'ds_observacao',
     ];
 
-    public function getUnidade($id)
+    public function unidade()
     {
-        $unidade = Unidade::findOrfail($id);
-
-        return $unidade;
+        return $this->belongsTo(Unidade::class, 'unidade_id');
     }
 
-    public function getOrgao($id)
+    public function orgao()
     {
-        $orgao = Orgao::findOrfail($id);
-
-        return $orgao;
+        return $this->belongsTo(Orgao::class, 'orgao_id');
     }
 }

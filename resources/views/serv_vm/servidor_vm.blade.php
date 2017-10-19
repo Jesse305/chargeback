@@ -15,13 +15,13 @@
 				<td colspan="3"><h4><font color="#000080">Responsável</font></h4></td>
 			</tr>
 			<tr>
-				<td colspan="2"><b>Órgão:</b> {{$orgao->no_orgao}}</td>
-				<td><b>Sigla:</b> {{$orgao->no_sigla}}</td>
+				<td colspan="2"><b>Órgão:</b> {{$serv_vm->orgao->no_orgao}}</td>
+				<td><b>Sigla:</b> {{$serv_vm->orgao->no_sigla}}</td>
 			</tr>
-			@if(count($unidade) > 0)
+			@if(count($serv_vm->unidade) > 0)
 			<tr>
-				<td colspan="2"><b>Unidade:</b> {{$unidade->no_unidade}}</td>
-				<td colspan="2"><b>Sigla:</b> {{$unidade->no_sigla}}</td>
+				<td colspan="2"><b>Unidade:</b> {{$serv_vm->unidade->no_unidade}}</td>
+				<td colspan="2"><b>Sigla:</b> {{$serv_vm->unidade->no_sigla}}</td>
 			</tr>
 			@else
 			<tr>
@@ -29,16 +29,16 @@
 			</tr>
 			@endif
 
-			@if(count($resp) > 0)
+			@if(count($serv_vm->resp) > 0)
 			<tr>
-				<td><b>Nome Responsável: </b>{{$resp->no_responsavel}}</td>
-				<td><b>Telefone: </b>{{$resp->nu_telefone}}</td>
+				<td><b>Nome Responsável: </b>{{$serv_vm->resp->no_responsavel}}</td>
+				<td><b>Telefone: </b>{{$serv_vm->resp->nu_telefone}}</td>
 				<td><b>Detalhes do Responsável:</b>
 					<div class="pull-right">
-						<a href={{route('responsavel.detalha', $resp->id)}} class="btn btn-info btn-sm" title="visualizar">
+						<a href={{route('responsavel.detalha', $serv_vm->resp->id)}} class="btn btn-info btn-sm" title="visualizar">
 							<i class="glyphicon glyphicon-eye-open"></i>
 						</a>
-					</div>					
+					</div>
 				</td>
 			</tr>
 			@else
@@ -49,7 +49,7 @@
 			<tr>
 				<td colspan="3"><h4><font color="#000080">Servidor VM</font></h4></td>
 			</tr>
-			<tr>				
+			<tr>
 				<td colspan="2"><b>Nome:</b> {{$serv_vm->no_servidor}}</td>
 				<td><b>Status:</b> {{$serv_vm->printStatus($serv_vm->status)}}</td>
 			</tr>

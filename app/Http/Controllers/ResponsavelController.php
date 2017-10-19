@@ -54,8 +54,6 @@ class ResponsavelController extends Controller
     {
         return view('responsavel/responsavel', [
             'responsavel' => $responsavel,
-            'orgao' => Orgao::findOrFail($responsavel->orgao_id),
-            'unidade' => Unidade::findOrFail($responsavel->unidade_id),
          ]);
     }
 
@@ -65,8 +63,6 @@ class ResponsavelController extends Controller
     {
         return view('responsavel/altera_responsavel', [
             'responsavel' => $responsavel,
-            'orgao' => Orgao::findOrFail($responsavel->orgao_id),
-            'unidade' => Unidade::findOrFail($responsavel->unidade_id),
          ]);
     }
 
