@@ -14,6 +14,13 @@ class BancoController extends Controller
          ]);
     }
 
+    public function bancosJson(){
+
+        $bancos = Banco::orderBy('schema_banco')->get();
+
+        echo json_encode($bancos, JSON_UNESCAPED_UNICODE);
+    }
+
     public function inserir(Request $request)
     {
         $dados = $request->all();

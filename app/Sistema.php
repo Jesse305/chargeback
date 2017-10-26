@@ -12,7 +12,7 @@ class Sistema extends Model
     const UPDATED_AT = 'dt_atualizacao';
 
     protected $fillable = [
-        'no_sistema', 'no_sigla', 'id_orgao', 'id_unidade', 'id_banco',
+        'no_sistema', 'no_sigla', 'id_orgao', 'id_unidade', 'responsavel_id',
         'id_amb', 'desenvolvimento', 'tp_acesso', 'status',
     ];
 
@@ -26,12 +26,18 @@ class Sistema extends Model
         return $this->belongsTo(Unidade::class, 'id_unidade');
     }
 
+    public function responsavel()
+    {
+
+        return $this->belongsTo(Responsavel::class, 'responsavel_id');
+    }
+
     public function banco()
     {
         return $this->belongsTo(Banco::class, 'id_banco');
     }
 
-    public function ambientes()
+    public function ambiente()
     {
         return $this->belongsTo(Ambiente::class, 'id_amb');
     }
@@ -44,5 +50,10 @@ class Sistema extends Model
     public function frameworks()
     {
         return $this->belongsToMany(Framework::class, 'sistemas_frameworks', 'id_sistema', 'id_framework');
+    }
+
+    public function bancos()
+    {
+        return $this->belongsToMany(Banco::class, 'sistemas_bancos', 'sistema_id', 'banco_id');
     }
 }

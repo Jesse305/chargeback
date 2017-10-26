@@ -40,60 +40,73 @@
 			<td><b>Orgão:</b></td>
 			<td>{{$sistema->orgao->no_orgao}}</td>
 		</tr>
+		@if($sistema->unidade)
 		<tr>
 			<td><b>Unidade:</b></td>
 			<td>{{$sistema->unidade->no_unidade}}</td>
 		</tr>
+		@else
+		<tr>
+			<td><b>Unidade:</b></td>
+			<td><i>Nenhuma unidade vinculada.</i></td>
+		</tr>
+		@endif
 	</table>
 
 	<!-- fim solicitante -->
 
-	<h5><b>Responsável(eis):</b></h5>
-	@if(count($responsaveis) < 1)
-	<h5><font color="red">Não há responsável vinculdado.</font></h5>
-	@else
-		<table class="table table-striped table-bordered table-hover" style="font-size: 13px;">
-		@foreach($responsaveis as $resps)
+	<h5><b>Responsável:</b></h5>
+	<table class="table table-striped table-bordered table-hover" style="font-size: 13px;">
+		@if($sistema->responsavel)
 		<tr>
-			<td><b>Nome:</b> {{$resps->no_responsavel}} </td>
-			<td><b>email:</b> {{$resps->no_email}} </td>
+			<td><b>Nome:</b> {{$sistema->responsavel->no_responsavel}} </td>
+			<td><b>email:</b> {{$sistema->responsavel->no_email}} </td>
 		</tr>
 		<tr>
-			<td><b>Telefone:</b> {{$resps->nu_telefone}} </td>
-			<td><b>Celular:</b> {{$resps->nu_celular}} </td>
+			<td><b>Telefone:</b> {{$sistema->responsavel->nu_telefone}} </td>
+			<td><b>Celular:</b> {{$sistema->responsavel->nu_celular}} </td>
 		</tr>
-		@endforeach
-		</table>
-	@endif
+		@else
+		<tr>
+			<td colspan="2"><i>Nenhum responsável vinculado</i></td>
+		</tr>
+		@endif
+	</table>
 	<!-- fim resposaveis -->
 
-	<h5><b>Banco de Dados</b></h5>
-	<table class="table table-striped table-bordered table-hover" style="font-size: 13px;">
-		<tr>
-			<td colspan="2"><b>Schema:</b>  {{$sistema->banco->chema_banco}} </td>
-			<td><b>IP:</b>  {{$sistema->banco->ip_banco}} </td>
-		</tr>
-		<tr>
-			<td><b>Ambiente:</b>  {{$sistema->banco->ambiente_banco}} </td>
-			<td><b>Tecnologia:</b>  {{$sistema->banco->tecnologia_banco}} </td>
-			<td class="col-xs-2"><b>Detalhes:</b>
-				<div class="pull-right">
-					<a href={{route('banco.detalhar', $sistema->banco->id_banco)}} class="btn btn-info btn-sm" title="visualizar detalhes">
-						<i class="glyphicon glyphicon-eye-open"></i>
-					</a>
-				</div>
-			</td>
-		</tr>
-	</table>
+	<h5><b>Banco(s) de Dados</b></h5>
+
+	@foreach($sistema->bancos as $banco)
+
+		<table class="table table-striped table-bordered table-hover" style="font-size: 13px;">
+			<tr>
+				<td colspan="2"><b>Schema:</b>  {{$banco->schema_banco}} </td>
+				<td><b>IP:</b>  {{$banco->ip_banco}} </td>
+			</tr>
+			<tr>
+				<td><b>Ambiente:</b>  {{$banco->ambiente_banco}} </td>
+				<td><b>Tecnologia:</b>  {{$banco->tecnologia_banco}} </td>
+				<td class="col-xs-2"><b>Detalhes:</b>
+					<div class="pull-right">
+						<a href={{route('banco.detalhar', $banco->id_banco)}} class="btn btn-info btn-sm" title="visualizar detalhes">
+							<i class="glyphicon glyphicon-eye-open"></i>
+						</a>
+					</div>
+				</td>
+			</tr>
+		</table>
+
+	@endforeach
+
 	<!-- fim banco de dados -->
 
 	<h5><b>Ambientes</b></h5>
 	<table class="table table-striped table-bordered table-hover" style="font-size: 13px;">
 		<tr>
-			<td><b>Link:</b> <a href="{{$sistema->ambientes->link_prod}}">{{$sistema->ambientes->link_prod}}</a></td>
+			<td><b>Link:</b> <a href="{{$sistema->ambiente->link_prod}}">{{$sistema->ambiente->link_prod}}</a></td>
 			<td class="col-xs-2"><b>Detalhes:</b>
 				<div class="pull-right">
-					<a href={{route('ambiente.detalhar', $sistema->ambientes->id)}} class="btn btn-info btn-sm" title="visualizar detalhes">
+					<a href={{route('ambiente.detalhar', $sistema->ambiente->id)}} class="btn btn-info btn-sm" title="visualizar detalhes">
 						<i class="glyphicon glyphicon-eye-open"></i>
 					</a>
 				</div>
@@ -111,10 +124,10 @@
 			</tr>
 		</thead>
 		<tbody>
-			@foreach($sistema->desenvolvedores as $desenvolvedor)
+			@foreach($sistema->desenvolvedores as $d)
 			<tr>
-				<td>{{$desenvolvedor->no_dev}} </td>
-				<td>{{$desenvolvedor->ip_dev}} </td>
+				<td>{{$d->no_dev}} </td>
+				<td>{{$d->ip_dev}} </td>
 			</tr>
 			@endforeach
 		</tbody>
@@ -135,9 +148,9 @@
 				</tr>
 			</thead>
 			<tbody>
-				@foreach($sistema->frameworks as $framework)
+				@foreach($sistema->frameworks as $f)
 				<tr>
-					<td>{{$framework->no_framework}}</td>
+					<td>{{$f->no_framework}}</td>
 				</tr>
 				@endforeach
 			</tbody>

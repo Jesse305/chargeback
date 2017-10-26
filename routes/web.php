@@ -57,6 +57,7 @@ Route::get('responsaveis/json/{id}', 'ResponsavelController@respsByIdJson')->nam
 
 //rotas banco
 Route::get('bancos', 'BancoController@listar')->name('bancos');
+Route::get('bancos/json', 'BancoController@bancosJson')->name('bancos.json');
 Route::post('banco/inserir', 'BancoController@inserir')->name('banco.inserir');
 Route::get('banco/detalha/{banco}', 'BancoController@detalhar')->name('banco.detalhar');
 Route::get('banco/altera/{banco}', 'BancoController@altera')->name('banco.altera');

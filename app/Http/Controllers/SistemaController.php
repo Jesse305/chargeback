@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Orgao;
 use App\Banco;
 use App\Ambiente;
@@ -25,6 +26,11 @@ class SistemaController extends Controller
         ]);
     }
 
+    function bancoDuplicado($arr){
+        $rs = count($arr) !== count(array_unique($arr));
+        return $rs;
+    }
+
     public function inserir(Request $request)
     {
         $dados = $request->all();
@@ -35,11 +41,20 @@ class SistemaController extends Controller
             return redirect()->back()->
             with('retorno', ['tipo' => 'warning', 'msg' => 'Já existe Sistema de mesmo Nome!'])->
             withInput();
-        } else {
+        }
+        else if($this->bancoDuplicado($request->id_banco)){
+
+            return redirect()
+            ->back()
+            ->with('retorno', ['tipo'=>'warning', 'msg'=>'Selecione bancos diferentes.'])
+            ->withInput();
+        }
+        else {
             $sistema = new Sistema($dados);
             if ($sistema->save()) {
                 $sistema->desenvolvedores()->sync($request->devs);
                 $sistema->frameworks()->sync($request->frames);
+                $sistema->bancos()->sync($request->id_banco);
 
                 return redirect()
                     ->back()
@@ -60,11 +75,10 @@ class SistemaController extends Controller
 
     public function detalhar(Sistema $sistema)
     {
-        $responsaveis = Responsavel::where('orgao_id', $sistema->orgao->id)->where('unidade_id', $sistema->unidade->id)->get();
+        
 
         return view('sistema/sistema', [
             'sistema' => $sistema,
-            'responsaveis' => $responsaveis,
         ]);
     }
 
@@ -72,33 +86,50 @@ class SistemaController extends Controller
     {
         return view('sistema/altera_sistema', [
             'sistema' => $sistema,
-            'orgaos' => Orgao::orderBy('no_orgao')->get(),
-            'bancos' => Banco::orderBy('schema_banco')->get(),
-            'ambientes' => Ambiente::orderBy('desc_amb')->get(),
-            'devs' => Desenvolvedor::orderBy('no_dev')->get(),
-            'frames' => Framework::orderBy('no_framework')->get(),
+            'listaOrgaos' => Orgao::orderBy('no_orgao')->get(),
+            'listaBancos' => Banco::orderBy('schema_banco')->get(),
+            'listaAmbientes' => Ambiente::orderBy('desc_amb')->get(),
+            'listaDevs' => Desenvolvedor::orderBy('no_dev')->get(),
+            'listaFrames' => Framework::orderBy('no_framework')->get(),
         ]);
     }
 
     public function atualizar(Request $request, Sistema $sistema)
     {
-        $dados = $request->all();
-        $sistema->update($dados);
+        if($this->bancoDuplicado($request->id_banco)){
 
-        $sistema->desenvolvedores()->sync($request->devs);
-        $sistema->frameworks()->sync($request->frames);
+            return redirect()
+            ->back()
+            ->with('retorno', ['tipo'=>'warning', 'msg'=>'Selecione bancos diferentes.'])
+            ->withInput();
 
-        return redirect()
-            ->route('sistemas')
-            ->with('retorno', [
-                'tipo' => 'success',
-                'msg' => 'Cadastro Atualizado com sucesso.',
-            ]);
+        }else{
+
+            $dados = $request->all();
+            $sistema->update($dados);
+
+            $sistema->desenvolvedores()->sync($request->devs);
+            $sistema->frameworks()->sync($request->frames);
+            $sistema->bancos()->sync($request->id_banco);
+
+            return redirect()
+                ->route('sistemas')
+                ->with('retorno', [
+                    'tipo' => 'success',
+                    'msg' => 'Cadastro Atualizado com sucesso.',
+                ]);
+
+        }
     }
+
+    //fim do atualizar
 
     public function apagar(Sistema $sistema)
     {
         $sistema->delete();
+        DB::table('sistemas_bancos')->where('sistema_id', $sistema->id)->delete();
+        DB::table('sistemas_devs')->where('id_sistema', $sistema->id)->delete();
+        DB::table('sistemas_frameworks')->where('id_sistema', $sistema->id)->delete();
 
         return redirect()
             ->back()
