@@ -126,16 +126,25 @@ class SistemaController extends Controller
 
     public function apagar(Sistema $sistema)
     {
-        $sistema->delete();
-        DB::table('sistemas_bancos')->where('sistema_id', $sistema->id)->delete();
-        DB::table('sistemas_devs')->where('id_sistema', $sistema->id)->delete();
-        DB::table('sistemas_frameworks')->where('id_sistema', $sistema->id)->delete();
+        if($sistema->delete()){
+            $sistema->desenvolvedores()->detach();
+            $sistema->frameworks()->detach();
+            $sistema->bancos()->detach();            
 
-        return redirect()
+            return redirect()
+                ->back()
+                ->with('retorno', [
+                    'tipo' => 'success',
+                    'msg' => 'Cadastro apagado com sucesso.',
+                ]);
+
+        }else{
+
+            return redirect()
             ->back()
-            ->with('retorno', [
-                'tipo' => 'success',
-                'msg' => 'Cadastro apagado com sucesso.',
-            ]);
+            ->with('retorno', ['tipo' => 'warning', 'msg' => 'Não foi possível apagar o registro']);
+        }
+        
+        
     }
 }
