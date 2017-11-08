@@ -16,7 +16,7 @@
 
 	<table class="table table-striped table-bordered table-hover" id="tab_detalhes">
 		<tr>
-			<td class="col-xs-4"><b>Abiente:</b></td>
+			<td class="col-xs-4"><b>Ambiente:</b></td>
 			<td class="col-xs-8">{{ $banco->ambiente_banco }}</td>
 		</tr>
 		<tr>
