@@ -1,15 +1,15 @@
-{{csrf_field()}}		      			
+{{csrf_field()}}
 <div class="input-group">
 	<span class="input-group-addon">Nome:</span>
 	<input class="form-control" type="text" name="no_sistema" id="nome" required maxlength="200"
-	placeholder="nome do sistema" onkeyup="maiuscula(this);" 
+	placeholder="nome do sistema" onkeyup="maiuscula(this);"
 	value="{{old('no_sistema', isset($sistema) ? $sistema->no_sistema : '')}}">
 </div>
 
 <div class="input-group">
 	<span class="input-group-addon">Sigla:</span>
 	<input class="form-control" type="text" name="no_sigla" id="sigla"  maxlength="20"
-	placeholder="sigla do sistema" onkeyup="maiuscula(this);" 
+	placeholder="sigla do sistema" onkeyup="maiuscula(this);"
 	value="{{old('no_sigla', isset($sistema) ? $sistema->no_sigla : '')}}">
 </div>
 
@@ -34,7 +34,7 @@
   <span class="caret"></span></button>
   <ul class="dropdown-menu">
     @foreach($listaFrames as $frames)
-    <li>&nbsp; <input type="checkbox" name="frames[]" value={{$frames->id}} 
+    <li>&nbsp; <input type="checkbox" name="frames[]" value={{$frames->id}}
     @if(isset($sistema))
     	@foreach($sistema->frameworks as $f)
     		@if($f->id == $frames->id) checked @endif
@@ -73,8 +73,10 @@
 	<span class="input-group-addon">Responsável:</span>
 	<select class="form-control" name="responsavel_id" id="responsavel_id" title="selecione o responsável">
 		<option value="">--Selecione--</option>
-		@if(isset($sistema))
+		@if(isset($sistema->responsavel->no_responsavel))
 			<option value="{{$sistema->responsavel->id}}" selected>{{$sistema->responsavel->no_responsavel}}</option>
+		@else
+			<option value="0" selected>Nenhum responsável vinculado.</option>
 		@endif
 	</select>
 </div>
@@ -94,7 +96,7 @@
 				<a href="" onclick="return false;" class="btn btn-xs text-danger remove_bd" title="excluir">
 					<i class="glyphicon glyphicon-remove"></i>
 				</a>
-			</span>					
+			</span>
 		</div>
 	@endforeach
 @else
@@ -106,9 +108,9 @@
 			<option value={{$bancos->id_banco}}
 			@if(old('id_banco') == $bancos->id_banco) selected @endif
 			>SCHEMA: {{$bancos->schema_banco}} / AMBIENTE: {{$bancos->ambiente_banco}}</option>
-			@endforeach	      				
+			@endforeach
 		</select>
-	</div>		
+	</div>
 @endif
 <div id="bancos"></div>
 
@@ -119,7 +121,7 @@
 		</button>
 		<button class="btn btn-danger btn-sm" onclick="return false;" id="btn_remove" title="remover">
 			<i class="glyphicon glyphicon-minus"></i>
-		</button>	      				
+		</button>
 </div>
 
 
@@ -147,7 +149,7 @@
 		<option value="Java"
 		@if(isset($sistema))
 			@if($sistema->desenvolvimento == 'Java') selected @endif
-		@endif	
+		@endif
 		>Java</option>
 		<option value="PHP"
 		@if(isset($sistema))
@@ -196,7 +198,7 @@
 		<option value="Homologação"
 		@if(isset($sistema))
 			@if($sistema->status == 'Homologação') selected @endif
-		@endif 
+		@endif
 		>Homologação</option>
 		<option value="Treinamento"
 		@if(isset($sistema))
