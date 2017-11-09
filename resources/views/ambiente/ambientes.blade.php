@@ -158,7 +158,7 @@
             </td>
             <td align="center">
               <a href="#" class="btn btn-danger btn-sm" title="cuidado! apaga definitivamente o registro."
-              onclick="confirmaDeleta('{{route('ambiente.apagar', $ambientes->id)}}')" disabled >
+              onclick="confirmaDeleta('{{route('ambiente.apagar', $ambientes->id)}}')">
                 <i class="glyphicon glyphicon-remove"></i>
               </a>
             </td>

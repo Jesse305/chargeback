@@ -80,7 +80,7 @@
 	  						</a>
 						</td>
 						<td align="center">
-							<a href="#" class="btn btn-danger btn-sm" title="excluir" disabled
+							<a href="#" class="btn btn-danger btn-sm" title="excluir"
 	  						onclick="confirmaDeleta('{{route('framework.apagar', $frameworks->id)}}');">
 	  							<i class="glyphicon glyphicon-remove"></i>
 	  						</a>
@@ -109,10 +109,3 @@
 @endsection
 <script type="text/javascript" src={{asset('js/jquery.js')}}></script>
 <script type="text/javascript" src={{asset('js/framework.js')}}></script>
-<!-- <script type="text/javascript">
-    function confirmaDeleta(url){
-        if(window.confirm('Deseja realmente apagar o registro?')){
-            window.location = url;
-        }
-    }
-</script> -->

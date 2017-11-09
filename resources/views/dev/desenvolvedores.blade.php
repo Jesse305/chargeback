@@ -97,7 +97,7 @@
 	  						</a>
 						</td>
 						<td align="center">
-							<a href="#" class="btn btn-danger btn-sm" title="excluir" disabled
+							<a href="#" class="btn btn-danger btn-sm" title="excluir"
 	  						onclick="confirmaDeleta('{{route('desenvolvedor.apagar', $devs->id)}}');">
 	  							<i class="glyphicon glyphicon-remove"></i>
 	  						</a>

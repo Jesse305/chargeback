@@ -150,7 +150,7 @@
 	  					</td>
 	  					<td align="center">
 	  						<a href="#" class="btn btn-danger btn-sm" title="excluir"
-	  						onclick="confirmaDeleta('{{route('banco.apagar', $bancos->id_banco)}}');" disabled>
+	  						onclick="confirmaDeleta('{{route('banco.apagar', $bancos->id_banco)}}');">
 	  							<i class="glyphicon glyphicon-remove"></i>
 	  						</a>
 	  					</td>

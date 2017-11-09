@@ -21,3 +21,9 @@ $(document).ready(function(){
     $('#tab_resumo').dataTable();
 
 });
+
+function confirmaDeleta(url){
+    if(window.confirm('Deseja realmente apagar o registro?')){
+        window.location = url;
+    }
+}

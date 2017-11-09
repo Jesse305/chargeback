@@ -26,10 +26,10 @@
     	<!-- /primeira row -->
 
 	    <!-- alerts -->
-		@if(Session::has('retorno'))
-		<div class="alert alert-{{Session::get('retorno')['tipo']}} alert-dismissable">
-			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			<li>{{Session::get('retorno')['msg']}}</li>
+		@if(session('retorno'))
+		<div class="alert alert-{{session('retorno')['tipo']}}">
+			<button type="button" class="close" data-dismiss="alert" id="fecha_alerta">&times;</button>
+			<li>{{session('retorno')['msg']}}</li>
 		</div>
 		@endif
 		<!-- fim alerts -->
