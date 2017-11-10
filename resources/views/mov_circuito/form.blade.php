@@ -63,7 +63,7 @@
 	<div class="col-xs-12 col-md-6">
 		<div class="input-group">
 			<span class="input-group-addon">Responsável Atual:</span>
-			<input class="form-control" type="text" name="" id="" value="{{$circuito->getResponsavel($circuito->responsavel_id)->no_responsavel}}" disabled>
+			<input class="form-control" type="text" name="" id="" value="{{$circuito->responsavel->no_responsavel}}" disabled>
 		</div>
 		<input type="hidden" name="old_responsavel_id" value="{{$circuito->responsavel->id}}">
 	</div>

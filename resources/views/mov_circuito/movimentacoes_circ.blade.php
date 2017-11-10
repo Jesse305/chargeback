@@ -43,7 +43,7 @@
 					<tr>
 						<td>{{$mc->dt_cadastro}}</td>
 						<td>{{$mc->unidade->no_unidade}}</td>
-						<td>{{$mc->getItemConfig($mc->itemdeconfiguracao_id)->no_item}}</td>
+						<td>{{$mc->itemConfig->no_item}}</td>
 						<td>{{$mc->no_designacao}}</td>
 						<td align="center">
 							<a href={{route('movimentacao_circ.detalhar', $mc->id)}} class="btn btn-info btn-sm" title="visualizar">
